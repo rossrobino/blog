@@ -32,6 +32,9 @@
     hr {
         @apply border-neutral-300;
     }
+}
+
+@layer utilities {
     .vp-dyn {
         min-height: 100dvh;
     }
