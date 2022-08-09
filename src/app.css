@@ -32,4 +32,7 @@
     hr {
         @apply border-neutral-300;
     }
+    .vp-dyn {
+        min-height: 100dvh;
+    }
 }

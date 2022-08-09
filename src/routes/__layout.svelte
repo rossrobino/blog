@@ -11,6 +11,7 @@
   font-serif 
   bg-neutral-50
   selection:bg-emerald-300
+  vp-dyn
 ">
   <div>
     <header>
@@ -28,6 +29,3 @@
     <a href="https://github.com/rossrobino/blog">View project on GitHub</a>
   </footer>
 </div>
-
-
-
