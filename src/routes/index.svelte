@@ -3,11 +3,11 @@
     <meta name="description" content="Ross Robino's Blog" />
 </svelte:head>
 
-<h3>
+<h2>
     Hello, I'm <a href="https://robino.dev">Ross Robino</a>. I created this blog as a place to write about
     programming topics I am learning. Check out my
     posts below. 
-</h3>
+</h2>
 
 <ul>
     <li>
