@@ -25,7 +25,7 @@
     </main>
   </div>
   <footer class="text-xl sm:text-2xl p-4">
-    <a href="https://robino.dev/">robino.dev</a>
+    <a href="https://github.com/rossrobino/blog">View project on GitHub</a>
   </footer>
 </div>
 
