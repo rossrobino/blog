@@ -1,2 +1,23 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<svelte:head>
+    <title>blog.robino.dev</title>
+    <meta name="description" content="Ross Robino's Blog" />
+</svelte:head>
+
+<h3>
+    Hello, I'm <a href="https://robino.dev">Ross Robino</a>. I created this blog as a place to write about
+    programming topics I am learning. Check out my
+    posts below. 
+</h3>
+
+<ul>
+    <li>
+        <a sveltekit:prefetch href="/posts/svelte-web-future">
+            How Svelte is Changing the Future of the Web
+        </a>
+    </li>
+</ul>
+
+
+
+
+

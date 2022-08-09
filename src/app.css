@@ -1,0 +1,35 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h2 {
+        @apply text-2xl;
+        @apply py-4;
+        @apply text-neutral-900;
+        @apply font-bold;
+    }
+    h3 {
+        @apply text-xl;
+        @apply py-3;
+        @apply text-neutral-800;
+        @apply font-bold;
+    }
+    article a, footer a {
+        @apply text-emerald-700;
+        @apply hover:text-emerald-900;
+        @apply underline;
+    }
+    p, ul {
+        @apply py-1;
+        @apply text-neutral-800;
+    }
+    ul {
+        @apply list-disc;
+        @apply pl-8;
+    }
+    hr {
+        @apply border-neutral-300;
+    }
+}
