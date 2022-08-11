@@ -74,10 +74,10 @@
         Just like developers enjoy spending their time writing innovative code, Fishermen like to spend their time catching fish. Immense thought goes into each tool fishermen utilize to make sure they spend their time effectively. A fishing stack might consist of a boat, pole, line, hook, and bait. Everyone needs to determine the right stack for the job they are trying to accomplish.
     </p>
     <p>
-        I quickly realized that there is an infinite number of methods and stacks to accomplish these common requirements. I found I could not easily do this all from scratch. This was a decision that caused me to have many fears of better options. I wanted to become a competent web developer, but I needed to decide what my stack looked like. I read some articles about using front-end frameworks compared using vanilla HTML, CSS, and JavaScript. As you can imagine, I found a wide variety of opinions on the matter.
+        I quickly realized that there is an infinite number of methods and stacks to accomplish these common requirements. I found I could not easily do this all from scratch. I read some articles about using front-end frameworks compared using vanilla HTML, CSS, and JavaScript. As you can imagine, I found a wide variety of opinions on the matter.
     </p>
     <p>
-        I was not patient, I wanted to get building and ship fast, I could not learn or even attempt to try out every option. I had limited time to learn how to use a framework yet I had nothing to show after a few weeks of work in my spare time. After a hours of research and countless tutorials I needed to make a decision. I heard Scott Tolinski talking about Svelte on the Syntax.fm podcast. I looked it up and realized this was the syntax I was looking for.
+        I wanted to get building and ship fast. I could not learn or even attempt to try out every option, and I had nothing to show after a few weeks of work in my spare time. After a hours of research and countless tutorials I needed to make a decision. I heard Scott Tolinski talking about Svelte on the Syntax.fm podcast. I looked it up and found that Svelte and <a href="https://kit.svelte.dev/">SvelteKit</a> were the tooling I was looking for.
     </p>
 </section>
 
@@ -104,11 +104,11 @@
         <i>How do I initialize the state of a component?</i>
     </p>
     <p>
-        React:
+        <strong>React:</strong> 
         <Code>
             const [count, setCount] = useState(0);
         </Code>
-        Svelte:
+        <strong>Svelte:</strong> 
         <Code>
             let count = 0;
         </Code>
@@ -136,9 +136,7 @@
 <section>
     <h3>&lt;One svelte=to bind:them&gt;</h3>
     <p>
-        Some of the best tools are the ones that solve the widest variety of problems. Svelte and 
-        <a href="https://kit.svelte.dev/">SvelteKit</a> 
-        provide me with a flexible method to create a wide variety of products. From single components to entire applications Svelte can be utilized to build high quality products. Although Svelte's community is far smaller other frameworks like React, Svelte is gaining traction. One of the most recent web apps released that has been exciting the Svelte community is the new 
+        Some of the best tools are the ones that solve the widest variety of problems. Svelte and SvelteKit provide me with a flexible method to create a wide variety of products. From single components to entire applications Svelte can be utilized to build high quality products. Although Svelte's community is far smaller other frameworks like React, Svelte is gaining traction. One of the most recent web apps released that has been exciting the Svelte community is the new 
         <a href="https://beta.music.apple.com/">Apple Music player</a>.
         This demonstrates how Svelte can be utilized for something as simple as this blog post to an enterprise application.
     </p>
