@@ -2,7 +2,7 @@
 	import Code from "$lib/Code.svelte";
 	import PageHeader from "$lib/PageHeader.svelte";
 
-	const title = "Interactively Update npm Dependencies";
+	const title = "Interactively Update NPM Dependencies";
 	const desc =
 		"Keeping up with your project's dependencies can be difficult and time consuming. Here's the best way I've found to manage my npm dependencies.";
 	const date = "9/12/22";

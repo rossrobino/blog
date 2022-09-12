@@ -11,13 +11,13 @@
 
 <ul>
 	<li>
-		<a sveltekit:prefetch href="/posts/svelte-web-future">
-			How Svelte is Changing the Future of the Web
+		<a sveltekit:prefetch href="/posts/update-npm-dependencies">
+			Interactively Update NPM Dependencies
 		</a>
 	</li>
 	<li>
-		<a sveltekit:prefetch href="/posts/update-npm-dependencies">
-			Interactively Update NPM Dependencies
+		<a sveltekit:prefetch href="/posts/svelte-web-future">
+			How Svelte is Changing the Future of the Web
 		</a>
 	</li>
 </ul>
