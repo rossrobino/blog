@@ -1,4 +1,5 @@
-<div class="
+<div
+	class="
     bg-neutral-900
     text-neutral-100
     font-mono
@@ -7,6 +8,7 @@
     rounded-sm
     w-fit
     text-xs
-">
-    <slot />
+"
+>
+	<slot />
 </div>
