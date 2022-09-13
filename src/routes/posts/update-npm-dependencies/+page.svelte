@@ -18,9 +18,9 @@
 <section>
 	<h3>Update your dependencies with two commands</h3>
 	<p>
-		Keeping up with your project's dependencies can be difficult and time
+		Keeping up with a project's dependencies can be difficult and time
 		consuming. After trying a variety of methods, here's the best way I've
-		found to manage my npm dependencies.
+		found to manage npm dependencies.
 	</p>
 </section>
 
@@ -33,13 +33,13 @@
 	<p>Run this command to install the npm-check-updates package:</p>
 	<Code>npm install -g npm-check-updates</Code>
 	<p>
-		This allows the use ncu regardless of whether it's installed in the
+		This allows the use of ncu regardless of whether it's installed in the
 		project directly.
 	</p>
 
-	<h3>Update your project</h3>
+	<h3>Update project</h3>
 	<p>
-		Run this command from your workspace folder to start the interactive
+		Run this command from the workspace folder to start the interactive
 		process:
 	</p>
 	<Code>ncu --interactive --format group</Code>
