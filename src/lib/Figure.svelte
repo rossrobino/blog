@@ -9,7 +9,7 @@
 	class="my-6 mx-auto w-full md:w-3/4 bg-neutral-800 p-2 rounded-md shadow-md"
 >
 	{#if title}
-		<figcaption class="text-center mb-2 text-neutral-50 text-md underline">
+		<figcaption class="text-center mb-2 text-neutral-50 text-md">
 			{title}
 		</figcaption>
 	{/if}
