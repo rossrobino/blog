@@ -1,23 +1,26 @@
+<script>
+	import PostLi from "$lib/PostLi.svelte";
+</script>
+
 <svelte:head>
 	<title>blog.robino.dev</title>
 	<meta name="description" content="Ross Robino's Blog" />
 </svelte:head>
 
-<h2>
-	Hello, I'm <a href="https://robino.dev">Ross Robino</a>. I created this blog
-	as a place to write about programming topics I am learning. Check out my
+<h3>
+	Hello, I'm <a href="https://robino.dev">Ross</a>. I created this blog
+	as a place to write and record topics I am learning. Check out my
 	posts below.
-</h2>
+</h3>
 
 <ul>
-	<li>
-		<a sveltekit:prefetch href="/posts/update-npm-dependencies">
-			Interactively Update NPM Dependencies
-		</a>
-	</li>
-	<li>
-		<a sveltekit:prefetch href="/posts/svelte-web-future">
-			How Svelte is Changing the Future of the Web
-		</a>
-	</li>
+	<PostLi urlEnd="why-you-should-own-etfs" text="Why You Should Own ETFs" />
+	<PostLi
+		urlEnd="update-npm-dependencies"
+		text="Interactively Update NPM Dependencies"
+	/>
+	<PostLi
+		urlEnd="svelte-web-future"
+		text="How Svelte is Changing the Future of the Web"
+	/>
 </ul>

@@ -11,7 +11,8 @@
 		text-center 
 		font-serif 
 		bg-neutral-50
-		selection:bg-emerald-300
+		selection:bg-neutral-800
+		selection:text-neutral-50
 		vp-dyn
 		"
 >
