@@ -14,6 +14,10 @@
 </h3>
 
 <ul>
+	<PostLi
+		urlEnd="navigator-share-svelte"
+		text="Use the Navigator API to Create a Share/Copy Component with SvelteKit"
+	/>
 	<PostLi urlEnd="why-you-should-own-etfs" text="Why You Should Own ETFs" />
 	<PostLi
 		urlEnd="update-npm-dependencies"
