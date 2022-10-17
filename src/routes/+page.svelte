@@ -16,7 +16,7 @@
 <ul>
 	<PostLi
 		urlEnd="navigator-share-svelte"
-		text="Use the Navigator API to Create a Share/Copy Component with SvelteKit"
+		text="Use the Navigator API to Create a Share/Copy Component with Svelte"
 	/>
 	<PostLi urlEnd="why-you-should-own-etfs" text="Why You Should Own ETFs" />
 	<PostLi

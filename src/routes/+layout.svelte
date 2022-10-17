@@ -27,19 +27,19 @@
 		text-center 
 		font-serif 
 		bg-neutral-50
-		selection:bg-neutral-800
-		selection:text-neutral-50
+		selection:bg-yellow-300
+		selection:text-neutral-800
 		vp-dyn
 		"
 >
 	<div>
 		<header>
-			<h1 class="text-3xl sm:text-4xl text-neutral-900 font-bold p-4">
+			<h1 class="text-3xl md:text-4xl text-neutral-900 font-bold p-4">
 				<a sveltekit:prefetch href="/">blog.robino.dev</a>
 			</h1>
 		</header>
-		<main class="sm:flex sm:justify-center">
-			<article class="text-left sm:max-w-screen-md px-6">
+		<main class="md:flex md:justify-center">
+			<article class="text-left sm:max-w-screen-md px-5">
 				<hr />
 				<slot />
 				<hr class="mt-3" />
