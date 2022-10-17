@@ -22,16 +22,16 @@
 	</h3>
 	<p>
 		I was working on a <a href="https://splits.best">project</a>
-		recently and I wanted users to be able to invite their friends to join a
-		team that they create. The
+		recently in which I wanted users to be able to invite their friends to join
+		a team that they create by sharing the page with them. The
 		<a
 			href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share"
 		>
 			navigator API
 		</a>
-		provides two methods to make it a bit easier to share a website depending
-		on the user's browser/OS. The API allows enables you to quickly identify
-		the support and utilize the best method for the user's system.
+		provides two methods to make it easier to share a website depending on the
+		user's browser/OS. The API allows enables you to quickly identify the support
+		and utilize the best method for the user's system.
 	</p>
 </section>
 
@@ -41,7 +41,8 @@
 		To set up the share button, the <strong>.share</strong>
 		method takes an object as an argument with three keys:
 		<strong>title, text, and url.</strong>
-		We can set these up as props to be able to assign them when we create component.
+		We can set these up as props to be able to assign them when we create the
+		component.
 	</p>
 	<Code>
 		{`<!-- ShareButton.svelte -->
@@ -76,7 +77,7 @@
 		Some systems do not support the <strong>.share</strong>
 		method, we can check the support with the
 		<strong>.canShare</strong>
-		method. In these cases we can use the
+		method. In these cases, we can use the
 		<strong>.clipboard.writeText</strong>
 		method to copy the link instead. This method takes a string as a parameter,
 		where we can pass in the
@@ -140,7 +141,7 @@
 			<a
 				href="https://svelte.dev/repl/ef8dd271735d440cb6c65936ccecfa9d?version=3.51.0"
 			>
-				REPL
+				Check out the REPL
 			</a>
 		</li>
 		<li>
