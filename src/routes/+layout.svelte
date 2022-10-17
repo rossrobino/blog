@@ -40,18 +40,20 @@
 		vp-dyn
 		"
 >
-	<header>
-		<h1 class="text-3xl md:text-4xl text-neutral-900 font-bold p-4">
-			<a sveltekit:prefetch href="/">blog.robino.dev</a>
-		</h1>
-	</header>
-	<main class="md:flex md:justify-center">
-		<article class="text-left sm:max-w-screen-md px-4">
-			<hr />
-			<slot />
-			<hr class="mt-3" />
-		</article>
-	</main>
+	<div>
+		<header>
+			<h1 class="text-3xl md:text-4xl text-neutral-900 font-bold p-4">
+				<a sveltekit:prefetch href="/">blog.robino.dev</a>
+			</h1>
+		</header>
+		<main class="md:flex md:justify-center">
+			<article class="text-left sm:max-w-screen-md px-4">
+				<hr />
+				<slot />
+				<hr class="mt-3" />
+			</article>
+		</main>
+	</div>
 	<footer class="flex justify-center py-2">
 		<div class="grid grid-flow-col gap-3 w-full max-w-screen-md px-4">
 			<div class="justify-self-start text-left">
