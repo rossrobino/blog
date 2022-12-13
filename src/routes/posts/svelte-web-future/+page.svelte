@@ -2,37 +2,38 @@
 	import Code from "$lib/Code.svelte";
 	import PageHeader from "$lib/PageHeader.svelte";
 
-	const title = "How Svelte is Changing the Future of the Web";
-	const desc = "Evaluating Svelte as my front-end framework of choice.";
-	const date = "8/7/22";
+	const data = {
+		title: "How Svelte is Changing the Future of the Web",
+		desc: "Evaluating Svelte as my front-end framework of choice.",
+		date: "8/7/22",
+	};
 </script>
 
-<svelte:head>
-	<title>blog.robino.dev - {title}</title>
-	<meta name="description" content={desc} />
-</svelte:head>
-
-<PageHeader {title} {date} />
+<PageHeader {data} />
 
 <section>
 	<h3>I have an idea, how should I build it?</h3>
 	<p>
 		Web development is a beautiful way to create products. They are
 		accessible through screen readers and
-		<a href="https://www.afb.org/node/16207/refreshable-braille-displays"
-			>braille displays</a
-		>. Scalable globally in a few clicks with tooling like
-		<a href="https://vercel.com/">Vercel</a> and
-		<a href="https://www.netlify.com/">Netlify</a>. Flexible enough to run
-		on a
+		<a href="https://www.afb.org/node/16207/refreshable-braille-displays">
+			braille displays
+		</a>
+		. Scalable globally in a few clicks with tooling like
+		<a href="https://vercel.com/">Vercel</a>
+		and
+		<a href="https://www.netlify.com/">Netlify</a>
+		. Flexible enough to run on a
 		<a
 			href="https://i.pcmag.com/imagery/reviews/06870e23OE2TT9xK4MXp96u-1..v1629382976.jpg"
-			>Galaxy Fold</a
 		>
+			Galaxy Fold
+		</a>
 		or a
-		<a href="https://i.ytimg.com/vi/R9gbzzOLlgU/hqdefault.jpg"
-			>Nintendo Wii</a
-		>. The ability to create content that can be accessed by almost anyone,
+		<a href="https://i.ytimg.com/vi/R9gbzzOLlgU/hqdefault.jpg">
+			Nintendo Wii
+		</a>
+		. The ability to create content that can be accessed by almost anyone,
 		almost anywhere, by countless devices is powerful to say the least. Web
 		tooling is important, it helps ensure that software developers can
 		create the best products and ship them to the most people possible.
@@ -41,9 +42,9 @@
 		In front-end development we are faced with a barrage of solutions to
 		choose from to solve problems. As I entered back into the world of
 		front-end development, I found that
-		<a href="https://svelte.dev/">Svelte</a>'s developer experience enabled
-		me to work effectively and efficiently to develop higher quality
-		products.
+		<a href="https://svelte.dev/">Svelte</a>
+		's developer experience enabled me to work effectively and efficiently
+		to develop higher quality products.
 	</p>
 </section>
 
@@ -57,18 +58,20 @@
 	</p>
 	<ul>
 		<li>
-			<strong>Tooling - </strong>
-			<a href="https://notepad-plus-plus.org/">Notepad++</a>, web
-			browsers,
+			<strong>Tooling -</strong>
+			<a href="https://notepad-plus-plus.org/">Notepad++</a>
+			, web browsers,
 			<a href="https://winscp.net/eng/index.php">WinSCP</a>
 		</li>
 		<li>
-			<strong>Develop -</strong> draft my content, structure with HTML tags,
-			and style with CSS. Type, refresh, type, refresh, search, type!
+			<strong>Develop -</strong>
+			 draft my content, structure with HTML tags, and style with CSS. Type,
+			refresh, type, refresh, search, type!
 		</li>
 		<li>
-			<strong>Deploy -</strong> drag my project into the correct folder using
-			WinSCP to upload to my school's server.
+			<strong>Deploy -</strong>
+			 drag my project into the correct folder using WinSCP to upload to my
+			school's server.
 		</li>
 		<li>
 			<strong>Done!</strong>
@@ -116,8 +119,8 @@
 		weeks of work in my spare time. After a hours of research and countless
 		tutorials I needed to make a decision. I heard Scott Tolinski talking
 		about Svelte on the Syntax.fm podcast. I looked it up and found that
-		Svelte and <a href="https://kit.svelte.dev/">SvelteKit</a> were the tooling
-		I was looking for.
+		Svelte and <a href="https://kit.svelte.dev/">SvelteKit</a>
+		 were the tooling I was looking for.
 	</p>
 </section>
 
@@ -139,7 +142,8 @@
 		<i>How do I render a list of items?</i>
 		<Code>
 			&#123; #each cats as cat &#125 <br />
-			... <br />
+			...
+			<br />
 			&#123; /each &#125
 		</Code>
 	</p>
@@ -157,8 +161,10 @@
 			To learn more about Svelte's simple syntax, check out this
 			<a href="https://svelte.dev/blog/write-less-code">post</a>
 			from Rich Harris discussing Svelte syntax compared with
-			<a href="https://reactjs.org/">React</a> and
-			<a href="https://vuejs.org/">Vue</a>.
+			<a href="https://reactjs.org/">React</a>
+			and
+			<a href="https://vuejs.org/">Vue</a>
+			.
 		</i>
 	</p>
 	<p>
@@ -186,9 +192,9 @@
 		Although Svelte's community is far smaller other frameworks like React,
 		Svelte is gaining traction. One of the most recent web apps released
 		that has been exciting the Svelte community is the new
-		<a href="https://beta.music.apple.com/">Apple Music player</a>. This
-		demonstrates how Svelte can be utilized for something as simple as this
-		blog post to an enterprise application.
+		<a href="https://beta.music.apple.com/">Apple Music player</a>
+		. This demonstrates how Svelte can be utilized for something as simple
+		as this blog post to an enterprise application.
 	</p>
 </section>
 
@@ -197,15 +203,16 @@
 	<p>
 		All of programming can be abstracted to different levels of complexity,
 		from binary, to Python, to a "no-code" tool like
-		<a href="https://webflow.com/">Webflow</a>. Abstraction has allowed
-		programmers to have a better developer experience and get things done
-		faster. Abstraction's rival is flexibility. As languages and frameworks
-		become more abstract and enable developers to work faster, they often
-		limit them in what they can accomplish. Svelte takes a step forward in
-		abstracting HTML, CSS, and JavaScript. It provides efficiency in the
-		syntax and quality in final product delivered. Svelte manages to push
-		the abstraction boundary while maintaining flexibility. Where you can
-		use JavaScript, you can use Svelte.
+		<a href="https://webflow.com/">Webflow</a>
+		. Abstraction has allowed programmers to have a better developer
+		experience and get things done faster. Abstraction's rival is
+		flexibility. As languages and frameworks become more abstract and enable
+		developers to work faster, they often limit them in what they can
+		accomplish. Svelte takes a step forward in abstracting HTML, CSS, and
+		JavaScript. It provides efficiency in the syntax and quality in final
+		product delivered. Svelte manages to push the abstraction boundary while
+		maintaining flexibility. Where you can use JavaScript, you can use
+		Svelte.
 	</p>
 	<p>
 		Svelte not only enables developers to write less code with a carefully
@@ -221,9 +228,12 @@
 		<i>
 			<a
 				href="https://books.google.com/books/about/How_Google_Works.html?id=Yk9zAwAAQBAJ"
-				>How Google Works</a
-			>,
-		</i> Eric Schmidt and Jonathan Rosenberg discuss what makes a truly innovative
+			>
+				How Google Works
+			</a>
+			,
+		</i>
+		 Eric Schmidt and Jonathan Rosenberg discuss what makes a truly innovative
 		product. They characterize innovation as being "new, surprising, and radically
 		useful."
 	</p>

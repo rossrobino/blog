@@ -5,16 +5,17 @@
 
 	const title =
 		"Use the Navigator API to Create a Share/Copy Component with Svelte";
-	const desc = "";
+	const desc = "Easily create a zero dependency share/copy component.";
 	const date = "10/15/22";
+
+	const data = {
+		title,
+		date,
+		desc,
+	};
 </script>
 
-<svelte:head>
-	<title>blog.robino.dev - {title}</title>
-	<meta name="description" content={desc} />
-</svelte:head>
-
-<PageHeader {title} {date} />
+<PageHeader {data} />
 
 <section>
 	<h3>

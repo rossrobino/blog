@@ -1,8 +1,12 @@
 <script>
-	export let title = "";
-	export let date = "";
+	export let data = {};
 </script>
 
-<h2>{title}</h2>
+<svelte:head>
+	<title>blog.robino.dev - {data.title}</title>
+	<meta name="description" content={data.desc} />
+</svelte:head>
+
+<h2>{data.title}</h2>
 <p><a href="https://robino.dev/">Ross Robino</a></p>
-<p>{date}</p>
+<p>{data.date}</p>

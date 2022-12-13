@@ -2,21 +2,26 @@
 	import PageHeader from "$lib/PageHeader.svelte";
 	import Figure from "$lib/Figure.svelte";
 
-	const title = "Why You Should Own Exchange Traded Funds";
-	const desc =
-		"Exchange Traded Funds are powerful investment vehicles that enable average and inexperienced investors to maximize their return on investment.";
-	const date = "9/30/22";
+	const data = {
+		title: "Why You Should Own Exchange Traded Funds",
+		desc: "Exchange Traded Funds are powerful investment vehicles that enable average and inexperienced investors to maximize their return on investment.",
+		date: "9/30/22",
+	};
 </script>
 
-<svelte:head>
-	<title>blog.robino.dev - {title}</title>
-	<meta name="description" content={desc} />
-</svelte:head>
-
-<PageHeader {title} {date} />
+<PageHeader {data} />
 
 <section>
-	<p><i>This is an essay I wrote while attending <a href="https://www.graceland.edu/">Graceland University</a>.</i></p>
+	<p>
+		<i>
+			This is an essay I wrote while attending <a
+				href="https://www.graceland.edu/"
+			>
+				Graceland University
+			</a>
+			.
+		</i>
+	</p>
 </section>
 
 <section>
