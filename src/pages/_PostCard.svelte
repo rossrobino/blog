@@ -12,11 +12,7 @@
 	>
 		{post.frontmatter.title}
 	</a>
-	<div
-		class="my-1"
-		class:text-xl={size == "large"}
-		class:text-lg={size == "medium"}
-	>
+	<div class="my-1">
 		{new Date(post.frontmatter.date).toLocaleDateString("en-us", {
 			year: "numeric",
 			month: "short",
