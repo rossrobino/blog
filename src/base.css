@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		@apply text-neutral-800;
+	}
+	h1 {
+		@apply text-3xl my-4 text-neutral-900 font-bold;
+	}
+	h2 {
+		@apply text-2xl my-4 text-neutral-900 font-bold;
+	}
+	h3 {
+		@apply text-xl my-3 text-neutral-800 font-bold;
+	}
+	article a,
+	footer a {
+		@apply text-emerald-700 underline decoration-from-font underline-offset-2 hover:decoration-dotted;
+	}
+	p,
+	ul {
+		@apply my-2;
+	}
+	ul {
+		@apply list-disc pl-8;
+	}
+	hr {
+		@apply border-neutral-300;
+	}
+	/* inline code */
+	p > code {
+		@apply bg-neutral-200 rounded-sm p-1 text-sm;
+	}
+	/* code block */
+	pre {
+		@apply p-2 rounded-sm text-xs;
+	}
+}
+
+@layer utilities {
+	.vp-dyn {
+		min-height: 100dvh;
+	}
+}

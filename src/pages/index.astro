@@ -1,0 +1,15 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PostList from "./_PostList.svelte";
+
+const posts = await Astro.glob("./posts/*");
+---
+
+<Layout title="" description="Ross Robino's Blog">
+	<h2 class="text-xl md:text-2xl">
+		Hello, I'm <a href="https://robino.dev">Ross</a>. I created this blog as
+		a place to write and record topics I am learning. Check out my posts
+		below.
+	</h2>
+	<PostList posts={posts} />
+</Layout>

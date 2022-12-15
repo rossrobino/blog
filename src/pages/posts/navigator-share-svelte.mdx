@@ -1,0 +1,106 @@
+---
+layout: "@layouts/post/Post.astro"
+title: Use the Navigator API to Create a Share/Copy Component with Svelte
+description: Easily create a share/copy component with no added dependencies.
+author: Ross Robino
+date: 2022-10-15 PST
+---
+
+import ShareButton from "@components/ShareButton.svelte";
+
+## Let users easily share your website
+
+I was working on a [project](https://splits.best) recently in which I wanted users to be able to invite their friends to join a team that they create by sharing the page with them. The [navigator API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share) provides two methods to make it easier to share a website depending on the user's browser/OS. The API allows enables you to quickly identify the support and utilize the best method for the user's system.
+
+## Share method
+
+To set up the share button, the `.share` method takes an object as an argument with three keys: `title`, `text`, and `url`. We can set these up as props to be able to assign them when we create the component.
+
+```svelte
+<!-- ShareButton.svelte -->
+
+<script>
+	// sveltekit: import { page } from "$app/stores";
+
+	export let text = "Check out this page!";
+	export let domain = "https://blog.robino.dev";
+	export let path = "/posts/navigator-share-svelte"; // sveltekit: $page.url.pathname;
+	export let title = path.split("/").splice(-1); // default to end of path
+
+	let url = domain + path;
+
+	async function handleClick() {
+		try {
+			await navigator.share({ title, text, url });
+		} catch (error) {
+			console.log(error);
+		}
+	}
+</script>
+
+<button on:click={handleClick}>Share</button>
+```
+
+## Copy method
+
+Some system do not support the `.share` method, we can check the support with the `.canShare` method. In these cases, we can use the `.clipboard.writeText` mothod to copy the link instead. This method takes a string as a parameter, where we can pass in the `url`. Since the share menu will not be presented to the user, we can update `complete` to confirm the copy was successful.
+
+```svelte
+<!-- ShareButton.svelte -->
+
+<script>
+	// sveltekit: import { page } from "$app/stores";
+
+	export let text = "Check out this page!";
+	export let domain = "https://blog.robino.dev";
+	export let path = "/posts/navigator-share-svelte"; // sveltekit: $page.url.pathname;
+	export let title = path.split("/").splice(-1); // default to end of path
+
+	let url = domain + path;
+
+	let complete = false;
+
+	async function handleClick() {
+		try {
+			if (navigator.canShare) {
+				await navigator.share({ title, text, url });
+			} else {
+				await navigator.clipboard.writeText(url);
+				complete = true;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+</script>
+
+<button on:click={handleClick}>
+	{#if complete}
+		Copied!
+	{:else}
+		Share
+	{/if}
+</button>
+```
+
+## Try it out
+
+Test it in some different environments to see the API in action. On mac, you can test the difference using Chrome/Safari.
+
+```svelte
+<!-- +page.svelte -->
+
+<script>
+	import ShareButton from "$lib/components/ShareButton.svelte";
+</script>
+
+<ShareButton path="/posts/navigator-share-svelte" />
+```
+
+<ShareButton path="/posts/navigator-share-svelte" client:visible />
+
+## References
+
+- [Check out the REPL](https://svelte.dev/repl/ef8dd271735d440cb6c65936ccecfa9d?version=3.51.0)
+- [Syntax Podcast #522 - Wes Bos and Scott Tolinski](https://syntax.fm/show/522/use-the-platform)
+- [MDN Navigator API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)

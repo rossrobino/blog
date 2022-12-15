@@ -1,9 +1,7 @@
 <script>
-	import { page } from "$app/stores";
-
 	export let text = "Check out this page!";
 	export let domain = "https://blog.robino.dev";
-	export let path = $page.url.pathname;
+	export let path = "";
 	export let title = path.split("/").splice(-1); // default to end of path
 
 	let url = domain + path;
