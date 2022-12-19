@@ -1,4 +1,6 @@
 <script>
+	import Headings from "@components/Headings.svelte";
+
 	export let post = {};
 	export let size = "small";
 </script>
@@ -24,14 +26,7 @@
 	</div>
 	{#if size == "large" || size == "medium"}
 		<div class="mt-2">
-			{#each post.getHeadings() as heading}
-				<div class="flex">
-					<span class="text-neutral-300 mr-1">#</span>
-					<a href={`${post.url}#${heading.slug}`}>
-						{heading.text}
-					</a>
-				</div>
-			{/each}
+			<Headings {post} />
 		</div>
 	{/if}
 </div>

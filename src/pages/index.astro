@@ -6,10 +6,10 @@ const posts = await Astro.glob("./posts/*");
 ---
 
 <Layout title="" description="Ross Robino's Blog">
-	<h2 class="text-xl md:text-2xl">
+	<h1 class="text-xl md:text-2xl">
 		Hello, I'm <a href="https://robino.dev">Ross</a>. I created this blog as
-		a place to write and record topics I am learning. Check out my posts
+		a place to write about topics I am interested in. Check out my posts
 		below.
-	</h2>
+	</h1>
 	<PostList posts={posts} />
 </Layout>

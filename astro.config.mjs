@@ -14,9 +14,19 @@ import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), svelte(), mdx(), prefetch()]
+	markdown: {
+		shikiConfig: {
+			theme: "github-dark",
+		},
+	},
+	integrations: [
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
+		svelte(),
+		mdx(),
+		prefetch(),
+	],
 });
