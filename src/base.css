@@ -18,19 +18,19 @@
 		@apply text-3xl my-4 text-neutral-900;
 	}
 	h2 {
-		@apply text-2xl my-4 text-neutral-900;
+		@apply text-2xl mt-4 text-neutral-900;
 	}
 	h3 {
-		@apply text-xl my-3;
+		@apply text-xl mt-3;
 	}
 	h4 {
-		@apply text-lg my-2;
+		@apply text-lg mt-2;
 	}
 	h5 {
-		@apply text-base my-1;
+		@apply text-base mt-1;
 	}
 	h6 {
-		@apply text-sm my-1;
+		@apply text-sm mt-1;
 	}
 	article a,
 	footer a {
@@ -38,7 +38,7 @@
 	}
 	p,
 	ul {
-		@apply my-2;
+		@apply my-1;
 	}
 	ul {
 		@apply list-disc pl-8;
@@ -47,12 +47,13 @@
 		@apply border-neutral-300;
 	}
 	/* inline code */
-	p > code {
-		@apply bg-neutral-200 rounded-sm p-1 text-sm;
+	p > code,
+	li > code {
+		@apply bg-neutral-200 rounded-sm p-0.5 text-sm;
 	}
 	/* code block */
 	pre {
-		@apply p-2 rounded-sm text-xs;
+		@apply p-2 rounded-sm text-xs mb-4;
 	}
 }
 

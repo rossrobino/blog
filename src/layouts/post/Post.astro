@@ -2,8 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import Author from "./Author.svelte";
 import Headings from "@components/Headings.svelte";
+import ShareButton from "@components/ShareButton.svelte";
 
-const { frontmatter, headings } = Astro.props;
+const { frontmatter, headings, url } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
@@ -24,4 +25,5 @@ const { frontmatter, headings } = Astro.props;
 	<Headings headings={headings} />
 	<hr class="mt-3" />
 	<slot />
+	<ShareButton path={url} client:visible />
 </Layout>
