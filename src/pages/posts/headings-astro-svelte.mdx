@@ -30,6 +30,8 @@ Each [heading object](https://docs.astro.build/en/core-concepts/layouts/#markdow
 - `slug` contains the [automatically generated id](https://docs.astro.build/en/guides/markdown-content/#heading-ids) which we will utilize in our link
 
 ```svelte
+<!-- Headings.svelte -->
+
 <script>
 	// props - accepts entire file or just the headings
 	export let headings = [];
@@ -120,7 +122,7 @@ const { headings } = Astro.props;
 <slot />
 ```
 
-Utilize this layout in our markdown file:
+Utilize this layout in our markdown file in `src/pages/posts/`:
 
 ```mdx
 ---
@@ -157,6 +159,6 @@ const posts = await Astro.glob("./posts/*");
 
 Because Astro runs at build time, this `Headings` component will be sent to the client as HTML and CSS with no JavaScript.
 
-I've really enjoyed using Astro to create this blog. The first party `.mdx` integration and `Astro.glob` make it easy to maintain my contect. I'd recommend it to others creating static sites and wanting to author their pages in markdown. 
+I've really enjoyed using Astro to create this blog. The first party `.mdx` integration and `Astro.glob` make it easy to maintain my content. I'd recommend it to others creating static sites and wanting to author their pages in markdown. 
 
 Thanks for reading!
