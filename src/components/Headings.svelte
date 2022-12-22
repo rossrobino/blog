@@ -8,7 +8,7 @@
 </script>
 
 {#each headings as heading}
-	<div class="flex">
+	<div class="flex mb-2">
 		<span
 			class="text-neutral-300 mr-1"
 			class:ml-3={heading.depth == 3}

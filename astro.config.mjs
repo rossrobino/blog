@@ -13,20 +13,18 @@ import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
+import partytown from "@astrojs/partytown";
+
+// https://astro.build/config
 export default defineConfig({
-	markdown: {
-		shikiConfig: {
-			theme: "github-dark",
-		},
-	},
-	integrations: [
-		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
-		}),
-		svelte(),
-		mdx(),
-		prefetch(),
-	],
+  markdown: {
+    shikiConfig: {
+      theme: "github-dark"
+    }
+  },
+  integrations: [tailwind({
+    config: {
+      applyBaseStyles: false
+    }
+  }), svelte(), mdx(), prefetch(), partytown()]
 });
