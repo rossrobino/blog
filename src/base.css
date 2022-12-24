@@ -49,7 +49,7 @@
 	/* inline code */
 	p > code,
 	li > code {
-		@apply bg-neutral-200 rounded-sm p-0.5 text-sm;
+		@apply bg-neutral-200 rounded-sm py-0.5 px-1 text-sm;
 	}
 	/* code block */
 	pre {
