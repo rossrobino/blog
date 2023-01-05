@@ -12,7 +12,8 @@ const { frontmatter, headings, url } = Astro.props;
 	description={frontmatter.description}
 	keywords={frontmatter.keywords}
 >
-	<h1>{frontmatter.title}</h1>
+	<h1 class="mb-0">{frontmatter.title}</h1>
+	<p class="italic">{frontmatter.description}</p>
 	<p>
 		{
 			new Date(frontmatter.date).toLocaleDateString("en-us", {

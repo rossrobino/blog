@@ -2,7 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import PostList from "./_PostList.svelte";
 
-const posts = await Astro.glob("./posts/*");
+let posts = await Astro.glob("./posts/*");
+posts = posts.filter((post) => !post.frontmatter.draft);
 ---
 
 <Layout title="" description="Ross Robino's Blog" keywords="blog, Ross, Robino">

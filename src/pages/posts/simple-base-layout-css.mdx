@@ -1,0 +1,26 @@
+---
+layout: "@layouts/post/Post.astro"
+title: Base tailwindcss layout
+description: 
+keywords: 
+author: Ross Robino
+date: 2023, 01, 04
+draft: true
+---
+
+
+```svelte
+
+<div class="md:flex md:justify-center">
+	<div class="flex flex-col min-h-[100dvh] md:basis-[768px]">
+		<header>
+			<div>Header</div>
+		</header>
+		<main class="flex-1">
+			<slot />
+		</main>
+		<footer>Footer</footer>
+	</div>
+</div>
+
+```
