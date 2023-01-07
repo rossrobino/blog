@@ -30,5 +30,5 @@ const { frontmatter, headings, url } = Astro.props;
 	<Headings headings={headings} />
 	<hr class="mt-3" />
 	<slot />
-	<ShareButton path={url} client:visible />
+	<ShareButton url={`https://blog.robino.dev${url}`} client:visible />
 </Layout>
