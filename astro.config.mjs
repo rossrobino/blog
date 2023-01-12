@@ -16,15 +16,26 @@ import prefetch from "@astrojs/prefetch";
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
-  markdown: {
-    shikiConfig: {
-      theme: "github-dark"
-    }
-  },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), svelte(), mdx(), prefetch(), partytown()]
+	markdown: {
+		shikiConfig: {
+			theme: "github-dark",
+		},
+	},
+	site: "https://blog.robino.dev",
+	integrations: [
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
+		svelte(),
+		mdx(),
+		prefetch(),
+		partytown(),
+		sitemap(),
+	],
 });
