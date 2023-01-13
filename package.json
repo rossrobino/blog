@@ -22,6 +22,6 @@
     "tailwindcss": "^3.2.4"
   },
   "devDependencies": {
-    "@rossrobino/components": "^1.0.5"
+    "@rossrobino/components": "^1.1.0"
   }
 }
