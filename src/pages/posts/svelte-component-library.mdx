@@ -9,7 +9,7 @@ date: 2023, 01, 12
 
 ## Create a new SvelteKit project
 
-If you frequently have components that you share between projects and want to keep a single repository of them, you can create a package on [npm](https://www.npmjs.com/). Here's how to create a [Svelte](https://svelte.dev) component library with [SvelteKit](https://kit.svelte.dev).
+If you frequently have components that you share between projects and want to keep a single repository of them, you can create a package on [npm](https://www.npmjs.com/) like [this one](https://github.com/rossrobino/components). Here's how to create a [Svelte](https://svelte.dev) component library with [SvelteKit](https://kit.svelte.dev).
 
 ## Configure
 
@@ -119,8 +119,8 @@ Ensure that the component is working as expected, then you are ready to create a
 
 Now we can package the library and publish it on [npm](https://www.npmjs.com/) for anyone to use. Repeat these steps each time you want to update your package.
 
--   Set the `version` in `package.json`, this will have to be bumped up each time you publish the package (major.minor.patch)--you can leave this at 0.0.1 to start
--   Run `npm install` to sync your `package-lock.json` with the current version information.
+-   Set the `version` in `package.json`, this will have to be bumped up each time you publish the package (major.minor.patch)--you can leave this at `0.0.1` to start
+-   Run `npm install` to sync your `package-lock.json` with the current version information
 -   Run `npm run packageBuild` to execute the `svelte-package` script
 -   You can verify the output of your build in the `package` directory
 -   Commit changes to your repository
@@ -152,6 +152,6 @@ After verifying on the npm website that your package has been published, you can
 
 You have now built a Svelte component library you can access from any of your other SvelteKit projects to share code between them.
 
-You can check out [my library](https://github.com/rossrobino/components) as an example or fork it to create your own version. It has a documentation website included in the same project to make updates easier, you can check out it out [here](https://components.robino.dev).
+You can check out [my library](https://github.com/rossrobino/components) as an example or fork it to create your own version. It has a [documentation website](https://components.robino.dev) included in the same project to make updates easier.
 
 Thanks for reading!
