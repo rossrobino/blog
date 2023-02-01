@@ -18,19 +18,19 @@
 		@apply text-3xl my-4 text-neutral-900;
 	}
 	h2 {
-		@apply text-2xl mt-4 text-neutral-900;
+		@apply text-2xl mt-6 text-neutral-900;
 	}
 	h3 {
-		@apply text-xl mt-3;
+		@apply text-xl mt-5;
 	}
 	h4 {
-		@apply text-lg mt-2;
+		@apply text-lg mt-4;
 	}
 	h5 {
-		@apply text-base mt-1;
+		@apply text-base mt-3;
 	}
 	h6 {
-		@apply text-sm mt-1;
+		@apply text-sm mt-2;
 	}
 	article a,
 	footer a {
@@ -38,10 +38,13 @@
 	}
 	p,
 	ul {
-		@apply my-1;
+		@apply my-2;
 	}
 	ul {
 		@apply list-disc pl-8;
+	}
+	ol {
+		@apply list-decimal pl-8;
 	}
 	hr {
 		@apply border-neutral-300;
@@ -57,6 +60,15 @@
 	}
 	input {
 		@apply border border-neutral-200 rounded-sm px-1.5;
+	}
+	table {
+		@apply bg-neutral-100 w-full text-sm sm:text-base my-2;
+	}
+	table tr {
+		@apply border-b border-neutral-200;
+	}
+	table td,th {
+		@apply p-2;
 	}
 }
 

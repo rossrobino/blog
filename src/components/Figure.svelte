@@ -6,7 +6,7 @@
 </script>
 
 <figure
-	class="my-6 mx-auto w-full md:w-3/4 bg-neutral-800 p-2 rounded-sm"
+	class="my-6 mx-auto w-fit bg-neutral-900 p-2 rounded-sm"
 >
 	{#if title}
 		<figcaption class="text-center mb-2 text-neutral-50 text-md">
