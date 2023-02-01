@@ -18,10 +18,10 @@
 		@apply text-3xl my-4 text-neutral-900;
 	}
 	h2 {
-		@apply text-2xl mt-6 text-neutral-900;
+		@apply text-2xl mt-8 text-neutral-900;
 	}
 	h3 {
-		@apply text-xl mt-5;
+		@apply text-xl mt-6;
 	}
 	h4 {
 		@apply text-lg mt-4;
@@ -56,13 +56,13 @@
 	}
 	/* code block */
 	pre {
-		@apply p-2 rounded-sm text-xs mb-4;
+		@apply p-2 rounded-sm text-xs my-4;
 	}
 	input {
 		@apply border border-neutral-200 rounded-sm px-1.5;
 	}
 	table {
-		@apply bg-neutral-100 w-full text-sm sm:text-base my-2;
+		@apply bg-neutral-100 w-full text-sm sm:text-base my-4;
 	}
 	table tr {
 		@apply border-b border-neutral-200;
