@@ -11,10 +11,10 @@
 	<div class="flex mb-2">
 		<span
 			class="text-neutral-300 mr-1"
-			class:ml-3={heading.depth == 3}
-			class:ml-6={heading.depth == 4}
-			class:ml-9={heading.depth == 5}
-			class:ml-12={heading.depth == 6}
+			class:ml-4={heading.depth == 3}
+			class:ml-8={heading.depth == 4}
+			class:ml-12={heading.depth == 5}
+			class:ml-16={heading.depth == 6}
 		>
 			#
 		</span>
