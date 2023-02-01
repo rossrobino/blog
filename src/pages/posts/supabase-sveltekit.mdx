@@ -21,7 +21,7 @@ In addition, SvelteKit works nicely with [TypeScript](https://www.typescriptlang
 
 [Supabase](https://supabase.com/) is a popular **backend-as-a-service** tool. Some of the features it provides include a [PostgreSQL](https://www.postgresql.org/) database, [optional hosting](https://supabase.com/docs/guides/self-hosting), [authentication](https://supabase.com/docs/guides/auth/overview), [serverless APIs](https://supabase.com/docs/guides/api), and helper [querying libraries](https://supabase.com/docs/reference/javascript/installing). Supabase makes it simple for JavaScript developers to create robust, full-stack applications with the skills and language they already are familiar with.
 
-### Generated types (without Prisma)
+## Generated types (without Prisma)
 
 During development, it's useful to keep track of the type of data you expected from any particular request. With TypeScript, you can take advantage of typechecking and auto-completion as your write your queries and in your markup. This is often difficult to accomplish because you must keep track of and sync your types against your schema (tables, columns, types, etc.), or create a type for each request.
 
@@ -29,11 +29,9 @@ If you've used [Prisma](https://www.prisma.io/) before, you'll be familiar with 
 
 While you can use [Prisma with Supabase](https://supabase.com/docs/guides/integrations/prisma), it requires some extra configuration to take full advantage of features like [row level security](https://supabase.com/docs/guides/auth/row-level-security) or authentication. We do **not** have to use Prisma--or manually write our schema/types in our project--to get the same benefits using Supabase's [JavaScript client](https://supabase.com/docs/reference/javascript/installing). Instead of having to create a type for each query, it's possible to generate types based on your projects schema with the [Supabase CLI](https://supabase.com/docs/reference/cli/global-flags). Then you can easily utilize these types throughout your project.
 
-## Try it out
-
 Here's how to start creating full-stack, type safe, applications with SvelteKit and Supabase in under 40 lines of code.
 
-### Create a Supabase project
+## Create a Supabase project
 
 -   Login and create a new project at [supabase.com](https://supabase.com) using their web application.
 -   Create a table from the table editor--I'll name mine `todos`
@@ -51,13 +49,13 @@ Here's how to start creating full-stack, type safe, applications with SvelteKit 
 
 -   Use the `Insert Rows` button to add a few rows to the table with any data you like
 
-#### Row Level Security
+### Row Level Security
 
 Since [Row Level Security](https://supabase.com/docs/guides/auth#row-level-security) is enabled on our table, no one can currently create, read, update, or delete. We can add a `SELECT` policy to enable our database to be read.
 
 -   Navigate to `Authentication > Policies` and create a new policy. I've selected `Get started quickly > Enable read access to everyone`.
 
-### Create a SvelteKit project
+## Create a SvelteKit project
 
 -   Create a new SvelteKit project using the following commands. Select the `skeleton` project template and be sure to `add type checking with TypeScript`.
 
@@ -66,7 +64,7 @@ npm create svelte@latest
 npm install
 ```
 
-### Environment variables
+## Environment variables
 
 -   Create a `.env` file at the root of your project (outside of `src`) to put environment variables, these are found in `Settings > API` in the project dashboard. The Supabase client will use these variables to query the database.
 
@@ -75,7 +73,7 @@ PUBLIC_SUPABASE_URL="https://PROJECT_ID.supabase.co"
 PUBLIC_SUPABASE_ANON_KEY="ANON_KEY"
 ```
 
-### Generate types
+## Generate types
 
 -   Install the Supabase CLI as a development dependency
 
@@ -131,7 +129,7 @@ export interface Database {
 		...
 ```
 
-### Supabase client
+## Supabase client
 
 Next we can set up our client to query the database.
 
@@ -161,7 +159,7 @@ export const db = createClient<Database>(
 
 The generated types are imported here and applied to the client, then our responses from the client will be automatically typed! If you are seeing errors when importing the environment variables, be sure to run `npm run dev`.
 
-### Load
+## Load
 
 Finally, we can fetch our data with a server side `load` function.
 
@@ -190,7 +188,7 @@ As you type, you should see your table name appear as an argument in the `from` 
 	alt="Auto-complete your database queries using the generated types."
 />
 
-### Render
+## Render
 
 -   Finally, create a `src/routes/+page.svelte` file to display the data on the page
 
