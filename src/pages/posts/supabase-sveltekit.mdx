@@ -168,11 +168,10 @@ Finally, we can fetch our data with a server side `load` function.
 ```ts
 // src/routes/+page.server.ts
 
-import type { PageServerLoad } from "./$types";
 import { db } from "$lib/db/client";
 import { error } from "@sveltejs/kit";
 
-export const load: PageServerLoad = async () => {
+export const load = async () => {
 	const { data: todos, error: db_error } = await db.from("todos").select();
 	if (!todos) throw error(404, db_error);
 	return { todos };
@@ -196,9 +195,7 @@ As you type, you should see your table name appear as an argument in the `from` 
 <!-- src/routes/+page.svelte -->
 
 <script lang="ts">
-	import type { PageServerData } from "./$types";
-
-	export let data: PageServerData;
+	export let data;
 </script>
 
 <h1>Todo List</h1>
