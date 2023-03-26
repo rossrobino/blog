@@ -1,12 +1,10 @@
 <script lang="ts">
 	import type { ZodIssue } from "zod";
-	
+
 	export let issues: ZodIssue[];
 </script>
 
-<div
-	class="flex gap-2 rounded-3xl bg-rose-700 px-4 py-2 font-semibold text-stone-100 shadow"
->
+<div class="rounded-sm bg-rose-700 p-2 font-semibold text-neutral-100">
 	<ul>
 		{#each issues as { message, path }}
 			<li>

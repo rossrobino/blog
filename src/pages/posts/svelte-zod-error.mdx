@@ -7,11 +7,21 @@ author: Ross Robino
 date: 2023, 03, 25
 ---
 
-import ZodErrorMessage from "@components/ZodErrorMessage.svelte";
+import ZodIssues from "@components/ZodIssues.svelte";
 
 ## What is Zod?
 
 [Zod](https://zod.dev/) is a schema validation library that works nicely with [SvelteKit](https://kit.svelte.dev/). It provides an easy API to quickly validate forms across an application with reusable schemas. Many popular projects use Zod to accomplish type checking at runtime. The [Astro](https://docs.astro.build/en/getting-started/) team uses Zod in their [Content Collections](https://docs.astro.build/en/guides/content-collections/) feature to validate Markdown frontmatter. It can also be used with TypeScript or JavaScript. Here's how to use Zod to validate forms on the server with SvelteKit.
+
+## Install
+
+First create a new SvelteKit project and then add Zod as a development dependency. 
+
+```bash
+npm create svelte@latest
+npm install
+npm install -D zod
+```
 
 ## Create a UserSchema
 
@@ -19,6 +29,8 @@ Consider this Zod `UserSchema`, it expects a user will have an email and a passw
 
 ```ts
 // src/lib/zodSchemas.ts
+
+import { z } from "zod";
 
 export const UserSchema = z.object({
 	email: z.string().email(),
@@ -44,11 +56,11 @@ const user = {
 const safeParse = UserSchema.safeParse(user);
 ```
 
-This would produce an `error` with a list of `issues`.
+This would produce an `error` with an array of `ZodIssue`(s).
 
 ## ZodIssue
 
-Next we can take a look at the `ZodIssue` object. This object is created with the `safeParse` method if there are any issues in the validation. After running the code above, `safeParse.error.issues` would contain the following `ZodIssue`s since both fields were invalid (`email` is missing a `.com`, `password` doesn't contain a number).
+Next we can take a look at the `ZodIssue` object. This object is created with the `safeParse` method if there are any issues in the validation. After running the code above, `safeParse.error.issues` would contain the following `ZodIssue`(s) since both fields were invalid (`email` is missing a `.com`, `password` doesn't contain a number).
 
 ```ts
 // safeParse.error.issues
@@ -102,7 +114,7 @@ The `name` attribute on each input element is required to get the form data in t
 
 ## Validate on the server
 
-Next we can create an action for our form to validate the user's inputs on the server. If the `safeParse` is unsuccessful, we will return a list of `ZodIssue`s to render to the user.
+Next we can create an action for our form to validate the user's inputs on the server. If the `safeParse` is unsuccessful, we will return an array of `ZodIssue`(s) to render to the user.
 
 ```ts
 // src/routes/+page.server.ts
@@ -127,7 +139,7 @@ export const actions = {
 
 		// if invalid - return the array of ZodIssues
 		if (!safeParse.success) {
-			return fail(400, { error: safeParse.error.issues });
+			return fail(400, { issues: safeParse.error.issues });
 		}
 
 		// sign up user...
@@ -138,12 +150,12 @@ export const actions = {
 };
 ```
 
-## Error message component
+## ZodIssues component
 
-If there's any validation issues, we want to display the messages provided by our `UserSchema`. We can create a reusable component to render these messages in a list.
+If there's any validation issues, we want to display the messages provided by our `UserSchema`. We can create a reusable component to render these messages in an unordered list.
 
 ```svelte
-<!-- src/lib/components/ZodErrorMessage.svelte -->
+<!-- src/lib/components/ZodIssues.svelte -->
 
 <script lang="ts">
 	import type { ZodIssue } from "zod";
@@ -162,13 +174,13 @@ If there's any validation issues, we want to display the messages provided by ou
 </ul>
 ```
 
-In case of an invalid form, we can now utlize our `ZodErrorMessage.svelte` component to display the issues.
+In case of an invalid form, we can now utlize our `ZodIssues.svelte` component to display the issues.
 
 ```svelte
 <!-- src/routes/+page.svelte -->
 
 <script lang="ts">
-	import ZodErrorMessage from "$lib/components/ZodErrorMessage.svelte";
+	import ZodIssues from "$lib/components/ZodIssues.svelte";
 
 	export let form;
 </script>
@@ -191,16 +203,16 @@ In case of an invalid form, we can now utlize our `ZodErrorMessage.svelte` compo
 	<button>Sign Up</button>
 </form>
 
-<!-- if there's an error -->
-{#if form?.error}
-	<ZodErrorMessage issues={form.error} />
+<!-- if there are issues -->
+{#if form?.issues}
+	<ZodIssues issues={form.issues} />
 {/if}
 
 ```
 
 Example:
 
-<ZodErrorMessage
+<ZodIssues
 	issues={[
 		{
 			validation: "email",
