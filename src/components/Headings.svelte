@@ -8,9 +8,9 @@
 </script>
 
 {#each headings as heading}
-	<div class="flex mb-2">
+	<div class="mb-2 flex">
 		<span
-			class="text-neutral-300 mr-1"
+			class="mr-1 text-neutral-300"
 			class:ml-4={heading.depth == 3}
 			class:ml-8={heading.depth == 4}
 			class:ml-12={heading.depth == 5}
@@ -26,4 +26,3 @@
 		</a>
 	</div>
 {/each}
-

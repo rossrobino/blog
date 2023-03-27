@@ -5,7 +5,7 @@
 	export let size = "small";
 </script>
 
-<div class="p-3 bg-neutral-100 rounded-sm h-full">
+<div class="h-full rounded-sm bg-neutral-100 p-3">
 	<a
 		class:text-3xl={size == "large"}
 		class:text-2xl={size == "medium"}

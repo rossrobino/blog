@@ -15,7 +15,7 @@ import ZodIssues from "@components/ZodIssues.svelte";
 
 ## Install
 
-First create a new SvelteKit project and then add Zod as a development dependency. 
+First create a new SvelteKit project and then add Zod as a development dependency.
 
 ```bash
 npm create svelte@latest
@@ -166,8 +166,7 @@ If there's any validation issues, we want to display the messages provided by ou
 <ul>
 	{#each issues as { message, path }}
 		<li>
-			{String(path[0]).charAt(0).toUpperCase() +
-				String(path[0]).slice(1)} -
+			{String(path[0]).charAt(0).toUpperCase() + String(path[0]).slice(1)} -
 			{message}
 		</li>
 	{/each}
@@ -207,7 +206,6 @@ In case of an invalid form, we can now utlize our `ZodIssues.svelte` component t
 {#if form?.issues}
 	<ZodIssues issues={form.issues} />
 {/if}
-
 ```
 
 Example:

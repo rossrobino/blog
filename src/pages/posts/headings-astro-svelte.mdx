@@ -78,7 +78,7 @@ Each [heading object](https://docs.astro.build/en/core-concepts/layouts/#markdow
 <style>
 	div {
 		display: flex;
-		margin-bottom: .5rem;
+		margin-bottom: 0.5rem;
 	}
 	span {
 		margin-left: 0.25rem;
@@ -100,7 +100,7 @@ Each [heading object](https://docs.astro.build/en/core-concepts/layouts/#markdow
 
 ## Try it out
 
-We can now use this in our markdown layouts by providing `headings`, or in another page by passing in the entire file through the `file` prop. 
+We can now use this in our markdown layouts by providing `headings`, or in another page by passing in the entire file through the `file` prop.
 
 ### Markdown layout
 
@@ -140,7 +140,7 @@ layout: "@layouts/post/Post.astro"
 
 You may want to display your headings as a preview outside of the page itself ([example](https://blog.robino.dev)).
 
-We can import our files from `src/pages/posts` into the page we want to display them using Astro's [glob](https://docs.astro.build/en/reference/api-reference/#astroglob) method. Then we can pass a post into the `Headings` component to display the headings from that post. 
+We can import our files from `src/pages/posts` into the page we want to display them using Astro's [glob](https://docs.astro.build/en/reference/api-reference/#astroglob) method. Then we can pass a post into the `Headings` component to display the headings from that post.
 
 ```astro
 ---
@@ -159,6 +159,6 @@ const posts = await Astro.glob("./posts/*");
 
 Because Astro runs at build time, this `Headings` component will be sent to the client as HTML and CSS with no JavaScript.
 
-I've really enjoyed using Astro to create this blog. The first party `.mdx` integration and `Astro.glob` make it easy to maintain my content. I'd recommend it to others creating static sites and wanting to author their pages in markdown. 
+I've really enjoyed using Astro to create this blog. The first party `.mdx` integration and `Astro.glob` make it easy to maintain my content. I'd recommend it to others creating static sites and wanting to author their pages in markdown.
 
 Thanks for reading!

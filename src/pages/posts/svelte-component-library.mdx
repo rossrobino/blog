@@ -17,9 +17,9 @@ If you frequently have components that you share between projects and want to ke
 
 ## Setup
 
--   Navigate to a directory in your terminal where you will create your project
--   Run `npm create svelte@latest`, configure your project with the CLI, select the `Library skeleton project` template
--   Update `README.md` with information about your project
+- Navigate to a directory in your terminal where you will create your project
+- Run `npm create svelte@latest`, configure your project with the CLI, select the `Library skeleton project` template
+- Update `README.md` with information about your project
 
 ## Project information
 
@@ -101,10 +101,7 @@ Do a quick test of your component on `src/routes/+page.svelte` by importing it t
 	import YouTube from "$lib/svelte/YouTube.svelte";
 </script>
 
-<YouTube
-    uid="gouiY85kD2o"
-    title="Renegade - Kevin Olusola"
-/>
+<YouTube uid="gouiY85kD2o" title="Renegade - Kevin Olusola" />
 ```
 
 Ensure that the component is working as expected, then you are ready to create a package.
@@ -113,21 +110,21 @@ Ensure that the component is working as expected, then you are ready to create a
 
 Now we can package the library and publish it on [npm](https://www.npmjs.com/) for anyone to use. Repeat these steps each time you want to update your package.
 
--   Set the `version` in `package.json`, this will have to be bumped up each time you publish the package (major.minor.patch)--you can leave this at `0.0.1` to start
--   Run `npm install` to sync your `package-lock.json` with the current version information
--   Run `npm run package` to execute the `package` script in `package.json`
--   You can verify the output of your build in the `dist` directory
--   Commit changes to your repository
--   Run `npm publish --access public` to publically publish your package on npm (if you don't have an account you will need to create one and log in)
+- Set the `version` in `package.json`, this will have to be bumped up each time you publish the package (major.minor.patch)--you can leave this at `0.0.1` to start
+- Run `npm install` to sync your `package-lock.json` with the current version information
+- Run `npm run package` to execute the `package` script in `package.json`
+- You can verify the output of your build in the `dist` directory
+- Commit changes to your repository
+- Run `npm publish --access public` to publically publish your package on npm (if you don't have an account you will need to create one and log in)
 
 ## Test in a separate project
 
 After verifying on the npm website that your package has been published, you can now use your package in a separate project.
 
--   Set up a new SvelteKit project or use a different existing one
--   Run `npm install -D yourPackageName` to install it as a dev dependency
--   Import in `src/routes/+page.svelte` like before, but edit the import path to point to your package instead
--   Lastly, run `npm run dev -- --open` to see your imported component in action
+- Set up a new SvelteKit project or use a different existing one
+- Run `npm install -D yourPackageName` to install it as a dev dependency
+- Import in `src/routes/+page.svelte` like before, but edit the import path to point to your package instead
+- Lastly, run `npm run dev -- --open` to see your imported component in action
 
 ```svelte
 <!-- src/routes/+page.svelte -->
@@ -136,10 +133,7 @@ After verifying on the npm website that your package has been published, you can
 	import YouTube from "@rossrobino/components";
 </script>
 
-<YouTube
-    uid="gouiY85kD2o"
-    title="Renegade - Kevin Olusola"
-/>
+<YouTube uid="gouiY85kD2o" title="Renegade - Kevin Olusola" />
 ```
 
 ## Conclusion

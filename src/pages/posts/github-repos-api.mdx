@@ -13,13 +13,13 @@ import GitHubApiLink from "@components/GitHubApiLink.svelte";
 
 GitHub provides an [API](https://docs.github.com/en/rest?apiVersion=2022-11-28) that allows you to easily pull information about your repositories without an API key.
 
-You can pull the public information from GitHub with the following urls. These three serve as quick examples of what is possible. Click the links below to see the data for my GitHub account, or switch out my username with yours to see your information. The `.../repos` page serves as a useful reference to see all the different data we can get from the API. 
+You can pull the public information from GitHub with the following urls. These three serve as quick examples of what is possible. Click the links below to see the data for my GitHub account, or switch out my username with yours to see your information. The `.../repos` page serves as a useful reference to see all the different data we can get from the API.
 
 <GitHubApiLink client:visible />
 
 ## Loader
 
-First we can create a loader to fetch the data from the API. If you haven't used Svelte or SvelteKit before, the best place to learn more is the [official tutorial](https://learn.svelte.dev/tutorial/welcome-to-svelte). 
+First we can create a loader to fetch the data from the API. If you haven't used Svelte or SvelteKit before, the best place to learn more is the [official tutorial](https://learn.svelte.dev/tutorial/welcome-to-svelte).
 
 ### Fetch the data on the server
 
@@ -27,7 +27,7 @@ We can use `+page.server.js` to [load](https://learn.svelte.dev/tutorial/page-da
 
 ### Repository data points
 
-As you probably noticed above when clicking the link, GitHub provides a vast amount of data we can read on our page. Here are a few basic data points that I chose to use. 
+As you probably noticed above when clicking the link, GitHub provides a vast amount of data we can read on our page. Here are a few basic data points that I chose to use.
 
 - `name`: name of the repository
 - `full_name`: name with username in front (we can use this to link to the repository page)
@@ -43,14 +43,14 @@ export async function load({ fetch }) {
 	const repos = await res.json();
 	// sort by pushed_at date, most recent first
 	repos.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
-	
+
 	return { repos };
 }
 ```
 
 ## Render
 
-We can now access this data in `+page.svelte` contained in the same directory with the `data` prop and use an `{#each}` block to iterate through the list. 
+We can now access this data in `+page.svelte` contained in the same directory with the `data` prop and use an `{#each}` block to iterate through the list.
 
 ```svelte
 <!-- +page.svelte -->

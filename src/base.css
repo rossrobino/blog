@@ -4,7 +4,7 @@
 
 @layer base {
 	html {
-		@apply font-serif text-neutral-800 selection:bg-yellow-300 selection:text-neutral-800 bg-neutral-50;
+		@apply bg-neutral-50 font-serif text-neutral-800 selection:bg-yellow-300 selection:text-neutral-800;
 	}
 	h1,
 	h2,
@@ -15,26 +15,26 @@
 		@apply font-bold;
 	}
 	h1 {
-		@apply text-3xl my-4 text-neutral-900;
+		@apply my-4 text-3xl text-neutral-900;
 	}
 	h2 {
-		@apply text-2xl mt-8 text-neutral-900;
+		@apply mt-8 text-2xl text-neutral-900;
 	}
 	h3 {
-		@apply text-xl mt-6;
+		@apply mt-6 text-xl;
 	}
 	h4 {
-		@apply text-lg mt-4;
+		@apply mt-4 text-lg;
 	}
 	h5 {
-		@apply text-base mt-3;
+		@apply mt-3 text-base;
 	}
 	h6 {
-		@apply text-sm mt-2;
+		@apply mt-2 text-sm;
 	}
 	article a,
 	footer a {
-		@apply text-emerald-700 underline decoration-from-font underline-offset-2 hover:decoration-dotted font-semibold;
+		@apply font-semibold text-emerald-700 underline decoration-from-font underline-offset-2 hover:decoration-dotted;
 	}
 	p,
 	ul {
@@ -46,28 +46,32 @@
 	ol {
 		@apply list-decimal pl-8;
 	}
+	blockquote {
+		@apply rounded-sm border-l-2 border-neutral-200 bg-neutral-100 p-4 italic;
+	}
 	hr {
 		@apply border-neutral-300;
 	}
 	/* inline code */
 	p > code,
 	li > code {
-		@apply bg-neutral-200 rounded-sm py-0.5 px-1 text-sm;
+		@apply rounded-sm bg-neutral-200 py-0.5 px-1 text-sm;
 	}
 	/* code block */
 	pre {
-		@apply p-2 rounded-sm text-xs my-4;
+		@apply my-4 rounded-sm p-2 text-xs;
 	}
 	input {
-		@apply border border-neutral-200 rounded-sm px-1.5;
+		@apply rounded-sm border border-neutral-200 px-1.5;
 	}
 	table {
-		@apply bg-neutral-100 w-full text-sm sm:text-base my-4;
+		@apply my-4 w-full bg-neutral-100 text-sm sm:text-base;
 	}
 	table tr {
 		@apply border-b border-neutral-200;
 	}
-	table td,th {
+	table td,
+	th {
 		@apply p-2;
 	}
 }

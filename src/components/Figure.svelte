@@ -1,21 +1,19 @@
-<script>
+<script lang="ts">
 	export let src = "";
 	export let alt = "";
 	export let title = "";
 	export let caption = "";
 </script>
 
-<figure
-	class="my-6 mx-auto w-fit bg-neutral-900 p-2 rounded-sm"
->
+<figure class="my-6 mx-auto w-fit rounded-sm bg-neutral-900 p-2">
 	{#if title}
-		<figcaption class="text-center mb-2 text-neutral-50 text-md">
+		<figcaption class="text-md mb-2 text-center text-neutral-50">
 			{title}
 		</figcaption>
 	{/if}
 	<img class="mx-auto rounded-sm" {src} {alt} />
 	{#if caption}
-		<figcaption class="mx-2 mt-2 text-neutral-50 text-sm">
+		<figcaption class="mx-2 mt-2 text-sm text-neutral-50">
 			<i>{caption}</i>
 		</figcaption>
 	{/if}

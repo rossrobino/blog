@@ -1,6 +1,6 @@
 ---
 layout: "@layouts/post/Post.astro"
-title:  Use TypeScript with SvelteKit and Supabase
+title: Use TypeScript with SvelteKit and Supabase
 description: Focus on writing product code with this powerful pair of tools.
 keywords: svelte, sveltekit, supabase, typescript, types
 author: Ross Robino
@@ -33,12 +33,12 @@ Here's how to start creating full-stack, type safe, applications with SvelteKit 
 
 ## Create a Supabase project
 
--   Login and create a new project at [supabase.com](https://supabase.com) using their web application.
--   Create a table from the table editor--I'll name mine `todos`
--   Add `description`
--   Enable `Row Level Security`
--   We will not need `Realtime` for this tutorial
--   Add columns to your table:
+- Login and create a new project at [supabase.com](https://supabase.com) using their web application.
+- Create a table from the table editor--I'll name mine `todos`
+- Add `description`
+- Enable `Row Level Security`
+- We will not need `Realtime` for this tutorial
+- Add columns to your table:
 
 | Name       | Type       | Default       |
 | ---------- | ---------- | ------------- |
@@ -47,17 +47,17 @@ Here's how to start creating full-stack, type safe, applications with SvelteKit 
 | title      | text       | Empty String  |
 | complete   | bool       | false         |
 
--   Use the `Insert Rows` button to add a few rows to the table with any data you like
+- Use the `Insert Rows` button to add a few rows to the table with any data you like
 
 ### Row Level Security
 
 Since [Row Level Security](https://supabase.com/docs/guides/auth#row-level-security) is enabled on our table, no one can currently create, read, update, or delete. We can add a `SELECT` policy to enable our database to be read.
 
--   Navigate to `Authentication > Policies` and create a new policy. I've selected `Get started quickly > Enable read access to everyone`.
+- Navigate to `Authentication > Policies` and create a new policy. I've selected `Get started quickly > Enable read access to everyone`.
 
 ## Create a SvelteKit project
 
--   Create a new SvelteKit project using the following commands. Select the `skeleton` project template and be sure to `add type checking with TypeScript`.
+- Create a new SvelteKit project using the following commands. Select the `skeleton` project template and be sure to `add type checking with TypeScript`.
 
 ```bash
 npm create svelte@latest
@@ -66,7 +66,7 @@ npm install
 
 ## Environment variables
 
--   Create a `.env` file at the root of your project (outside of `src`) to put environment variables, these are found in `Settings > API` in the project dashboard. The Supabase client will use these variables to query the database.
+- Create a `.env` file at the root of your project (outside of `src`) to put environment variables, these are found in `Settings > API` in the project dashboard. The Supabase client will use these variables to query the database.
 
 ```bash
 PUBLIC_SUPABASE_URL="https://PROJECT_ID.supabase.co"
@@ -75,20 +75,20 @@ PUBLIC_SUPABASE_ANON_KEY="ANON_KEY"
 
 ## Generate types
 
--   Install the Supabase CLI as a development dependency
+- Install the Supabase CLI as a development dependency
 
 ```bash
 npm install -D supabase
 ```
 
--   Generate a new **access token** for your account in your [organization settings](https://app.supabase.com/account/tokens) and use it to login
+- Generate a new **access token** for your account in your [organization settings](https://app.supabase.com/account/tokens) and use it to login
 
 ```bash
 npx supabase login
 ```
 
--   Add a new script to `package.json` as a shortcut to run the type generation command
--   Replace `PROJECT_ID` with the id from your `PUBLIC_SUPABASE_URL` environment variable
+- Add a new script to `package.json` as a shortcut to run the type generation command
+- Replace `PROJECT_ID` with the id from your `PUBLIC_SUPABASE_URL` environment variable
 
 ```json
 // package.json
@@ -103,7 +103,7 @@ npx supabase login
 }
 ```
 
--   Now run this command to generate types into the `src/lib/db/types.ts` file
+- Now run this command to generate types into the `src/lib/db/types.ts` file
 
 ```bash
 npm run update-types
@@ -133,13 +133,13 @@ export interface Database {
 
 Next we can set up our client to query the database.
 
--   Install the Supabase JavaScript client as a dependency
+- Install the Supabase JavaScript client as a dependency
 
 ```
 npm install @supabase/supabase-js
 ```
 
--   Create a `src/lib/db/client.ts` file, this will be imported wherever we want to run our query (server or client side)
+- Create a `src/lib/db/client.ts` file, this will be imported wherever we want to run our query (server or client side)
 
 ```ts
 // src/lib/db/client.ts
@@ -153,7 +153,7 @@ import {
 
 export const db = createClient<Database>(
 	PUBLIC_SUPABASE_URL,
-	PUBLIC_SUPABASE_ANON_KEY
+	PUBLIC_SUPABASE_ANON_KEY,
 );
 ```
 
@@ -163,7 +163,7 @@ The generated types are imported here and applied to the client, then our respon
 
 Finally, we can fetch our data with a server side `load` function.
 
--   Create a `src/routes/+page.server.ts` file
+- Create a `src/routes/+page.server.ts` file
 
 ```ts
 // src/routes/+page.server.ts
@@ -189,7 +189,7 @@ As you type, you should see your table name appear as an argument in the `from` 
 
 ## Render
 
--   Finally, create a `src/routes/+page.svelte` file to display the data on the page
+- Finally, create a `src/routes/+page.svelte` file to display the data on the page
 
 ```svelte
 <!-- src/routes/+page.svelte -->
@@ -219,6 +219,6 @@ Supabase and SvelteKit together can equip you with a powerful toolset and elimin
 
 ## References
 
--   [Supabase - Framework Quickstart](https://supabase.com/docs/guides/getting-started/quickstarts/sveltekit)
--   [Supabase - Generating Types](https://supabase.com/docs/guides/api/generating-types)
--   [SvelteKit documentation](https://kit.svelte.dev/docs)
+- [Supabase - Framework Quickstart](https://supabase.com/docs/guides/getting-started/quickstarts/sveltekit)
+- [Supabase - Generating Types](https://supabase.com/docs/guides/api/generating-types)
+- [SvelteKit documentation](https://kit.svelte.dev/docs)
