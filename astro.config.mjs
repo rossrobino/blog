@@ -1,14 +1,14 @@
 import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel/static";
 
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
-import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
+	adapter: vercel({ analytics: true }),
 	markdown: {
 		shikiConfig: {
 			theme: "github-dark",
@@ -24,7 +24,6 @@ export default defineConfig({
 		svelte(),
 		mdx(),
 		prefetch(),
-		partytown(),
 		sitemap(),
 	],
 });

@@ -26,19 +26,6 @@ function getCurrentDate() {
 			content={`https://og.robino.dev/api/blog?title=${title}&desc=${description}&author=${author}`}
 		/>
 		<title>blog.robino.dev{title ? ` - ${title}` : ""}</title>
-		<script
-			async
-			type="text/partytown"
-			src="https://www.googletagmanager.com/gtag/js?id=G-LSTLRM2XQG"
-		></script>
-		<script type="text/partytown">
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag("js", new Date());
-			gtag("config", "G-LSTLRM2XQG");
-		</script>
 	</head>
 	<body>
 		<div class="vp-dyn flex min-h-screen flex-col justify-between text-center">

@@ -5,7 +5,7 @@
 	export let caption = "";
 </script>
 
-<figure class="my-6 mx-auto w-fit rounded-sm bg-neutral-900 p-2">
+<figure class="mx-auto my-6 w-fit rounded-sm bg-neutral-900 p-2">
 	{#if title}
 		<figcaption class="text-md mb-2 text-center text-neutral-50">
 			{title}
