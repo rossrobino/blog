@@ -211,6 +211,12 @@ Here we achieve full type safety from the database to the server to the client t
 Finally, we can render our data to the page in `src/routes/+page.svelte`.
 
 ```svelte
+<!-- src/routes/+page.svelte -->
+
+<script lang="ts">
+	export let data;
+</script>
+
 <p>
 	{#await data.streamed.views}
 		Loading...
