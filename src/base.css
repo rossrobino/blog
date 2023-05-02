@@ -4,7 +4,7 @@
 
 @layer base {
 	html {
-		@apply bg-neutral-50 font-serif text-neutral-800 selection:bg-yellow-300 selection:text-neutral-800;
+		@apply scroll-smooth bg-neutral-50 font-serif text-neutral-800 selection:bg-yellow-300 selection:text-neutral-800;
 	}
 	h1,
 	h2,
@@ -18,19 +18,19 @@
 		@apply my-4 text-3xl text-neutral-900;
 	}
 	h2 {
-		@apply mt-8 text-2xl text-neutral-900;
+		@apply mt-12 text-2xl text-neutral-900;
 	}
 	h3 {
-		@apply mt-6 text-xl;
+		@apply mt-10 text-xl;
 	}
 	h4 {
-		@apply mt-4 text-lg;
+		@apply mt-8 text-lg;
 	}
 	h5 {
-		@apply mt-3 text-base;
+		@apply mt-6 text-base;
 	}
 	h6 {
-		@apply mt-2 text-sm;
+		@apply mt-4 text-sm;
 	}
 	article a,
 	footer a {
@@ -38,7 +38,7 @@
 	}
 	p,
 	ul {
-		@apply my-2;
+		@apply my-4;
 	}
 	ul {
 		@apply list-disc pl-8;
@@ -55,11 +55,11 @@
 	/* inline code */
 	p > code,
 	li > code {
-		@apply rounded-sm bg-neutral-200 py-0.5 px-1 text-sm;
+		@apply rounded-sm bg-neutral-200 px-1 py-0.5 text-sm;
 	}
 	/* code block */
 	pre {
-		@apply my-4 rounded-sm p-2 text-xs;
+		@apply -mx-4 my-4 p-4 text-xs md:mx-0 md:rounded-sm;
 	}
 	input {
 		@apply rounded-sm border border-neutral-200 px-1.5;

@@ -1,7 +1,7 @@
 <script>
 	import PostCard from "./_PostCard.svelte";
 
-	export let posts = [];
+	export let posts;
 	posts.sort(
 		(a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date),
 	);
