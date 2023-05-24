@@ -25,7 +25,7 @@ function getCurrentDate() {
 			property="og:image"
 			content={`https://og.robino.dev/api/blog?title=${title}&desc=${description}&author=${author}`}
 		/>
-		<title>blog.robino.dev{title ? ` - ${title}` : ""}</title>
+		<title>{title ? title : "blog.robino.dev"}</title>
 	</head>
 	<body>
 		<div class="vp-dyn flex min-h-screen flex-col justify-between text-center">
