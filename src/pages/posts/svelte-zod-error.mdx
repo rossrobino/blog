@@ -33,7 +33,7 @@ Consider this Zod `UserSchema`, it expects a user will have an email and a passw
 import { z } from "zod";
 
 export const UserSchema = z.object({
-	email: z.string().email(),
+	email: z.string().email().trim().toLowerCase(),
 	password: z
 		.string()
 		.regex(new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$"), {
@@ -130,7 +130,7 @@ export const actions = {
 		// use .get() with the corresponding name of the input element
 		// to create a user object
 		const user = {
-			email: String(formData.get("email")).trim().toLowerCase(),
+			email: String(formData.get("email")),
 			password: String(formData.get("password")),
 		};
 
