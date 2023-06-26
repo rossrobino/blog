@@ -25,7 +25,7 @@ npm install -D zod
 
 ## Create a UserSchema
 
-Consider this Zod `UserSchema`, it expects a user will have an email and a password.
+Consider this Zod `UserSchema`, it expects a user will have an email and a password. Here, Zod can also be used to transform data with the `trim` and `toLowerCase` methods. If the parse is successful, the transformed data will be available in `safeParse.data`.
 
 ```ts
 // src/lib/zodSchemas.ts
@@ -143,6 +143,7 @@ export const actions = {
 		}
 
 		// sign up user...
+		// transformed is data available in `safeParse.data`
 
 		// where to send if login successful
 		throw redirect(303, "/app");
