@@ -26,7 +26,7 @@
 	</div>
 	{#if size == "large" || size == "medium"}
 		<div class="mt-2">
-			<Headings {post} />
+			<Headings maxDepth="2" {post} />
 		</div>
 	{/if}
 </div>
