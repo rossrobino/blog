@@ -31,7 +31,10 @@ const { frontmatter, headings, url } = Astro.props;
 	<Headings headings={headings} />
 	<hr class="mt-3" />
 	<slot />
-	<ShareButton url={`https://blog.robino.dev${url}`} client:visible />
+	<div class="mt-12">
+
+		<ShareButton url={`https://blog.robino.dev${url}`} client:visible />
+	</div>
 	<blockquote class="my-4 flex flex-col justify-between gap-2 md:flex-row">
 		<span>Find an error in this post? Any updates are appreciated.</span>
 		<a

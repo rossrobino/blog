@@ -50,7 +50,7 @@
 		@apply rounded-sm border-l-2 border-neutral-200 bg-neutral-100 p-4 italic;
 	}
 	hr {
-		@apply border-neutral-300;
+		@apply border-neutral-300 my-12;
 	}
 	/* inline code */
 	p > code,
@@ -73,6 +73,9 @@
 	table td,
 	th {
 		@apply p-2;
+	}
+	button {
+		@apply rounded-sm bg-emerald-800 px-4 py-3 text-neutral-50 shadow hover:bg-emerald-700 active:bg-emerald-900;
 	}
 }
 

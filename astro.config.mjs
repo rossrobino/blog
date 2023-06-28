@@ -17,9 +17,7 @@ export default defineConfig({
 	site: "https://blog.robino.dev/",
 	integrations: [
 		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
+			applyBaseStyles: false,
 		}),
 		svelte(),
 		mdx(),
