@@ -5,7 +5,7 @@
 
 	const isPost = Boolean(Object.keys(post).length);
 
-	if (isPost) headings = post.getHeadings()
+	if (isPost) headings = post.getHeadings();
 </script>
 
 {#each headings as heading}
