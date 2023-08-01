@@ -15,13 +15,5 @@ export default defineConfig({
 		},
 	},
 	site: "https://blog.robino.dev/",
-	integrations: [
-		tailwind({
-			applyBaseStyles: false,
-		}),
-		svelte(),
-		mdx(),
-		prefetch(),
-		sitemap(),
-	],
+	integrations: [tailwind(), svelte(), mdx(), prefetch(), sitemap()],
 });

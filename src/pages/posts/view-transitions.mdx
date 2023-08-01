@@ -1,0 +1,24 @@
+---
+layout: "@layouts/post/Post.astro"
+title: View Transitions
+description:
+keywords:
+author: Ross Robino
+date: 2023, 8, 1
+draft: true
+---
+
+```js
+const move = () => {
+	const move = () => {
+		// do something
+	};
+	if ("startViewTransition" in document) {
+		document.startViewTransition(() => {
+			move();
+		});
+	} else {
+		move();
+	}
+};
+```
