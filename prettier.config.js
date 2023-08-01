@@ -10,6 +10,12 @@ export default {
 	],
 	overrides: [
 		{
+			files: "*.astro",
+			options: {
+				parser: "astro",
+			},
+		},
+		{
 			files: "*.svelte",
 			options: {
 				parser: "svelte",
