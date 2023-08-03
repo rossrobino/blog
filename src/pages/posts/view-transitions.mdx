@@ -8,6 +8,14 @@ date: 2023, 8, 1
 draft: true
 ---
 
+## What are View Transitions?
+
+There's a new `document` method in Chrome called `startViewTransition`. `startViewTransition` enables developers execute CSS animations on demand with JavaScript. There's a default animation, or a custom animation can be used.
+
+`startViewTransition` takes a callback function as an argument, inside this callback function, you can update the DOM with JavaScript. `startViewTransition` inspects the DOM and finds any elements that have the `view-transition-name` CSS property. If any elements have this property, it takes note of where they are before and after the callback is executed. If the state of the element has changed, it will execute an animation between the two states.
+
+---
+
 ```js
 const move = () => {
 	const move = () => {
@@ -22,3 +30,5 @@ const move = () => {
 	}
 };
 ```
+
+test
