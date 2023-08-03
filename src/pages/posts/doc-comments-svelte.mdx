@@ -15,20 +15,30 @@ Entire Svelte components can be documented with HTML comments that include `@com
 
 [Svelte FAQ](https://svelte.dev/docs/faq#how-do-i-document-my-components)
 
-```svelte
+````svelte
 ...
 </script>
 
 <!--
 @component
-# Repeat.svelte
+## Repeat.svelte
 
 - A component that repeats text a specific number of times.
+
+### Example
+
+```svelte
+<script>
+	import Repeat from "$lib/components/Repeat.svelte";
+</script>
+
+<Repeat text="Repeat this" numberOfTimes={3} />
+```
 -->
 
 <div>
 ...
-```
+````
 
 You can utilize markdown syntax in this comment to write documentation. It will appear when the user hovers over the name of the component in most editors like VSCode.
 
