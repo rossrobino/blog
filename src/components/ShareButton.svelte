@@ -1,6 +1,6 @@
-<script>
-	import { ShareButton } from "@rossrobino/components";
-	export let url = "";
+<script lang="ts">
+	import { ShareButton } from "drab";
+	export let shareData: ShareData;
 </script>
 
-<ShareButton {url} class="w-32" text="Check out this blog post:" />
+<ShareButton {shareData} class="w-32 bg-emerald-800" />

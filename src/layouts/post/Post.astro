@@ -13,7 +13,7 @@ const { frontmatter, headings, url } = Astro.props;
 	keywords={frontmatter.keywords}
 	author={frontmatter.author}
 >
-	<h1 class="mb-0">{frontmatter.title}</h1>
+	<h1 class="mb-0 text-balance">{frontmatter.title}</h1>
 	<p class="italic">{frontmatter.description}</p>
 	<p>
 		{
@@ -32,7 +32,14 @@ const { frontmatter, headings, url } = Astro.props;
 	<hr class="mt-3" />
 	<slot />
 	<div class="mt-12">
-		<ShareButton url={`https://blog.robino.dev${url}`} client:visible />
+		<ShareButton
+			shareData={{
+				url: `https://blog.robino.dev${url}`,
+				title: "blog.robino.dev",
+				text: "Check out this post",
+			}}
+			client:visible
+		/>
 	</div>
 	<blockquote class="my-4 flex flex-col justify-between gap-2 md:flex-row">
 		<span>Find an error in this post? Any updates are appreciated.</span>
