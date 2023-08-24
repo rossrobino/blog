@@ -13,7 +13,7 @@ const { frontmatter, headings, url } = Astro.props;
 	keywords={frontmatter.keywords}
 	author={frontmatter.author}
 >
-	<h1 class="mb-0 text-balance">{frontmatter.title}</h1>
+	<h1 class="text-balance mb-0">{frontmatter.title}</h1>
 	<p class="italic">{frontmatter.description}</p>
 	<p>
 		{
