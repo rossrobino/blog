@@ -4,7 +4,7 @@
 
 <button on:click={() => dialog.showModal()}>Show Dialog</button>
 
-<dialog bind:this={dialog} class="rounded-sm shadow-xl">
+<dialog bind:this={dialog} class="rounded-sm p-8 shadow-xl">
 	<p>A dialog element</p>
 	<div class="flex gap-4">
 		<form method="dialog">
