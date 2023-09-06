@@ -1,5 +1,4 @@
 import type { Post } from "$lib/types";
-import { formatDate } from "$lib/util/formatDate";
 import { getSlug } from "$lib/util/getSlug";
 import { processMd } from "$lib/util/processMd.server";
 
@@ -9,7 +8,7 @@ export const load = async () => {
 		eager: true,
 	});
 
-	let posts: Post[] = [];
+	const posts: Post[] = [];
 
 	for (const path in content) {
 		const md = content[path];
@@ -19,10 +18,6 @@ export const load = async () => {
 	}
 
 	posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-	posts = posts.map((post) => {
-		return { ...post, date: formatDate(post.date) };
-	});
 
 	const filters = getKeywords(posts);
 

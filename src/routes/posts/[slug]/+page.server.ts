@@ -1,5 +1,4 @@
 import type { Post } from "$lib/types";
-import { formatDate } from "$lib/util/formatDate.js";
 import { mdToHtml } from "$lib/util/mdToHtml.server";
 import { processMd } from "$lib/util/processMd.server";
 import { error } from "@sveltejs/kit";
@@ -25,8 +24,6 @@ export const load = async ({ params }) => {
 	const { article, frontmatter, headings } = processMd(text);
 
 	const post: Post = { ...frontmatter, headings, slug: params.slug };
-
-	post.date = formatDate(post.date);
 
 	post.keywords.sort();
 

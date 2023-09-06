@@ -1,3 +1,4 @@
+import { formatDate } from "$lib/util/formatDate";
 import { z } from "zod";
 
 export const frontmatterSchema = z
@@ -7,6 +8,8 @@ export const frontmatterSchema = z
 		keywords: z
 			.string()
 			.transform((val) => val.split(",").map((s) => s.trim().toLowerCase())),
-		date: z.string(),
+		date: z.string().transform((s) => {
+			return formatDate(s);
+		}),
 	})
 	.strict();
