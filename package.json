@@ -1,6 +1,6 @@
 {
 	"name": "blog",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -14,7 +14,6 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/adapter-vercel": "^3.0.3",
 		"@sveltejs/kit": "^1.24.1",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/js-yaml": "^4.0.5",
