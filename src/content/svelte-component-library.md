@@ -21,7 +21,7 @@ If you frequently have components that you share between projects and want to ke
 
 ## Project information
 
-Since this is a library project, it's important to add in your relevant information to the `package.json` file so it will appear in npm when the package is published.
+Since this is a library project, it's important to add in your relevant information to the `package.json` file so it will appear in npm when the package is published. The template sets much of this up for us, but we will need to edit a few fields.
 
 You can read more on this in the [svelte-package documentation](https://kit.svelte.dev/docs/packaging).
 
@@ -43,8 +43,13 @@ You can read more on this in the [svelte-package documentation](https://kit.svel
 		"url": "https://robino.dev"
 	},
 	"repository": "github:rossrobino/components",
+	"sideEffects": false,
 	...
 ```
+
+### sideEffects
+
+An important note if you are planning on including CSS in your components--set the `sideEffects` field to `false`, if you want bundlers like Vite to be more aggressive with tree-shaking. If this field is not set, all of the CSS for every one of your exported components will be included when one component is imported. If your package does include modules with [side effects](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free) that occur upon importing, you can specify them with an array of paths to the modules.
 
 ## lib directory
 
