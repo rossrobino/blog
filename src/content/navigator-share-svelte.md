@@ -25,7 +25,7 @@ To set up the share button, the `.share` method takes an object as an argument w
 		try {
 			await navigator.share({ text, url, title });
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 		}
 	}
 </script>
@@ -58,7 +58,7 @@ Some systems do not support the `.share` method, we can check the support by che
 				complete = true;
 			}
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 		}
 	}
 </script>
