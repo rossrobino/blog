@@ -1,5 +1,5 @@
-import { frontmatterSchema } from "$lib/schemas/mod";
-import type { Post } from "$lib/types/mod";
+import { frontmatterSchema } from "$lib/schemas";
+import type { Post } from "$lib/types";
 import { error } from "@sveltejs/kit";
 import { process } from "robino/util/md";
 

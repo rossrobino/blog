@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "../app.postcss";
 	import Breakpoint from "$lib/components/Breakpoint.svelte";
-	import { author, homepage, repository, title } from "$lib/info/mod";
+	import { author, homepage, repository, title } from "$lib/info";
 
 	// remove if not using vercel analytics
 	import { dev } from "$app/environment";
