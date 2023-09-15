@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PostCard from "$lib/components/PostCard.svelte";
-	import { repository, url } from "$lib/info/index.js";
+	import { repository, url } from "$lib/info/mod";
 	import { ShareButton } from "drab";
 
 	export let data;

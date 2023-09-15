@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "../app.postcss";
 	import Breakpoint from "$lib/components/Breakpoint.svelte";
-	import { author, homepage, repository, title } from "$lib/info";
+	import { author, homepage, repository, title } from "$lib/info/mod";
 
 	// remove if not using vercel analytics
 	import { dev } from "$app/environment";
@@ -27,7 +27,7 @@
 <Breakpoint />
 
 <div
-	class="font-humanist prose prose-neutral max-w-none prose-a:link hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md"
+	class="font-humanist prose prose-neutral prose-a:link hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md max-w-none"
 >
 	<header class="mb-8">
 		<h2 class="my-0">

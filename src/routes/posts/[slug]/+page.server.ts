@@ -1,7 +1,7 @@
-import type { Post } from "$lib/types";
-import { mdToHtml } from "$lib/util/mdToHtml.server";
-import { processMd } from "$lib/util/processMd.server";
+import { frontmatterSchema } from "$lib/schemas/mod";
+import type { Post } from "$lib/types/mod";
 import { error } from "@sveltejs/kit";
+import { process } from "robino/util/md";
 
 export const load = async ({ params }) => {
 	let text: string | undefined;
@@ -19,15 +19,22 @@ export const load = async ({ params }) => {
 	}
 
 	if (typeof text === "undefined")
-		throw error(404, `Unable to import ${params.slug}.md`);
+		throw error(404, `${params.slug}.md not found`);
 
-	const { article, frontmatter, headings } = processMd(text);
+	try {
+		const { frontmatter, headings, html } = process(text, frontmatterSchema);
 
-	const post: Post = { ...frontmatter, headings, slug: params.slug };
+		const post: Post = { ...frontmatter, headings, slug: params.slug };
 
-	post.keywords.sort();
+		post.keywords.sort();
 
-	const html = mdToHtml(article);
-
-	return { html, post };
+		return { html, post };
+	} catch (e) {
+		if (e instanceof Error) {
+			throw error(500, e.message);
+		} else {
+			console.error(e);
+			throw new Error("An unexpected error occurred.");
+		}
+	}
 };

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { description, title } from "$lib/info";
+	import { description, title } from "$lib/info/mod";
 	import PostCard from "$lib/components/PostCard.svelte";
-	import type { Post } from "$lib/types";
+	import type { Post } from "$lib/types/mod";
 
 	export let data;
 

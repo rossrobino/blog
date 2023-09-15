@@ -1,27 +1,40 @@
-import type { Post } from "$lib/types";
+import { frontmatterSchema } from "$lib/schemas/mod";
+import type { Post } from "$lib/types/mod";
 import { getSlug } from "$lib/util/getSlug";
-import { processMd } from "$lib/util/processMd.server";
+import { error } from "@sveltejs/kit";
+import { process } from "robino/util/md";
 
 export const load = async () => {
-	const content = import.meta.glob("../content/*.md", {
-		as: "raw",
-		eager: true,
-	});
+	try {
+		const content = import.meta.glob("../content/*.md", {
+			as: "raw",
+			eager: true,
+		});
 
-	const posts: Post[] = [];
+		const posts: Post[] = [];
 
-	for (const path in content) {
-		const md = content[path];
-		const { frontmatter, headings } = processMd(md);
-		const slug = getSlug(path);
-		posts.push({ ...frontmatter, slug, headings });
+		for (const path in content) {
+			const md = content[path];
+			const { frontmatter, headings } = process(md, frontmatterSchema);
+			const slug = getSlug(path);
+			posts.push({ ...frontmatter, slug, headings });
+		}
+
+		posts.sort(
+			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+		);
+
+		const filters = getKeywords(posts);
+
+		return { posts, filters };
+	} catch (e) {
+		if (e instanceof Error) {
+			throw error(500, e.message);
+		} else {
+			console.error(e);
+			throw new Error("An unexpected error occurred.");
+		}
 	}
-
-	posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-	const filters = getKeywords(posts);
-
-	return { posts, filters };
 };
 
 const getKeywords = (posts: Post[]) => {
