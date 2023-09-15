@@ -24,8 +24,8 @@ Feel free to fork this project and use it as a template.
 ### Local Development
 
 - Fork the project
-- Install dependencies: `npm install`
-- `npm run dev`
+- Install dependencies: `bun i`
+- `bun run dev`
 
 ### About
 
@@ -38,5 +38,5 @@ Feel free to fork this project and use it as a template.
 
 The project is set up to deploy to Vercel with the static adapter and Vercel analytics. If you want to change this follow these instructions.
 
-- Update the adapter in `svelte.config.js` based on your deployment method, `npm uninstall @sveltejs/adapter-static`, [follow these instructions](https://kit.svelte.dev/docs/adapters).
-- Remove the analytics from `src/routes/+layout.svelte` and run `npm uninstall @vercel/analytics`
+- Update the adapter in `svelte.config.js` based on your deployment method, `bun rm @sveltejs/adapter-static`, [follow these instructions](https://kit.svelte.dev/docs/adapters).
+- Remove the analytics from `src/routes/+layout.svelte` and run `bun rm @vercel/analytics`
