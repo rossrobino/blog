@@ -27,7 +27,7 @@
 <Breakpoint />
 
 <div
-	class="font-humanist prose prose-neutral prose-a:link hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md max-w-none"
+	class="prose prose-neutral max-w-none prose-a:link hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md"
 >
 	<header class="mb-8">
 		<h2 class="my-0">
