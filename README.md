@@ -25,7 +25,7 @@ Feel free to fork this project and use it as a template.
 
 - Fork the project
 - Install dependencies: `bun i`
-- `bun run dev`
+- `bun dev`
 
 ### About
 

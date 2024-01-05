@@ -23,7 +23,7 @@
 				class:text-3xl={size === "md"}
 				class:text-4xl={size === "lg"}
 			>
-				<a href="/posts/{post.slug}">
+				<a href="/posts/{post.slug}" class="font-bold">
 					{post.title}
 				</a>
 			</h2>

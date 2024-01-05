@@ -19,7 +19,7 @@ export const load = async ({ params }) => {
 	}
 
 	if (typeof text === "undefined")
-		throw error(404, `${params.slug}.md not found`);
+		error(404, `${params.slug}.md not found`);
 
 	try {
 		const { frontmatter, headings, html } = process(text, frontmatterSchema);
@@ -31,7 +31,7 @@ export const load = async ({ params }) => {
 		return { html, post };
 	} catch (e) {
 		if (e instanceof Error) {
-			throw error(500, e.message);
+			error(500, e.message);
 		} else {
 			console.error(e);
 			throw new Error("An unexpected error occurred.");

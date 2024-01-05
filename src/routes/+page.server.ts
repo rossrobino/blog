@@ -15,6 +15,7 @@ export const load = async () => {
 
 		for (const path in content) {
 			const md = content[path];
+			// @ts-expect-error - excessively deep due to zod schema
 			const { frontmatter, headings } = process(md, frontmatterSchema);
 			const slug = getSlug(path);
 			posts.push({ ...frontmatter, slug, headings });
@@ -29,7 +30,7 @@ export const load = async () => {
 		return { posts, filters };
 	} catch (e) {
 		if (e instanceof Error) {
-			throw error(500, e.message);
+			error(500, e.message);
 		} else {
 			console.error(e);
 			throw new Error("An unexpected error occurred.");
