@@ -14,7 +14,7 @@
 	<meta name="keywords" content={keywords.join(", ")} />
 </svelte:head>
 
-<article class="my-16 max-w-[85ch]">
+<article class="my-16 max-w-[90ch]">
 	<PostCard {post} headings link={false} />
 
 	{@html html}
