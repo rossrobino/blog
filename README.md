@@ -40,3 +40,4 @@ The project is set up to deploy to Vercel with the static adapter and Vercel ana
 
 - Update the adapter in `svelte.config.js` based on your deployment method, `bun rm @sveltejs/adapter-static`, [follow these instructions](https://kit.svelte.dev/docs/adapters).
 - Remove the analytics from `src/routes/+layout.svelte` and run `bun rm @vercel/analytics`
+-
