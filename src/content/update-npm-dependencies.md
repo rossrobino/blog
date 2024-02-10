@@ -1,7 +1,7 @@
 ---
 title: Interactively Update NPM Dependencies
 description: Keeping up with your project's dependencies can be difficult and time consuming. Here's the best way I've found to keep up with them.
-keywords: blog, npm, dependencies, ncu, format
+keywords: npm, dependencies, ncu, format
 date: 2022, 09, 12
 ---
 
