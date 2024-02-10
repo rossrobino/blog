@@ -1,11 +1,17 @@
 <script lang="ts">
 	import PostCard from "$lib/components/PostCard.svelte";
 	import { repository, url } from "$lib/info/index.js";
-	import { ShareButton } from "drab";
+	import { onMount } from "svelte";
 
 	export let data;
 	const { html, post } = data;
 	const { title, description, keywords } = post;
+
+	onMount(async () => {
+		if (!customElements.get("drab-share")) {
+			await import("drab/share/define");
+		}
+	});
 </script>
 
 <svelte:head>
@@ -28,9 +34,15 @@
 		>
 			Edit
 		</a>
-		<ShareButton
-			class="button button-secondary"
-			shareData={{ url: `${url}/posts/${post.slug}` }}
-		/>
+		<drab-share value="{url}/posts/{post.slug}">
+			<button
+				data-trigger
+				type="button"
+				class="button button-secondary gap-1.5"
+			>
+				<span data-content>Share</span>
+				<template data-swap>Copied</template>
+			</button>
+		</drab-share>
 	</div>
 </article>

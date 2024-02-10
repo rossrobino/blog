@@ -1,10 +1,21 @@
 <script lang="ts">
 	import { dev } from "$app/environment";
-	import { Breakpoint } from "drab";
+	import { onMount } from "svelte";
+
+	if (dev) {
+		onMount(async () => {
+			if (!customElements.get("drab-breakpoint")) {
+				await import("drab/breakpoint/define");
+			}
+		});
+	}
 </script>
 
 {#if dev}
-	<Breakpoint
-		class="card fixed right-4 top-4 z-10 inline-block px-3 py-2 font-mono text-sm tabular-nums"
-	/>
+	<drab-breakpoint>
+		<div
+			data-content
+			class="card fixed right-4 top-4 z-10 inline-block px-3 py-2 font-mono text-sm"
+		></div>
+	</drab-breakpoint>
 {/if}

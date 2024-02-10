@@ -7,7 +7,8 @@ import { process } from "robino/util/md";
 export const load = async () => {
 	try {
 		const content = import.meta.glob("../content/*.md", {
-			as: "raw",
+			query: "?raw",
+			import: "default",
 			eager: true,
 		});
 
@@ -16,7 +17,7 @@ export const load = async () => {
 		for (const path in content) {
 			const md = content[path];
 			// @ts-expect-error - excessively deep due to zod schema
-			const { frontmatter, headings } = process(md, frontmatterSchema);
+			const { frontmatter, headings } = await process(md, frontmatterSchema);
 			const slug = getSlug(path);
 			posts.push({ ...frontmatter, slug, headings });
 		}

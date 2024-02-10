@@ -7,9 +7,10 @@ export const load = async ({ params }) => {
 	let text: string | undefined;
 
 	const content = import.meta.glob(`../../../content/*.md`, {
-		as: "raw",
+		query: "?raw",
+		import: "default",
 		eager: true,
-	});
+	}) as Record<string, string>;
 
 	for (const path in content) {
 		if (path.endsWith(`${params.slug}.md`)) {
@@ -18,11 +19,13 @@ export const load = async ({ params }) => {
 		}
 	}
 
-	if (typeof text === "undefined")
-		error(404, `${params.slug}.md not found`);
+	if (typeof text === "undefined") error(404, `${params.slug}.md not found`);
 
 	try {
-		const { frontmatter, headings, html } = process(text, frontmatterSchema);
+		const { frontmatter, headings, html } = await process(
+			text,
+			frontmatterSchema,
+		);
 
 		const post: Post = { ...frontmatter, headings, slug: params.slug };
 
