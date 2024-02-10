@@ -24,6 +24,12 @@ The experimental [Speculation Rules API](https://developer.mozilla.org/en-US/doc
 
 It's important to note, this happens entirely on the client. Usually when I think of preprendering, it's usually in the context of build or server side optimizations. This _client-side_ prerendering takes place in the browser.
 
+Google uses this technology in search. For exmaple, type "calculator" into the search bar on Google when using Chrome. Open your dev tools and you will see a drop down in the upper right corner that says "Main".
+
+![An image of the Chrome dev tools.](/images/speculation-rules-api/dev-tools.png)
+
+Click this and select the "Search / Prerender" option. You can see the generated page if you were to complete the calcuator search. Search for `"equals"` in the HTML to find the equals button!
+
 Here's an over-simplified diagram of the difference between prefetching with a `<link rel="prefetch">` tag or using `fetch` (I'll refer to this as _prefetching_) compared to _prerendering_ using the Speculation Rules API.
 
 ![A diagram showing the steps the browser takes to load a web page. 1. Lookup, 2. HTTP Request, 2.1. Request to a CMS, 3. Requests more assets from the server, 4. Request more assets after processing JavaScript. When comparing prefetching to the speculation rules API, the speculation rules API cover all 4 steps while prefetching stops at step 3. Prefetching does not run the client side JS.](/images/speculation-rules-api/diagram.png)
