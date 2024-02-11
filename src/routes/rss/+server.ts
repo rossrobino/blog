@@ -17,7 +17,7 @@ export const GET = async () => {
 const xml = (posts: Post[]) => `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<atom:link href="http://blog.robino.dev/feed" rel="self" type="application/rss+xml" />
+<atom:link href="http://blog.robino.dev/rss" rel="self" type="application/rss+xml" />
 <title>blog.robino.dev</title>
 <link>http://blog.robino.dev</link>
 <description>Ross Robino's blog</description>

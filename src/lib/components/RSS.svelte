@@ -8,7 +8,7 @@
 	});
 </script>
 
-<drab-copy value="https://blog.robino.dev/feed">
+<drab-copy value="https://blog.robino.dev/rss">
 	<button data-trigger class="button button-secondary button-icon" title="RSS">
 		<span data-content>
 			<svg
