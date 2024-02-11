@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { description, title } from "$lib/info/index.js";
 	import PostCard from "$lib/components/PostCard.svelte";
+	import RSS from "$lib/components/RSS.svelte";
 	import type { Post } from "$lib/types/index.js";
 
 	export let data;
@@ -37,26 +38,29 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<section class="mb-8 flex flex-wrap gap-2">
-	{#each filters as filter}
-		<div>
-			<button
-				class="button button-ghost uppercase"
-				on:click={() => changeFilter(filter)}
-			>
-				{filter}
-			</button>
-			{#if filter === currentFilter}
-				<!-- marker -->
-				<div
-					class="bg-foreground p-0.5"
-					style="view-transition-name: currentFilter;"
-				></div>
-			{:else}
-				<div class="p-0.5"></div>
-			{/if}
-		</div>
-	{/each}
+<section class="flex justify-between gap-4">
+	<div class="mb-8 flex flex-wrap gap-2">
+		{#each filters as filter}
+			<div>
+				<button
+					class="button button-ghost uppercase"
+					on:click={() => changeFilter(filter)}
+				>
+					{filter}
+				</button>
+				{#if filter === currentFilter}
+					<!-- marker -->
+					<div
+						class="bg-foreground p-0.5"
+						style="view-transition-name: currentFilter;"
+					></div>
+				{:else}
+					<div class="p-0.5"></div>
+				{/if}
+			</div>
+		{/each}
+	</div>
+	<RSS />
 </section>
 
 <section>

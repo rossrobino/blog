@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PostCard from "$lib/components/PostCard.svelte";
+	import RSS from "$lib/components/RSS.svelte";
 	import { repository, url } from "$lib/info/index.js";
 	import { onMount } from "svelte";
 
@@ -44,5 +45,6 @@
 				<template data-swap>Copied</template>
 			</button>
 		</drab-share>
+		<RSS />
 	</div>
 </article>

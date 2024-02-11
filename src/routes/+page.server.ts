@@ -1,31 +1,10 @@
-import { frontmatterSchema } from "$lib/schemas";
 import type { Post } from "$lib/types";
-import { getSlug } from "$lib/util/getSlug";
+import { getPosts } from "$lib/util/getPosts";
 import { error } from "@sveltejs/kit";
-import { process } from "robino/util/md";
 
 export const load = async () => {
 	try {
-		const content = import.meta.glob("../content/*.md", {
-			query: "?raw",
-			import: "default",
-			eager: true,
-		});
-
-		const posts: Post[] = [];
-
-		for (const path in content) {
-			const md = content[path];
-			// @ts-expect-error - excessively deep due to zod schema
-			const { frontmatter, headings } = await process(md, frontmatterSchema);
-			const slug = getSlug(path);
-			posts.push({ ...frontmatter, slug, headings });
-		}
-
-		posts.sort(
-			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-		);
-
+		const posts = await getPosts();
 		const filters = getKeywords(posts);
 
 		return { posts, filters };
