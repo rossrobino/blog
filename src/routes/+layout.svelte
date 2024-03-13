@@ -43,6 +43,8 @@
 		<div>
 			<span>{new Date().getFullYear()} -</span>
 			<a href={homepage}>{author}</a>
+			<span>/</span>
+			<a href="https://robino.dev/privacy">Privacy Policy</a>
 		</div>
 		<a href={repository} title="Repository"><Repo /></a>
 	</footer>
