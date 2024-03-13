@@ -36,7 +36,7 @@ Here's an over-simplified diagram of the difference between prefetching with a `
 
 Here we can see how prerendering with Speculation Rules API goes further than simply prefetching the assets required. It entirely renders the page as if the user had already navigated to it in advance. For some sites this time is minimal, but for sites with a large amount of client-side JavaScript, this can completely eliminate the time to interactive. Step 4 can quickly add up if there is a waterfall of client-side requests.
 
-## Developer Experience Comparison
+## Developer experience comparison
 
 ### Prefetch
 
