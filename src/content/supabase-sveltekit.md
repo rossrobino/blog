@@ -167,7 +167,7 @@ import { error } from "@sveltejs/kit";
 
 export const load = async () => {
 	const { data: todos, error: db_error } = await db.from("todos").select();
-	if (!todos) throw error(404, db_error);
+	if (!todos) error(404, db_error);
 	return { todos };
 };
 ```

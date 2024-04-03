@@ -142,7 +142,7 @@ export const actions = {
 		// transformed is data available in `safeParse.data`
 
 		// where to send if login successful
-		throw redirect(303, "/app");
+		redirect(303, "/app");
 	},
 };
 ```

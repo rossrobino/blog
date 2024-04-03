@@ -34,6 +34,25 @@ Use [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_compo
 </my-custom-element>
 ```
 
+<script type="module">
+	customElements.define(
+		"my-custom-element",
+		class extends HTMLElement {
+			connectedCallback() {
+				const div = this.querySelector("div");
+
+				div.textContent; // "Inside"
+			}
+		},
+	);
+</script>
+
+<div>Outside</div>
+
+<my-custom-element>
+	<div>Inside</div>
+</my-custom-element>
+
 ## CSS
 
 Styles within [@scope](https://developer.mozilla.org/en-US/docs/Web/CSS/@scope) apply to the parent element and children.
