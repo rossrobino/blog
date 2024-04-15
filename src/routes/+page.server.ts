@@ -4,7 +4,7 @@ import { error } from "@sveltejs/kit";
 
 export const load = async () => {
 	try {
-		const posts = await getPosts();
+		const posts = (await getPosts()).filter((post) => !post.draft);
 		const filters = getKeywords(posts);
 
 		return { posts, filters };

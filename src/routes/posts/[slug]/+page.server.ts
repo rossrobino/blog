@@ -1,3 +1,4 @@
+import { dev } from "$app/environment";
 import { frontmatterSchema } from "$lib/schemas";
 import type { Post } from "$lib/types";
 import { error } from "@sveltejs/kit";
@@ -26,6 +27,8 @@ export const load = async ({ params }) => {
 			text,
 			frontmatterSchema,
 		);
+
+		if (!dev && frontmatter.draft) error(403, "This post is in draft mode.");
 
 		const post: Post = { ...frontmatter, headings, slug: params.slug };
 

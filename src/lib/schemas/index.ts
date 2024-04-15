@@ -11,5 +11,6 @@ export const frontmatterSchema = z
 		date: z.string().transform((s) => {
 			return formatDate(s);
 		}),
+		draft: z.boolean().optional(),
 	})
 	.strict();
