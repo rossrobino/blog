@@ -1,6 +1,6 @@
 import type { Post } from "$lib/types";
 import { getSlug } from "./getSlug";
-import { process } from "robino/util/md";
+import { processMarkdown } from "robino/util/md";
 import { frontmatterSchema } from "$lib/schemas";
 
 export const getPosts = async () => {
@@ -13,9 +13,11 @@ export const getPosts = async () => {
 	const posts: Post[] = [];
 
 	for (const path in content) {
-		const md = content[path];
-		// @ts-expect-error - excessively deep due to zod schema
-		const { frontmatter, headings } = await process(md, frontmatterSchema);
+		const md = content[path] as string;
+		const { frontmatter, headings } = await processMarkdown(
+			md,
+			frontmatterSchema,
+		);
 		const slug = getSlug(path);
 		posts.push({ ...frontmatter, slug, headings });
 	}

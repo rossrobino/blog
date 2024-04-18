@@ -2,7 +2,7 @@ import { dev } from "$app/environment";
 import { frontmatterSchema } from "$lib/schemas";
 import type { Post } from "$lib/types";
 import { error } from "@sveltejs/kit";
-import { process } from "robino/util/md";
+import { processMarkdown } from "robino/util/md";
 
 export const load = async ({ params }) => {
 	let text: string | undefined;
@@ -23,7 +23,7 @@ export const load = async ({ params }) => {
 	if (typeof text === "undefined") error(404, `${params.slug}.md not found`);
 
 	try {
-		const { frontmatter, headings, html } = await process(
+		const { frontmatter, headings, html } = await processMarkdown(
 			text,
 			frontmatterSchema,
 		);
