@@ -2,13 +2,17 @@
 	import type { Post } from "$lib/types";
 	import Headings from "./Headings.svelte";
 
-	export let post: Post;
-
-	export let headings = false;
-
-	export let size: "sm" | "md" | "lg" = "sm";
-
-	export let link = true;
+	let {
+		post,
+		headings = false,
+		size = "sm",
+		link = true,
+	}: {
+		post: Post;
+		headings?: boolean;
+		size?: "sm" | "md" | "lg";
+		link?: boolean;
+	} = $props();
 </script>
 
 <div

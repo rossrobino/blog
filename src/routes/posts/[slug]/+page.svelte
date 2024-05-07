@@ -4,7 +4,8 @@
 	import { repository, url } from "$lib/info/index.js";
 	import { onMount } from "svelte";
 
-	export let data;
+	let { data } = $props();
+
 	const { html, post } = data;
 	const { title, description, keywords } = post;
 

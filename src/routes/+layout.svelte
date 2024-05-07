@@ -1,6 +1,7 @@
 <script lang="ts">
 	import "../app.postcss";
 	import Breakpoint from "$lib/components/Breakpoint.svelte";
+	import Repo from "$lib/icons/Repo.svelte";
 	import { author, homepage, repository, title } from "$lib/info";
 
 	// remove if not using vercel analytics
@@ -10,7 +11,6 @@
 
 	// https://svelte.dev/blog/view-transitions
 	import { onNavigate } from "$app/navigation";
-	import Repo from "$lib/icons/Repo.svelte";
 	onNavigate((navigation) => {
 		// @ts-expect-error - not supported in all browsers
 		if (!document.startViewTransition) return;
@@ -22,6 +22,8 @@
 			});
 		});
 	});
+
+	let { children } = $props();
 </script>
 
 <Breakpoint />
@@ -37,7 +39,7 @@
 		</h2>
 	</header>
 
-	<main><slot /></main>
+	<main>{@render children()}</main>
 
 	<footer class="mt-8 flex justify-between">
 		<div>

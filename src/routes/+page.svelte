@@ -4,11 +4,11 @@
 	import RSS from "$lib/components/RSS.svelte";
 	import type { Post } from "$lib/types/index.js";
 
-	export let data;
+	let { data } = $props();
 
 	let { posts, filters } = data;
 
-	let currentFilter = "all";
+	let currentFilter = $state("all");
 
 	const changeFilter = (filter: string) => {
 		const change = () => {
@@ -30,7 +30,9 @@
 		return posts.filter((post) => post.keywords.includes(currentFilter));
 	};
 
-	$: filteredPosts = getFilteredPosts(posts, currentFilter);
+	const filteredPosts = $derived.by(() =>
+		getFilteredPosts(posts, currentFilter),
+	);
 </script>
 
 <svelte:head>
@@ -44,7 +46,7 @@
 			<div>
 				<button
 					class="button button-ghost uppercase"
-					on:click={() => changeFilter(filter)}
+					onclick={() => changeFilter(filter)}
 				>
 					{filter}
 				</button>
