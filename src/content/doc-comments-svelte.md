@@ -14,9 +14,6 @@ Entire Svelte components can be documented with HTML comments that include `@com
 [Svelte FAQ](https://svelte.dev/docs/faq#how-do-i-document-my-components)
 
 ````svelte
-...
-</script>
-
 <!--
 @component
 ## Repeat.svelte
@@ -34,7 +31,10 @@ Entire Svelte components can be documented with HTML comments that include `@com
 ```
 -->
 
-<div>
+<script>
+	// ...
+</script>
+
 ...
 ````
 
@@ -46,11 +46,16 @@ You can utilize markdown syntax in this comment to write documentation. It will 
 
 ```svelte
 <script lang="ts">
-	/** text to repeat */
-	export let text: string;
+	let {
+		text,
+		numberOfTimes,
+	}: {
+		/** text to repeat */
+		text: string;
 
-	/** number of times to repeat */
-	export let numberOfTimes: number;
+		/** number of times to repeat */
+		numberOfTimes: number;
+	} = $props();
 </script>
 
 <!--
@@ -81,8 +86,12 @@ Types can be documented using JSDoc. This makes it easier for component authors 
 </script>
 
 <script lang="ts">
-	/** options for the repeat component */
-	export let options: RepeatOptions;
+	let {
+		options,
+	}: {
+		/** options for the repeat component */
+		options: RepeatOptions;
+	} = $props();
 </script>
 
 <!--

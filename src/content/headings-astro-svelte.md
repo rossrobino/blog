@@ -17,7 +17,7 @@ Here's how I created a component to parse all of the headings from a file or a l
 
 First, we will create a `Headings.svelte` component. We will want to use this in two different places, so we will build it with that flexibility in mind. We can pass in either an imported `file`, or just the `headings` from the file in a layout.
 
-Each `.md` or `.mdx` file can be imported with a built in Astro method which we will implement in the [next section](#import-in-other-pages). Imported files contain a [variety of data points](https://docs.astro.build/en/reference/api-reference/#markdown-files), we can utlize these two:
+Each `.md` or `.mdx` file can be imported with a built in Astro method which we will implement in the [next section](#import-in-other-pages). Imported files contain a [variety of data points](https://docs.astro.build/en/reference/api-reference/#markdown-files), we can utilize these two:
 
 - `url` contains the path to file
 - `headings` contains a list of heading objects
@@ -32,8 +32,7 @@ Each [heading object](https://docs.astro.build/en/core-concepts/layouts/#markdow
 
 <script>
 	// props - accepts entire file or just the headings
-	export let headings = [];
-	export let file = {};
+	let { headings = [], file = {} } = $props();
 
 	// check if the file has any keys
 	const isFile = Boolean(Object.keys(file).length);

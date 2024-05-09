@@ -36,7 +36,7 @@ You can read more on this in the [svelte-package documentation](https://kit.svel
 		"Svelte",
 		"SvelteKit"
 	],
-	"homepage": "https://components.robino.dev",
+	"homepage": "https://components.com",
 	"license": "MIT",
 	"author": {
 		"name": "Ross Robino",
@@ -63,16 +63,10 @@ Create a component to export in your package, here's my `YouTube.svelte` compone
 <!-- src/lib/svelte/YouTube.svelte -->
 
 <script>
-	let className = "";
-	let idName = "";
-	export { className as class, idName as id };
-	export let uid;
-	export let title = "";
+	let { uid, title } = $props();
 </script>
 
 <iframe
-	class={className}
-	id={idName}
 	src="https://www.youtube.com/embed/{uid}"
 	{title}
 	frameborder="0"
@@ -118,7 +112,7 @@ Now we can package the library and publish it on [npm](https://www.npmjs.com/) f
 - Run `npm run package` to execute the `package` script in `package.json`
 - You can verify the output of your build in the `dist` directory
 - Commit changes to your repository
-- Run `npm publish --access public` to publically publish your package on npm (if you don't have an account you will need to create one and log in)
+- Run `npm publish --access public` to publicly publish your package on npm (if you don't have an account you will need to create one and log in)
 
 ## Test in a separate project
 

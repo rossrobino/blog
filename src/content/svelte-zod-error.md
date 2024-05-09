@@ -15,7 +15,6 @@ First create a new SvelteKit project and then add Zod as a development dependenc
 
 ```bash
 npm create svelte@latest
-npm install
 npm install -D zod
 ```
 
@@ -162,15 +161,12 @@ If there's any validation issues, we want to display the messages provided by ou
 
 <ul>
 	{#each issues as { message, path }}
-		<li>
-			{String(path[0]).charAt(0).toUpperCase() + String(path[0]).slice(1)} -
-			{message}
-		</li>
+		<li>{path[0]} - {message}</li>
 	{/each}
 </ul>
 ```
 
-In case of an invalid form, we can now utlize our `ZodIssues.svelte` component to display the issues.
+In case of an invalid form, we can now utilize our `ZodIssues.svelte` component to display the issues.
 
 ```svelte
 <!-- src/routes/+page.svelte -->
@@ -178,7 +174,7 @@ In case of an invalid form, we can now utlize our `ZodIssues.svelte` component t
 <script lang="ts">
 	import ZodIssues from "$lib/components/ZodIssues.svelte";
 
-	export let form;
+	let { form } = $props();
 </script>
 
 <form method="POST">

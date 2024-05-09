@@ -14,9 +14,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.5.7",
-		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"@tailwindcss/typography": "^0.5.13",
-		"@types/js-yaml": "^4.0.9",
 		"@vercel/analytics": "^1.2.2",
 		"autoprefixer": "^10.4.19",
 		"drab": "^5.4.0",
@@ -31,7 +29,7 @@
 		"typescript": "^5.4.5",
 		"uico": "^0.2.4",
 		"vite": "^5.2.11",
-		"zod": "^3.23.7"
+		"zod": "^3.23.8"
 	},
 	"type": "module"
 }

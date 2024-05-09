@@ -7,6 +7,8 @@ date: 2023, 05, 01
 
 _At the time of this writing, Drizzle has not reached 1.0. Check out tools like [Prisma](https://www.prisma.io) for a production ready solution._
 
+_Updated May 9th, 2024_
+
 ## I've heard this before...
 
 Many projects set out with the goal of writing once, and running anywhere. Recently, there has been a trend of combining front-end and backend into the same project with tools like [Next.js](https://nextjs.org/) or [React Server Components](https://nextjs.org/docs/advanced-features/react-18/server-components). [Drizzle-ORM](https://github.com/drizzle-team/drizzle-orm) helps developers get closer to this promise at the database layer by allowing users to write their schema and query their data in JavaScript.
@@ -34,7 +36,7 @@ Drizzle takes developers one step closer to the write once, run anywhere workflo
 
 ## Tutorial -- SvelteKit and Drizzle-ORM
 
-Here's how to use Drizzle-ORM in a [SvelteKit](https://kit.svelte.dev/) project with [Vercel's Postgres Storage](https://vercel.com/docs/storage/vercel-postgres). Drizzle makes it easier to keep your services modular and swap out the database provider, check out the [Planetscale integration](https://github.com/drizzle-team/drizzle-orm/blob/main/drizzle-orm/src/mysql-core/README.md#connect-using-planetscale-serverless-client) for a similar developer experience.
+Here's how to use Drizzle-ORM in a [SvelteKit](https://kit.svelte.dev/) project with [Vercel's Postgres Storage](https://vercel.com/docs/storage/vercel-postgres). Drizzle makes it easier to keep your services modular and swap out the database provider, check out the [Planetscale integration](https://orm.drizzle.team/docs/get-started-mysql#planetscale) for a similar developer experience.
 
 ### Create a SvelteKit project
 
@@ -70,7 +72,7 @@ vercel git connect
 vercel env pull .env.development.local
 ```
 
-- You should see a `.env.development.local` file in your project's root directory containing the environment variables for your project
+- You should see a `.env.development.local` file in your project's root directory containing the environment variables for your project (be sure to add `.env.*` files to your `.gitignore` file to ensure these variables are not committed to your repository. This is configured by default for new SvelteKit projects.)
 - Run `vercel dev` to test your development environment
 
 ### Dependencies
@@ -78,7 +80,7 @@ vercel env pull .env.development.local
 - Next, install the required dependencies for the project.
 
 ```bash
-npm install drizzle-orm drizzle-kit @vercel/postgres
+npm install -D drizzle-orm drizzle-kit @vercel/postgres
 ```
 
 ### Define a schema
@@ -100,19 +102,22 @@ Here we can see how creating a schema is very similar to writing SQL. The benefi
 
 ### Migrate
 
-- Create a `drizzle.config.json` file in the root directory of your project
+- Create a `drizzle.config.ts` file in the root directory of your project
 
-```json
-// drizzle.config.json
+```ts
+// drizzle.config.ts
 
-{
-	"out": "./drizzle",
-	"schema": "./src/lib/db/schema.ts",
-	"breakpoints": true
-}
+import { defineConfig } from "drizzle-kit";
+
+export default defineConfig({
+	schema: "./src/lib/db/schema.ts",
+	out: "./drizzle",
+	dialect: "postgresql",
+	breakpoints: true,
+});
 ```
 
-`out` is the path to the output directory, `schema` is the path to the schema file, `breakpoints` is whether to execute each SQL statement in the migration individually. These can all be customized based on your preferences.
+`out` is the path to the output directory, `schema` is the path to the schema file, `dialect` is the `postgresql` since we are using Vercel Postgres, and `breakpoints` is whether to execute each SQL statement in the migration individually. These can all be customized based on your preferences.
 
 - For convenience I've also added a `migrate` script to `package.json`
 
@@ -123,7 +128,7 @@ Here we can see how creating a schema is very similar to writing SQL. The benefi
 	...
 	"scripts": {
 		...
-		"migrate": "drizzle-kit generate:pg"
+		"migrate": "drizzle-kit generate"
 	},
 	...
 }
@@ -173,17 +178,17 @@ export const conn = drizzle(sql);
 
 - Create a `src/routes/+page.server.ts` file to load the data
 
-Since the data isn't critical to our users, let's stream it by [returning a nested promise](https://kit.svelte.dev/docs/load#streaming-with-promises) in the `load` function.
+Since the data isn't critical to our users, let's stream it by [returning a promise](https://kit.svelte.dev/docs/load#streaming-with-promises) in the `load` function.
 
 ```ts
 // src/routes/+page.server.ts
 
-import { conn } from "$lib/db/conn.server.js";
-import { PageInsights } from "$lib/db/schema.js";
+import { conn } from "$lib/db/conn.server";
+import { PageInsights } from "$lib/db/schema";
 import { eq } from "drizzle-orm";
 
-export const load = async () => {
-	return { streamed: { views: fetchViews() } };
+export const load = () => {
+	return { views: fetchViews() };
 };
 
 const fetchViews = async () => {
@@ -194,17 +199,13 @@ const fetchViews = async () => {
 
 	const views = ++insights[0].views;
 
-	await conn
-		.update(PageInsights)
-		.set({ views })
-		.where(eq(PageInsights.id, 1))
-		.returning();
+	await conn.update(PageInsights).set({ views }).where(eq(PageInsights.id, 1));
 
 	return views;
 };
 ```
 
-Here we achieve full type safety from the database to the server to the client through the combination of Drizzle-ORM and SvelteKit's load functions--all without manually writing any types.
+Here we achieve full type safety from the database to the server to the client through the combination of Drizzle-ORM and SvelteKit's load functions--all without manually writing any types (be sure to run `vercel dev` again to generate types for this load function).
 
 ### Render
 
@@ -214,11 +215,11 @@ Finally, we can render our data to the page in `src/routes/+page.svelte`.
 <!-- src/routes/+page.svelte -->
 
 <script lang="ts">
-	export let data;
+	let { data } = $props();
 </script>
 
 <p>
-	{#await data.streamed.views}
+	{#await data.views}
 		Loading...
 	{:then views}
 		This page has been viewed {views} times.
@@ -229,6 +230,10 @@ Finally, we can render our data to the page in `src/routes/+page.svelte`.
 ```
 
 ## Conclusion
+
+Deploy your changes by pushing your changes to GitHub and verify your build in the Vercel Dashboard.
+
+---
 
 Drizzle-ORM simplifies the process of writing code once and running it on any platform, by allowing developers to write in JavaScript and execute it on the edge runtime. Drizzle-ORM provides the convenience of using SQL-like syntax, and ensures reusability across various database providers. Developers can confidently invest their time in mastering a versatile and efficient tool.
 

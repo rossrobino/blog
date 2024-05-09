@@ -17,9 +17,11 @@ To set up the share button, the `.share` method takes an object as an argument w
 <!-- ShareButton.svelte -->
 
 <script>
-	export let text = "Check out this page!";
-	export let url = "https://blog.robino.dev";
-	export let title = url.split("/").splice(-1)[0]; // default to end of url
+	let {
+		text = "Check out this page!",
+		url = "https://blog.robino.dev",
+		title = url.split("/").at(-1), // default to end of url
+	} = $props();
 
 	async function handleClick() {
 		try {
@@ -43,11 +45,13 @@ Some systems do not support the `.share` method, we can check the support by che
 <!-- ShareButton.svelte -->
 
 <script>
-	export let text = "Check out this page!";
-	export let url = "https://blog.robino.dev";
-	export let title = url.split("/").splice(-1)[0]; // default to end of url
+	let {
+		text = "Check out this page!",
+		url = "https://blog.robino.dev",
+		title = url.split("/").at(-1),
+	} = $props();
 
-	let complete = false;
+	let complete = $state(false);
 
 	async function handleClick() {
 		try {

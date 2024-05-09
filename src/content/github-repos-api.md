@@ -52,7 +52,7 @@ We can now access this data in `+page.svelte` contained in the same directory wi
 <!-- +page.svelte -->
 
 <script>
-	export let data;
+	let { data } = $props();
 </script>
 
 <h2>Portfolio</h2>

@@ -186,7 +186,7 @@ As you type, you should see your table name appear as an argument in the `from` 
 <!-- src/routes/+page.svelte -->
 
 <script lang="ts">
-	export let data;
+	let { data } = $props();
 </script>
 
 <h1>Todo List</h1>

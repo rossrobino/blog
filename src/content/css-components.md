@@ -29,9 +29,17 @@ Here's how you might approach this using Svelte to build an all-purpose componen
 
 ```svelte
 <script lang="ts">
-	export let variant: "primary" | "secondary" = "primary";
-	export let type: "submit" | "reset" | "button" = "submit";
-	export let href = "";
+	let {
+		variant = "primary",
+		type = "submit",
+		href = "",
+		onclick = () => {},
+	}: {
+		variant?: "primary" | "secondary";
+		type?: "submit" | "reset" | "button";
+		href?: string;
+		onclick?: () => {};
+	} = $props();
 </script>
 
 {#if href}
@@ -45,7 +53,7 @@ Here's how you might approach this using Svelte to build an all-purpose componen
 {:else}
 	<button
 		{type}
-		on:click
+		onclick
 		class:primary={variant === "primary"}
 		class:secondary={variant === "secondary"}
 	>
