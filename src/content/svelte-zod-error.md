@@ -156,7 +156,7 @@ If there's any validation issues, we want to display the messages provided by ou
 <script lang="ts">
 	import type { ZodIssue } from "zod";
 
-	export let issues: ZodIssue[];
+	let { issues }: { issues: ZodIssue[] } = $props();
 </script>
 
 <ul>
