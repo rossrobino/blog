@@ -1,17 +1,18 @@
 <script lang="ts">
 	import PostCard from "$lib/components/PostCard.svelte";
 	import RSS from "$lib/components/RSS.svelte";
-	import { repository, url } from "$lib/info/index.js";
-	import { onMount } from "svelte";
+	import ShareButton from "$lib/components/ShareButton.svelte";
+	import { repository } from "$lib/info/index.js";
 
 	let { data } = $props();
 
 	const { html, post } = data;
 	const { title, description, keywords } = post;
 
+	import { onMount } from "svelte";
 	onMount(async () => {
-		if (!customElements.get("drab-share")) {
-			await import("drab/share/define");
+		if (!customElements.get("drab-youtube")) {
+			await import("drab/youtube/define");
 		}
 	});
 </script>
@@ -36,16 +37,7 @@
 		>
 			Edit
 		</a>
-		<drab-share value="{url}/posts/{post.slug}">
-			<button
-				data-trigger
-				type="button"
-				class="button button-secondary gap-1.5"
-			>
-				<span data-content>Share</span>
-				<template data-swap>Copied</template>
-			</button>
-		</drab-share>
+		<ShareButton slug={post.slug} />
 		<RSS />
 	</div>
 </article>

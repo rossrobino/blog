@@ -1,8 +1,8 @@
 ---
-title: title
+title: Template
 description: desc.
 keywords: keyword
-date: 2024, 01, 01
+date: 2000, 01, 01
 draft: true
 ---
 

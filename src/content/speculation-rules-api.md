@@ -5,6 +5,12 @@ keywords: javascript, custom elements, prefetch, prerender, speculation rules, p
 date: 2024, 02, 10
 ---
 
+This video shows a demo of how you might utilize the Speculation Rules API. Read on for the full explanation.
+
+<drab-youtube uid="W4VjS7rSmB0">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Prefetching
 
 _Prefetching_ is a popular and high impact performance optimization that web developers can utilize to speed up navigation and interactions for users. Developers can implement a prefetching strategy to load assets for other pages that the user is likely to navigate to next into the cache.
