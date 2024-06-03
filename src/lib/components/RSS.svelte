@@ -9,13 +9,13 @@
 </script>
 
 <drab-copy value="https://blog.robino.dev/rss">
-	<button data-trigger class="button button-secondary button-icon" title="RSS">
+	<button data-trigger class="button button-ghost button-icon" title="RSS">
 		<span data-content>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				fill="currentColor"
-				class="h-6 w-6"
+				class="size-6"
 			>
 				<path
 					fill-rule="evenodd"

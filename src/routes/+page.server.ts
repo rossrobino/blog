@@ -1,10 +1,11 @@
+import { dev } from "$app/environment";
 import type { Post } from "$lib/types";
 import { getPosts } from "$lib/util/getPosts";
 import { error } from "@sveltejs/kit";
 
 export const load = async () => {
 	try {
-		const posts = (await getPosts()).filter((post) => !post.draft);
+		const posts = (await getPosts()).filter((post) => !post.draft || dev);
 		const filters = getKeywords(posts);
 
 		return { posts, filters };

@@ -7,7 +7,7 @@ I created this blog as a place to write about topics I am interested in. Check i
 - [SvelteKit](https://kit.svelte.dev)
 - TypeScript
 - [Vite](https://github.com/vitejs/vite/tree/main/#readme)
-- [`drab` - Svelte components](https://drab.robino.dev)
+- [`drab` - components](https://drab.robino.dev)
 - [TailwindCSS](https://tailwindcss.com/)
 - [`uico` - Tailwind plugin for basic components](https://uico.robino.dev)
 - [`marked` - markdown parser](https://marked.js.org/)
@@ -40,4 +40,3 @@ The project is set up to deploy to Vercel with the static adapter and Vercel ana
 
 - Update the adapter in `svelte.config.js` based on your deployment method, `bun rm @sveltejs/adapter-static`, [follow these instructions](https://kit.svelte.dev/docs/adapters).
 - Remove the analytics from `src/routes/+layout.svelte` and run `bun rm @vercel/analytics`
--
