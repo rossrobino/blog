@@ -18,6 +18,7 @@
 <div
 	style="view-transition-name: {post.slug};"
 	class="rounded-lg border-b-2 border-r-2 border-secondary pb-0.5 pr-0.5"
+	aria-label="Post card"
 >
 	<div class="card h-full border-2 transition" class:hover:shadow-xl={link}>
 		{#if link}
@@ -34,14 +35,16 @@
 		{:else}
 			<!-- on the post's page -->
 			<h1>{post.title}</h1>
-			<div class="my-2 flex flex-wrap gap-1.5">
+			<ul class="not-prose my-2 flex flex-wrap gap-1.5" aria-label="keywords">
 				{#each post.keywords as keyword}
-					<div class="badge badge-secondary">{keyword}</div>
+					<li class="badge badge-secondary">{keyword}</li>
 				{/each}
-			</div>
+			</ul>
 		{/if}
-		<div class="my-2">{post.date}</div>
-		<div class="my-2 italic">{post.description}</div>
+		<div class="my-2" aria-label="Published date">{post.date}</div>
+		<div class="my-2 italic" aria-label="Post description">
+			{post.description}
+		</div>
 		{#if headings}
 			<Headings {post} />
 		{/if}

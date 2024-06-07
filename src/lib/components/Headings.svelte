@@ -4,7 +4,7 @@
 	let { post }: { post: Post } = $props();
 </script>
 
-<ul class="my-2">
+<ul class="my-2" aria-label="Table of contents">
 	{#each post.headings as heading}
 		<!-- since the frontmatter title is h1, display the h2's -->
 		{#if heading.level === 2}

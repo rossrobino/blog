@@ -2,7 +2,7 @@
 title: A Practical Guide to Web Development
 description: desc
 keywords: keyword
-date: 2024, 05, 23
+date: 2000, 05, 23
 draft: true
 ---
 

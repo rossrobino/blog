@@ -5,21 +5,21 @@
 @layer base {
 	:root {
 		/* https://uico.robino.dev */
-		--background: 99% 0 0; /* neutral-50 */
-		--foreground: 37% 0 0; /* neutral-700 */
-		--muted: 97% 0 0; /* neutral-100 */
-		--muted-foreground: 44% 0 0; /* neutral-600 */
-		--primary: 28% 0 0; /* neutral-800 */
-		--primary-foreground: 97% 0 0; /* neutral-100 */
-		--secondary: 93% 0 0; /* neutral-200 */
-		--secondary-foreground: 22% 0 0; /* neutral-900 */
-		--destructive: 56% 0.19 17; /* rose-700 */
-		--destructive-foreground: 97% 0 0; /* neutral-100 */
-		--accent: 28% 0 0; /* neutral-800 */
-		--accent-foreground: 93% 0 0; /* neutral-200 */
-		--card: 100% 0 0; /* white */
-		--card-foreground: 37% 0 0; /* neutral-700 */
-		--border: 87% 0 0; /* neutral-300 */
+		--background: 99% 0 0;
+		--foreground: 37% 0 0;
+		--muted: 93% 0 0;
+		--muted-foreground: 44% 0 0;
+		--primary: 28% 0 0;
+		--primary-foreground: 97% 0 0;
+		--secondary: 93% 0 0;
+		--secondary-foreground: 22% 0 0;
+		--destructive: 56% 0.19 17;
+		--destructive-foreground: 97% 0 0;
+		--accent: 28% 0 0;
+		--accent-foreground: 93% 0 0;
+		--card: 100% 0 0;
+		--card-foreground: 37% 0 0;
+		--border: 87% 0 0;
 		--radius: 0.1rem;
 	}
 
@@ -43,6 +43,21 @@
 		width: 100%;
 		border: 3px solid theme(colors.primary.DEFAULT);
 		margin-block: 2em;
+	}
+}
+
+@layer components {
+	.prose :where(code:not(pre code))::before {
+		content: "";
+	}
+	.prose :where(code:not(pre code))::after {
+		content: "";
+	}
+	.prose :where(code:not(pre code)) {
+		background-color: theme(backgroundColor.muted.DEFAULT);
+		padding: theme(padding.1) theme(padding.2);
+		border-radius: theme(borderRadius.DEFAULT);
+		font-weight: theme(fontWeight.normal);
 	}
 }
 

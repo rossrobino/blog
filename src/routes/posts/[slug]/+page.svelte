@@ -14,6 +14,27 @@
 		if (!customElements.get("drab-youtube")) {
 			await import("drab/youtube/define");
 		}
+
+		// copy text code blocks
+		const pres = document.querySelectorAll("pre");
+		for (const pre of pres) {
+			pre.style.cursor = "copy";
+			pre.tabIndex = 0;
+			pre.setAttribute("role", "button");
+			pre.setAttribute("aria-description", "Copy code to clipboard");
+
+			const copyText = () => {
+				navigator.clipboard.writeText(pre.textContent ?? "");
+			};
+
+			pre.addEventListener("click", copyText);
+			pre.addEventListener("keydown", (e) => {
+				if (e.key === "Enter" || e.key === " ") {
+					e.preventDefault();
+					copyText();
+				}
+			});
+		}
 	});
 </script>
 

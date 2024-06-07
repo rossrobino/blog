@@ -9,7 +9,12 @@
 </script>
 
 <drab-copy value="https://blog.robino.dev/rss">
-	<button data-trigger class="button button-ghost button-icon" title="RSS">
+	<button
+		data-trigger
+		class="button button-ghost button-icon"
+		title="RSS"
+		aria-label="Copy RSS link to clipboard"
+	>
 		<span data-content>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

@@ -32,11 +32,15 @@
 	class="prose prose-neutral mx-auto max-w-[98ch] prose-a:link hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md"
 >
 	<header class="mb-8">
-		<h2 class="my-0">
-			<a href="/" class="font-extrabold uppercase italic !no-underline">
+		<div class="my-0">
+			<a
+				href="/"
+				class="text-2xl font-extrabold uppercase italic !no-underline"
+				aria-label="Homepage"
+			>
 				{title}
 			</a>
-		</h2>
+		</div>
 	</header>
 
 	<main>{@render children()}</main>

@@ -42,7 +42,7 @@
 </svelte:head>
 
 <section class="flex justify-between gap-4">
-	<div class="mb-8 flex flex-wrap gap-2">
+	<div class="mb-8 flex flex-wrap gap-2" aria-label="Filter by keywords">
 		{#each filters as filter}
 			<div>
 				<button
