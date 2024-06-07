@@ -90,13 +90,13 @@ export default defineConfig({
 				order: "pre",
 				async handler(html) {
 					// create a DOM on the server
-					const { document } = parseHTML(html);
+					const dom = parseHTML(html);
 
 					// append some text
-					document.body.append("Hello world!");
+					dom.document.body.append("Hello world!");
 
 					// return the updated html string
-					return document.toString();
+					return dom.document.toString();
 				},
 			},
 		},
@@ -174,7 +174,7 @@ export default defineConfig({
 				order: "pre",
 				async handler(html) {
 					// create a DOM on the server
-					const { document } = parseHTML(html);
+					const dom = parseHTML(html);
 
 					// get list of file names
 					const partialFileNames = await fs.readdir("src/partials");
@@ -185,7 +185,7 @@ export default defineConfig({
 					}
 
 					// return the updated html string
-					return document.toString();
+					return dom.document.toString();
 				},
 			},
 		},
