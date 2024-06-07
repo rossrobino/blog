@@ -3,7 +3,6 @@ title: Create Your Own Framework with Vite
 description: Understand modern development tooling by building a basic Vite plugin with LinkeDOM.
 keywords: javascript, typescript, vite, plugin
 date: 2024, 06, 06
-draft: true
 ---
 
 ## What are Vite plugins?
