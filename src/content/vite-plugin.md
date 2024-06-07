@@ -5,6 +5,10 @@ keywords: javascript, typescript, vite, plugin
 date: 2024, 06, 07
 ---
 
+## Introduction
+
+In this post, I'll show you how you can create a Vite plugin to reuse HTML partials in your web development projects.
+
 ## What are Vite plugins?
 
 [Vite](https://vitejs.dev/) is a popular JavaScript bundler and development server, it also has a plugin system has become a large part of the JavaScript ecosystem. These plugins allow developers to add additional functionality to Vite's build and development pipeline.
