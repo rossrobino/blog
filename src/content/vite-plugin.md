@@ -5,6 +5,10 @@ keywords: javascript, typescript, vite, plugin
 date: 2024, 06, 07
 ---
 
+<drab-youtube uid="qYKzMnORnA0">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Introduction
 
 In this post, I'll show you how you can create a Vite plugin to reuse HTML partials in your web development projects.
