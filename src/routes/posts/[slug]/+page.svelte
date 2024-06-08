@@ -18,7 +18,6 @@
 		// copy text code blocks
 		const pres = document.querySelectorAll("pre");
 		for (const pre of pres) {
-			pre.style.cursor = "copy";
 			pre.tabIndex = 0;
 			pre.setAttribute("role", "button");
 			pre.setAttribute("aria-description", "Copy code to clipboard");
