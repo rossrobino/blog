@@ -13,7 +13,7 @@ Here's a minimal example showing how to enable cross-document transitions and ho
 
 ## HTML
 
-Here are two almost identical pages that link to each other that we will transition between using CSS.
+Here are two almost identical pages that link to each other that we will transition between using CSS. Combine view transitions with the [Speculation Rules API](https://blog.robino.dev/posts/speculation-rules-api) to speed up navigation and ensure animations run as quickly as possible.
 
 ### page-1.html
 
@@ -25,12 +25,21 @@ Here are two almost identical pages that link to each other that we will transit
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/style.css" />
 		<title>Page 1</title>
+		<script type="speculationrules">
+			{
+				"prerender": [
+					{
+						"source": "list",
+						"urls": ["/page-2/"]
+					}
+				]
+			}
+		</script>
 	</head>
 	<body>
 		<main>
 			<h1>Page 1</h1>
 			<a href="/page-2/">Page 2</a>
-			...
 		</main>
 	</body>
 </html>
@@ -46,12 +55,21 @@ Here are two almost identical pages that link to each other that we will transit
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/style.css" />
 		<title>Page 2</title>
+		<script type="speculationrules">
+			{
+				"prerender": [
+					{
+						"source": "list",
+						"urls": ["/page-1/"]
+					}
+				]
+			}
+		</script>
 	</head>
 	<body>
 		<main>
 			<a href="/page-1/">Page 1</a>
-			<h1>Page 2</h1>
-			...
+			<h1>Page 1</h1>
 		</main>
 	</body>
 </html>
@@ -137,7 +155,7 @@ h1 {
 }
 ```
 
-You'll now see how the old heading slides out and the new heading scales into place. Combine this technique with the [Speculation Rules API](https://blog.robino.dev/posts/speculation-rules-api) to speed up navigation and ensure animations run as quickly as possible.
+You'll now see how the old heading slides out and the new heading scales into place.
 
 Here's a [more extensive demo](https://view-transitions.netlify.app/stack-navigator/mpa/) from the Google team showcasing more of the cross-document transition features.
 
