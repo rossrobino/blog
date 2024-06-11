@@ -5,6 +5,10 @@ keywords: view transitions, css, html
 date: 2024, 06, 11
 ---
 
+<drab-youtube uid="5yTXcA0iXcI">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Browser support
 
 [Cross-document view transitions](https://developer.chrome.com/docs/web-platform/view-transitions/cross-document) have landed in Chrome 126. This feature is a progressive enhancement that enables animations between pages with the same origin. Previously, there was no way to animate between navigation from one page to another without the use of a client-side JavaScript router. This feature allows users to animate between pages in multi-page applications using only CSS. For browsers that do not support the feature, navigation still occurs without animation.
