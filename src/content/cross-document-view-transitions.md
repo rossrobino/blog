@@ -69,7 +69,7 @@ Here are two almost identical pages that link to each other that we will transit
 	<body>
 		<main>
 			<a href="/page-1/">Page 1</a>
-			<h1>Page 1</h1>
+			<h1>Page 2</h1>
 		</main>
 	</body>
 </html>
