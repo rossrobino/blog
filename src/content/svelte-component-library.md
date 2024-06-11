@@ -5,18 +5,22 @@ keywords: svelte, components, library, npm
 date: 2023, 01, 12
 ---
 
+<drab-youtube uid="_5IZi9xyDFY">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## svelte-package 2.0
 
 _This post was updated on Mar 22, 2023 to account for the changes in svelte-package 2.0. This update simplified the process for setting up a component library. See instructions on migrating an existing project [here](https://github.com/sveltejs/kit/pull/8922). You can also now find more information on svelte-package in the [documentation](https://kit.svelte.dev/docs/packaging)._
 
 ## Create a new SvelteKit project
 
-If you frequently have components that you share between projects and want to keep a single repository of them, you can create a package on [npm](https://www.npmjs.com/) like [this one](https://github.com/rossrobino/drab). Here's how to create a [Svelte](https://svelte.dev) component library with [SvelteKit](https://kit.svelte.dev).
+If you frequently have components that you share between projects and want to keep a single repository of them, you can create a package on [npm](https://www.npmjs.com/). Here's how to create a [Svelte](https://svelte.dev) component library with [SvelteKit](https://kit.svelte.dev).
 
 ## Setup
 
 - Navigate to a directory in your terminal where you will create your project
-- Run `npm create svelte@latest`, configure your project with the CLI, select the `Library skeleton project` template
+- Run `npm create svelte@latest`, configure your project with the CLI, select the `Library skeleton project` template, I'm going to use TypeScript in this tutorial
 - Update `README.md` with information about your project
 
 ## Project information
@@ -51,19 +55,21 @@ You can read more on this in the [svelte-package documentation](https://kit.svel
 
 An important note if you are planning on including CSS in your components--set the `sideEffects` field to `false`, if you want bundlers like Vite to be more aggressive with tree-shaking. If this field is not set, all of the CSS for every one of your exported components will be included when one component is imported. If your package does include modules with [side effects](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free) that occur upon importing, you can specify them with an array of paths to the modules.
 
+Find the latest information on this setting on this [pull request](https://github.com/sveltejs/kit/pull/10691) I made.
+
 ## lib directory
 
-The contents of the `src/lib` directory are what will be packaged upon running `npm run package`. This is where components can reside for the project as well as an `index.js` file that exports the components for the package.
+The contents of the `src/lib` directory are what will be packaged upon running `npm run package`. This is where components can reside for the project as well as an `index.ts` file that exports the components for the package.
 
 ## Create a component
 
 Create a component to export in your package, here's my `YouTube.svelte` component as an example.
 
 ```svelte
-<!-- src/lib/svelte/YouTube.svelte -->
+<!-- src/lib/YouTube.svelte -->
 
-<script>
-	let { uid, title } = $props();
+<script lang="ts">
+	let { uid, title }: { uid: string; title: string } = $props();
 </script>
 
 <iframe
@@ -72,17 +78,17 @@ Create a component to export in your package, here's my `YouTube.svelte` compone
 	frameborder="0"
 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 	allowfullscreen
-/>
+></iframe>
 ```
 
 ## Export
 
-Import and export the component from `src/lib/index.js`.
+Import and export the component from `src/lib/index.ts`.
 
-```js
-// src/lib/index.js
+```ts
+// src/lib/index.ts
 
-import YouTube from "./svelte/YouTube.svelte";
+import YouTube from "./YouTube.svelte";
 
 export { YouTube };
 ```
@@ -94,8 +100,8 @@ Do a quick test of your component on `src/routes/+page.svelte` by importing it t
 ```svelte
 <!-- src/routes/+page.svelte -->
 
-<script>
-	import YouTube from "$lib/svelte/YouTube.svelte";
+<script lang="ts">
+	import YouTube from "$lib/YouTube.svelte";
 </script>
 
 <YouTube uid="gouiY85kD2o" title="Renegade - Kevin Olusola" />
@@ -126,7 +132,7 @@ After verifying on the npm website that your package has been published, you can
 ```svelte
 <!-- src/routes/+page.svelte -->
 
-<script>
+<script lang="ts">
 	import { YouTube } from "@rossrobino/components";
 </script>
 
@@ -136,7 +142,5 @@ After verifying on the npm website that your package has been published, you can
 ## Conclusion
 
 You have now built a Svelte component library you can access from any of your other SvelteKit projects to share code between them.
-
-You can check out [my library](https://github.com/rossrobino/drab) as an example or fork it to create your own version. It has a [documentation website](https://drab.robino.dev) included in the same project to make updates easier.
 
 Thanks for reading!
