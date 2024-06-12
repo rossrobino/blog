@@ -21,7 +21,7 @@ Entire Svelte components can be documented with HTML comments that include `@com
 
 - A component that repeats text a specific number of times.
 
-## Example
+@example
 
 ```svelte
 <Repeat text="Repeat this" numberOfTimes={3} />
@@ -41,7 +41,7 @@ You can utilize markdown syntax in this comment to write documentation. It will 
 
 - A component that repeats text a specific number of times.
 
-## Example
+@example
 
 ```svelte
 <Repeat text="Repeat this" numberOfTimes={3} />
