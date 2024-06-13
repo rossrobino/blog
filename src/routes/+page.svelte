@@ -102,7 +102,7 @@
 
 		<div class="grid gap-6 md:grid-cols-3">
 			{#each filteredPosts as post, i}
-				{#if i > 5}
+				{#if i > 6}
 					<!-- the rest -->
 					<PostCard {post} />
 				{/if}
