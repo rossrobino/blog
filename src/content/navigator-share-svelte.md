@@ -28,8 +28,6 @@ To set up the share button, the `.share` method takes an object as an argument w
 		title?: string;
 	} = $props();
 
-	let complete = $state(false);
-
 	async function share() {
 		const shareData: ShareData = { url, title };
 		await navigator.share(shareData);
