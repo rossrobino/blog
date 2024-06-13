@@ -92,7 +92,7 @@ Test it in some different environments to see the API in action. On mac, you can
 <!-- +page.svelte -->
 
 <script>
-	import ShareButton from "$lib/components/ShareButton.svelte";
+	import ShareButton from "$lib/ShareButton.svelte";
 </script>
 
 <ShareButton url="https://blog.robino.dev/posts/navigator-share-svelte" />
