@@ -5,6 +5,10 @@ keywords: svelte, components, share, copy, api, navigator
 date: 2022, 10, 15
 ---
 
+<drab-youtube uid="INXigHmjp3U">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Let users easily share your website
 
 The [navigator API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share) provides two methods to make it easier to share a website depending on the user's browser/OS. The API allows enables you to quickly identify the support and utilize the best method for the user's system.
