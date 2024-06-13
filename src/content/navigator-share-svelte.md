@@ -11,67 +11,77 @@ The [navigator API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/s
 
 ## Share method
 
-To set up the share button, the `.share` method takes an object as an argument with three keys: `text`, `url`, and `title`. We can set these up as props to be able to assign them when we create the component.
+To set up the share button, the `.share` method takes an object as an argument where we can specify the `url` and `title` of the `ShareData`. We can set these up as props to be able to assign them when we create the component.
 
 ```svelte
 <!-- ShareButton.svelte -->
 
-<script>
+<script lang="ts">
 	let {
-		text = "Check out this page!",
-		url = "https://blog.robino.dev",
-		title = url.split("/").at(-1), // default to end of url
-	} = $props();
-
-	async function handleClick() {
-		try {
-			await navigator.share({ text, url, title });
-		} catch (error) {
-			console.error(error);
-		}
-	}
-</script>
-
-<button on:click={handleClick}>
-	<slot>Share</slot>
-</button>
-```
-
-## Copy method
-
-Some systems do not support the `.share` method, we can check the support by checking if the `navigator.canShare` method exists. If it's not supported, we can use the `.clipboard.writeText` method to copy the link instead. This method takes a string as a parameter, where we can pass in the `url`. Since the share menu will not be presented to the user, we can update `complete` to confirm the copy was successful.
-
-```svelte
-<!-- ShareButton.svelte -->
-
-<script>
-	let {
-		text = "Check out this page!",
-		url = "https://blog.robino.dev",
+		url,
 		title = url.split("/").at(-1),
+	}: {
+		/** URL to share. */
+		url: string;
+
+		/** Share message title. */
+		title?: string;
 	} = $props();
 
 	let complete = $state(false);
 
-	async function handleClick() {
-		try {
-			if (navigator.canShare) {
-				await navigator.share({ text, url, title });
-			} else {
-				await navigator.clipboard.writeText(url);
-				complete = true;
-			}
-		} catch (error) {
-			console.error(error);
+	async function share() {
+		const shareData: ShareData = { url, title };
+		await navigator.share(shareData);
+	}
+</script>
+
+<button onclick={share}>Share</button>
+```
+
+## Copy method
+
+Some systems do not support the `.share` method, you'll see `navigator.share is not a function` in these browsers. We can check the support by checking if the `navigator.canShare` method exists and passing in the `ShareData` to ensure the browser supports sharing the specific data want to share.
+
+If it's not supported, we can use the `.clipboard.writeText` method to copy the link instead. This method takes a string as a parameter, where we can pass in the `url`. Since the share menu will not be presented to the user, we can update `complete` to confirm the copy was successful and then reset after half a second.
+
+```svelte
+<!-- ShareButton.svelte -->
+
+<script lang="ts">
+	let {
+		url,
+		title = url.split("/").at(-1),
+	}: {
+		/** URL to share. */
+		url: string;
+
+		/** Share message title. */
+		title?: string;
+	} = $props();
+
+	let complete = $state(false);
+
+	async function share() {
+		const shareData: ShareData = { url, title };
+
+		if (navigator.canShare && navigator.canShare(shareData)) {
+			await navigator.share(shareData);
+		} else {
+			await navigator.clipboard.writeText(url);
+			complete = true;
+			setTimeout(() => {
+				complete = false;
+			}, 500);
 		}
 	}
 </script>
 
-<button on:click={handleClick}>
+<button onclick={share}>
 	{#if complete}
-		<slot name="complete">Copied!</slot>
+		Copied!
 	{:else}
-		<slot>Share</slot>
+		Share
 	{/if}
 </button>
 ```
@@ -87,16 +97,12 @@ Test it in some different environments to see the API in action. On mac, you can
 	import ShareButton from "$lib/components/ShareButton.svelte";
 </script>
 
-<ShareButton
-	url="https://blog.robino.dev/posts/navigator-share-svelte"
-	text="Check out this blog post!"
-/>
+<ShareButton url="https://blog.robino.dev/posts/navigator-share-svelte" />
 ```
 
-Feel free to copy the code into your project, or you can utlize the most recent version my component with this [package](https://github.com/rossrobino/drab). It is enhanced to share and download files depending on browser support.
+Feel free to copy the code into your project, or you can utilize the web component version I have made with this [package](https://github.com/rossrobino/drab).
 
 ## References
 
-- [Check out the REPL](https://svelte.dev/repl/ef8dd271735d440cb6c65936ccecfa9d?version=3.51.0)
 - [Syntax Podcast #522 - Wes Bos and Scott Tolinski](https://syntax.fm/show/522/use-the-platform)
 - [MDN Navigator API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
