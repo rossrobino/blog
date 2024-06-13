@@ -5,6 +5,10 @@ keywords: svelte, documentation, JSDoc, TSDoc, comments
 date: 2023, 08, 03
 ---
 
+<drab-youtube uid="IWvvXn1eAbE">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Benefits
 
 Documenting code with [JSDoc](https://jsdoc.app/) comments not only simplifies the lives of maintainers and consumers, but it also offers several advantageous alternatives to regular comments. JSDoc comments enable hints to appear in convenient locations, making code documentation even more valuable. In this article, we will explore a few effective methods to document Svelte code using HTML and JSDoc comments.
