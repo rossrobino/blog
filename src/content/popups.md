@@ -105,7 +105,7 @@ There is also an `open` HTML attribute that can be utilized to control the visib
 	let dialog: HTMLDialogElement;
 </script>
 
-<button on:click={() => dialog.showModal()}>Show Dialog</button>
+<button onclick={() => dialog.showModal()}>Show Dialog</button>
 
 <dialog bind:this={dialog}>
 	<p>A dialog element</p>
@@ -113,7 +113,7 @@ There is also an `open` HTML attribute that can be utilized to control the visib
 		<form method="dialog">
 			<button>Close with method="dialog"</button>
 		</form>
-		<button on:click={() => dialog.close()}>Close with .close()</button>
+		<button onclick={() => dialog.close()}>Close with .close()</button>
 	</div>
 </dialog>
 ```
