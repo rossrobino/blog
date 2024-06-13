@@ -80,14 +80,20 @@
 			class="mb-6 grid gap-6"
 			class:lg:grid-cols-2={filteredPosts.length > 2}
 		>
-			{#if posts.length > 1}
-				<!-- second post -->
-				<PostCard post={filteredPosts[1]} headings size="md" />
-			{/if}
+			<div class="grid gap-6">
+				{#if posts.length > 1}
+					<!-- second post -->
+					<PostCard post={filteredPosts[1]} headings size="md" />
+				{/if}
+				{#if posts.length > 2}
+					<!-- third post -->
+					<PostCard post={filteredPosts[2]} headings size="md" />
+				{/if}
+			</div>
 			<div class="grid gap-6 md:grid-cols-2">
 				{#each filteredPosts as post, i}
-					{#if i > 1 && i < 6}
-						<!-- posts 3 through 6 -->
+					{#if i > 2 && i < 7}
+						<!-- posts 4 through 7 -->
 						<PostCard {post} />
 					{/if}
 				{/each}
