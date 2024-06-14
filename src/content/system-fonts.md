@@ -45,4 +45,9 @@ Using these font stacks ensures that your text will look good on a wide range of
 
 The [Modern Font Stacks](https://modernfontstacks.com/) project provides a variety of pre-built font stacks, ready to drop in to any project. I have implemented these in a [tailwindcss plugin](https://uico.robino.dev) as well.
 
+Apple and Microsoft also provide resources showing which fonts are currently shipped with the latest versions of their OS.
+
+- [Apple Fonts](https://developer.apple.com/fonts/system-fonts/)
+- [Microsoft Fonts](https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list)
+
 By leveraging system fonts and well-designed font stacks, you can improve your website’s performance and provide a better user experience.
