@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { description, title, youTubeLink } from "$lib/info/index.js";
+	import { description, title } from "$lib/info/index.js";
 	import PostCard from "$lib/components/PostCard.svelte";
 	import type { Post } from "$lib/types/index.js";
 

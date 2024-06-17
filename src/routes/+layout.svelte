@@ -1,8 +1,10 @@
 <script lang="ts">
 	import "../app.postcss";
 	import Breakpoint from "$lib/components/Breakpoint.svelte";
-	import { author, homepage, repository, title } from "$lib/info";
+	import { author, homepage, title } from "$lib/info";
 	import RSS from "$lib/components/RSS.svelte";
+	import YouTubeLink from "$lib/components/YouTubeLink.svelte";
+	import RepoLink from "$lib/components/RepoLink.svelte";
 
 	// remove if not using vercel analytics
 	import { dev } from "$app/environment";
@@ -11,9 +13,6 @@
 
 	// https://svelte.dev/blog/view-transitions
 	import { onNavigate } from "$app/navigation";
-	import Rss from "$lib/components/RSS.svelte";
-	import YouTubeLink from "$lib/components/YouTubeLink.svelte";
-	import RepoLink from "$lib/components/RepoLink.svelte";
 	onNavigate((navigation) => {
 		// @ts-expect-error - not supported in all browsers
 		if (!document.startViewTransition) return;
