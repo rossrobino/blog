@@ -5,6 +5,10 @@ keywords: performance, fonts, font stacks
 date: 2024, 06, 13
 ---
 
+<drab-youtube uid="1aG-Z_NHeiI">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Built-in fonts
 
 Websites require various assets to be loaded on a user's device---among these assets are fonts. Adding an extra font for users to download can negatively impact your page’s load time and cause layout shift when a fallback font gets replaced.
