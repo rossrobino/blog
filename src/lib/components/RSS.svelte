@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { url } from "$lib/info";
 	import { onMount } from "svelte";
 
 	onMount(async () => {
@@ -8,7 +9,7 @@
 	});
 </script>
 
-<drab-copy value="https://blog.robino.dev/rss">
+<drab-copy value="{url}/rss">
 	<button
 		data-trigger
 		class="button button-ghost button-icon"

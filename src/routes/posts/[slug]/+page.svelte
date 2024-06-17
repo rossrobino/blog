@@ -1,6 +1,5 @@
 <script lang="ts">
 	import PostCard from "$lib/components/PostCard.svelte";
-	import RSS from "$lib/components/RSS.svelte";
 	import ShareButton from "$lib/components/ShareButton.svelte";
 	import { repository } from "$lib/info/index.js";
 
@@ -58,6 +57,5 @@
 			Edit
 		</a>
 		<ShareButton slug={post.slug} />
-		<RSS />
 	</div>
 </article>

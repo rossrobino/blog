@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { description, title, youTubeLink } from "$lib/info/index.js";
 	import PostCard from "$lib/components/PostCard.svelte";
-	import RSS from "$lib/components/RSS.svelte";
 	import type { Post } from "$lib/types/index.js";
-	import YouTubeLink from "$lib/components/YouTubeLink.svelte";
 
 	let { data } = $props();
 
@@ -62,10 +60,6 @@
 				{/if}
 			</div>
 		{/each}
-	</div>
-	<div class="flex gap-2">
-		<YouTubeLink href={youTubeLink} />
-		<RSS />
 	</div>
 </section>
 
