@@ -5,34 +5,36 @@ keywords: npm, dependencies, ncu, format
 date: 2022, 09, 12
 ---
 
-## Update your dependencies with two commands
+## Update your dependencies
 
-Keeping up with a project's dependencies can be difficult and time consuming. After trying a variety of methods, here's the best way I've found to manage npm dependencies.
+Keeping up with a project's dependencies can be difficult and time consuming. After trying a variety of methods, here's the best way I've found to manage npm dependencies with [npm-check-updates](https://github.com/raineorshine/npm-check-updates).
 
-## Install globally
+## Script
 
-[npm-check-updates](https://www.npmjs.com/package/npm-check-updates)
+Add this `script` to your `package.json`, you can name it whatever you prefer, I name mine `deps`. Alternatively, you can run the script in the command line directly.
 
-Run this command to install the npm-check-updates package:
-
-```zsh
-npm install -g npm-check-updates
+```diff
+{
+	"scripts": {
++		"deps": "npx npm-check-updates@latest --interactive --format group"
+	}
+}
 ```
 
-This allows the use of ncu regardless of whether it's installed in the project directly.
+By specifying `@latest` you can ensure that you are always using the latest version of the `npm-check-updates` package. By using `npx` instead of installing the package as a dependency, it saves time if other people are contributing to your project. They will not need to install the `npm-check-updates` when they run `npm install` to start their dev environment.
 
 ## Update project
 
-Run this command from the workspace folder to start the interactive process:
+Run this command from the workspace folder to run the command and start the interactive process.
 
-```zsh
-ncu --interactive --format group
+```bash
+npm run deps
 ```
 
 ## Process
 
-- update all patch/minor updates, test
-- update each major update independently, test
+- Update all patch/minor updates, test
+- Update each major update independently, test
 
 ## References
 
