@@ -40,12 +40,16 @@
 </svelte:head>
 
 <section class="flex justify-between gap-4">
-	<div class="mb-8 flex flex-wrap gap-2" aria-label="Filter by keywords">
+	<div class="mb-8 flex flex-wrap gap-2" aria-label="Filter posts by keywords">
+		<div aria-live="polite" class="sr-only">
+			Filtered to {currentFilter} posts.
+		</div>
 		{#each filters as filter}
 			<div>
 				<button
 					class="button button-ghost uppercase"
 					onclick={() => changeFilter(filter)}
+					aria-current={filter === currentFilter ? "page" : false}
 				>
 					{filter}
 				</button>
@@ -64,7 +68,7 @@
 </section>
 
 <section>
-	{#if posts.length}
+	{#if filteredPosts[0]}
 		<div class="mb-6">
 			<!-- first post -->
 			<PostCard post={filteredPosts[0]} headings size="lg" />
@@ -75,11 +79,11 @@
 			class:lg:grid-cols-2={filteredPosts.length > 2}
 		>
 			<div class="grid gap-6">
-				{#if posts.length > 1}
+				{#if filteredPosts[1]}
 					<!-- second post -->
 					<PostCard post={filteredPosts[1]} headings size="md" />
 				{/if}
-				{#if posts.length > 2}
+				{#if filteredPosts[2]}
 					<!-- third post -->
 					<PostCard post={filteredPosts[2]} headings size="md" />
 				{/if}

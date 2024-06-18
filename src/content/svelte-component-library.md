@@ -5,7 +5,7 @@ keywords: svelte, components, library, npm
 date: 2023, 01, 12
 ---
 
-<drab-youtube uid="_5IZi9xyDFY">
+<drab-youtube aria-label="YouTube Tutorial" uid="_5IZi9xyDFY">
     <iframe data-content loading="lazy"></iframe>
 </drab-youtube>
 

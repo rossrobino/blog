@@ -5,7 +5,7 @@ keywords: svelte, components, share, copy, api, navigator
 date: 2022, 10, 15
 ---
 
-<drab-youtube uid="INXigHmjp3U">
+<drab-youtube aria-label="YouTube Tutorial" uid="INXigHmjp3U">
     <iframe data-content loading="lazy"></iframe>
 </drab-youtube>
 
