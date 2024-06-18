@@ -5,6 +5,10 @@ keywords: ARIA, live regions, accessibility, a11y, html
 date: 2024, 06, 18
 ---
 
+<drab-youtube aria-label="YouTube Tutorial" uid="EGFUQ2ypnrE">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Enhancing interactivity
 
 As web applications become more interactive, maintaining accessibility can become a challenge. Screen readers typically read content sequentially, making it difficult to convey updates that occur asynchronously. [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) allow developers to notify users about these updates effectively.
