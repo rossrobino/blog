@@ -2,27 +2,13 @@
 	import { description, title } from "$lib/info/index.js";
 	import PostCard from "$lib/components/PostCard.svelte";
 	import type { Post } from "$lib/types/index.js";
+	import { page } from "$app/stores";
 
 	let { data } = $props();
 
 	let { posts, filters } = data;
 
-	let currentFilter = $state("all");
-
-	const changeFilter = (filter: string) => {
-		const change = () => {
-			currentFilter = filter;
-		};
-		// @ts-expect-error - not supported in all browsers
-		if (document.startViewTransition) {
-			// @ts-expect-error - not supported in all browsers
-			document.startViewTransition(() => {
-				change();
-			});
-		} else {
-			change();
-		}
-	};
+	const currentFilter = $derived($page.url.searchParams.get("filter") ?? "all");
 
 	const getFilteredPosts = (posts: Post[], currentFilter: string) => {
 		if (currentFilter === "all") return posts;
@@ -35,7 +21,9 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>
+		{title}{currentFilter === "all" ? "" : ` - ${currentFilter.toUpperCase()}`}
+	</title>
 	<meta name="description" content={description} />
 </svelte:head>
 
@@ -46,13 +34,13 @@
 		</div>
 		{#each filters as filter}
 			<div>
-				<button
-					class="button button-ghost uppercase"
-					onclick={() => changeFilter(filter)}
+				<a
+					href="/{filter === 'all' ? '' : `?filter=${filter}`}"
+					class="not-prose button button-ghost uppercase"
 					aria-current={filter === currentFilter ? "page" : false}
 				>
 					{filter}
-				</button>
+				</a>
 				{#if filter === currentFilter}
 					<!-- marker -->
 					<div
@@ -67,7 +55,7 @@
 	</div>
 </section>
 
-<section>
+<section aria-label="Post list">
 	{#if filteredPosts[0]}
 		<div class="mb-6">
 			<!-- first post -->
