@@ -21,9 +21,7 @@
 </script>
 
 <svelte:head>
-	<title>
-		{title}{currentFilter === "all" ? "" : ` - ${currentFilter.toUpperCase()}`}
-	</title>
+	<title>{title}</title>
 	<meta name="description" content={description} />
 </svelte:head>
 
@@ -55,7 +53,7 @@
 	</div>
 </section>
 
-<section aria-label="Post list">
+<section aria-label="Post list, filtered to {currentFilter} posts.">
 	{#if filteredPosts[0]}
 		<div class="mb-6">
 			<!-- first post -->
