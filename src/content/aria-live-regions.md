@@ -85,7 +85,7 @@ To instruct the screen reader to read the entire contents of the `p` tag rather 
 </p>
 ```
 
-The `aria-atomic` attribute can be set to `true` or `false`. The screen reader traverse up the DOM tree from the changed element until it hits either the `aria-live` region, or the `aria-atomic=true` attribute. If the `aria-atomic=true` attribute is found, it will read the contents of that element instead of just the one that was updated.
+The `aria-atomic` attribute can be set to `true` or `false`. The screen reader will traverse up the DOM tree from the changed element until it hits either the `aria-live` region, or the `aria-atomic=true` attribute. If the `aria-atomic=true` attribute is found, it will read the contents of that element instead of just the one that was updated.
 
 Now after selecting "Get Weather" the reader will read out:
 
