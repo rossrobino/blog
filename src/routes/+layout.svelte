@@ -31,7 +31,7 @@
 <Breakpoint />
 
 <div
-	class="prose prose-neutral mx-auto max-w-[98ch] prose-a:link hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md"
+	class="prose prose-neutral mx-auto max-w-[98ch] prose-a:link prose-headings:text-pretty prose-p:text-pretty hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md"
 >
 	<header class="mb-8">
 		<div class="my-0">
