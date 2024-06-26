@@ -5,6 +5,10 @@ keywords: CSS, carousel, TypeScript, JavaScript, HTML, scroll snap
 date: 2024, 06, 25
 ---
 
+<drab-youtube aria-label="YouTube Tutorial" uid="aNSUZiBjRRI">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Tutorial
 
 A carousel is a common UI element many applications have in place. It can be nice to display images or cards of information. Here's how to create a carousel with CSS `scroll-snap` and progressively enhance the carousel with buttons on either side.
