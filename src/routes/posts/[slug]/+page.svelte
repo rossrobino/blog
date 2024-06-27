@@ -2,13 +2,13 @@
 	import PostCard from "$lib/components/PostCard.svelte";
 	import ShareButton from "$lib/components/ShareButton.svelte";
 	import { repository } from "$lib/info/index.js";
+	import { onMount } from "svelte";
 
 	let { data } = $props();
 
 	const { html, post } = data;
 	const { title, description, keywords } = post;
 
-	import { onMount } from "svelte";
 	onMount(async () => {
 		if (!customElements.get("drab-youtube")) {
 			await import("drab/youtube/define");
@@ -18,8 +18,8 @@
 		const pres = document.querySelectorAll("pre");
 		for (const pre of pres) {
 			pre.tabIndex = 0;
-			pre.setAttribute("role", "button");
-			pre.setAttribute("aria-description", "Copy code to clipboard");
+			pre.role = "button";
+			pre.ariaDescription = "Copy code to clipboard";
 
 			const copyText = () => {
 				navigator.clipboard.writeText(pre.textContent ?? "");
@@ -32,6 +32,15 @@
 					copyText();
 				}
 			});
+		}
+
+		const headings = document.querySelectorAll("h2");
+		for (const heading of headings) {
+			const anchor = document.createElement("a");
+			anchor.classList.add("not-prose");
+			anchor.href = `#${heading.id}`;
+			anchor.textContent = heading.textContent;
+			heading.replaceChildren(anchor);
 		}
 	});
 </script>
