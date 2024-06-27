@@ -34,8 +34,8 @@ These are the options I chose and will be using in the tutorial.
 
 I removed the code to create the demo project so I have an empty HTML page.
 
-- Delete contents of `style.css`
-- Delete `counter` module entirely
+- Delete `src/style.css`
+- Delete `src/counter.ts`
 - Delete contents of `main.ts`
 
 ## Install required dependencies
