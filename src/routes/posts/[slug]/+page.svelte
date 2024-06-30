@@ -34,6 +34,7 @@
 			});
 		}
 
+		// heading links
 		const headings = document.querySelectorAll("h2");
 		for (const heading of headings) {
 			const anchor = document.createElement("a");
