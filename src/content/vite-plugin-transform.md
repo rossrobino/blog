@@ -1,13 +1,13 @@
 ---
-title: Transform Markdown to JavaScript within a Vite Plugin
+title: Transform Markdown into JavaScript with a Vite Plugin
 description: How to use the transform hook in a Vite plugin to import markdown files into modules, converting them to HTML strings.
 keywords: javascript, typescript, vite
 date: 2024, 06, 28
 ---
 
-<!-- <drab-youtube aria-label="YouTube Tutorial" uid="qYKzMnORnA0">
+<drab-youtube aria-label="YouTube Tutorial" uid="DUdozB7R-AE">
     <iframe  data-content loading="lazy"></iframe>
-</drab-youtube> -->
+</drab-youtube>
 
 ## Introduction
 
