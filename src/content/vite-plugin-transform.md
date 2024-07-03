@@ -6,7 +6,7 @@ date: 2024, 06, 28
 ---
 
 <drab-youtube aria-label="YouTube Tutorial" uid="DUdozB7R-AE">
-    <iframe  data-content loading="lazy"></iframe>
+    <iframe data-content loading="lazy"></iframe>
 </drab-youtube>
 
 ## Introduction
