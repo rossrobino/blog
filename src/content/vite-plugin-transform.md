@@ -46,8 +46,8 @@ export default defineConfig({
 					return {
 						// return the .js file we would want to import
 						code: `
-							export const html = \`${html}\`;
-							export const md = \`${code}\`;
+							export const html = ${JSON.stringify(html)};
+							export const md = ${JSON.stringify(code)};
 						`,
 						map: null,
 					};
