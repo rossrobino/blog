@@ -55,15 +55,14 @@
 <article class="my-16 max-w-[90ch]">
 	<PostCard {post} headings link={false} />
 
-	{@html html}
+	<div class="prose">
+		{@html html}
+	</div>
 
-	<hr />
+	<hr class="my-12" />
 
 	<div class="flex gap-4">
-		<a
-			class="button !button-primary !no-underline"
-			href="{repository}/blob/main/src/content/{post.slug}.md"
-		>
+		<a class="button" href="{repository}/blob/main/src/content/{post.slug}.md">
 			Edit
 		</a>
 		<ShareButton slug={post.slug} />

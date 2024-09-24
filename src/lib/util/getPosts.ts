@@ -1,7 +1,7 @@
+import { frontmatterSchema } from "$lib/schemas";
 import type { Post } from "$lib/types";
 import { getSlug } from "./getSlug";
-import { processMarkdown } from "robino/util/md";
-import { frontmatterSchema } from "$lib/schemas";
+import { markdownProcessor } from "./markdown-processor";
 
 export const getPosts = async () => {
 	const content = import.meta.glob("../../content/*.md", {
@@ -14,7 +14,7 @@ export const getPosts = async () => {
 
 	for (const path in content) {
 		const md = content[path] as string;
-		const { frontmatter, headings } = await processMarkdown(
+		const { frontmatter, headings } = markdownProcessor.process(
 			md,
 			frontmatterSchema,
 		);

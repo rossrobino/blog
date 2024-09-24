@@ -2,7 +2,7 @@
 	import { repository } from "$lib/info";
 </script>
 
-<a href={repository} title="Repository" class="button button-ghost button-icon">
+<a href={repository} aria-label="Repository" class="button ghost icon">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"

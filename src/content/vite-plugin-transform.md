@@ -31,8 +31,8 @@ We'll follow the [example](https://vitejs.dev/guide/api-plugin.html#transforming
 
 ```ts
 // vite.config.ts
-import { defineConfig } from "vite";
 import { parse } from "marked";
+import { defineConfig } from "vite";
 
 export default defineConfig({
 	plugins: [

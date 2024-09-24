@@ -87,8 +87,10 @@ Next we'll use LinkeDOM to make DOM methods available to parse the and modify th
 
 ```ts
 // vite.config.ts
+import { parseHTML } from "linkedom";
 import { defineConfig } from "vite";
-import { parseHTML } from "linkedom"; // import
+
+// import
 
 export default defineConfig({
 	plugins: [
@@ -155,10 +157,10 @@ Consider the following file structure.
 
 <style>
 	my-button button {
-		background-color: darkblue;
 		border: none;
-		color: white;
+		background-color: darkblue;
 		padding: 0.5rem 0.75rem;
+		color: white;
 	}
 </style>
 ```
@@ -171,8 +173,10 @@ First, we can read the `src/partials` directory and get a list of all of the par
 
 ```ts
 // vite.config.ts
+import { parseHTML } from "linkedom";
 import { defineConfig } from "vite";
-import { parseHTML } from "linkedom"; // import
+
+// import
 
 export default defineConfig({
 	plugins: [
@@ -254,9 +258,9 @@ Altogether, the entire module now looks like this.
 
 ```ts
 // vite.config.ts
-import { defineConfig } from "vite";
 import { parseHTML } from "linkedom";
 import fs from "node:fs/promises";
+import { defineConfig } from "vite";
 
 export default defineConfig({
 	plugins: [

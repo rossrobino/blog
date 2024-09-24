@@ -137,13 +137,13 @@ npm install @supabase/supabase-js
 
 ```ts
 // src/lib/db/client.ts
-
-import { createClient } from "@supabase/supabase-js";
-import type { Database } from "./types"; // our generated types
+// our generated types
 import {
 	PUBLIC_SUPABASE_URL,
 	PUBLIC_SUPABASE_ANON_KEY,
 } from "$env/static/public";
+import type { Database } from "./types";
+import { createClient } from "@supabase/supabase-js";
 
 export const db = createClient<Database>(
 	PUBLIC_SUPABASE_URL,
@@ -161,7 +161,6 @@ Finally, we can fetch our data with a server side `load` function.
 
 ```ts
 // src/routes/+page.server.ts
-
 import { db } from "$lib/db/client";
 import { error } from "@sveltejs/kit";
 

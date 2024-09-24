@@ -12,7 +12,7 @@
 </script>
 
 <drab-share value="{url}/posts/{slug}">
-	<button data-trigger type="button" class="button button-secondary gap-1.5">
+	<button data-trigger type="button" class="secondary gap-1.5">
 		<span data-content>Share</span>
 		<template data-swap>Copied</template>
 	</button>

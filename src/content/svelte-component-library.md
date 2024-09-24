@@ -87,7 +87,6 @@ Import and export the component from `src/lib/index.ts`.
 
 ```ts
 // src/lib/index.ts
-
 import YouTube from "./YouTube.svelte";
 
 export { YouTube };

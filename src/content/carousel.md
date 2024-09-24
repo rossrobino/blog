@@ -63,29 +63,29 @@ carousel-content {
 
 	/* the children of the carousel */
 	& > * {
+		border-radius: 25%;
 		width: 200px;
 		height: 200px;
-		border-radius: 25%;
 	}
 }
 ```
 
 Next, we can use `scroll-snap` CSS properties to make sure that when the user scrolls, the item they scroll to is automatically centered.
 
-```diff
+```css {6,13}
 carousel-content {
 	display: flex;
 	gap: 1rem;
 	padding-block: 1rem;
 	overflow-x: scroll;
-+	scroll-snap-type: x;
+	scroll-snap-type: x;
 
 	/* the children of the carousel */
 	& > * {
+		border-radius: 25%;
 		width: 200px;
 		height: 200px;
-		border-radius: 25%;
-+		scroll-snap-align: center;
+		scroll-snap-align: center;
 	}
 }
 ```
@@ -159,19 +159,19 @@ carousel-trigger:not(:defined) {
 
 We'll also add `scroll-behavior: smooth` to ensure our carousel smoothly scrolls to the next image when the trigger is activated.
 
-```diff
+```css {6}
 carousel-content {
 	display: flex;
 	gap: 1rem;
 	padding-block: 1rem;
 	overflow-x: scroll;
+	scroll-behavior: smooth;
 	scroll-snap-type: x;
-+	scroll-behavior: smooth;
 
 	& > * {
+		border-radius: 25%;
 		width: 200px;
 		height: 200px;
-		border-radius: 25%;
 		scroll-snap-align: center;
 	}
 }
@@ -194,13 +194,13 @@ Altogether the code looks like this:
 		gap: 1rem;
 		padding-block: 1rem;
 		overflow-x: scroll;
-		scroll-snap-type: x;
 		scroll-behavior: smooth;
+		scroll-snap-type: x;
 
 		& > * {
+			border-radius: 25%;
 			width: 200px;
 			height: 200px;
-			border-radius: 25%;
 			scroll-snap-align: center;
 		}
 	}

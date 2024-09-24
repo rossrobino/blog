@@ -12,7 +12,7 @@
 <drab-copy value="{url}/rss">
 	<button
 		data-trigger
-		class="button button-ghost button-icon"
+		class="ghost icon"
 		title="RSS"
 		aria-label="Copy RSS link to clipboard"
 	>
@@ -35,7 +35,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				fill="currentColor"
-				class="h-6 w-6"
+				class="size-6"
 			>
 				<path
 					fill-rule="evenodd"

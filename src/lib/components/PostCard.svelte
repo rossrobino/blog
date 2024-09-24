@@ -17,16 +17,19 @@
 
 <div
 	style="view-transition-name: {post.slug};"
-	class="rounded-lg border-b-2 border-r-2 border-secondary pb-0.5 pr-0.5"
+	class="rounded-lg border-b-2 border-r-2 border-muted-background pb-0.5 pr-0.5"
 	aria-label="Post card"
 >
-	<div class="card h-full border-2 transition" class:hover:shadow-xl={link}>
+	<div
+		class="h-full rounded border-2 border-secondary-background p-6 transition"
+		class:hover:shadow-xl={link}
+	>
 		{#if link}
 			<!-- on the homepage -->
 			<h2
-				class="my-0"
+				class="underline hover:decoration-dotted"
 				class:text-3xl={size === "md"}
-				class:text-4xl={size === "lg"}
+				class:text-2xl={size === "sm"}
 			>
 				<a href="/posts/{post.slug}" class="font-bold">
 					{post.title}
@@ -35,14 +38,14 @@
 		{:else}
 			<!-- on the post's page -->
 			<h1>{post.title}</h1>
-			<ul class="not-prose my-2 flex flex-wrap gap-1.5" aria-label="keywords">
+			<ul class="my-6 flex flex-wrap gap-1.5" aria-label="keywords">
 				{#each post.keywords as keyword}
-					<li class="badge badge-secondary">{keyword}</li>
+					<li class="badge secondary">{keyword}</li>
 				{/each}
 			</ul>
 		{/if}
-		<div class="my-2" aria-label="Published date">{post.date}</div>
-		<div class="my-2 italic" aria-label="Post description">
+		<div class="mb-2 mt-4" aria-label="Published date">{post.date}</div>
+		<div class="italic" aria-label="Post description">
 			{post.description}
 		</div>
 		{#if headings}

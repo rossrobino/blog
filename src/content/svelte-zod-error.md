@@ -28,7 +28,6 @@ Consider this Zod `UserSchema`, it expects a user will have an email and a passw
 
 ```ts
 // src/lib/zodSchemas.ts
-
 import { z } from "zod";
 
 export const UserSchema = z.object({
@@ -117,9 +116,8 @@ Next we can create an action for our form to validate the user's inputs on the s
 
 ```ts
 // src/routes/+page.server.ts
-
-import { fail, redirect } from "@sveltejs/kit";
 import { UserSchema } from "$lib/zodSchemas";
+import { fail, redirect } from "@sveltejs/kit";
 
 export const actions = {
 	default: async ({ request }) => {

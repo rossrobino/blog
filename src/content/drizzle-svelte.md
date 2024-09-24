@@ -89,7 +89,6 @@ npm install -D drizzle-orm drizzle-kit @vercel/postgres
 
 ```ts
 // src/lib/db/schema.ts
-
 import { integer, pgTable, serial } from "drizzle-orm/pg-core";
 
 export const PageInsights = pgTable("page_insights", {
@@ -106,7 +105,6 @@ Here we can see how creating a schema is very similar to writing SQL. The benefi
 
 ```ts
 // drizzle.config.ts
-
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
@@ -167,9 +165,8 @@ Here's where the magic happens, all we need to do is pass Vercel's `sql` as a ar
 
 ```ts
 // src/lib/db/conn.server.ts
-
-import { drizzle } from "drizzle-orm/vercel-postgres";
 import { sql } from "@vercel/postgres";
+import { drizzle } from "drizzle-orm/vercel-postgres";
 
 export const conn = drizzle(sql);
 ```
@@ -182,7 +179,6 @@ Since the data isn't critical to our users, let's stream it by [returning a prom
 
 ```ts
 // src/routes/+page.server.ts
-
 import { conn } from "$lib/db/conn.server";
 import { PageInsights } from "$lib/db/schema";
 import { eq } from "drizzle-orm";

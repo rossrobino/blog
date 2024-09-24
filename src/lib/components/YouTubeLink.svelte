@@ -2,11 +2,7 @@
 	import { youTubeLink } from "$lib/info";
 </script>
 
-<a
-	href={youTubeLink}
-	class="button button-ghost button-icon"
-	title="YouTube channel"
->
+<a href={youTubeLink} class="button ghost icon" aria-label="YouTube channel">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"

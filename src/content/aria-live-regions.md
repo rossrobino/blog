@@ -103,19 +103,19 @@ Right now, if the text content is updated with the result before the screen read
 
 We can set this attribute with JavaScript in our event handler.
 
-```diff
+```ts {6,12}
 const getWeather = async () => {
 	const p = document.querySelector("p");
 	const span = document.querySelector("span");
 
 	if (p && span) {
-+		p.ariaBusy = "true";
+		p.ariaBusy = "true";
 		span.textContent = "loading...";
 		const res = await fetch(
 			"https://api.open-meteo.com/v1/forecast?latitude=43&longitude=-86&current=temperature",
 		);
 		const { current } = await res.json();
-+		p.ariaBusy = "false";
+		p.ariaBusy = "false";
 		span.textContent = `${current.temperature} degrees.`;
 	}
 };

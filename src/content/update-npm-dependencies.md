@@ -13,10 +13,10 @@ Keeping up with a project's dependencies can be difficult and time consuming. Af
 
 Add this `script` to your `package.json`, you can name it whatever you prefer, I name mine `deps`. Alternatively, you can run the script in the command line directly.
 
-```diff
+```json {3}
 {
 	"scripts": {
-+		"deps": "npx npm-check-updates@latest --interactive --format group"
+		"deps": "npx npm-check-updates@latest --interactive --format group"
 	}
 }
 ```

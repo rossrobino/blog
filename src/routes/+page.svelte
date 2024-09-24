@@ -34,7 +34,7 @@
 			<div>
 				<a
 					href="/{filter === 'all' ? '' : `?filter=${filter}`}"
-					class="not-prose button button-ghost uppercase"
+					class="button ghost uppercase"
 					aria-current={filter === currentFilter ? "page" : false}
 				>
 					{filter}

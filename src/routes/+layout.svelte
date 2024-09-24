@@ -1,5 +1,5 @@
 <script lang="ts">
-	import "../app.postcss";
+	import "../tailwind.css";
 	import Breakpoint from "$lib/components/Breakpoint.svelte";
 	import { author, homepage, title } from "$lib/info";
 	import RSS from "$lib/components/RSS.svelte";
@@ -14,10 +14,10 @@
 	// https://svelte.dev/blog/view-transitions
 	import { onNavigate } from "$app/navigation";
 	onNavigate((navigation) => {
-		// @ts-expect-error - not supported in all browsers
+		// not supported in all browsers
 		if (!document.startViewTransition) return;
+
 		return new Promise((resolve) => {
-			// @ts-expect-error - not supported in all browsers
 			document.startViewTransition(async () => {
 				resolve();
 				await navigation.complete;
@@ -30,14 +30,12 @@
 
 <Breakpoint />
 
-<div
-	class="prose prose-neutral mx-auto max-w-[98ch] prose-a:link prose-headings:text-pretty prose-p:text-pretty hover:prose-a:decoration-dotted prose-pre:-mx-6 prose-pre:rounded-none prose-pre:p-6 prose-img:rounded-md prose-img:border md:prose-pre:mx-0 md:prose-pre:rounded-md"
->
+<div class="mx-auto max-w-[98ch]">
 	<header class="mb-8">
 		<div class="my-0">
 			<a
 				href="/"
-				class="text-2xl font-extrabold uppercase italic !no-underline"
+				class="text-2xl font-extrabold uppercase italic no-underline"
 				aria-label="Homepage"
 			>
 				{title}
