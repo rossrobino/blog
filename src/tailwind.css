@@ -6,7 +6,7 @@
 
 @layer base {
 	:root {
-		--base: theme(colors.zinc.600);
+		--base: theme(colors.slate.600);
 		--accent: theme(colors.teal.700);
 		--destructive: theme(colors.rose.700);
 		pre {
