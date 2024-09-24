@@ -29,7 +29,7 @@ This learning curve introduces complexity. What if server-side rendering could d
 
 A common error I have run into and find on many blogs is when there is a table element that is wider than the rest of the page. It either makes the content too small, or gives the entire page a horizontal scroll.
 
-A simple solution for this problem is to wrap the table element in a div and set `overflow-x: auto;`. If you are using markdown, this can quickly become a daunting task to accomplish on the server. With access to `querySelectorAll` it's easy to manipulate all of table elements with the same code I can run in the browser. Most JavaScript developers can look at the code and understand exactly what's occurring, since it's just DOM APIs.
+A simple solution for this problem is to wrap the table element in a div and set `overflow-x: auto;`. If you are using markdown, this can quickly become a daunting task to accomplish on the server. With access to `querySelectorAll` it's easy to manipulate all of table elements. Most JavaScript developers can look at the code and understand exactly what's occurring, since it's just DOM APIs.
 
 ```ts
 const tables = document.querySelectorAll("table");
@@ -63,6 +63,6 @@ Comparatively, here's a few examples in different frameworks that I found:
 
 A major drawback of using web components is the fact that they do not have an easy path that supports server-side rendering. By putting DOM APIs on the server, this would unlock the ability to server-side render web components.
 
-## Try it out
+## Conclusion
 
-Incorporating DOM APIs into server-side rendering doesn't just mirror client-side practices; it enhances developer productivity and capitalizes on JavaScript's strengths. For those interested in exploring static site generation through this approach, check out [domco](https://domco.robino.dev), a Vite plugin that uses jsdom to statically render pages. This technique represents a significant potential in simplifying server-side JavaScript developments by standardizing and extending the utility of DOM manipulation capabilities.
+Incorporating DOM APIs into server-side rendering doesn't just mirror client-side practices; it enhances developer productivity and capitalizes on JavaScript's strengths.
