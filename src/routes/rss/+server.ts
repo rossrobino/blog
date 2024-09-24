@@ -2,8 +2,6 @@ import { url, title, description } from "$lib/info";
 import type { Post } from "$lib/types";
 import { getPosts } from "$lib/util/getPosts";
 
-export const prerender = true;
-
 export const GET = async () => {
 	const posts = await getPosts();
 	return new Response(xml(posts), {
