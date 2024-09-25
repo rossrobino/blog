@@ -3,7 +3,6 @@ title: A Minimal Full-Stack JavaScript Framework
 description: Achieve a modern developer experience with full-stack vanilla JavaScript.
 keywords: vite, javascript, ssr
 date: 2024, 09, 24
-draft: true
 ---
 
 ## Introducing domco
