@@ -1,5 +1,5 @@
 ---
-title: A Minimal Full-Stack JavaScript Framework
+title: Minimal Full-Stack JavaScript
 description: Achieve a modern developer experience with full-stack vanilla JavaScript.
 keywords: vite, javascript, ssr
 date: 2024, 09, 24
@@ -7,7 +7,7 @@ date: 2024, 09, 24
 
 ## Introducing domco
 
-domco is a minimal full-stack JavaScript framework that makes it easy to add API routes or server-side rendering to a Vite application. domco provides the following in addition to Vite.
+domco is a minimal full-stack JavaScript toolkit that makes it easy to add API routes or server-side rendering to a Vite application. domco provides the following in addition to Vite.
 
 - Automatic [entry point configuration](https://domco.robino.dev/tutorial#entry-points) for client and server builds.
 - Development and preview server configuration.
