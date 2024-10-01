@@ -18,6 +18,7 @@
 <div
 	style="view-transition-name: {post.slug};"
 	class="rounded-lg border-b-2 border-r-2 border-muted-background pb-0.5 pr-0.5"
+	class:mb-8={!link}
 	aria-label="Post card"
 >
 	<div
