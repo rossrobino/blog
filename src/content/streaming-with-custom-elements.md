@@ -11,15 +11,15 @@ date: 2024, 10, 01
 
 ## Overview
 
-In this tutorial I'll show you how you can create an out of order streaming application using vanilla JavaScript. Streaming can help speed up your website by enabling you to stream data from your server to the user after the initial paint, without the user having to make an extra request for additional data. With streaming, users can see information on your page and load other resources, before all the HTML has loaded.
+In this tutorial I'll show you how you can implement out of order streaming using vanilla JavaScript. Streaming can help speed up your website by enabling you to stream data from your server to the user after the initial paint, without the user having to make an extra request for additional data. With streaming, users can see information on your page and load other resources, before all the HTML has loaded.
 
-I'm going to be using [domco](https://domco.robino.dev) for this example, but you can utilize any server framework that supports streaming. This server code just uses the [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response/Response) API, so it will look very similar to API routes in NextJS or SvelteKit. By running `npm create domco@latest` you can get a similar template to this post if you want to create your own.
+I'm going to be using [domco](https://domco.robino.dev) for this example, but you can utilize any server framework that supports streaming. This server code uses the [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response/Response) API, so it will look very similar to API routes in NextJS or SvelteKit. By running `npm create domco@latest` you can get a similar template to this post if you want to create your own.
 
 If you want to see the final code, you can find it here in the [domco examples repository](https://github.com/rossrobino/domco-examples/tree/main/apps/streaming).
 
 ## Create an HTML template
 
-First create the HTML template. This template will be split into two chunks, one to send first, and then another to send after the data has finished streaming. On the server this template will be split into two chunks using the `%stream%` identifier.
+First, create the HTML template. This template will be split into two chunks, one to send first which the user will see right away, and then another to send after the data has finished streaming. On the server this template will be split into two chunks using the `%stream%` identifier.
 
 Also add in some target elements for the data to be streamed into.
 
