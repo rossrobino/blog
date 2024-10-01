@@ -33,16 +33,6 @@
 				}
 			});
 		}
-
-		// heading links
-		const headings = document.querySelectorAll("h2");
-		for (const heading of headings) {
-			const anchor = document.createElement("a");
-			anchor.classList.add("not-prose");
-			anchor.href = `#${heading.id}`;
-			anchor.textContent = heading.textContent;
-			heading.replaceChildren(anchor);
-		}
 	});
 </script>
 
