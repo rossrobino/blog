@@ -3,7 +3,6 @@ title: DIY Streaming with Custom Elements
 description: How to stream HTML to the client with vanilla JavaScript.
 keywords: javascript, streaming, custom-elements
 date: 2024, 10, 01
-draft: true
 ---
 
 <!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
