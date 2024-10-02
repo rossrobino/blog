@@ -41,20 +41,20 @@ A large `node_modules` directory indicates that it takes more code to develop yo
 
 ## Results
 
-| Framework        | Create/Install Command                   | Packages | `node_modules` | Notes                                            |
-| ---------------- | ---------------------------------------- | -------: | -------------: | ------------------------------------------------ |
-| Vite             | `npm create vite@5.5.2`                  |       11 |        51.5 MB | `vanilla` template                               |
-| Next             | `npm create next-app@14.2.14`            |       28 |       260.3 MB |                                                  |
-| SvelteKit        | `npm create svelte@6.3.12`               |       58 |        68.3 MB | `skeleton` template                              |
-| Parcel           | `npm i parcel@2.12.0`                    |      189 |       307.2 MB |                                                  |
-| 11ty             | `npm i @11ty/eleventy@3.0.0`             |      206 |        28.1 MB |                                                  |
-| Astro            | `npm create astro@4.9.0`                 |      417 |       191.1 MB |                                                  |
-| Vinxi            | `npm i vinxi@0.4.3`                      |      454 |       131.6 MB |                                                  |
-| Solid Start      | `npm create solid@0.5.13`                |      554 |       169.4 MB | `bare` template                                  |
-| Remix            | `npm create remix@2.12.1`                |      580 |       186.6 MB | Removed all `tailwind` and `eslint` dependencies |
-| Nuxt             | `npx nuxi@3.14.0 init`                   |      642 |       233.3 MB |                                                  |
-| Angular          | `npm i -g @angular/cli@18.2.7 && ng new` |      982 |       352.5 MB | `css` and `ssr`                                  |
-| create-react-app | `npx create-react-app@5.0.1`             |     1479 |       305.6 MB | removed `@testing-library/*` and `web-vitals`    |
+| Framework                                         | Create/Install Command                   | Packages | `node_modules` | Notes                                            |
+| ------------------------------------------------- | ---------------------------------------- | -------: | -------------: | ------------------------------------------------ |
+| [Vite](https://vite.dev/)                         | `npm create vite@5.5.2`                  |       11 |        51.5 MB | `vanilla` template                               |
+| [Next.js](https://nextjs.org/)                    | `npm create next-app@14.2.14`            |       28 |       260.3 MB |                                                  |
+| [SvelteKit](https://kit.svelte.dev/)              | `npm create svelte@6.3.12`               |       58 |        68.3 MB | `skeleton` template                              |
+| [Parcel](https://parceljs.org/)                   | `npm i parcel@2.12.0`                    |      189 |       307.2 MB |                                                  |
+| [11ty](https://www.11ty.dev/)                     | `npm i @11ty/eleventy@3.0.0`             |      206 |        28.1 MB |                                                  |
+| [Astro](https://astro.build/)                     | `npm create astro@4.9.0`                 |      417 |       191.1 MB |                                                  |
+| [Vinxi](https://vinxi.vercel.app/)                | `npm i vinxi@0.4.3`                      |      454 |       131.6 MB |                                                  |
+| [Solid Start](https://start.solidjs.com/)         | `npm create solid@0.5.13`                |      554 |       169.4 MB | `bare` template                                  |
+| [Remix](https://remix.run/)                       | `npm create remix@2.12.1`                |      580 |       186.6 MB | Removed all `tailwind` and `eslint` dependencies |
+| [Nuxt](https://nuxt.com/)                         | `npx nuxi@3.14.0 init`                   |      642 |       233.3 MB |                                                  |
+| [Angular](https://angular.dev/)                   | `npm i -g @angular/cli@18.2.7 && ng new` |      982 |       352.5 MB | `css` and `ssr`                                  |
+| [create-react-app](https://create-react-app.dev/) | `npx create-react-app@5.0.1`             |     1479 |       305.6 MB | removed `@testing-library/*` and `web-vitals`    |
 
 ## Findings
 

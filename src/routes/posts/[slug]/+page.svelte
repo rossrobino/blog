@@ -35,7 +35,6 @@
 		}
 
 		const tables = document.querySelectorAll("table");
-
 		tables.forEach((table) => {
 			const div = document.createElement("div");
 			div.classList.add("overflow-x-auto");
