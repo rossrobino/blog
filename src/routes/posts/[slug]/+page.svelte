@@ -38,7 +38,7 @@
 
 		tables.forEach((table) => {
 			const div = document.createElement("div");
-			div.classList.add("overflow-x-scroll");
+			div.classList.add("overflow-x-auto");
 			table.insertAdjacentElement("beforebegin", div);
 			div.append(table);
 		});
