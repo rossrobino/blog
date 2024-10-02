@@ -57,14 +57,6 @@ A large `node_modules` directory indicates that it takes more code to develop yo
 | [Angular](https://angular.dev/)                   | `npm i -g @angular/cli@18.2.7 && ng new` |      982 |       352.5 MB | `css` and `ssr`                                  |
 | [create-react-app](https://create-react-app.dev/) | `npx create-react-app@5.0.1`             |     1479 |       305.6 MB | removed `@testing-library/*` and `web-vitals`    |
 
-## Findings
-
-- Most of these projects depend on Vite, notably 11ty doesn't, they are the only framework that comes in smaller in size.
-- SvelteKit provides an impressive feature set given the total size and dependency count, only adding 16.8MB to Vite.
-- Next exposes users to the second smallest dependency count, but this does not lead to a smaller size.
-- Solid Start adds 37.8MB on top of Vinxi.
-- Including dependencies, Parcel is roughly 6x larger than Vite.
-
 ## Conclusion
 
 It's important to understand what dependencies you are installing to create your applications and weigh the cost with the features they provide. If you need to install a dependency to use in your project, check your `node_modules` directory first, you may already have it or a close alternative installed that you can use.
