@@ -3,7 +3,6 @@ title: Comparing JavaScript Framework Dependencies
 description: An analysis of the count and size of the starter templates of different JavaScript frameworks.
 keywords: javascript, framework, dependencies
 date: 2024, 10, 02
-draft: true
 ---
 
 ## Methodology
