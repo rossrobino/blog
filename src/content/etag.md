@@ -3,7 +3,6 @@ title: Fast Response Times with ETags
 description: How to use ETags in server-side JavaScript to speed up your website.
 keywords: etag, javascript, performance, cache
 date: 2024, 10, 08
-draft: true
 ---
 
 <!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
