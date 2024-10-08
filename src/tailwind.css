@@ -9,6 +9,7 @@
 		--base: theme(colors.slate.600);
 		--accent: theme(colors.teal.700);
 		--destructive: theme(colors.rose.700);
+
 		pre {
 			--shiki-foreground: theme(colors.base.200);
 			--shiki-background: theme(colors.base.900);
@@ -50,6 +51,7 @@
 			}
 		}
 	}
+
 	::view-transition-group(*) {
 		animation-duration: 300ms;
 		animation-timing-function: ease-in-out;
