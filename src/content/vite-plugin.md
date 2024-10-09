@@ -90,8 +90,6 @@ Next we'll use LinkeDOM to make DOM methods available to parse the and modify th
 import { parseHTML } from "linkedom";
 import { defineConfig } from "vite";
 
-// import
-
 export default defineConfig({
 	plugins: [
 		{
@@ -174,9 +172,8 @@ First, we can read the `src/partials` directory and get a list of all of the par
 ```ts
 // vite.config.ts
 import { parseHTML } from "linkedom";
+import fs from "node:fs/promises";
 import { defineConfig } from "vite";
-
-// import
 
 export default defineConfig({
 	plugins: [
@@ -226,6 +223,7 @@ Next, we need to copy the `<script>` and `<style>` tags from the `partialDom` to
 
 ```ts
 const scriptsAndStyles = partialDom.document.querySelectorAll("script, style");
+
 for (const el of scriptsAndStyles) {
 	// copy the scripts and styles to the main dom
 	dom.document.head.append(el.cloneNode(true));
@@ -240,6 +238,7 @@ Finally, we'll insert slotted content within the custom element into the partial
 ```ts
 // find `my-button` elements in the main `dom`
 const elements = dom.document.querySelectorAll(name);
+
 for (const el of elements) {
 	const slot = partialDom.document.querySelector("slot");
 
