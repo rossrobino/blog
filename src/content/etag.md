@@ -5,9 +5,9 @@ keywords: etag, javascript, performance, cache
 date: 2024, 10, 08
 ---
 
-<!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
+<drab-youtube aria-label="YouTube Tutorial" uid="xdmHEamUtA0">
     <iframe data-content loading="lazy"></iframe>
-</drab-youtube> -->
+</drab-youtube>
 
 ## Caching basics
 
