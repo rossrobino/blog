@@ -5,6 +5,10 @@ keywords: etag, javascript, performance, cache
 date: 2024, 10, 08
 ---
 
+<drab-youtube aria-label="YouTube Tutorial" uid="xdmHEamUtA0">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube>
+
 ## Caching basics
 
 When creating a web application, a common performance optimization is to save many of the files that are required to run your application on users' devices so that the next time they visit the page it will load faster. This is called caching, you can [open your browser cache](https://developer.chrome.com/docs/devtools/storage/cache) and see all of the different assets that have been saved to your computer.
@@ -53,10 +57,6 @@ One response that generally cannot have a hashed URL is the HTML response. Users
 This response can still be sped up by using [ETags (entity tags)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag). Etags allow you to check if the file has been modified since the last time it was requested. If it hasn't, you can just send a small response saying that it is the same as last time, instead of sending the entire response again.
 
 ## ETag Tutorial
-
-<drab-youtube aria-label="YouTube Tutorial" uid="xdmHEamUtA0">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
 
 In this tutorial, I'll show you how to implement ETags to speed up an HTML response. I'm going to be using [domco](https://domco.robino.dev), but this example can be used in any server-side JavaScript framework that supports setting custom headers on a response.
 
