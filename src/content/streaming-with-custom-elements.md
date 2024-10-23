@@ -214,6 +214,10 @@ const streamHtml = (target: string, html: string) =>
 	`<stream-html target="${target}" html="${escape(html)}"></stream-html>`;
 ```
 
+You should now see your HTML streamed into your page.
+
+> NOTE: Safari requires a minimum amount of bytes in the first chunk to support streaming, see this [issue](https://github.com/sveltejs/kit/issues/10315) for more details.
+
 ## Conclusion
 
 You can stream HTML with just a few lines of JavaScript using custom elements. Check out the network tab of your development tools to see the HTML stream slowly come in as the page loads. I hope this example provides a look under the hood of how HTML streaming works. Thanks for reading!
