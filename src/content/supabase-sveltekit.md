@@ -51,11 +51,10 @@ Since [Row Level Security](https://supabase.com/docs/guides/auth#row-level-secur
 
 ## Create a SvelteKit project
 
-- Create a new SvelteKit project using the following commands. Select the `skeleton` project template and be sure to `add type checking with TypeScript`.
+- Create a new SvelteKit project using the following command and install dependencies. Select the `minimal` project template and be sure to `add type checking with TypeScript`.
 
 ```bash
-npm create svelte@latest
-npm install
+npx sv@latest create
 ```
 
 ## Environment variables

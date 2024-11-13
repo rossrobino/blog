@@ -40,10 +40,10 @@ Here's how to use Drizzle-ORM in a [SvelteKit](https://kit.svelte.dev/) project 
 
 ### Create a SvelteKit project
 
-- Create a new SvelteKit project using the following commands. I've selected the `skeleton` project template and `TypeScript`
+- Create a new SvelteKit project using the following command. I've selected the `minimal` project template and `TypeScript`
 
 ```bash
-npm create svelte@latest
+npx sv@latest create
 ```
 
 - Follow the instructions to initialize a git repository, then publish it to your [GitHub](https://github.com) account

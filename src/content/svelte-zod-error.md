@@ -18,16 +18,16 @@ date: 2023, 03, 25
 First create a new SvelteKit project and then add Zod as a development dependency.
 
 ```bash
-npm create svelte@latest
+npx sv@latest create
 npm install -D zod
 ```
 
-## Create a UserSchema
+## Create a User Schema
 
 Consider this Zod `UserSchema`, it expects a user will have an email and a password. Here, Zod can also be used to transform data with the `trim` and `toLowerCase` methods. If the parse is successful, the transformed data will be available in `safeParse.data`.
 
 ```ts
-// src/lib/zodSchemas.ts
+// src/lib/zod-schemas.ts
 import { z } from "zod";
 
 export const UserSchema = z.object({
@@ -41,7 +41,7 @@ export const UserSchema = z.object({
 });
 ```
 
-## The safeParse method
+## The `safeParse` method
 
 `safeParse` can be utlized on any Zod schema to validate an object without creating a runtime error. For example, we could validate a `user` object with our `UserSchema` like this:
 
@@ -56,7 +56,7 @@ const safeParse = UserSchema.safeParse(user);
 
 This would produce an `error` with an array of `ZodIssue`(s).
 
-## ZodIssue
+## I've got (Zod)Issues
 
 Next we can take a look at the `ZodIssue` object. This object is created with the `safeParse` method if there are any issues in the validation. After running the code above, `safeParse.error.issues` would contain the following `ZodIssue`(s) since both fields were invalid (`email` is missing a `.com`, `password` doesn't contain a number).
 
@@ -116,7 +116,7 @@ Next we can create an action for our form to validate the user's inputs on the s
 
 ```ts
 // src/routes/+page.server.ts
-import { UserSchema } from "$lib/zodSchemas";
+import { UserSchema } from "$lib/zod-schemas";
 import { fail, redirect } from "@sveltejs/kit";
 
 export const actions = {
@@ -148,7 +148,7 @@ export const actions = {
 };
 ```
 
-## ZodIssues component
+## `ZodIssues` component
 
 If there's any validation issues, we want to display the messages provided by our `UserSchema`. We can create a reusable component to render these messages in an unordered list.
 

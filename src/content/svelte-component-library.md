@@ -20,12 +20,12 @@ If you frequently have components that you share between projects and want to ke
 ## Setup
 
 - Navigate to a directory in your terminal where you will create your project
-- Run `npm create svelte@latest`, configure your project with the CLI, select the `Library skeleton project` template, I'm going to use TypeScript in this tutorial
+- Run `npx sv@latest create`, configure your project with the CLI, select the `Svelte library project` template, I'm going to use TypeScript in this tutorial
 - Update `README.md` with information about your project
 
 ## Project information
 
-Since this is a library project, it's important to add in your relevant information to the `package.json` file so it will appear in npm when the package is published. The template sets much of this up for us, but we will need to edit a few fields.
+Since this is a library project, it's important to add in your relevant information to the `package.json` file so it will appear on npm when the package is published. The template sets much of this up for us, but we will need to edit a few fields.
 
 You can read more on this in the [svelte-package documentation](https://kit.svelte.dev/docs/packaging).
 
@@ -46,7 +46,10 @@ You can read more on this in the [svelte-package documentation](https://kit.svel
 		"name": "Ross Robino",
 		"url": "https://robino.dev"
 	},
-	"repository": "github:rossrobino/components",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rossrobino/components.git"
+	},
 	"sideEffects": false,
 	...
 ```
@@ -112,11 +115,13 @@ Ensure that the component is working as expected, then you are ready to create a
 
 Now we can package the library and publish it on [npm](https://www.npmjs.com/) for anyone to use. Repeat these steps each time you want to update your package.
 
-- Set the `version` in `package.json`, this will have to be bumped up each time you publish the package (major.minor.patch)--you can leave this at `0.0.1` to start
+> If you are looking to automate some of these steps, check out the [changesets](https://github.com/changesets/changesets) project.
+
+- Update the `version` in `package.json`, this will have to be bumped up each time you publish the package (major.minor.patch)--you can leave this at `0.0.1` to start
 - Run `npm install` to sync your `package-lock.json` with the current version information
 - Run `npm run package` to execute the `package` script in `package.json`
 - You can verify the output of your build in the `dist` directory
-- Commit changes to your repository
+- Commit changes to your repository, it's important to publish the same source code to both GitHub and npm to build trust in your package with users.
 - Run `npm publish --access public` to publicly publish your package on npm (if you don't have an account you will need to create one and log in)
 
 ## Test in a separate project
@@ -124,7 +129,7 @@ Now we can package the library and publish it on [npm](https://www.npmjs.com/) f
 After verifying on the npm website that your package has been published, you can now use your package in a separate project.
 
 - Set up a new SvelteKit project or use a different existing one
-- Run `npm install -D yourPackageName` to install it as a dev dependency
+- Run `npm install -D your-package-name` to install it as a dependency
 - Import in `src/routes/+page.svelte` like before, but edit the import path to point to your package instead
 - Lastly, run `npm run dev -- --open` to see your imported component in action
 

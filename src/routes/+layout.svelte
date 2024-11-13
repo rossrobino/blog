@@ -30,7 +30,7 @@
 
 <Breakpoint />
 
-<div class="mx-auto max-w-[98ch] tabular-nums">
+<div class="mx-auto max-w-[90ch] tabular-nums">
 	<header class="mb-8">
 		<div class="my-0">
 			<a
