@@ -1,19 +1,19 @@
 <script lang="ts">
-	import "../tailwind.css";
+	import { dev } from "$app/environment";
+	import { onNavigate } from "$app/navigation";
 	import Breakpoint from "$lib/components/Breakpoint.svelte";
-	import { author, homepage, title } from "$lib/info";
 	import RSS from "$lib/components/RSS.svelte";
-	import YouTubeLink from "$lib/components/YouTubeLink.svelte";
 	import RepoLink from "$lib/components/RepoLink.svelte";
+	import YouTubeLink from "$lib/components/YouTubeLink.svelte";
+	import { author, homepage, title } from "$lib/info";
+	import "../tailwind.css";
+	import { inject } from "@vercel/analytics";
 
 	// remove if not using vercel analytics
-	import { dev } from "$app/environment";
-	import { inject } from "@vercel/analytics";
 	inject({ mode: dev ? "development" : "production" });
 
-	// https://svelte.dev/blog/view-transitions
-	import { onNavigate } from "$app/navigation";
 	onNavigate((navigation) => {
+		// https://svelte.dev/blog/view-transitions
 		// not supported in all browsers
 		if (!document.startViewTransition) return;
 

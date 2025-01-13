@@ -1,17 +1,18 @@
 <script lang="ts">
-	import { description, title } from "$lib/info/index.js";
+	import { page } from "$app/state";
 	import PostCard from "$lib/components/PostCard.svelte";
+	import { description, title } from "$lib/info/index.js";
 	import type { Post } from "$lib/types/index.js";
-	import { page } from "$app/stores";
 
 	let { data } = $props();
 
 	let { posts, filters } = data;
 
-	const currentFilter = $derived($page.url.searchParams.get("filter") ?? "all");
+	const currentFilter = $derived(page.url.searchParams.get("filter") ?? "all");
 
 	const getFilteredPosts = (posts: Post[], currentFilter: string) => {
 		if (currentFilter === "all") return posts;
+
 		return posts.filter((post) => post.keywords.includes(currentFilter));
 	};
 

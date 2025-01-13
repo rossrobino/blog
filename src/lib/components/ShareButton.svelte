@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from "svelte";
 	import { url } from "$lib/info";
+	import { onMount } from "svelte";
 
 	let { slug }: { slug: string } = $props();
 
