@@ -62,7 +62,7 @@ Caching the HTML is valuable on it's own, and often times scripts and styles are
 
 ### Prerender
 
-The by prerendering with Speculation Rules API is easier reap all of the performance optimizations from, since you only need to provide the HTML page required. During the prerendering process the browser will find the other assets and request them as they are needed. To use the API, provide a `<script type="speculationrules">` with a JSON object containing the `urls` to prerender.
+By prerendering with Speculation Rules API is easier reap all of the performance optimizations from, since you only need to provide the HTML page required. During the prerendering process the browser will find the other assets and request them as they are needed. To use the API, provide a `<script type="speculationrules">` with a JSON object containing the `urls` to prerender.
 
 ```html
 <script type="speculationrules">
