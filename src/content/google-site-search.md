@@ -1,5 +1,5 @@
 ---
-title: Template
+title: Make a Site Search like deno.com
 description: desc.
 keywords: keyword
 date: 2025, 01, 01
