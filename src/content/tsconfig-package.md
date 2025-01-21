@@ -5,9 +5,9 @@ keywords: typescript, tsconfig, npm, package
 date: 2025, 01, 17
 ---
 
-<!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
+<drab-youtube aria-label="YouTube Tutorial" uid="DNwYmgz3pCc">
     <iframe data-content loading="lazy"></iframe>
-</drab-youtube> -->
+</drab-youtube>
 
 ## Directory structure
 
