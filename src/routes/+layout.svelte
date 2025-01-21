@@ -31,7 +31,7 @@
 <Breakpoint />
 
 <div class="mx-auto max-w-[90ch] tabular-nums">
-	<header class="mb-8">
+	<header class="mb-8 flex flex-wrap justify-between gap-4">
 		<div class="my-0">
 			<a
 				href="/"
@@ -41,6 +41,15 @@
 				{title}
 			</a>
 		</div>
+		<form action="https://google.com/search" method="get">
+			<input
+				type="search"
+				name="q"
+				placeholder="Search blog.robino.dev"
+				class="min-w-52"
+			/>
+			<input type="hidden" name="q" value="site:blog.robino.dev" />
+		</form>
 	</header>
 
 	<main>{@render children()}</main>
