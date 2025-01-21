@@ -3,7 +3,6 @@ title: Simple Site Search
 description: How to make a Google Site Search like on deno.com
 keywords: site search, google, html, form
 date: 2025, 01, 21
-draft: true
 ---
 
 <!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
