@@ -6,11 +6,6 @@
 	import YouTubeLink from "$lib/components/YouTubeLink.svelte";
 	import RepoLink from "$lib/components/RepoLink.svelte";
 
-	// remove if not using vercel analytics
-	import { dev } from "$app/environment";
-	import { inject } from "@vercel/analytics";
-	inject({ mode: dev ? "development" : "production" });
-
 	// https://svelte.dev/blog/view-transitions
 	import { onNavigate } from "$app/navigation";
 	onNavigate((navigation) => {
