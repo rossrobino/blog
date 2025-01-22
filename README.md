@@ -36,4 +36,3 @@ Feel free to fork this project and use it as a template.
 The project is set up to deploy to Vercel with the static adapter and Vercel analytics. If you want to change this follow these instructions.
 
 - Update the adapter in `svelte.config.js` based on your deployment method, `bun rm @sveltejs/adapter-vercel`, [follow these instructions](https://kit.svelte.dev/docs/adapters).
-- Remove the analytics from `src/routes/+layout.svelte` and run `bun rm @vercel/analytics`
