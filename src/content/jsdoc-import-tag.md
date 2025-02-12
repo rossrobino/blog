@@ -3,7 +3,6 @@ title: JSDoc @import Tag
 description: A better way to write types with JSDoc comments.
 keywords: TypeScript, JavaScript, JSDoc
 date: 2025, 02, 12
-draft: true
 ---
 
 <!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
