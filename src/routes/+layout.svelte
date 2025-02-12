@@ -5,9 +5,6 @@
 	import RSS from "$lib/components/RSS.svelte";
 	import YouTubeLink from "$lib/components/YouTubeLink.svelte";
 	import RepoLink from "$lib/components/RepoLink.svelte";
-	import posthog from "posthog-js";
-	import { onMount } from "svelte";
-	import { dev } from "$app/environment";
 
 	// https://svelte.dev/blog/view-transitions
 	import { onNavigate } from "$app/navigation";
@@ -21,16 +18,6 @@
 				await navigation.complete;
 			});
 		});
-	});
-
-	// remove if you aren't using posthog
-	onMount(() => {
-		if (!dev) {
-			posthog.init("phc_lV7DfhfO7GHWiPsWHpFu1aDqXPfvg9FMETDIVxZafk1", {
-				api_host: "https://us.i.posthog.com",
-				person_profiles: "never",
-			});
-		}
 	});
 
 	let { children } = $props();
