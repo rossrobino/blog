@@ -6,11 +6,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
 	plugins: [
 		domco({
-			adapter: adapter({
-				isr: {
-					expiration: false,
-				},
-			}),
+			adapter: adapter(),
 		}),
 		tailwindcss(),
 	],
