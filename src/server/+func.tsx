@@ -15,8 +15,6 @@ const posts = (await getPosts()).filter(
 export const handler: Handler = async (req) => {
 	const url = new URL(req.url);
 
-	console.log(url);
-
 	const page = new Injector(html);
 
 	if (url.pathname === "/") {
