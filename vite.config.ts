@@ -9,7 +9,7 @@ export default defineConfig({
 			adapter: adapter({
 				isr: {
 					expiration: false,
-					allowQuery: ["filter"],
+					allowQuery: ["__pathname", "filter"],
 					passQuery: true,
 				},
 			}),
