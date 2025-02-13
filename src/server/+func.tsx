@@ -22,8 +22,6 @@ export const handler: Handler = async (req) => {
 
 		const currentFilter = url.searchParams.get("filter") ?? "all";
 
-		console.log(url.searchParams);
-
 		const filteredPosts = posts.filter((post) =>
 			currentFilter === "all" ? true : post.keywords.includes(currentFilter),
 		);
