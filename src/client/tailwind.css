@@ -81,9 +81,6 @@
 	--radius-4xl: calc(var(--border-radius) * 5.33);
 }
 
-@layer theme {
-}
-
 @layer base {
 	@view-transition {
 		navigation: auto;
@@ -100,6 +97,10 @@
 		::view-transition-new(*) {
 			animation: none !important;
 		}
+	}
+
+	* {
+		scroll-padding-block-start: calc(var(--spacing) * 4);
 	}
 
 	pre {

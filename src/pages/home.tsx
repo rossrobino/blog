@@ -3,6 +3,7 @@ import type { Post } from "@/lib/types";
 import { Footer } from "@/ui/footer";
 import { PostCard } from "@/ui/post-card";
 import { SiteSearch } from "@/ui/site-search";
+import { SkipLink } from "@/ui/skip-link";
 
 export const Home = (props: {
 	filters: string[];
@@ -13,6 +14,7 @@ export const Home = (props: {
 
 	return (
 		<>
+			<SkipLink />
 			<header class="mb-3 flex flex-wrap items-center justify-between gap-2">
 				<div>
 					<a
@@ -57,7 +59,7 @@ export const Home = (props: {
 			</header>
 
 			<div class="flex min-h-[calc(100dvh-100px)] flex-col justify-between">
-				<main>
+				<main id="content">
 					<section
 						aria-label={`Post list, filtered to ${currentFilter} posts.`}
 					>
