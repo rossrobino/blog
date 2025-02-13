@@ -29,8 +29,9 @@ Many fonts can be specified in a list to fallback to when the preceding fonts ar
 
 ```css
 .font-sans {
-	font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-family:
+		ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .font-serif {
@@ -38,8 +39,9 @@ Many fonts can be specified in a list to fallback to when the preceding fonts ar
 }
 
 .font-mono {
-	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		"Liberation Mono", "Courier New", monospace;
+	font-family:
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace;
 }
 ```
 

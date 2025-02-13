@@ -45,8 +45,8 @@ Each [heading object](https://docs.astro.build/en/core-concepts/layouts/#markdow
 <!-- iterate through each heading -->
 {#each headings as heading}
 	<div>
-		<!-- 
-			prefix each heading with a # and indent accordingly 
+		<!--
+			prefix each heading with a # and indent accordingly
 			with css classes depending on the heading.depth
 		-->
 		<span
@@ -57,13 +57,13 @@ Each [heading object](https://docs.astro.build/en/core-concepts/layouts/#markdow
 		>
 			#
 		</span>
-		<!-- 
+		<!--
 			Check if we are passing in a file or the headings:
 
 			If we are passing in a file, this means we are referencing the
 			files from another page, so we will link to the full path.
 
-			If we are passing in just the headings, we can link to the 
+			If we are passing in just the headings, we can link to the
 			#id so the link will jump to the right spot on the page.
 		-->
 		<a href={isFile ? `${file.url}#${heading.slug}` : `#${heading.slug}`}>

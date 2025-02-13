@@ -1,4 +1,4 @@
-import { formatDate } from "$lib/util/formatDate";
+import { formatDate } from "@/lib/util/format-date";
 import { z } from "zod";
 
 export const frontmatterSchema = z

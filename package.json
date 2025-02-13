@@ -1,37 +1,33 @@
 {
 	"name": "blog",
-	"version": "1.0.0",
 	"private": true,
+	"version": "0.0.0",
+	"type": "module",
 	"scripts": {
-		"dev": "vite dev --host",
+		"dev": "vite",
+		"check": "tsc",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@robino/md": "^1.0.1",
-		"@robino/prettier": "^0.1.1",
-		"@sveltejs/adapter-vercel": "^5.4.4",
-		"@sveltejs/kit": "^2.6.1",
-		"@tailwindcss/typography": "^0.5.15",
-		"autoprefixer": "^10.4.20",
-		"drab": "^5.4.2",
-		"prettier": "^3.3.3",
-		"prettier-plugin-svelte": "^3.2.7",
-		"prettier-plugin-tailwindcss": "^0.6.8",
-		"svelte": "^5.0.0-next.258",
-		"svelte-check": "^4.0.4",
-		"tailwindcss": "^3.4.13",
-		"tslib": "^2.7.0",
-		"typescript": "^5.6.2",
-		"uico": "^0.3.3",
-		"vite": "^5.4.8",
-		"zod": "^3.23.8"
+		"@robino/prettier": "^1.0.1",
+		"@robino/tsconfig": "^1.0.0",
+		"@tailwindcss/vite": "^4.0.0",
+		"domco": "^3.0.0",
+		"prettier": "^3.4.2",
+		"prettier-plugin-tailwindcss": "^0.6.10",
+		"tailwindcss": "^4.0.0",
+		"typescript": "^5.7.3",
+		"vite": "^6.0.11"
 	},
-	"type": "module",
 	"dependencies": {
-		"posthog-js": "^1.217.2"
+		"@robino/html": "^0.3.0",
+		"@robino/jsx": "^0.0.14",
+		"@robino/md": "^2.0.0",
+		"clsx": "^2.1.1",
+		"drab": "^6.1.0",
+		"uico": "^0.4.6",
+		"zod": "^3.24.2"
 	}
 }
