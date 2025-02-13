@@ -1,7 +1,7 @@
 ---
 title: Use Zod to Validate Forms on the Server with SvelteKit
 description: Render issues from Zod with a Svelte component.
-keywords: svelte, zod, errors, components
+keywords: svelte, zod, errors
 date: 2023, 03, 25
 ---
 

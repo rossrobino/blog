@@ -1,7 +1,7 @@
 ---
 title: How to Create a Carousel using Modern Web Standards
 description: Learn to build an interactive carousel using CSS scroll-snap and progressively enhance it with JavaScript.
-keywords: CSS, carousel, TypeScript, JavaScript, HTML, scroll snap
+keywords: CSS, carousel, TypeScript, JavaScript, HTML, scroll snap, components
 date: 2024, 06, 25
 ---
 
