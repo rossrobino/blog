@@ -11,6 +11,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@domcojs/vercel": "^1.0.0",
 		"@robino/prettier": "^1.0.1",
 		"@robino/tsconfig": "^1.0.0",
 		"@tailwindcss/vite": "^4.0.0",
