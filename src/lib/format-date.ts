@@ -5,5 +5,10 @@ export const formatDate = (dateString: string) => {
 		month: "short",
 		day: "numeric",
 	});
+
+	if (formatted === "Invalid Date") {
+		throw new Error(formatted);
+	}
+
 	return formatted;
 };

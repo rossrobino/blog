@@ -1,9 +1,9 @@
-import { getSlug } from "./get-slug";
-import { markdownProcessor } from "./markdown-processor";
+import { getSlug } from "@/lib/get-slug";
+import { markdownProcessor } from "@/lib/markdown-processor";
 import { frontmatterSchema } from "@/lib/schema";
 import type { Post } from "@/lib/types";
 
-const content = import.meta.glob("../../content/*.md", {
+const content = import.meta.glob("../content/*.md", {
 	query: "?raw",
 	import: "default",
 	eager: true,

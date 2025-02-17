@@ -14,6 +14,7 @@ export const Headings = (props: { post: Post }) => {
 							</li>
 						);
 					}
+
 					return null;
 				})}
 			</ul>

@@ -36,7 +36,7 @@ export const Home = (props: {
 								<a
 									href={`/${filter === "all" ? "" : `?filter=${filter}`}`}
 									class="button ghost uppercase"
-									aria-current={filter === currentFilter ? "page" : false}
+									aria-current={filter === currentFilter ? "page" : undefined}
 								>
 									{filter}
 								</a>

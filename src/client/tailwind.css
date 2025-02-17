@@ -153,4 +153,8 @@
 	h2 {
 		text-wrap: pretty;
 	}
+
+	img {
+		border: var(--border);
+	}
 }

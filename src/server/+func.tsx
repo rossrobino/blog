@@ -1,6 +1,6 @@
+import { getKeywords } from "@/lib/get-keywords";
+import { getPosts } from "@/lib/get-posts";
 import { description, title } from "@/lib/info";
-import { getKeywords } from "@/lib/util/get-keywords";
-import { getPosts } from "@/lib/util/get-posts";
 import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
