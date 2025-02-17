@@ -10,7 +10,7 @@ const content = import.meta.glob("../content/*.md", {
 });
 
 export const getPosts = async () => {
-	const posts: Post[] = [];
+	let posts: Post[] = [];
 
 	for (const path in content) {
 		const md = content[path] as string;
@@ -22,7 +22,9 @@ export const getPosts = async () => {
 		posts.push({ ...frontmatter, slug, headings, html });
 	}
 
-	posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+	posts = posts
+		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+		.filter((post) => !post.draft || import.meta.env.DEV);
 
 	return posts;
 };

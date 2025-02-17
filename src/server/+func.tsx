@@ -8,9 +8,7 @@ import { Injector } from "@robino/html";
 import { html } from "client:page";
 import type { Handler } from "domco";
 
-const posts = (await getPosts()).filter(
-	(post) => !post.draft || import.meta.env.DEV,
-);
+const posts = await getPosts();
 
 export const handler: Handler = async (req) => {
 	const url = new URL(req.url);
