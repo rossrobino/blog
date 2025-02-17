@@ -26,7 +26,7 @@ export const handler: Handler = async (req) => {
 
 		page
 			.title(title)
-			.head({ name: "meta", attrs: { content: description } })
+			.head(<meta name="description" content={description} />)
 			.body(
 				<RootLayout>
 					<Home
@@ -45,7 +45,7 @@ export const handler: Handler = async (req) => {
 			if (post) {
 				page
 					.title(post.title)
-					.head({ name: "meta", attrs: { content: post.description } })
+					.head(<meta name="description" content={post.description} />)
 					.body(
 						<RootLayout>
 							<Posts post={post}></Posts>
