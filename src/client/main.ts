@@ -6,24 +6,36 @@ import "drab/youtube/define";
 import posthog from "posthog-js";
 
 const analytics = () => {
-	if (import.meta.env.PROD) {
-		posthog.init("phc_lV7DfhfO7GHWiPsWHpFu1aDqXPfvg9FMETDIVxZafk1", {
-			api_host: "https://us.i.posthog.com",
+	const init = () => {
+		if (import.meta.env.PROD) {
+			posthog.init("phc_lV7DfhfO7GHWiPsWHpFu1aDqXPfvg9FMETDIVxZafk1", {
+				api_host: "https://us.i.posthog.com",
+			});
+		} else {
+			console.info("no analytics in development mode");
+		}
+	};
+
+	// @ts-expect-error prerendering is experimental
+	if (document.prerendering) {
+		document.addEventListener("prerenderingchange", init, {
+			once: true,
 		});
 	} else {
-		console.info("no analytics in development mode");
+		init();
 	}
 };
 
-const main = () => {
+const cmdK = () => {
 	const search = document.querySelector("dialog");
 	document.body.addEventListener("keydown", (e) => {
 		if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
 			search?.showModal();
 		}
 	});
+};
 
-	// copy text code blocks
+const copyCode = () => {
 	const pres = document.querySelectorAll("pre");
 	for (const pre of pres) {
 		pre.tabIndex = 0;
@@ -42,7 +54,9 @@ const main = () => {
 			}
 		});
 	}
+};
 
+const fixTableOverflow = () => {
 	const tables = document.querySelectorAll("table");
 	tables.forEach((table) => {
 		const div = document.createElement("div");
@@ -50,15 +64,13 @@ const main = () => {
 		table.insertAdjacentElement("beforebegin", div);
 		div.append(table);
 	});
+};
 
-	// @ts-expect-error prerendering is experimental
-	if (document.prerendering) {
-		document.addEventListener("prerenderingchange", analytics, {
-			once: true,
-		});
-	} else {
-		analytics();
-	}
+const main = () => {
+	cmdK();
+	copyCode();
+	fixTableOverflow();
+	analytics();
 };
 
 main();
