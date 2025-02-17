@@ -73,8 +73,8 @@ export const Home = (props: {
 								return (
 									<PostCard
 										post={post}
-										uppercase={uppercase}
-										italic={italic}
+										uppercase={i !== 0 && uppercase}
+										italic={i !== 0 && italic}
 										size={i === 0 ? "lg" : medium ? "md" : "sm"}
 										headings={i === 0 || headings}
 									/>
