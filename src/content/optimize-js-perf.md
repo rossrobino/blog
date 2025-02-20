@@ -297,6 +297,10 @@ Checking to see if the value is a promise took about 1ns, while awaiting a value
 
 ## Sets
 
+Sets are often cited as being faster than arrays, this is true for lookups on large arrays. You have to ensure the creation of the set does not outweigh the speed of the lookup.
+
+On my machine it takes around 10ns to create a set.
+
 ## Array method chaining
 
 ## Conclusion

@@ -5,66 +5,53 @@ import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
 import { Injector } from "@robino/html";
+import { Router } from "@robino/router";
 import { html } from "client:page";
-import type { Handler } from "domco";
 
 const posts = await getPosts();
 
-export const handler: Handler = async (req) => {
-	const url = new URL(req.url);
+const router = new Router();
 
-	const page = new Injector(html);
+router.get("/", ({ url }) => {
+	const filters = getKeywords(posts);
 
-	if (url.pathname === "/") {
-		const filters = getKeywords(posts);
+	const currentFilter = url.searchParams.get("filter") ?? "all";
 
-		const currentFilter = url.searchParams.get("filter") ?? "all";
+	const filteredPosts = posts.filter((post) =>
+		currentFilter === "all" ? true : post.keywords.includes(currentFilter),
+	);
 
-		const filteredPosts = posts.filter((post) =>
-			currentFilter === "all" ? true : post.keywords.includes(currentFilter),
-		);
+	return new Injector(html)
+		.title(title)
+		.head(<meta name="description" content={description} />)
+		.body(
+			<RootLayout>
+				<Home
+					posts={filteredPosts}
+					filters={filters}
+					currentFilter={currentFilter}
+				/>
+			</RootLayout>,
+		)
+		.toResponse();
+});
 
-		page
-			.title(title)
-			.head(<meta name="description" content={description} />)
+router.get("/posts/:slug", ({ params }) => {
+	const post = posts.find((post) => post.slug === params.slug);
+
+	if (post) {
+		return new Injector(html)
+			.title(post.title)
+			.head(<meta name="description" content={post.description} />)
 			.body(
 				<RootLayout>
-					<Home
-						posts={filteredPosts}
-						filters={filters}
-						currentFilter={currentFilter}
-					/>
+					<Posts post={post}></Posts>
 				</RootLayout>,
-			);
-	} else if (url.pathname.startsWith("/posts/")) {
-		const slug = url.pathname.split("/").at(-1);
-
-		if (slug) {
-			const post = posts.find((post) => post.slug === slug);
-
-			if (post) {
-				page
-					.title(post.title)
-					.head(<meta name="description" content={post.description} />)
-					.body(
-						<RootLayout>
-							<Posts post={post}></Posts>
-						</RootLayout>,
-					);
-			}
-		}
+			)
+			.toResponse();
 	}
 
-	if (!page.empty) {
-		return page.toResponse();
-	}
+	return router.notFound();
+});
 
-	// trim trailing slash
-	if (url.pathname.at(-1) === "/") {
-		url.pathname = url.pathname.slice(0, -1);
-		url.search = "";
-		return Response.redirect(url, 308);
-	}
-
-	return new Response("Not found", { status: 404 });
-};
+export const handler = router.fetch;
