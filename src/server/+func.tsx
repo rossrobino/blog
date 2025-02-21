@@ -4,7 +4,7 @@ import { description, title } from "@/lib/info";
 import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
-import { Injector } from "@robino/html";
+import { Page } from "@robino/html";
 import { Router } from "@robino/router";
 import { html } from "client:page";
 
@@ -21,9 +21,13 @@ router.get("/", ({ url }) => {
 		currentFilter === "all" ? true : post.keywords.includes(currentFilter),
 	);
 
-	return new Injector(html)
-		.title(title)
-		.head(<meta name="description" content={description} />)
+	return new Page(html)
+		.head(
+			<>
+				<meta name="description" content={description} />
+				<title>{title}</title>
+			</>,
+		)
 		.body(
 			<RootLayout>
 				<Home
@@ -40,9 +44,13 @@ router.get("/posts/:slug", ({ params }) => {
 	const post = posts.find((post) => post.slug === params.slug);
 
 	if (post) {
-		return new Injector(html)
-			.title(post.title)
-			.head(<meta name="description" content={post.description} />)
+		return new Page(html)
+			.head(
+				<>
+					<title>{post.title}</title>
+					<meta name="description" content={post.description} />
+				</>,
+			)
 			.body(
 				<RootLayout>
 					<Posts post={post}></Posts>
