@@ -10,7 +10,31 @@ import { html } from "client:page";
 
 const posts = await getPosts();
 
-const router = new Router();
+const router = new Router({
+	notFound: async (c) => {
+		return new Page(html)
+			.head(
+				<>
+					<meta name="description" content={description} />
+					<title>{title} - Not Found</title>
+				</>,
+			)
+			.body(
+				<RootLayout>
+					<main class="prose">
+						<h1>Not Found</h1>
+						<p>
+							The requested path <code>{c.url.pathname}</code> was not found.
+						</p>
+						<p>
+							<a href="/">Return home</a>
+						</p>
+					</main>
+				</RootLayout>,
+			)
+			.toResponse({ status: 404, statusText: "Not found" });
+	},
+});
 
 router.get("/", ({ url }) => {
 	const filters = getKeywords(posts);
@@ -40,8 +64,8 @@ router.get("/", ({ url }) => {
 		.toResponse();
 });
 
-router.get("/posts/:slug", ({ params }) => {
-	const post = posts.find((post) => post.slug === params.slug);
+router.get("/posts/:slug", (c) => {
+	const post = posts.find((post) => post.slug === c.params.slug);
 
 	if (post) {
 		return new Page(html)
@@ -59,7 +83,7 @@ router.get("/posts/:slug", ({ params }) => {
 			.toResponse();
 	}
 
-	return router.notFound();
+	return router.notFound(c);
 });
 
 export const handler = router.fetch;
