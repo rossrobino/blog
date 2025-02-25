@@ -56,20 +56,9 @@ const copyCode = () => {
 	}
 };
 
-const fixTableOverflow = () => {
-	const tables = document.querySelectorAll("table");
-	tables.forEach((table) => {
-		const div = document.createElement("div");
-		div.classList.add("overflow-x-auto");
-		table.insertAdjacentElement("beforebegin", div);
-		div.append(table);
-	});
-};
-
 const main = () => {
 	cmdK();
 	copyCode();
-	fixTableOverflow();
 	analytics();
 };
 

@@ -1,4 +1,4 @@
-import { MarkdownProcessor } from "@robino/md";
+import { Processor } from "@robino/md";
 import langAstro from "shiki/langs/astro.mjs";
 import langBash from "shiki/langs/bash.mjs";
 import langCss from "shiki/langs/css.mjs";
@@ -10,7 +10,7 @@ import langSql from "shiki/langs/sql.mjs";
 import langSvelte from "shiki/langs/svelte.mjs";
 import langTsx from "shiki/langs/tsx.mjs";
 
-export const markdownProcessor = new MarkdownProcessor({
+export const processor = new Processor({
 	highlighter: {
 		langs: [
 			langCss,

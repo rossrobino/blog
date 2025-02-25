@@ -1,5 +1,5 @@
 import { getSlug } from "@/lib/get-slug";
-import { markdownProcessor } from "@/lib/markdown-processor";
+import { processor } from "@/lib/md";
 import { frontmatterSchema } from "@/lib/schema";
 import type { Post } from "@/lib/types";
 
@@ -14,7 +14,7 @@ export const getPosts = async () => {
 
 	for (const path in content) {
 		const md = content[path] as string;
-		const { frontmatter, headings, html } = await markdownProcessor.process(
+		const { frontmatter, headings, html } = await processor.process(
 			md,
 			frontmatterSchema,
 		);
