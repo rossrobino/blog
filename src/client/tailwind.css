@@ -108,9 +108,6 @@
 		margin-inline: -1.5rem;
 		border-radius: 0;
 		padding-inline: 0;
-		font-size: var(--font-size-2);
-		line-height: var(--line-height-2);
-		letter-spacing: var(--letter-spacing-2);
 
 		@media (min-width: 640px) {
 			margin-inline: 0;

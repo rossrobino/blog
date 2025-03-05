@@ -1,14 +1,14 @@
 import { Processor } from "@robino/md";
-import langAstro from "shiki/langs/astro.mjs";
-import langBash from "shiki/langs/bash.mjs";
-import langCss from "shiki/langs/css.mjs";
-import langDiff from "shiki/langs/diff.mjs";
-import langHtml from "shiki/langs/html.mjs";
-import langJson from "shiki/langs/json.mjs";
-import langMd from "shiki/langs/md.mjs";
-import langSql from "shiki/langs/sql.mjs";
-import langSvelte from "shiki/langs/svelte.mjs";
-import langTsx from "shiki/langs/tsx.mjs";
+import langAstro from "@shikijs/langs/astro";
+import langBash from "@shikijs/langs/bash";
+import langCss from "@shikijs/langs/css";
+import langDiff from "@shikijs/langs/diff";
+import langHtml from "@shikijs/langs/html";
+import langJson from "@shikijs/langs/json";
+import langMd from "@shikijs/langs/md";
+import langSql from "@shikijs/langs/sql";
+import langSvelte from "@shikijs/langs/svelte";
+import langTsx from "@shikijs/langs/tsx";
 
 export const processor = new Processor({
 	highlighter: {

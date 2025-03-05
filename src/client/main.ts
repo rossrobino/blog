@@ -3,28 +3,6 @@ import "drab/dialog/define";
 import "drab/prefetch/define";
 import "drab/share/define";
 import "drab/youtube/define";
-import posthog from "posthog-js";
-
-const analytics = () => {
-	const init = () => {
-		if (import.meta.env.PROD) {
-			posthog.init("phc_lV7DfhfO7GHWiPsWHpFu1aDqXPfvg9FMETDIVxZafk1", {
-				api_host: "https://us.i.posthog.com",
-			});
-		} else {
-			console.info("no analytics in development mode");
-		}
-	};
-
-	// @ts-expect-error prerendering is experimental
-	if (document.prerendering) {
-		document.addEventListener("prerenderingchange", init, {
-			once: true,
-		});
-	} else {
-		init();
-	}
-};
 
 const cmdK = () => {
 	const search = document.querySelector("dialog");
@@ -59,7 +37,6 @@ const copyCode = () => {
 const main = () => {
 	cmdK();
 	copyCode();
-	analytics();
 };
 
 main();
