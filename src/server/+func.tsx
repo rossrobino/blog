@@ -36,16 +36,16 @@ const router = new Router({
 	},
 });
 
-router.get("/", ({ url }) => {
+router.get("/", (c) => {
 	const filters = getKeywords(posts);
 
-	const currentFilter = url.searchParams.get("filter") ?? "all";
+	const currentFilter = c.url.searchParams.get("filter") ?? "all";
 
 	const filteredPosts = posts.filter((post) =>
 		currentFilter === "all" ? true : post.keywords.includes(currentFilter),
 	);
 
-	return new Page(html)
+	c.res = new Page(html)
 		.head(
 			<>
 				<meta name="description" content={description} />
@@ -64,11 +64,11 @@ router.get("/", ({ url }) => {
 		.toResponse();
 });
 
-router.get("/posts/:slug", (c) => {
+router.get("/posts/:slug", async (c) => {
 	const post = posts.find((post) => post.slug === c.params.slug);
 
 	if (post) {
-		return new Page(html)
+		c.res = new Page(html)
 			.head(
 				<>
 					<title>{post.title}</title>
@@ -81,9 +81,11 @@ router.get("/posts/:slug", (c) => {
 				</RootLayout>,
 			)
 			.toResponse();
+
+		return;
 	}
 
-	return router.notFound(c);
+	c.res = await router.notFound(c);
 });
 
 export const handler = router.fetch;
