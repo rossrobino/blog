@@ -65,9 +65,8 @@ Next, since I'm using TypeScript, I need to also tell the TypeScript language se
 ```ts
 // src/types/md.d.ts
 declare module "*.md" {
-	const html: string;
-	const md: string;
-	export { html, md };
+	export const html: string;
+	export const md: string;
 }
 ```
 
