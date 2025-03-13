@@ -1,7 +1,7 @@
-import { formatDate } from "@/lib/format-date";
+import { formatDate } from "./format-date";
 import * as v from "valibot";
 
-export const frontmatterSchema = v.strictObject({
+export const FrontmatterSchema = v.strictObject({
 	title: v.string(),
 	description: v.string(),
 	keywords: v.pipe(

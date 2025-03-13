@@ -4,55 +4,56 @@ import { description, title } from "@/lib/info";
 import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
-import { Page } from "@robino/html";
 import { Router } from "@robino/router";
 import { html } from "client:page";
 
-const posts = await getPosts();
+const posts = getPosts();
 
 const router = new Router({
-	notFound: async (c) => {
-		return new Page(html)
-			.head(
+	html,
+	async notFound(c) {
+		c.res.html((p) => {
+			p.head(
 				<>
 					<meta name="description" content={description} />
 					<title>{title} - Not Found</title>
 				</>,
-			)
-			.body(
+			).body(
 				<RootLayout>
 					<main class="prose">
 						<h1>Not Found</h1>
 						<p>
-							The requested path <code>{c.url.pathname}</code> was not found.
+							The requested path <code>{c.req.url.pathname}</code> was not
+							found.
 						</p>
 						<p>
 							<a href="/">Return home</a>
 						</p>
 					</main>
 				</RootLayout>,
-			)
-			.toResponse({ status: 404, statusText: "Not found" });
+			);
+		}, 404);
 	},
 });
 
+let filters: string[];
+
 router.get("/", (c) => {
-	const filters = getKeywords(posts);
+	if (!filters) filters = getKeywords(posts);
 
-	const currentFilter = c.url.searchParams.get("filter") ?? "all";
+	const currentFilter = c.req.url.searchParams.get("filter") ?? "all";
+	const filteredPosts =
+		currentFilter === "all"
+			? posts
+			: posts.filter((post) => post.keywords.includes(currentFilter));
 
-	const filteredPosts = posts.filter((post) =>
-		currentFilter === "all" ? true : post.keywords.includes(currentFilter),
-	);
-
-	c.res = new Page(html)
-		.head(
+	c.res.html((p) => {
+		p.head(
 			<>
 				<meta name="description" content={description} />
 				<title>{title}</title>
 			</>,
-		)
-		.body(
+		).body(
 			<RootLayout>
 				<Home
 					posts={filteredPosts}
@@ -60,32 +61,27 @@ router.get("/", (c) => {
 					currentFilter={currentFilter}
 				/>
 			</RootLayout>,
-		)
-		.toResponse();
+		);
+	});
 });
 
 router.get("/posts/:slug", async (c) => {
 	const post = posts.find((post) => post.slug === c.params.slug);
 
 	if (post) {
-		c.res = new Page(html)
-			.head(
+		c.res.html((p) => {
+			p.head(
 				<>
 					<title>{post.title}</title>
 					<meta name="description" content={post.description} />
 				</>,
-			)
-			.body(
+			).body(
 				<RootLayout>
 					<Posts post={post}></Posts>
 				</RootLayout>,
-			)
-			.toResponse();
-
-		return;
+			);
+		});
 	}
-
-	c.res = await router.notFound(c);
 });
 
 export const handler = router.fetch;

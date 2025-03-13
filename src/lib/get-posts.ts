@@ -1,23 +1,21 @@
 import { getSlug } from "@/lib/get-slug";
-import { processor } from "@/lib/md";
-import { frontmatterSchema } from "@/lib/schema";
+import type { FrontmatterSchema } from "@/lib/schema";
 import type { Post } from "@/lib/types";
+import type { Result } from "@robino/md";
 
-const content = import.meta.glob("../content/*.md", {
-	query: "?raw",
-	import: "default",
-	eager: true,
-});
+const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
+	"../content/*.md",
+	{
+		eager: true,
+	},
+);
 
-export const getPosts = async () => {
+export const getPosts = () => {
 	let posts: Post[] = [];
 
 	for (const path in content) {
-		const md = content[path] as string;
-		const { frontmatter, headings, html } = await processor.process(
-			md,
-			frontmatterSchema,
-		);
+		const { frontmatter, headings, html } = content[path]!;
+
 		const slug = getSlug(path);
 		posts.push({ ...frontmatter, slug, headings, html });
 	}
