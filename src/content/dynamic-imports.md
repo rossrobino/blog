@@ -1,14 +1,9 @@
 ---
 title: Dynamic Import Best Practices
-description: desc.
-keywords: keyword
-date: 2025, 03, 05
-draft: true
+description: Performance, bundling, and optimal code loading strategies.
+keywords: dynamic, javascript, import
+date: 2025, 03, 14
 ---
-
-<!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube> -->
 
 ## Static and dynamic imports
 
@@ -124,7 +119,7 @@ Now, if `/` is requested first, the module will not be loaded. On the first requ
 
 It's important to consider how your code is deployed before reaching for dynamic imports.
 
-If you have a long running server that doesn't spin down, dynamic imports are probably less useful since the startup time will only occur once. You can import everything in the beginning and be ready for any request.
+If you have a long running server that doesn't spin down and memory usage is not a concern, dynamic imports are probably less useful since the startup time will only occur once. You can import everything in the beginning and be ready for any request.
 
 If you are in a serverless environment and your website doesn't have constant traffic, your server might not be "warm"---already started---when someone makes a request. This creates a "cold start". In this case, dynamic imports might help you mitigate the startup time if you can prevent loading code that isn't needed.
 
@@ -137,3 +132,7 @@ Since this can create a waterfall of client-side requests, users can add a `<lin
 ```html
 <link rel="modulepreload" href="./foo-123.js" />
 ```
+
+## Conclusion
+
+Dynamic imports offer an effective way to enhance application performance by loading code only when necessary. By comparing static and dynamic imports, developers can make informed decisions to balance initial load times with resource efficiency. Thanks for reading!
