@@ -1,10 +1,9 @@
-import type { Children } from "@robino/jsx";
+import type { JSX } from "@robino/jsx";
 
-export const RootLayout = (props: { children?: Children }) => {
-	const { children } = props;
+export const RootLayout = (props: { children?: JSX.Element }) => {
 	return (
 		<drab-prefetch class="contents" prerender trigger="a[href^='/']">
-			<div>{children}</div>
+			<div>{props.children}</div>
 		</drab-prefetch>
 	);
 };

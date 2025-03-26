@@ -14,21 +14,21 @@
 		"@domcojs/vercel": "^1.1.1",
 		"@robino/prettier": "^1.0.2",
 		"@robino/tsconfig": "^1.0.2",
-		"@tailwindcss/vite": "^4.0.14",
+		"@tailwindcss/vite": "^4.0.17",
 		"domco": "^3.0.2",
 		"prettier": "^3.5.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"tailwindcss": "^4.0.14",
+		"tailwindcss": "^4.0.17",
 		"typescript": "^5.8.2",
-		"vite": "^6.2.2"
+		"vite": "^6.2.3"
 	},
 	"dependencies": {
-		"@robino/jsx": "^0.2.6",
-		"@robino/md": "^3.2.0",
-		"@robino/router": "^0.6.1",
+		"@robino/jsx": "^0.3.0",
+		"@robino/md": "^3.2.1",
+		"@robino/router": "^0.11.0",
 		"clsx": "^2.1.1",
 		"drab": "^6.1.0",
 		"uico": "^0.6.3",
-		"valibot": "^1.0.0-rc.4"
+		"valibot": "^1.0.0"
 	}
 }
