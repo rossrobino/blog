@@ -1,4 +1,4 @@
-import type { JSX } from "@robino/jsx";
+import type { JSX } from "ovr";
 
 export const RootLayout = (props: { children?: JSX.Element }) => {
 	return (
