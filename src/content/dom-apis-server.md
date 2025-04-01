@@ -15,9 +15,7 @@ Still, this prompts a thought: Given that server-side rendering involves constru
 
 Since JavaScript was essentially developed to manipulate the DOM, why restrict its powerful APIs only to client-side rendering? Libraries like [jsdom](https://github.com/jsdom/jsdom), primarily tailored for testing by simulating a browser environment, are a testament to the demand for these capabilities on the server.
 
-> JavaScript is great at manipulating the DOM.
-
-— [The Primeagen](https://youtu.be/UdCXUVhVSEE?t=3202)
+> JavaScript is great at manipulating the DOM. — [The Primeagen](https://youtu.be/UdCXUVhVSEE?t=3202)
 
 ## Templating language dilemma
 
@@ -55,9 +53,9 @@ Comparatively, here's a few examples in different frameworks that I found:
 
 - Next: https://nextjs.org/docs/pages/api-reference/components/head
 - Vue: https://medium.com/@Taha_Shashtari/the-easy-way-to-change-page-title-in-vue-6caf05006863
-- Svelte: https://svelte.dev/docs/special-elements#svelte-head
+- Svelte: https://svelte.dev/docs/svelte/svelte-head
 - Astro: https://youtu.be/Rg7Finb-Uxw?t=434
-- Remix: https://remix.run/docs/en/main/route/meta
+- React Router: https://reactrouter.com/api/components/Meta#meta
 
 ### Components
 

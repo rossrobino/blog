@@ -86,38 +86,40 @@ On the server, instead of just sending the HTML directly, break it into a [`Read
 // src/server/+func.ts
 import streamHtmlElement from "../client/stream-html?raw";
 import { html } from "client:page";
-import type { Handler } from "domco";
+import type { App } from "domco";
 
 // import the raw text of the custom element to inline into a script tag
 // (you could also just inline the string directly if you aren't using Vite)
 const streamHtmlScriptChunk = `<script>${streamHtmlElement}</script>`;
 
-export const handler: Handler = () => {
-	// split html into two chunks
-	const [startChunk, endChunk] = html.split("%stream%");
+export default {
+	fetch(req) {
+		// split html into two chunks
+		const [startChunk, endChunk] = html.split("%stream%");
 
-	// create a new stream of strings
-	const body = new ReadableStream<string>({
-		async start(controller) {
-			// send the first chunk and the script tag
-			controller.enqueue(startChunk + streamHtmlScriptChunk);
+		// create a new stream of strings
+		const body = new ReadableStream<string>({
+			async start(controller) {
+				// send the first chunk and the script tag
+				controller.enqueue(startChunk + streamHtmlScriptChunk);
 
-			// TODO: stream the custom elements
+				// TODO: stream the custom elements
 
-			// send the last chunk (other half of original html)
-			controller.enqueue(endChunk);
+				// send the last chunk (other half of original html)
+				controller.enqueue(endChunk);
 
-			controller.close();
-		},
-	});
+				controller.close();
+			},
+		});
 
-	// return the stream as the response body
-	return new Response(body, {
-		headers: {
-			"Content-Type": "text/html",
-		},
-	});
-};
+		// return the stream as the response body
+		return new Response(body, {
+			headers: {
+				"Content-Type": "text/html",
+			},
+		});
+	},
+} satisfies App;
 ```
 
 ### Serialize HTML into the custom element
@@ -145,56 +147,58 @@ Finally, create some loaders to fetch data, in this example I'll use this `rando
 
 Altogether, the server module now looks like this.
 
-```ts {15-36,51-55}
+```ts {16-37,53-57}
 // src/server/+func.ts
 import streamHtmlElement from "../client/stream-html?raw";
 import { html } from "client:page";
-import type { Handler } from "domco";
+import type { App } from "domco";
 
 const streamHtmlScriptChunk = `<script>${streamHtmlElement}</script>`;
 
-export const handler: Handler = () => {
-	const [startChunk, endChunk] = html.split("%stream%");
+export default {
+	fetch(req) {
+		const [startChunk, endChunk] = html.split("%stream%");
 
-	const body = new ReadableStream<string>({
-		async start(controller) {
-			controller.enqueue(startChunk + streamHtmlScript);
+		const body = new ReadableStream<string>({
+			async start(controller) {
+				controller.enqueue(startChunk + streamHtmlScript);
 
-			// an array of loaders to load asynchronously
-			const loaders = [
-				async () => {
-					await randomDelay();
-					return streamHtml(".greeting", "<h2>Greetings!</h2>");
-				},
-				async () => {
-					await randomDelay();
-					return streamHtml("#message", "<p>Message</p>");
-				},
-				async () => {
-					await randomDelay();
-					return streamHtml("load-data", "<p><code>1234</code></p>");
-				},
-			];
+				// an array of loaders to load asynchronously
+				const loaders = [
+					async () => {
+						await randomDelay();
+						return streamHtml(".greeting", "<h2>Greetings!</h2>");
+					},
+					async () => {
+						await randomDelay();
+						return streamHtml("#message", "<p>Message</p>");
+					},
+					async () => {
+						await randomDelay();
+						return streamHtml("load-data", "<p><code>1234</code></p>");
+					},
+				];
 
-			await Promise.all(
-				loaders.map(async (loader) => {
-					const chunk = await loader();
-					controller.enqueue(chunk);
-				}),
-			);
+				await Promise.all(
+					loaders.map(async (loader) => {
+						const chunk = await loader();
+						controller.enqueue(chunk);
+					}),
+				);
 
-			controller.enqueue(endChunk);
+				controller.enqueue(endChunk);
 
-			controller.close();
-		},
-	});
+				controller.close();
+			},
+		});
 
-	return new Response(body, {
-		headers: {
-			"Content-Type": "text/html",
-		},
-	});
-};
+		return new Response(body, {
+			headers: {
+				"Content-Type": "text/html",
+			},
+		});
+	},
+} satisfies App;
 
 // simulate latency in loaders
 const randomDelay = () => {

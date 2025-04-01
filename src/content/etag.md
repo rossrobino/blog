@@ -45,7 +45,7 @@ Each time the CSS file is updated, a new hash will be generated for the file usi
 These assets are often all output during the build process into an `immutable/` directory and served with immutable cache headers.
 
 ```json
-{ "Cache-Control": "public, immutable, max-age=31536000" }
+{ "cache-control": "public, immutable, max-age=31536000" }
 ```
 
 By doing this, users only ever have to download these assets once, they are saved to their computer for up to a year and loaded from the cache in subsequent requests.
@@ -66,15 +66,17 @@ Here's an example of sending a HTML response without an ETag.
 
 ```ts
 import { html } from "client:page";
-import type { Handler } from "domco";
+import type { App } from "domco";
 
-export const handler: Handler = (req) => {
-	return new Response(html, {
-		headers: {
-			"Content-Type": "text/html",
-		},
-	});
-};
+export default {
+	fetch(req) {
+		return new Response(html, {
+			headers: {
+				"content-type": "text/html",
+			},
+		});
+	},
+} satisfies App;
 ```
 
 Currently, this response requires `Response.body`---the `html`---to be sent over the network with each request.
@@ -102,44 +104,48 @@ I'm going to use the DJB2 algorithm from SvelteKit for this tutorial, [I modifie
 
 Next, we can create an ETag using the HTML string, and send it to the client in a response header along with the HTML.
 
-```ts {6,13}
+```ts {7,14}
 import { html } from "client:page";
-import type { Handler } from "domco";
+import type { App } from "domco";
 
-export const handler: Handler = (req) => {
-	// surround the hash with double quotes
-	const eTag = `"${djb2(html)}"`;
+export default {
+	fetch(req) {
+		// surround the hash with double quotes
+		const eTag = `"${djb2(html)}"`;
 
-	return new Response(html, {
-		headers: {
-			// other headers should remain the same
-			"Content-Type": "text/html",
-			// send it as the "Etag" header
-			ETag: eTag,
-		},
-	});
-};
+		return new Response(html, {
+			headers: {
+				// other headers should remain the same
+				"content-type": "text/html",
+				// send it as the "Etag" header
+				ETag: eTag,
+			},
+		});
+	},
+} satisfies App;
 ```
 
 Now, the client's browser will automatically send this hash back in subsequent requests in the `If-None-Match` header.
 
-```ts {6}
+```ts {7}
 import { html } from "client:page";
-import type { Handler } from "domco";
+import type { App } from "domco";
 
-export const handler: Handler = (req) => {
-	// hash is sent back in this header
-	console.log(req.headers.get("If-None-Match")); // ex: "1wnhp22"
+export default {
+	fetch(req) {
+		// hash is sent back in this header
+		console.log(req.headers.get("if-none-match")); // ex: "1wnhp22"
 
-	const eTag = `"${djb2(html)}"`;
+		const eTag = `"${djb2(html)}"`;
 
-	return new Response(html, {
-		headers: {
-			"Content-Type": "text/html",
-			ETag: eTag,
-		},
-	});
-};
+		return new Response(html, {
+			headers: {
+				"content-type": "text/html",
+				ETag: eTag,
+			},
+		});
+	},
+} satisfies App;
 ```
 
 ## Check for changes
@@ -148,27 +154,29 @@ You can check if the content is still the same as what the user has by comparing
 
 If the content hasn't been modified, we can send `null` instead of sending the content again, with a [`304` status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304) to tell the client that the response is `Not Modified`.
 
-```ts {9,12,14}
+```ts {10,13,15}
 import { html } from "client:page";
-import type { Handler } from "domco";
+import type { App } from "domco";
 
-export const handler: Handler = (req) => {
-	const eTag = `"${djb2(html)}"`;
+export default {
+	fetch(req) {
+		const eTag = `"${djb2(html)}"`;
 
-	// Check if the hash sent from the client matches the hash
-	// generated. If it does, the content hasn't been modified.
-	const notModified = eTag === req.headers.get("If-None-Match");
+		// Check if the hash sent from the client matches the hash
+		// generated. If it does, the content hasn't been modified.
+		const notModified = eTag === req.headers.get("If-None-Match");
 
-	// send `null` instead of the html in the body
-	return new Response(notModified ? null : html, {
-		// change the status to 304 - not modified
-		status: notModified ? 304 : 200,
-		headers: {
-			"Content-Type": "text/html",
-			ETag: eTag,
-		},
-	});
-};
+		// send `null` instead of the html in the body
+		return new Response(notModified ? null : html, {
+			// change the status to 304 - not modified
+			status: notModified ? 304 : 200,
+			headers: {
+				"Content-Type": "text/html",
+				ETag: eTag,
+			},
+		});
+	},
+} satisfies App;
 ```
 
 Now when the user refreshes the page, a much smaller response will be sent instead of the entire HTML page being sent over the network again.
