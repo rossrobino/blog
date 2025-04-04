@@ -23,7 +23,7 @@ export const PostCard = (props: {
 		<div
 			class={clsx(
 				"border-muted-foreground dark:border-base-600 break-inside-avoid rounded-sm not-last:mb-4",
-				link && "border p-6",
+				link && "border p-6 shadow-md",
 			)}
 			aria-label="post"
 			style={`view-transition-name: ${post.slug}`}
@@ -37,7 +37,7 @@ export const PostCard = (props: {
 						"text-2xl": size === "sm",
 					})}
 				>
-					<a href={`/posts/${post.slug}`} class="font-bold">
+					<a href={`/posts/${post.slug}`} class="font-bold text-shadow-xs">
 						{post.title}
 					</a>
 				</h2>

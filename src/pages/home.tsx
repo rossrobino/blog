@@ -19,7 +19,7 @@ export const Home = (props: {
 				<div>
 					<a
 						href="/"
-						class="font-extrabold uppercase italic no-underline"
+						class="font-extrabold uppercase italic no-underline text-shadow-sm"
 						aria-label="Homepage"
 					>
 						{title}
@@ -42,7 +42,7 @@ export const Home = (props: {
 								</a>
 								{filter === currentFilter ? (
 									<div
-										class="bg-foreground p-0.5"
+										class="bg-foreground rounded-sm p-0.5"
 										style="view-transition-name: current-filter"
 									></div>
 								) : (
