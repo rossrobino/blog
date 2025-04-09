@@ -351,7 +351,7 @@ async function* mergeAsync<T, R>(...iterables: AsyncIterable<T, R>[]) {
 	let current;
 
 	while (remaining) {
-		// yields regardless of it is is done or not
+		// yields regardless of if it is done or not
 		yield (current = await Promise.race(promises));
 
 		if (current.result.done) {
