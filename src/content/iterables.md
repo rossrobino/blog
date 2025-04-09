@@ -293,7 +293,7 @@ I'd recommend using a generator to create an iterable whenever possible, they wi
 
 ## Merging iterables
 
-If you have many iterables you need to merge into one there are various ways to accomplish this.
+If you have many iterables you need to combine into one there are various ways to accomplish this.
 
 ### Synchronous
 
@@ -315,7 +315,7 @@ function* mergeSync<T, R>(...iterables: Iterable<T, R>[]) {
 
 ### Asynchronous
 
-In order to effectively merge async iterables, we need to ensure they execute in parallel, returning the fastest promise from each one as they all resolve.
+In order to effectively combine async iterables, we need to ensure they execute in parallel, returning the fastest promise from each one as they all resolve.
 
 I've adapted a few different [stack overflow answers](https://stackoverflow.com/questions/50585456/how-can-i-interleave-merge-async-iterables) into this function that has worked for me.
 
