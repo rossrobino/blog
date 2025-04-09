@@ -40,3 +40,21 @@ const main = () => {
 };
 
 main();
+
+function* mergeSync<T, R>(...iterables: Iterable<T, R>[]) {
+	for (const iterable of iterables) {
+		const iterator = iterable[Symbol.iterator]();
+
+		let result;
+		while (true) {
+			yield (result = iterator.next());
+			if (result.done) break;
+		}
+	}
+}
+
+const merged = mergeSync(["hello"], ["world"]);
+
+for (const { done, value } of merged) {
+	if (!done) console.log(value);
+}

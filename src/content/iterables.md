@@ -1,5 +1,5 @@
 ---
-title: A Comprehensive Guide to JavaScript Iterables
+title: Comprehensive Guide to JavaScript Iterables
 description: A deep dive on Iterables, Iterable types, and generator functions.
 keywords: javascript, typescript, iterable
 date: 2025, 04, 09
@@ -300,9 +300,67 @@ If you have many iterables you need to merge into one there are various ways to 
 For synchronous iterables, it's fairly straightforward. You can iterate through each iterable and yield the result with a generator function.
 
 ```ts
-function* mergeSyncIterables(iterables: Iterable[]) {
+function* mergeSync<T, R>(...iterables: Iterable<T, R>[]) {
 	for (const iterable of iterables) {
-		for (const value of iterable) yield value;
+		const iterator = iterable[Symbol.iterator]();
+
+		let result;
+		while (true) {
+			yield (result = iterator.next());
+			if (result.done) break;
+		}
+	}
+}
+```
+
+### Asynchronous
+
+In order to effectively merge async iterables, we need to ensure they execute in parallel, returning the fastest promise from each one as they all resolve.
+
+I've adapted a few different [stack overflow answers](https://stackoverflow.com/questions/50585456/how-can-i-interleave-merge-async-iterables) into this function that has worked for me.
+
+```ts
+// a promise that never resolves
+// once the iterator is complete, this is assigned to the next promise
+const never = new Promise(() => {}) as Promise<any>;
+
+// next with index in order to provide the result with which iterator
+// returned the result
+const next = async <T, R>(iterator: AsyncIterator<T, R>, index: number) => ({
+	index,
+	result: await iterator.next(),
+});
+
+/**
+ * Merges `AsyncIterable[]` into a single `AsyncGenerator`, resolving all in parallel.
+ * The return of each `AsyncIterable` is yielded from the generator with `done: true`.
+ *
+ * @param iterables Resolved in parallel.
+ * @yields `IteratorResult` and `index` of the resolved iterator.
+ */
+async function* mergeAsync<T, R>(...iterables: AsyncIterable<T, R>[]) {
+	// get the `Iterator` from each `Iterable`
+	const iterators = iterables.map((iter) => iter[Symbol.asyncIterator]());
+	// create an array of promises that return the result and the index
+	// using the `next` function above
+	const promises = iterators.map(next);
+
+	// number of iterators that haven't finished yet
+	let remaining = promises.length;
+	// current result
+	let current;
+
+	while (remaining) {
+		// yields regardless of it is is done or not
+		yield (current = await Promise.race(promises));
+
+		if (current.result.done) {
+			promises[current.index] = never; // won't resolve again
+			remaining--;
+		} else {
+			// set to next iteration
+			promises[current.index] = next(iterators[current.index]!, current.index);
+		}
 	}
 }
 ```
