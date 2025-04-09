@@ -365,4 +365,8 @@ async function* mergeAsync<T, R>(...iterables: AsyncIterable<T, R>[]) {
 }
 ```
 
+## Conclusion
+
+JavaScript iterables help you write clean and efficient code. In this guide, you’ve seen how built-in iterables like arrays and sets work, learned to verify if a value is iterable, built your own custom iterable, and learned how to merge synchronous and asynchronous sources.
+
 Thanks for reading!
