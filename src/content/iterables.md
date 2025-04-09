@@ -55,17 +55,10 @@ capitalize(new Set(["upper", "case"])); // also works now
 To check if an unknown is an iterable you can first ensure the value is an object, then check to see if it has either an iterator or an async iterator method.
 
 ```ts
-const isIterator = (value: unknown) => {
-	if (
-		value !== null &&
-		typeof value === "object" &&
-		(Symbol.iterator in value || Symbol.asyncIterator in value)
-	) {
-		return true;
-	}
-
-	return false;
-};
+const isIterable = (value: unknown) =>
+	value != null &&
+	typeof value === "object" &&
+	(Symbol.iterator in value || Symbol.asyncIterator in value);
 ```
 
 ## Create your own iterable
@@ -297,5 +290,21 @@ for (const word of translation) console.log(word);
 As you can see, generators greatly reduce the amount of code needed to create an iterable iterator! Instead of writing a `next` function, the generator `yield`s each translated value. Instead of the `return` function, the `values` simply returned. There is also no clean up required since `values` is recreated with each call to `translate`.
 
 I'd recommend using a generator to create an iterable whenever possible, they will reduce the amount of code you have to write and make your code much more readable.
+
+## Merging iterables
+
+If you have many iterables you need to merge into one there are various ways to accomplish this.
+
+### Synchronous
+
+For synchronous iterables, it's fairly straightforward. You can iterate through each iterable and yield the result with a generator function.
+
+```ts
+function* mergeSyncIterables(iterables: Iterable[]) {
+	for (const iterable of iterables) {
+		for (const value of iterable) yield value;
+	}
+}
+```
 
 Thanks for reading!
