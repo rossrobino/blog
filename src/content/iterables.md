@@ -1,0 +1,302 @@
+---
+title: A Comprehensive Guide to JavaScript Iterables
+description: A deep dive on Iterables, Iterable types, and generator functions.
+keywords: javascript, typescript, iterable
+date: 2025, 04, 09
+draft: true
+---
+
+<!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
+    <iframe data-content loading="lazy"></iframe>
+</drab-youtube> -->
+
+## Defining an iterable
+
+Iterables are used all the time when writing JavaScript. Arrays, sets, and maps are all examples of iterables. Iterables have an iterator method which implements the [iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol), you can also create your own iterable that implements this protocol.
+
+Iterables come with some nice features, most notably, you can iterate through any iterable using a `for...of` loop.
+
+```ts
+const iterable = [1, 2, 3, 4, 5];
+
+for (const value of iterable) {
+	value; // 1, 2, 3...
+}
+```
+
+## Broader input types
+
+TypeScript's built-in `Iterable` type provides a nice way to broaden the type of an expected input. For example, if you have a function that capitalizes a list of strings provided by the user you might default to using an `Array` as the input.
+
+```ts
+const capitalize = (input: string[]) => {
+	const result: string[] = [];
+	for (const str of input) result.push(str.toUpperCase());
+	return result;
+};
+
+capitalize(["upper", "case"]); // ["UPPER", "CASE"]
+```
+
+Since we aren't using any array specific methods here (only a `for...of` loop), we can make the input argument an `Iterable` to allow users to pass in any iterable of strings instead of just an array.
+
+```ts {1,8}
+const capitalize = (input: Iterable<string>) => {
+	const result: string[] = [];
+	for (const str of input) result.push(str.toUpperCase());
+	return result;
+};
+
+capitalize(["upper", "case"]); // still works
+capitalize(new Set(["upper", "case"])); // also works now
+```
+
+## Check if a value is an iterable
+
+To check if an unknown is an iterable you can first ensure the value is an object, then check to see if it has either an iterator or an async iterator method.
+
+```ts
+const isIterator = (value: unknown) => {
+	if (
+		value !== null &&
+		typeof value === "object" &&
+		(Symbol.iterator in value || Symbol.asyncIterator in value)
+	) {
+		return true;
+	}
+
+	return false;
+};
+```
+
+## Create your own iterable
+
+Creating your own iterable might be useful if you are streaming or creating a library and want to provide a nice developer experience. The `Iterable` object should have a `Symbol.iterator` method that returns an `Iterator`.
+
+Let's create our own `Translation` iterable that translates words from English to Spanish. We can use a class to give users a similar experience as creating a `Set` or `Map`. The user can supply the `words` in the `constructor` method, and the class will hold the dictionary for each word in a map.
+
+```ts
+class Translation {
+	words: string[];
+	i = 0;
+	dict = new Map([
+		["hello", "hola"],
+		["goodbye", "adios"],
+		// a ton of words...
+	]);
+
+	/**
+	 * @param words English words to translate to Spanish.
+	 */
+	constructor(words: string[]) {
+		this.words = words;
+	}
+}
+```
+
+It's a best practice when making an iterable to make it both an `Iterable` and an `Iterator`, or an _iterable iterator_. We can accomplish this by giving our class a `next` method---making it an `Iterator`---and a `Symbol.iterator` method that returns `this`, since `this` is an iterable.
+
+The first type argument of the `IteratorResult` is the type of the `value` when the iterator is not `done`, the second argument is the return type of the `value` when it is done. Here we'll return the translated word when it's not done, and `undefined` when it completes.
+
+```ts {10}
+class Translation {
+	// ...
+
+	// makes Translation also an `Iterable`
+	[Symbol.iterator]() {
+		return this;
+	}
+
+	// makes Translation an `Iterator`
+	next(): IteratorResult<string, undefined> {
+		// TODO: return an `IteratorResult`
+	}
+}
+```
+
+Next we'll implement the optional [`return` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#returnvalue) that is called when the iterator is complete. Here we can reset `i` to `0` and return the result.
+
+```ts {4-11}
+class Translation {
+	// ...
+
+	return(): IteratorReturnResult<undefined> {
+		const result = { done: true as const, value: undefined };
+
+		// clean up
+		this.i = 0;
+
+		return result;
+	}
+
+	next(): IteratorResult<string, undefined> {
+		// TODO: return an `IteratorResult`
+	}
+}
+```
+
+Within the `next` function, we'll check to see if we are done. If we have translated all of the words, we'll call the `return` method which satisfies the second argument of our `Iterator` type.
+
+```ts {5}
+class Translation {
+	// ...
+
+	next(): IteratorResult<string, undefined> {
+		if (this.i === this.words.length) return this.return();
+
+		// TODO: increment i, return the translated word
+	}
+}
+```
+
+If we are not done, we can translate the `word`, increment `i`, and return the `value`.
+
+```ts {7-10}
+class Translation {
+	// ...
+
+	next(): IteratorResult<string, undefined> {
+		if (this.i === this.words.length) return this.return();
+
+		const word = this.words[this.i++]!;
+		const value = this.dict.get(word) ?? "not found";
+
+		return { done: false, value };
+	}
+}
+```
+
+## For...of loop
+
+Now we can use our `Translation` iterable with a `for...of` loop.
+
+```ts
+const translation = new Translation(["hello", "goodbye", "asdf"]);
+
+for (const word of translation) console.log(word);
+
+// hola
+// adios
+// not found
+```
+
+## Spread operator
+
+You can also use the spread operator (`...iterable`) to iterate through an iterable, this will call the `next` function just like using a `for...of` loop.
+
+```ts
+const translation = new Translation(["hello", "goodbye", "asdf"]);
+
+console.log([...translation]); // ["hola", "adios", "not found"]
+```
+
+## Return value
+
+Notice how the final return `value` (`undefined`) is never logged when using the `for...of` or the spread operator. These iterations only accesses the values when `done` is `false`.
+
+In some cases you might want to return a value at the end once the loop has completed. Let's return all of the words and their translations as an object.
+
+- Create an object of `values` to hold the translations.
+- Update the return type argument to the `IteratorResult` and `IteratorReturnResult` to be a `Record<string, string>`.
+- Add each translated word into `values` as its translated.
+- Return `values` as the final value when translations are complete.
+- Clean up `values` within the `return` method.
+
+```ts {3,5,10,15-16,19}
+class Translation {
+	// ...
+	values: Record<string, string> = {};
+
+	next(): Iterator<string, Record<string, string>> {
+		if (this.i === this.words.length) return this.return();
+
+		const word = this.words[i++]!;
+		const value = this.dict.get(word) ?? "not found";
+		this.values[word] = value;
+
+		return { done: false, value };
+	}
+
+	return(): IteratorReturnResult<Record<string, string>> {
+		const result = { done: true as const, value: { ...this.values } };
+
+		this.i = 0;
+		this.values = {}; // clean up values too
+
+		return result;
+	}
+}
+```
+
+Now to access the return value will need to call `next` directly on the iterator instead of using a `for...of` loop. When `done` is `true`, we'll break out of the `while` loop and log the final result's value.
+
+```ts
+const translation = new Translation(["hello", "goodbye", "asdf"]);
+
+let result = translation.next();
+while (!result.done) result = translation.next();
+
+console.log(result.value); // { hello: "hola", goodbye: "adios", asdf: "not found" }
+```
+
+You could also call `return` early to create an early return and run the clean up.
+
+## Async
+
+To make an iterator asynchronous, change the iterator method to `Symbol.asyncIterator`, and the `next` method to be asynchronous. For example, maybe we would want to call an API to do the translations.
+
+```ts {4,8}
+class Translation {
+	// ...
+
+	async next(): Promise<IteratorResult<string, Record<string, string>>> {
+		// await fetch...
+	}
+
+	[Symbol.asyncIterator]() {
+		return this;
+	}
+}
+```
+
+Then when iterating over the translation you can use a `for await...of` loop to unwrap the `next` promise with each iteration.
+
+```ts
+const translation = new Translation(["hello", "goodbye", "asdf"]);
+
+for await (const word of translation) console.log(word);
+```
+
+## Generators
+
+Generator functions provide an easier way to construct an iterable iterator. Let's recreate our translation with a generator function.
+
+```ts {12,16}
+const dict = new Map([
+	["hello", "hola"],
+	["goodbye", "adios"],
+	// ...
+]);
+
+function* translate(words: string[]) {
+	const values: Record<string, string> = {};
+
+	for (const word of words) {
+		const value = dict.get(word) ?? "not found";
+		yield value;
+		values[word] = value;
+	}
+
+	return values;
+}
+
+const translation = translate(["hello", "goodbye", "asdf"]);
+
+for (const word of translation) console.log(word);
+```
+
+As you can see, generators greatly reduce the amount of code needed to create an iterable iterator! Instead of writing a `next` function, the generator `yield`s each translated value. Instead of the `return` function, the `values` simply returned. There is also no clean up required since `values` is recreated with each call to `translate`.
+
+I'd recommend using a generator to create an iterable whenever possible, they will reduce the amount of code you have to write and make your code much more readable.
+
+Thanks for reading!

@@ -43,10 +43,10 @@ export const PostCard = (props: {
 				</h2>
 			) : (
 				<>
-					<h1>{post.title}</h1>
+					<h1 class="text-shadow-sm">{post.title}</h1>
 					<ul class="my-6 flex flex-wrap gap-1.5" aria-label="keywords">
 						{post.keywords.map((keyword) => (
-							<li class="badge secondary">{keyword}</li>
+							<li class="badge secondary shadow-xs">{keyword}</li>
 						))}
 					</ul>
 				</>
