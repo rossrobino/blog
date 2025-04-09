@@ -3,7 +3,6 @@ title: A Comprehensive Guide to JavaScript Iterables
 description: A deep dive on Iterables, Iterable types, and generator functions.
 keywords: javascript, typescript, iterable
 date: 2025, 04, 09
-draft: true
 ---
 
 <!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
