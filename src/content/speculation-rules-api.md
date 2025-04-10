@@ -66,14 +66,7 @@ By prerendering with Speculation Rules API is easier reap all of the performance
 
 ```html
 <script type="speculationrules">
-	{
-		"prerender": [
-			{
-				"source": "list",
-				"urls": ["/menu"]
-			}
-		]
-	}
+	{ "prerender": [{ "source": "list", "urls": ["/menu"] }] }
 </script>
 ```
 

@@ -15,12 +15,7 @@ It's nice to have type safety in `.js` files, you can configure TypeScript to al
 
 ```json
 // tsconfig.json
-{
-	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true
-	}
-}
+{ "compilerOptions": { "allowJs": true, "checkJs": true } }
 ```
 
 I use this frequently in configuration files or in node scripts that I don't want to compile before running in CI.

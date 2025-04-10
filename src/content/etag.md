@@ -70,11 +70,7 @@ import type { App } from "domco";
 
 export default {
 	fetch(req) {
-		return new Response(html, {
-			headers: {
-				"content-type": "text/html",
-			},
-		});
+		return new Response(html, { headers: { "content-type": "text/html" } });
 	},
 } satisfies App;
 ```
@@ -139,10 +135,7 @@ export default {
 		const eTag = `"${djb2(html)}"`;
 
 		return new Response(html, {
-			headers: {
-				"content-type": "text/html",
-				ETag: eTag,
-			},
+			headers: { "content-type": "text/html", ETag: eTag },
 		});
 	},
 } satisfies App;
@@ -170,10 +163,7 @@ export default {
 		return new Response(notModified ? null : html, {
 			// change the status to 304 - not modified
 			status: notModified ? 304 : 200,
-			headers: {
-				"Content-Type": "text/html",
-				ETag: eTag,
-			},
+			headers: { "Content-Type": "text/html", ETag: eTag },
 		});
 	},
 } satisfies App;

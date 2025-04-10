@@ -4,10 +4,7 @@
 		"jsx": "react-jsx",
 		"jsxImportSource": "ovr",
 
-		"paths": {
-			"@": ["./src"],
-			"@/*": ["./src/*"]
-		}
+		"paths": { "@": ["./src"], "@/*": ["./src/*"] }
 	},
 	"include": ["vite.config.ts", "prettier.config.js", "src"]
 }

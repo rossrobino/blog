@@ -66,12 +66,8 @@ Any `dependencies` specified will be installed alongside your package when it is
 	"license": "MIT",
 	"version": "0.0.1",
 	"files": ["tsc.json", "bundler.json", "README.md", "LICENSE.md"],
-	"peerDependencies": {
-		"typescript": ">=5.5.0"
-	},
-	"dependencies": {
-		"@types/node": "^22.0.0"
-	}
+	"peerDependencies": { "typescript": ">=5.5.0" },
+	"dependencies": { "@types/node": "^22.0.0" }
 }
 ```
 

@@ -16,17 +16,10 @@ import { domco } from "domco";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-	build: {
-		minify: true,
-	},
+	build: { minify: true },
 	plugins: [
 		domco({
-			adapter: adapter({
-				isr: {
-					expiration: false,
-					allowQuery: ["filter"],
-				},
-			}),
+			adapter: adapter({ isr: { expiration: false, allowQuery: ["filter"] } }),
 		}),
 		tailwindcss(),
 		md({
@@ -44,12 +37,7 @@ export default defineConfig({
 					langMd,
 					langAstro,
 				],
-				langAlias: {
-					js: "tsx",
-					ts: "tsx",
-					jsx: "tsx",
-					mdx: "md",
-				},
+				langAlias: { js: "tsx", ts: "tsx", jsx: "tsx", mdx: "md" },
 			},
 		}),
 	],

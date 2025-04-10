@@ -46,10 +46,7 @@ export const UserSchema = z.object({
 `safeParse` can be utlized on any Zod schema to validate an object without creating a runtime error. For example, we could validate a `user` object with our `UserSchema` like this:
 
 ```ts
-const user = {
-	email: "invalid@email",
-	password: "invalidPassword",
-};
+const user = { email: "invalid@email", password: "invalidPassword" };
 
 const safeParse = UserSchema.safeParse(user);
 ```

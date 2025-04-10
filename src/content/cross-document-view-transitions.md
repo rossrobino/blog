@@ -30,14 +30,7 @@ Here are two almost identical pages that link to each other that we will transit
 		<link rel="stylesheet" href="/style.css" />
 		<title>Page 1</title>
 		<script type="speculationrules">
-			{
-				"prerender": [
-					{
-						"source": "list",
-						"urls": ["/page-2/"]
-					}
-				]
-			}
+			{ "prerender": [{ "source": "list", "urls": ["/page-2/"] }] }
 		</script>
 	</head>
 	<body>
@@ -60,14 +53,7 @@ Here are two almost identical pages that link to each other that we will transit
 		<link rel="stylesheet" href="/style.css" />
 		<title>Page 2</title>
 		<script type="speculationrules">
-			{
-				"prerender": [
-					{
-						"source": "list",
-						"urls": ["/page-1/"]
-					}
-				]
-			}
+			{ "prerender": [{ "source": "list", "urls": ["/page-1/"] }] }
 		</script>
 	</head>
 	<body>

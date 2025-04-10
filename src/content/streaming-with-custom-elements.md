@@ -113,11 +113,7 @@ export default {
 		});
 
 		// return the stream as the response body
-		return new Response(body, {
-			headers: {
-				"Content-Type": "text/html",
-			},
-		});
+		return new Response(body, { headers: { "Content-Type": "text/html" } });
 	},
 } satisfies App;
 ```
@@ -147,7 +143,7 @@ Finally, create some loaders to fetch data, in this example I'll use this `rando
 
 Altogether, the server module now looks like this.
 
-```ts {16-37,53-57}
+```ts {16-37,49-53}
 // src/server/+func.ts
 import streamHtmlElement from "../client/stream-html?raw";
 import { html } from "client:page";
@@ -192,11 +188,7 @@ export default {
 			},
 		});
 
-		return new Response(body, {
-			headers: {
-				"Content-Type": "text/html",
-			},
-		});
+		return new Response(body, { headers: { "Content-Type": "text/html" } });
 	},
 } satisfies App;
 
