@@ -52,14 +52,12 @@ capitalize(new Set(["upper", "case"])); // also works now
 
 ## Check if a value is an iterable
 
-To check if an `unknown` is an iterable you can first ensure the value is a string or an object with either an iterator or an async iterator method.
+To check if an `unknown` is an `Iterable` you can first ensure the `unknown` is a `string`, or an `object` with a `Symbol.iterator` method.
 
 ```ts
 const isIterable = (value: unknown) =>
 	typeof value === "string" ||
-	(value != null &&
-		typeof value === "object" &&
-		(Symbol.iterator in value || Symbol.asyncIterator in value));
+	(value != null && typeof value === "object" && Symbol.iterator in value);
 ```
 
 ## Create your own iterable
