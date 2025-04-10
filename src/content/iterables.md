@@ -11,7 +11,7 @@ date: 2025, 04, 09
 
 ## Defining an iterable
 
-Iterables are used all the time when writing JavaScript. Arrays, sets, and maps are all examples of iterables. Iterables have an iterator method which implements the [iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol), you can also create your own iterable that implements this protocol.
+Iterables are used all the time when writing JavaScript. Arrays, sets, and maps are all examples of iterables. Iterables implement the [iterable protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) which specifies that the iterable must have a `Symbol.iterator` method which implements the [iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol).
 
 Iterables come with some nice features, most notably, you can iterate through any iterable using a `for...of` loop.
 
@@ -52,13 +52,14 @@ capitalize(new Set(["upper", "case"])); // also works now
 
 ## Check if a value is an iterable
 
-To check if an unknown is an iterable you can first ensure the value is an object, then check to see if it has either an iterator or an async iterator method.
+To check if an `unknown` is an iterable you can first ensure the value is a string or an object with either an iterator or an async iterator method.
 
 ```ts
 const isIterable = (value: unknown) =>
-	value != null &&
-	typeof value === "object" &&
-	(Symbol.iterator in value || Symbol.asyncIterator in value);
+	typeof value === "string" ||
+	(value != null &&
+		typeof value === "object" &&
+		(Symbol.iterator in value || Symbol.asyncIterator in value));
 ```
 
 ## Create your own iterable
@@ -86,7 +87,7 @@ class Translation {
 }
 ```
 
-It's a best practice when making an iterable to make it both an `Iterable` and an `Iterator`, or an _iterable iterator_. We can accomplish this by giving our class a `next` method---making it an `Iterator`---and a `Symbol.iterator` method that returns `this`, since `this` is an iterable.
+It's a best practice when making an `Iterator` to make it also an `Iterable`, or an _iterable iterator_. We can accomplish this by giving our class a `next` method that returns an `IteratorResult`---making it an `Iterator`---and a `Symbol.iterator` method that returns `this`, since `this` is an `Iterator`.
 
 The first type argument of the `IteratorResult` is the type of the `value` when the iterator is not `done`, the second argument is the return type of the `value` when it is done. Here we'll return the translated word when it's not done, and `undefined` when it completes.
 
@@ -158,7 +159,9 @@ class Translation {
 }
 ```
 
-## For...of loop
+## Iterating
+
+### For...of loop
 
 Now we can use our `Translation` iterable with a `for...of` loop.
 
@@ -172,7 +175,7 @@ for (const word of translation) console.log(word);
 // not found
 ```
 
-## Spread operator
+### Spread operator
 
 You can also use the spread operator (`...iterable`) to iterate through an iterable, this will call the `next` function just like using a `for...of` loop.
 
@@ -180,6 +183,16 @@ You can also use the spread operator (`...iterable`) to iterate through an itera
 const translation = new Translation(["hello", "goodbye", "asdf"]);
 
 console.log([...translation]); // ["hola", "adios", "not found"]
+```
+
+### yield\*
+
+Another JavaScript built in that accepts iterables is `yield*` within a generator function, which delegates the yield to the iterable, yielding each iteration value.
+
+```ts
+function* translate(words: string[]) {
+	yield* new Translation(words);
+}
 ```
 
 ## Return value
@@ -293,7 +306,7 @@ I'd recommend using a generator to create an iterable whenever possible, they wi
 
 ## Merging iterables
 
-If you have many iterables you need to combine into one there are various ways to accomplish this.
+If you have many iterables you need to combine into one there are various ways to accomplish this. Here are two methods for synchronous and asynchronous that also include the final `return` value when `done` is `true`.
 
 ### Synchronous
 
