@@ -124,8 +124,8 @@ export const actions = {
 		// use .get() with the corresponding name of the input element
 		// to create a user object
 		const user = {
-			email: String(formData.get("email")),
-			password: String(formData.get("password")),
+			email: formData.get("email"),
+			password: formData.get("password"),
 		};
 
 		// zod validation using .safeParse
