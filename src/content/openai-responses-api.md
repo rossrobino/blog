@@ -347,4 +347,4 @@ latest; // the latest message
 
 ## Conclusion
 
-The Responses API provides a nice way to interact with OpenAI's LLMs. Thanks for reading!
+The Responses API provides a nice way to interact with OpenAI's LLMs. The final project is [located on GitHub](https://github.com/rossrobino/domco-examples/tree/main/apps/openai). Thanks for reading!
