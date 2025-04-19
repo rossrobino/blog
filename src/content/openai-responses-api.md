@@ -1,6 +1,6 @@
 ---
-title: TypeScript Guide to the OpenAI Responses API
-description: Basics, streaming, storing state, and retrieving past messages.
+title: OpenAI Responses API for TypeScript Developers
+description: A simple overview of how to use the OpenAI Responses API with TypeScript, including setup, streaming responses, and managing conversation state without a database.
 keywords: gpt, openai, responses, api, typescript, javascript
 date: 2025, 04, 18
 ---
