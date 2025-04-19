@@ -47,7 +47,7 @@ Lets add a `<form>` to our HTML page to submit a message to our API, and a `<div
 
 We'll also add a `<script>` tag pointing to `/client/main.ts` to add some client side JavaScript that will handle our form submission.
 
-```html {9,14-19,22}
+```html {9,14-19,22-24}
 <!doctype html>
 <html lang="en">
 	<head>
@@ -69,7 +69,9 @@ We'll also add a `<script>` tag pointing to `/client/main.ts` to add some client
 			</form>
 
 			<h2>Assistant</h2>
-			<div id="assistant"></div>
+			<div id="assistant">
+				<!-- response goes here -->
+			</div>
 		</main>
 	</body>
 </html>
@@ -305,16 +307,20 @@ while (true) {
 
 	if (done) break;
 
-	if (value.includes("resp_")) {
-		const [rest, id] = value.split("resp_");
+	const idPrefix = "resp_";
 
+	if (value.includes(idPrefix)) {
+		// parse the response id
+		const [rest, id] = value.split(idPrefix);
+
+		// in case it was sent with something before
 		assistant.innerHTML += rest;
 
 		// append a new hidden input to the form with the value of the id
 		const input = document.createElement("input");
 		input.type = "hidden";
 		input.name = "id";
-		input.value = `resp_${id}`;
+		input.value = idPrefix + id;
 
 		form.append(input);
 	} else if (value) {
