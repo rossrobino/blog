@@ -5,10 +5,6 @@ keywords: gpt, openai, responses, api, typescript, javascript
 date: 2025, 04, 18
 ---
 
-<!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube> -->
-
 ## Overview
 
 OpenAI released a new [Responses API](https://platform.openai.com/docs/api-reference/responses) in March 2025. The Responses API is the successor to the [Chat Completions API](https://platform.openai.com/docs/api-reference/chat), and is the standard way to interact with OpenAI's LLMs. Check out OpenAI's [comparison](https://platform.openai.com/docs/guides/responses-vs-chat-completions?api-mode=responses) of the two APIs to understand the main differences between the two.
