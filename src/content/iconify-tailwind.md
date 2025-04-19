@@ -5,7 +5,7 @@ keywords: tailwind, css, icons, iconify
 date: 2025, 04, 19
 ---
 
-## Icons in CSS
+## Iconify
 
 I came across [this section](https://svelte.dev/docs/kit/icons#CSS) in the Svelte documentation around including icons in your CSS. The section led me to the [Iconify documentation](https://iconify.design/docs/usage/css/) around how this works and the [Iconify TailwindCSS plugin](https://iconify.design/docs/usage/css/tailwind/tailwind4/).
 
