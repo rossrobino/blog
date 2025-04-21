@@ -83,4 +83,6 @@ Sitemap: ${info.url}/rss
 	),
 );
 
+app.get("/posts/domco", (c) => c.redirect("https://domco.robino.dev", 308));
+
 export default app;
