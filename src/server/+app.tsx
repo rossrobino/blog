@@ -73,6 +73,8 @@ app.get("/view/*", async (c) => {
 	const pathname = c.params["*"];
 	const origin = c.req.headers.get("origin") || c.req.headers.get("referer");
 
+	console.log(c.req.headers);
+
 	let views: number | null;
 	if (import.meta.env.DEV) {
 		views = await redis.client.get(pathname);
