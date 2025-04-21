@@ -1,6 +1,7 @@
 import { getKeywords } from "@/lib/get-keywords";
 import { getPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
+import { rss } from "@/lib/rss";
 import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
@@ -66,5 +67,9 @@ app.get("/posts/:slug", async (c) => {
 		c.page(<Posts post={post} />);
 	}
 });
+
+app.get("/rss", (c) =>
+	c.res(rss(posts), { headers: { "content-type": "application/xml" } }),
+);
 
 export default app;
