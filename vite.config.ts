@@ -18,7 +18,9 @@ import { defineConfig } from "vite";
 export default defineConfig({
 	build: { minify: true },
 	plugins: [
-		domco({ adapter: adapter() }),
+		domco({
+			adapter: adapter({ isr: { expiration: false, allowQuery: ["filter"] } }),
+		}),
 		tailwindcss(),
 		md({
 			FrontmatterSchema,
