@@ -16,7 +16,7 @@ export const Posts = (props: { post: Post }) => {
 					<div class="prose mt-10">{post.html}</div>
 					<hr class="my-8" />
 
-					<div class="flex gap-4">
+					<div class="flex items-center gap-4">
 						<a
 							class="button"
 							href={`${repository}/blob/main/src/content/${post.slug}.md`}
@@ -24,6 +24,7 @@ export const Posts = (props: { post: Post }) => {
 							Edit
 						</a>
 						<Share slug={post.slug} />
+						<log-view></log-view>
 					</div>
 				</article>
 			</main>

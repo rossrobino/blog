@@ -1,6 +1,7 @@
 import { getKeywords } from "@/lib/get-keywords";
 import { getPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
+import * as redis from "@/lib/redis";
 import { rss } from "@/lib/rss";
 import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
@@ -66,6 +67,19 @@ app.get("/posts/:slug", async (c) => {
 		c.head(<Head title={post.title} description={post.description} />);
 		c.page(<Posts post={post} />);
 	}
+});
+
+app.get("/view/*", async (c) => {
+	const pathname = c.params["*"];
+
+	let views: number | null;
+	if (import.meta.env.DEV) {
+		views = await redis.client.get(pathname);
+	} else {
+		views = await redis.client.incrby(pathname, 1);
+	}
+
+	c.json({ views });
 });
 
 app.get("/rss", (c) =>

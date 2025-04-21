@@ -1,3 +1,4 @@
+import { LogView } from "./view";
 import "drab/copy/define";
 import "drab/dialog/define";
 import "drab/prefetch/define";
@@ -35,6 +36,8 @@ const copyCode = () => {
 };
 
 const main = () => {
+	customElements.define("log-view", LogView);
+
 	cmdK();
 	copyCode();
 };
