@@ -1,8 +1,8 @@
-import { url } from "@/lib/info";
+import { origin } from "@/lib/info";
 
 export const RSS = () => {
 	return (
-		<drab-copy class="contents" value={`${url}/rss`}>
+		<drab-copy class="contents" value={`${origin}/rss`}>
 			<button
 				data-trigger
 				class="ghost icon"

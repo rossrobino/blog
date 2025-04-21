@@ -1,4 +1,4 @@
-import { title, url } from "@/lib/info";
+import { title, origin } from "@/lib/info";
 
 export const SiteSearch = () => {
 	return (
@@ -33,7 +33,7 @@ export const SiteSearch = () => {
 						placeholder={`Search ${title}`}
 						class="border-foreground min-w-72"
 					/>
-					<input type="hidden" name="q" value={`site:${url}`} />
+					<input type="hidden" name="q" value={`site:${origin}`} />
 				</form>
 			</dialog>
 		</drab-dialog>

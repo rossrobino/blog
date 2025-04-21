@@ -1,9 +1,9 @@
-import { url } from "@/lib/info";
+import { origin } from "@/lib/info";
 
 export const Share = (props: { slug: string }) => {
 	return (
 		<>
-			<drab-share class="contents" value={`${url}/posts/${props.slug}`}>
+			<drab-share class="contents" value={`${origin}/posts/${props.slug}`}>
 				<button
 					data-trigger
 					type="button"

@@ -71,12 +71,16 @@ app.get("/posts/:slug", async (c) => {
 
 app.get("/view/*", async (c) => {
 	const pathname = c.params["*"];
+	const origin = c.req.headers.get("origin") || c.req.headers.get("referer");
 
 	let views: number | null;
 	if (import.meta.env.DEV) {
 		views = await redis.client.get(pathname);
-	} else {
+	} else if (origin?.startsWith(info.origin)) {
 		views = await redis.client.incrby(pathname, 1);
+	} else {
+		c.json({ error: "Forbidden" }, 403);
+		return;
 	}
 
 	c.json({ views });
@@ -92,7 +96,7 @@ app.get("/robots.txt", (c) =>
 User-agent: *
 Disallow:
 
-Sitemap: ${info.url}/rss
+Sitemap: ${info.origin}/rss
 `.trim(),
 	),
 );
