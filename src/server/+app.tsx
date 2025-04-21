@@ -73,7 +73,7 @@ app.get("/view/*", async (c) => {
 	const pathname = c.params["*"];
 	const origin = c.req.headers.get("origin") || c.req.headers.get("referer");
 
-	console.log(origin);
+	console.log(c.req);
 
 	let views: number | null;
 	if (import.meta.env.DEV) {
