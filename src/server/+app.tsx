@@ -71,15 +71,14 @@ app.get("/posts/:slug", async (c) => {
 
 app.get("/view/*", async (c) => {
 	const pathname = c.params["*"];
-	const origin =
-		c.req.headers.get("origin") ||
-		c.req.headers.get("referer") ||
-		c.req.headers.get("host");
+	const origin = c.req.headers.get("origin") || c.req.headers.get("referer");
+
+	console.log(origin);
 
 	let views: number | null;
 	if (import.meta.env.DEV) {
 		views = await redis.client.get(pathname);
-	} else if (origin?.includes(info.host)) {
+	} else if (origin?.startsWith(info.origin)) {
 		views = await redis.client.incrby(pathname, 1);
 	} else {
 		c.json({ error: "Forbidden" }, 403);
