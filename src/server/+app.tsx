@@ -72,4 +72,15 @@ app.get("/rss", (c) =>
 	c.res(rss(posts), { headers: { "content-type": "application/xml" } }),
 );
 
+app.get("/robots.txt", (c) =>
+	c.text(
+		`
+User-agent: *
+Disallow:
+
+Sitemap: ${info.url}/rss
+`.trim(),
+	),
+);
+
 export default app;
