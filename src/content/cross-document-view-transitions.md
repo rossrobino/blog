@@ -5,9 +5,7 @@ keywords: view transitions, css, html
 date: 2024, 06, 11
 ---
 
-<drab-youtube aria-label="YouTube Tutorial" uid="5yTXcA0iXcI">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](5yTXcA0iXcI)
 
 ## Browser support
 

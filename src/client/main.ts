@@ -3,7 +3,6 @@ import "drab/copy/define";
 import "drab/dialog/define";
 import "drab/prefetch/define";
 import "drab/share/define";
-import "drab/youtube/define";
 
 const cmdK = () => {
 	const search = document.querySelector("dialog");

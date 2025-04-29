@@ -68,7 +68,6 @@
 
 @layer base {
 	:root {
-		/* syntax highlighting */
 		--shiki-foreground: var(--color-base-200);
 		--shiki-background: var(--color-base-900);
 		--shiki-token-constant: var(--color-base-50);

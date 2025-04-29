@@ -5,9 +5,7 @@ keywords: svelte, documentation, JSDoc, TSDoc, comments
 date: 2023, 08, 03
 ---
 
-<drab-youtube aria-label="YouTube Tutorial" uid="IWvvXn1eAbE">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](IWvvXn1eAbE)
 
 ## Benefits
 

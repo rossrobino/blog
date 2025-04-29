@@ -7,9 +7,7 @@ date: 2024, 02, 10
 
 This video shows a demo of how you might utilize the Speculation Rules API. Read on for the full explanation.
 
-<drab-youtube aria-label="YouTube Tutorial" uid="W4VjS7rSmB0">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](W4VjS7rSmB0)
 
 ## Prefetching
 

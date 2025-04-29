@@ -5,9 +5,7 @@ keywords: performance, fonts, font stacks
 date: 2024, 06, 13
 ---
 
-<drab-youtube aria-label="YouTube Tutorial" uid="1aG-Z_NHeiI">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](1aG-Z_NHeiI)
 
 ## Built-in fonts
 

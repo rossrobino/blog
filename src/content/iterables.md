@@ -5,10 +5,6 @@ keywords: javascript, typescript, iterable
 date: 2025, 04, 09
 ---
 
-<!-- <drab-youtube aria-label="YouTube Tutorial" uid="">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube> -->
-
 ## Defining an iterable
 
 Iterables are used all the time when writing JavaScript. Arrays, sets, and maps are all examples of iterables. Iterables implement the [iterable protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) which specifies that the iterable must have a `Symbol.iterator` method which implements the [iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol).

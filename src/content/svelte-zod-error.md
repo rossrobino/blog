@@ -9,9 +9,7 @@ date: 2023, 03, 25
 
 [Zod](https://zod.dev/) is a schema validation library that works nicely with [SvelteKit](https://kit.svelte.dev/). It provides an easy API to quickly validate forms across an application with reusable schemas. Many popular projects use Zod to accomplish type checking at runtime. The [Astro](https://docs.astro.build/en/getting-started/) team uses Zod in their [Content Collections](https://docs.astro.build/en/guides/content-collections/) feature to validate Markdown frontmatter. It can also be used with TypeScript or JavaScript. Here's how to use Zod to validate forms on the server with SvelteKit.
 
-<drab-youtube aria-label="YouTube Tutorial" uid="11AbCRomRhs">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](11AbCRomRhs)
 
 ## Install
 

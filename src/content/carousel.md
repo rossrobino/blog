@@ -5,9 +5,7 @@ keywords: CSS, carousel, TypeScript, JavaScript, HTML, scroll snap, components
 date: 2024, 06, 25
 ---
 
-<drab-youtube aria-label="YouTube Tutorial" uid="aNSUZiBjRRI">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](aNSUZiBjRRI)
 
 ## Tutorial
 

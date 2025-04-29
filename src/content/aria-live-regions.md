@@ -5,9 +5,7 @@ keywords: ARIA, live regions, accessibility, a11y, html
 date: 2024, 06, 18
 ---
 
-<drab-youtube aria-label="YouTube Tutorial" uid="EGFUQ2ypnrE">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](EGFUQ2ypnrE)
 
 ## Enhancing interactivity
 

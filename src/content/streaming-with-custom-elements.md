@@ -5,9 +5,7 @@ keywords: javascript, streaming, custom-elements
 date: 2024, 10, 01
 ---
 
-<drab-youtube aria-label="YouTube Tutorial" uid="ArQqBo5gpd8">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](ArQqBo5gpd8)
 
 ## Overview
 

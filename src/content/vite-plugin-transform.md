@@ -5,9 +5,7 @@ keywords: javascript, typescript, vite
 date: 2024, 06, 28
 ---
 
-<drab-youtube aria-label="YouTube Tutorial" uid="DUdozB7R-AE">
-    <iframe data-content loading="lazy"></iframe>
-</drab-youtube>
+![YouTube Tutorial](DUdozB7R-AE)
 
 ## Introduction
 

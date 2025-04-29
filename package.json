@@ -20,16 +20,16 @@
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"tailwindcss": "^4.1.4",
 		"typescript": "^5.8.3",
-		"vite": "^6.3.2"
+		"vite": "^6.3.3"
 	},
 	"dependencies": {
-		"@robino/md": "^3.2.5",
+		"@robino/md": "^3.2.6",
 		"@upstash/redis": "^1.34.8",
 		"clsx": "^2.1.1",
 		"dotenv": "^16.5.0",
-		"drab": "^6.2.1",
-		"ovr": "^1.2.3",
-		"uico": "^0.7.0",
+		"drab": "^6.5.1",
+		"ovr": "^1.2.4",
+		"uico": "^0.10.1",
 		"valibot": "^1.0.0"
 	}
 }
