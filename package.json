@@ -14,20 +14,20 @@
 		"@domcojs/vercel": "^2.0.1",
 		"@robino/prettier": "^2.0.0",
 		"@robino/tsconfig": "^1.0.3",
-		"@tailwindcss/vite": "^4.1.4",
+		"@tailwindcss/vite": "^4.1.5",
 		"domco": "^4.1.1",
 		"prettier": "^3.5.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"tailwindcss": "^4.1.4",
+		"tailwindcss": "^4.1.5",
 		"typescript": "^5.8.3",
-		"vite": "^6.3.3"
+		"vite": "^6.3.4"
 	},
 	"dependencies": {
 		"@robino/md": "^3.2.6",
 		"@upstash/redis": "^1.34.8",
 		"clsx": "^2.1.1",
 		"dotenv": "^16.5.0",
-		"drab": "^6.5.1",
+		"drab": "^7.0.0",
 		"ovr": "^1.2.4",
 		"uico": "^0.10.1",
 		"valibot": "^1.0.0"

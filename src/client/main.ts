@@ -1,5 +1,4 @@
 import { LogView } from "./view";
-import "drab/copy/define";
 import "drab/dialog/define";
 import "drab/prefetch/define";
 import "drab/share/define";
@@ -20,9 +19,7 @@ const copyCode = () => {
 		pre.role = "button";
 		pre.ariaDescription = "Copy code to clipboard";
 
-		const copyText = () => {
-			navigator.clipboard.writeText(pre.textContent ?? "");
-		};
+		const copyText = () => navigator.clipboard.writeText(pre.textContent ?? "");
 
 		pre.addEventListener("click", copyText);
 		pre.addEventListener("keydown", (e) => {

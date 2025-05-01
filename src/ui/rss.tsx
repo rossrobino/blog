@@ -2,7 +2,7 @@ import { origin } from "@/lib/info";
 
 export const RSS = () => {
 	return (
-		<drab-copy class="contents" value={`${origin}/rss`}>
+		<drab-share class="contents" text={`${origin}/rss`}>
 			<button
 				data-trigger
 				class="ghost icon"
@@ -43,6 +43,6 @@ export const RSS = () => {
 					</svg>
 				</template>
 			</button>
-		</drab-copy>
+		</drab-share>
 	);
 };
