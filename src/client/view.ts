@@ -12,7 +12,7 @@ export class LogView extends HTMLElement {
 		const views = this.fmt.format(data.views ?? 0);
 
 		const div = document.createElement("div");
-		div.textContent = views + " views";
+		div.textContent = views + " view" + (data.views > 1 ? "s" : "");
 		this.append(div);
 	}
 }
