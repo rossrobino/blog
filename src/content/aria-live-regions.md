@@ -5,7 +5,7 @@ keywords: ARIA, live regions, accessibility, a11y, html
 date: 2024, 06, 18
 ---
 
-![YouTube Tutorial](EGFUQ2ypnrE)
+![YouTube Tutorial](yt:EGFUQ2ypnrE)
 
 ## Enhancing interactivity
 

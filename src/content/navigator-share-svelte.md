@@ -5,7 +5,7 @@ keywords: svelte, components, share, copy, api, navigator
 date: 2022, 10, 15
 ---
 
-![YouTube Tutorial](INXigHmjp3U)
+![YouTube Tutorial](yt:INXigHmjp3U)
 
 ## Let users easily share your website
 

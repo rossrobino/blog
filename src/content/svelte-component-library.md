@@ -5,7 +5,7 @@ keywords: svelte, components, library, npm
 date: 2023, 01, 12
 ---
 
-![YouTube Tutorial](_5IZi9xyDFY)
+![YouTube Tutorial](yt:_5IZi9xyDFY)
 
 ## svelte-package 2.0
 

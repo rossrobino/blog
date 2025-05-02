@@ -5,7 +5,7 @@ keywords: javascript, typescript, vite, plugin
 date: 2024, 06, 07
 ---
 
-![YouTube Tutorial](qYKzMnORnA0)
+![YouTube Tutorial](yt:qYKzMnORnA0)
 
 ## Introduction
 

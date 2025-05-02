@@ -5,7 +5,7 @@ keywords: view transitions, css, html
 date: 2024, 06, 11
 ---
 
-![YouTube Tutorial](5yTXcA0iXcI)
+![YouTube Tutorial](yt:5yTXcA0iXcI)
 
 ## Browser support
 

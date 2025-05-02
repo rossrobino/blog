@@ -1,5 +1,5 @@
 import { FrontmatterSchema } from "./src/lib/schema";
-import { youtubeIt } from "./src/lib/youtube-it";
+import { youtubeEmbed } from "./src/lib/youtube-embed";
 import { adapter } from "@domcojs/vercel";
 import { md } from "@robino/md";
 import langAstro from "@shikijs/langs/astro";
@@ -38,7 +38,7 @@ export default defineConfig({
 				],
 				langAlias: { js: "tsx", ts: "tsx", jsx: "tsx", mdx: "md" },
 			},
-			plugins: [youtubeIt],
+			plugins: [youtubeEmbed],
 		}),
 	],
 });

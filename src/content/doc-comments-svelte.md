@@ -5,7 +5,7 @@ keywords: svelte, documentation, JSDoc, TSDoc, comments
 date: 2023, 08, 03
 ---
 
-![YouTube Tutorial](IWvvXn1eAbE)
+![YouTube Tutorial](yt:IWvvXn1eAbE)
 
 ## Benefits
 

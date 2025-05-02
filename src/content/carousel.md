@@ -5,7 +5,7 @@ keywords: CSS, carousel, TypeScript, JavaScript, HTML, scroll snap, components
 date: 2024, 06, 25
 ---
 
-![YouTube Tutorial](aNSUZiBjRRI)
+![YouTube Tutorial](yt:aNSUZiBjRRI)
 
 ## Tutorial
 

@@ -5,7 +5,7 @@ keywords: javascript, typescript, vite
 date: 2024, 06, 28
 ---
 
-![YouTube Tutorial](DUdozB7R-AE)
+![YouTube Tutorial](yt:DUdozB7R-AE)
 
 ## Introduction
 

@@ -5,7 +5,7 @@ keywords: javascript, streaming, custom-elements
 date: 2024, 10, 01
 ---
 
-![YouTube Tutorial](ArQqBo5gpd8)
+![YouTube Tutorial](yt:ArQqBo5gpd8)
 
 ## Overview
 

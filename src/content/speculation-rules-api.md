@@ -7,7 +7,7 @@ date: 2024, 02, 10
 
 This video shows a demo of how you might utilize the Speculation Rules API. Read on for the full explanation.
 
-![YouTube Tutorial](W4VjS7rSmB0)
+![YouTube Tutorial](yt:W4VjS7rSmB0)
 
 ## Prefetching
 

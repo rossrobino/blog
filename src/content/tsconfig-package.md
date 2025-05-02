@@ -5,7 +5,7 @@ keywords: typescript, tsconfig, npm, package
 date: 2025, 01, 17
 ---
 
-![YouTube Tutorial](DNwYmgz3pCc)
+![YouTube Tutorial](yt:DNwYmgz3pCc)
 
 ## Directory structure
 

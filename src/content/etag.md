@@ -5,7 +5,7 @@ keywords: etag, javascript, performance, cache
 date: 2024, 10, 08
 ---
 
-![YouTube Tutorial](xdmHEamUtA0)
+![YouTube Tutorial](yt:xdmHEamUtA0)
 
 ## Caching basics
 
