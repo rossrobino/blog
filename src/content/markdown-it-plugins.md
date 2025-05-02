@@ -150,7 +150,7 @@ export const imgLazyLoad: PluginSimple = (md) => {
 
 Here's another example of a YouTube embed plugin. Here we can replace the `<img>` element with an `<iframe>` if the image `src` starts with `"yt:"`.
 
-```ts
+```ts {11-23}
 import type { PluginSimple } from "markdown-it";
 import type MarkdownIt from "markdown-it";
 
@@ -167,9 +167,9 @@ export const youtubeEmbed: PluginSimple = (md: MarkdownIt) => {
 			return `
 <iframe
 	loading="lazy"
+	allowfullscreen
 	title="${title}"
 	src="https://www.youtube-nocookie.com/embed/${src.slice(3)}"
-	allowfullscreen
 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 ></iframe>
 	`.trim();
