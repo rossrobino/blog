@@ -2,6 +2,7 @@ import { LogView } from "./view";
 import "drab/dialog/define";
 import "drab/prefetch/define";
 import "drab/share/define";
+import "drab/tablesort/define";
 
 const cmdK = () => {
 	const search = document.querySelector("dialog");
