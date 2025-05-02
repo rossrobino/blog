@@ -3,6 +3,7 @@ import { getPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import * as redis from "@/lib/redis";
 import { rss } from "@/lib/rss";
+import { Analytics } from "@/pages/analytics";
 import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
@@ -88,43 +89,7 @@ app.get("/view/*", async (c) => {
 
 app.get("/analytics", (c) => {
 	c.head(<Head title="Analytics" />);
-	c.page(
-		<RootLayout>
-			<div class="prose max-w-sm">
-				<h1>Analytics</h1>
-				<p>
-					<a href="/">Home</a>
-				</p>
-				<drab-tablesort trigger="th" content="tbody">
-					<table>
-						<thead class="capitalize">
-							<tr class="cursor-default">
-								<th>slug</th>
-								<th data-type="number">views</th>
-							</tr>
-						</thead>
-						<tbody>
-							{async () => {
-								const slugs = await redis.client.keys("*");
-								const views = await redis.client.mget(...slugs);
-
-								return slugs.map((slug, i) => {
-									if (!slug) return null;
-
-									return (
-										<tr>
-											<td>{slug.slice("posts/".length)}</td>
-											<td>{views[i] as any}</td>
-										</tr>
-									);
-								});
-							}}
-						</tbody>
-					</table>
-				</drab-tablesort>
-			</div>
-		</RootLayout>,
-	);
+	c.page(<Analytics />);
 });
 
 app.get("/rss", (c) =>
