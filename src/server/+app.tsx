@@ -9,31 +9,34 @@ import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
 import { Head } from "@/ui/head";
 import { html } from "client:page";
-import { Router } from "ovr";
+import { App } from "ovr";
 
 const posts = getPosts();
 
-const app = new Router({
-	start(c) {
-		c.base = html;
-		c.layout(RootLayout);
-		c.notFound = (c) => {
-			c.head(<Head title={`${info.title} - Not Found`} />);
+const app = new App();
 
-			c.page(
-				<main class="prose">
-					<h1>Not Found</h1>
-					<p>
-						The requested path <code>{c.url.pathname}</code> was not found.
-					</p>
-					<p>
-						<a href="/">Return home</a>
-					</p>
-				</main>,
-				404,
-			);
-		};
-	},
+app.base = html;
+
+app.notFound = (c) => {
+	c.head(<Head title={`${info.title} - Not Found`} />);
+
+	c.page(
+		<main class="prose">
+			<h1>Not Found</h1>
+			<p>
+				The requested path <code>{c.url.pathname}</code> was not found.
+			</p>
+			<p>
+				<a href="/">Return home</a>
+			</p>
+		</main>,
+		404,
+	);
+};
+
+app.use(async (c, next) => {
+	c.layout(RootLayout);
+	await next();
 });
 
 let filters: string[];
