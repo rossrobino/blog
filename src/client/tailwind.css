@@ -138,9 +138,9 @@
 	}
 
 	iframe {
-		border: 2px solid var(--muted-foreground);
+		border: 1px solid var(--muted-background);
 		border-radius: var(--radius-md);
-		background-color: var(--muted-foreground);
+		background-color: var(--muted-background);
 		aspect-ratio: 16 / 9;
 		width: 100%;
 	}

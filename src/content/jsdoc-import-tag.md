@@ -5,6 +5,8 @@ keywords: TypeScript, JavaScript, JSDoc
 date: 2025, 02, 12
 ---
 
+![YouTube Tutorial](yt:Jmo_uz_InX8)
+
 ## JSDoc types
 
 It's nice to have type safety in `.js` files, you can configure TypeScript to also check these files in your `tsconfig.json` with these two compiler options.
