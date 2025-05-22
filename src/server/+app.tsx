@@ -51,16 +51,18 @@ app.get("/", (c) => {
 		? posts
 		: posts.filter((post) => post.keywords.includes(currentFilter));
 
+	if (c.etag(JSON.stringify(filteredPosts))) return;
+
 	c.head(
 		<Head title={all ? info.title : `${info.title} - ${currentFilter}`} />,
 	);
 
-	c.page(
+	return (
 		<Home
 			posts={filteredPosts}
 			filters={filters}
 			currentFilter={currentFilter}
-		/>,
+		/>
 	);
 });
 
@@ -68,8 +70,10 @@ app.get("/posts/:slug", async (c) => {
 	const post = posts.find((post) => post.slug === c.params.slug);
 
 	if (post) {
+		if (c.etag(JSON.stringify(post))) return;
+
 		c.head(<Head title={post.title} description={post.description} />);
-		c.page(<Posts post={post} />);
+		return <Posts post={post} />;
 	}
 });
 
@@ -92,7 +96,7 @@ app.get("/view/*", async (c) => {
 
 app.get("/analytics", (c) => {
 	c.head(<Head title="Analytics" />);
-	c.page(<Analytics />);
+	return <Analytics />;
 });
 
 app.get("/rss", (c) =>
