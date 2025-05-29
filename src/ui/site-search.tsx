@@ -26,7 +26,7 @@ export const SiteSearch = () => {
 				data-content
 				class="backdrop:bg-background/60 m-auto opacity-0 transition-[display,opacity] transition-discrete duration-300 backdrop:opacity-0 backdrop:backdrop-blur-lg backdrop:transition-[display,opacity] backdrop:transition-discrete backdrop:duration-300 open:opacity-100 open:backdrop:opacity-100 starting:open:opacity-0 starting:open:backdrop:opacity-0"
 			>
-				<form action="https://google.com/search" method="get">
+				<form action="https://google.com/search">
 					<input
 						type="search"
 						name="q"

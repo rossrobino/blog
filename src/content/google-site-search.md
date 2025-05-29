@@ -15,10 +15,10 @@ Their implementation is very simple and can be used on any indexed site. Here's 
 
 ## Zero JavaScript site search
 
-Create an HTML form that performs a `get` request to google.com/search. The `<form>` will have two `<input>` elements that have `name=q` attributes. The first will be input for th user's search, and the second will be a hidden input with the `value` attribute set to `"site:..."` - the site you want to search. These will be used by the browser to create the URL string.
+Create an HTML form that performs a `get` request to google.com/search. The `<form>` will have two `<input>` elements that have `name=q` attributes. The first will be input for the user's search, and the second will be a hidden input with the `value` attribute set to `"site:..."` - the site you want to search. These will be used by the browser to create the URL string.
 
 ```html
-<form action="https://google.com/search" method="get">
+<form action="https://google.com/search">
 	<input type="search" name="q" placeholder="Search blog.robino.dev" />
 	<input type="hidden" name="q" value="site:blog.robino.dev" />
 </form>
@@ -30,7 +30,7 @@ https://www.google.com/search?q=html&q=site%3Ablog.robino.dev
 
 You can try it out below:
 
-<form action="https://google.com/search" method="get" class="flex gap-4">
+<form action="https://google.com/search" class="flex gap-4">
 	<input type="search" name="q" placeholder="Search blog.robino.dev" />
 	<input type="hidden" name="q" value="site:blog.robino.dev" />
 </form>
