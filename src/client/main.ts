@@ -1,4 +1,4 @@
-import { LogView } from "./view";
+import { inject } from "@vercel/analytics";
 import "drab/dialog/define";
 import "drab/prefetch/define";
 import "drab/share/define";
@@ -33,10 +33,9 @@ const copyCode = () => {
 };
 
 const main = () => {
-	customElements.define("log-view", LogView);
-
 	cmdK();
 	copyCode();
+	inject({ mode: import.meta.env.PROD ? "production" : "development" });
 };
 
 main();

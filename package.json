@@ -24,9 +24,8 @@
 	},
 	"dependencies": {
 		"@robino/md": "^3.2.6",
-		"@upstash/redis": "^1.34.9",
+		"@vercel/analytics": "^1.5.0",
 		"clsx": "^2.1.1",
-		"dotenv": "^16.5.0",
 		"drab": "^7.0.0",
 		"ovr": "^2.0.1",
 		"uico": "^0.10.1",

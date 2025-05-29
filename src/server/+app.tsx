@@ -1,9 +1,7 @@
 import { getKeywords } from "@/lib/get-keywords";
 import { getPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
-import * as redis from "@/lib/redis";
 import { rss } from "@/lib/rss";
-import { Analytics } from "@/pages/analytics";
 import { Home } from "@/pages/home";
 import { RootLayout } from "@/pages/layout";
 import { Posts } from "@/pages/posts";
@@ -75,28 +73,6 @@ app.get("/posts/:slug", async (c) => {
 		c.head(<Head title={post.title} description={post.description} />);
 		return <Posts post={post} />;
 	}
-});
-
-app.get("/view/*", async (c) => {
-	const pathname = c.params["*"];
-	const origin = c.req.headers.get("origin") || c.req.headers.get("referer");
-
-	let views: number | null;
-	if (import.meta.env.DEV) {
-		views = await redis.client.get(pathname);
-	} else if (origin?.startsWith(info.origin)) {
-		views = await redis.client.incrby(pathname, 1);
-	} else {
-		c.json({ error: "Forbidden" }, 403);
-		return;
-	}
-
-	c.json({ views });
-});
-
-app.get("/analytics", (c) => {
-	c.head(<Head title="Analytics" />);
-	return <Analytics />;
 });
 
 app.get("/rss", (c) =>
