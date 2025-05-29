@@ -5,6 +5,8 @@ keywords: site search, google, html, form
 date: 2025, 01, 21
 ---
 
+![YouTube Walkthrough](yt:mXqKLlzRmcM)
+
 ## Google site search
 
 I recently learned by using the site search on [deno.com](https://deno.com) that you can search specific sites on Google by including `site:example.com` in your search. For example, I can search for the term "html" on my blog with this search entry.
