@@ -191,7 +191,7 @@ function* translate(words: string[]) {
 
 ## Return value
 
-Notice how the final return `value` (`undefined`) is never logged when using the `for...of` or the spread operator. These iterations only accesses the values when `done` is `false`.
+Notice how the final return `value` (`undefined`) is never logged when using the `for...of` the spread operator, or `yield*`. These iterations only accesses the values when `done` is `false`.
 
 In some cases you might want to return a value at the end once the loop has completed. Let's return all of the words and their translations as an object.
 
