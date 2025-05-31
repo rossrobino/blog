@@ -24,7 +24,6 @@ export const Posts = (props: { post: Post }) => {
 							Edit
 						</a>
 						<Share slug={post.slug} />
-						<log-view></log-view>
 					</div>
 				</article>
 			</main>
