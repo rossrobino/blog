@@ -5,6 +5,8 @@ keywords: JavaScript, TypeScript, Node
 date: 2025, 06, 12
 ---
 
+![YouTube Tutorial](yt:127Ws7IBLR4)
+
 ## About
 
 [`AsyncLocalStorage`](https://nodejs.org/api/async_context.html#class-asynclocalstorage) is a Node class that allows you to create an asynchronous context that can be accessed anywhere throughout your application. It has a `run` method that you can use to ensure the context stays local the function that it is called in.
