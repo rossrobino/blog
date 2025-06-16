@@ -71,7 +71,7 @@ Here's a bare bones example of how you can use `AsyncLocalStorage` on a web serv
 
 Without `AsyncLocalStorage` if you want to access something on the request, you'll need to pass it down as an argument to whatever function needs it. This can quickly grow tedious in large application with deeply nested functions or components.
 
-Here's a server that does an async task and then returns the current pathname as a `Response`.
+Here's a server that does an async task and then returns the current pathname as a `Response`. `req` is passed down to `getPathname` as an argument through each function between `fetch` and `getPathname`---in this case, `handler`. In practice, there could be many more functions as intermediaries that need to pass the request without modifying it.
 
 ```ts {2,3,7,9,13,14}
 export default {
@@ -116,7 +116,7 @@ const getPathname = () => {
 };
 ```
 
-There is a problem here: if multiple requests are being processed at the same time, the request will be overwritten with each new request. If one request is awaiting `promise` while another comes in, it will return the pathname of the second request.
+There is a problem with this implementation: if multiple requests are being processed at the same time, the request will be overwritten with each new request. If one request is awaiting `promise` while another comes in, it will return the pathname of the second request.
 
 ### Implementation
 
