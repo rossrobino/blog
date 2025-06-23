@@ -345,7 +345,7 @@ export async function* merge<T, R>(generators: AsyncGenerator<T, R>[], r: R) {
 	const iterators = generators.map((gen) => gen[Symbol.asyncIterator]());
 	// create a map of active promises that return the result and the index
 	// using the `next` function above
-	const promises = new Map<number, Promise<any>>();
+	const promises = new Map<number, ReturnType<typeof next<T, R>>>();
 
 	iterators.forEach((iterator, index) =>
 		promises.set(index, next(iterator, index)),
