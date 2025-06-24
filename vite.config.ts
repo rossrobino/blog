@@ -19,7 +19,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
 	build: { minify: true },
 	plugins: [
-		domco({ adapter: adapter() }),
+		domco({ adapter: adapter({ trailingSlash: false }) }),
 		tailwindcss(),
 		md({
 			FrontmatterSchema,

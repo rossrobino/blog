@@ -15,6 +15,8 @@ const app = new App();
 
 app.base = html;
 
+app.prerender = getPosts().map((post) => `/posts/${post.slug}`);
+
 app.notFound = (c) => {
 	c.head(<Head title={`${info.title} - Not Found`} />);
 
@@ -49,7 +51,7 @@ app.get("/", (c) => {
 		? posts
 		: posts.filter((post) => post.keywords.includes(currentFilter));
 
-	if (c.etag(JSON.stringify(filteredPosts))) return;
+	// if (c.etag(JSON.stringify(filteredPosts))) return;
 
 	c.head(
 		<Head title={all ? info.title : `${info.title} - ${currentFilter}`} />,
@@ -68,8 +70,6 @@ app.get("/posts/:slug", async (c) => {
 	const post = posts.find((post) => post.slug === c.params.slug);
 
 	if (post) {
-		if (c.etag(JSON.stringify(post))) return;
-
 		c.head(<Head title={post.title} description={post.description} />);
 		return <Posts post={post} />;
 	}
