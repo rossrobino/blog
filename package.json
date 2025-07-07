@@ -11,23 +11,23 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@domcojs/vercel": "^2.0.2",
+		"@domcojs/vercel": "^3.0.0",
 		"@robino/prettier": "^2.0.2",
 		"@robino/tsconfig": "^1.1.0",
-		"@tailwindcss/vite": "^4.1.10",
-		"domco": "^4.1.5",
-		"prettier": "^3.6.0",
+		"@tailwindcss/vite": "^4.1.11",
+		"domco": "^4.3.0",
+		"prettier": "^3.6.2",
 		"prettier-plugin-tailwindcss": "^0.6.13",
-		"tailwindcss": "^4.1.10",
+		"tailwindcss": "^4.1.11",
 		"typescript": "^5.8.3",
-		"vite": "^7.0.0"
+		"vite": "^7.0.2"
 	},
 	"dependencies": {
 		"@robino/md": "^4.0.3",
 		"@vercel/analytics": "^1.5.0",
 		"clsx": "^2.1.1",
-		"drab": "^7.0.2",
-		"ovr": "^4.1.1",
+		"drab": "^7.0.3",
+		"ovr": "^4.2.7",
 		"uico": "^0.10.3",
 		"valibot": "^1.1.0"
 	}

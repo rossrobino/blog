@@ -1,21 +1,22 @@
-import { getKeywords } from "@/lib/get-keywords";
-import { getPosts } from "@/lib/get-posts";
+import { posts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
-import { rss } from "@/lib/rss";
-import { Home } from "@/pages/home";
-import { RootLayout } from "@/pages/layout";
-import { Posts } from "@/pages/posts";
+import * as home from "@/pages/home";
+import { Layout } from "@/pages/layout";
+import * as post from "@/pages/posts";
+import * as robots from "@/pages/robots";
+import * as rss from "@/pages/rss";
 import { Head } from "@/ui/head";
 import { html } from "client:page";
 import { App } from "ovr";
-
-const posts = getPosts();
 
 const app = new App();
 
 app.base = html;
 
-app.prerender = getPosts().map((post) => `/posts/${post.slug}`);
+app.prerender = [
+	...posts.map((post) => `/posts/${post.slug}`),
+	robots.page.pathname(),
+];
 
 app.notFound = (c) => {
 	c.head(<Head title={`${info.title} - Not Found`} />);
@@ -34,62 +35,14 @@ app.notFound = (c) => {
 	);
 };
 
-app.use(async (c, next) => {
-	c.layout(RootLayout);
-	await next();
+app.use((c, next) => {
+	c.layout(Layout);
+	return next();
 });
 
-let filters: string[];
-
-app.get("/", (c) => {
-	if (!filters) filters = getKeywords(posts);
-
-	const currentFilter = c.url.searchParams.get("filter") ?? "all";
-	const all = currentFilter === "all";
-
-	const filteredPosts = all
-		? posts
-		: posts.filter((post) => post.keywords.includes(currentFilter));
-
-	// if (c.etag(JSON.stringify(filteredPosts))) return;
-
-	c.head(
-		<Head title={all ? info.title : `${info.title} - ${currentFilter}`} />,
-	);
-
-	return (
-		<Home
-			posts={filteredPosts}
-			filters={filters}
-			currentFilter={currentFilter}
-		/>
-	);
-});
-
-app.get("/posts/:slug", async (c) => {
-	const post = posts.find((post) => post.slug === c.params.slug);
-
-	if (post) {
-		c.head(<Head title={post.title} description={post.description} />);
-		return <Posts post={post} />;
-	}
-});
-
-app.get("/rss", (c) =>
-	c.res(rss(posts), { headers: { "content-type": "application/xml" } }),
-);
-
-app.get("/robots.txt", (c) =>
-	c.text(
-		`
-User-agent: *
-Disallow:
-
-Sitemap: ${info.origin}/rss
-`.trim(),
-	),
-);
-
+// redirects
 app.get("/posts/domco", (c) => c.redirect("https://domco.robino.dev", 308));
+
+app.add(home, post, rss, robots);
 
 export default app;

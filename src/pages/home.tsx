@@ -1,16 +1,29 @@
+import { getKeywords } from "@/lib/get-keywords";
+import { posts } from "@/lib/get-posts";
 import { title } from "@/lib/info";
-import type { Post } from "@/lib/types";
+import * as info from "@/lib/info";
 import { Footer } from "@/ui/footer";
+import { Head } from "@/ui/head";
 import { PostCard } from "@/ui/post-card";
 import { SiteSearch } from "@/ui/site-search";
 import { SkipLink } from "@/ui/skip-link";
+import { Get } from "ovr";
 
-export const Home = (props: {
-	filters: string[];
-	currentFilter: string;
-	posts: Post[];
-}) => {
-	const { filters, currentFilter, posts } = props;
+let filters: string[];
+
+export const page = new Get("/", (c) => {
+	if (!filters) filters = getKeywords(posts);
+
+	const currentFilter = c.url.searchParams.get("filter") ?? "all";
+	const all = currentFilter === "all";
+
+	const filteredPosts = all
+		? posts
+		: posts.filter((post) => post.keywords.includes(currentFilter));
+
+	c.head(
+		<Head title={all ? info.title : `${info.title} - ${currentFilter}`} />,
+	);
 
 	return (
 		<>
@@ -64,7 +77,7 @@ export const Home = (props: {
 						aria-label={`Post list, filtered to ${currentFilter} posts.`}
 					>
 						<div class="columns-1 gap-4 md:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5">
-							{posts.map((post, i) => {
+							{filteredPosts.map((post, i) => {
 								const uppercase = Math.random() > 0.67;
 								const italic = Math.random() > 0.6;
 								const medium = Math.random() > 0.75;
@@ -88,4 +101,4 @@ export const Home = (props: {
 			</div>
 		</>
 	);
-};
+});

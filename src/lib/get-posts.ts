@@ -8,7 +8,7 @@ const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
 	{ eager: true },
 );
 
-export const getPosts = () => {
+const getPosts = () => {
 	let posts: Post[] = [];
 
 	for (const path in content) {
@@ -24,3 +24,5 @@ export const getPosts = () => {
 
 	return posts;
 };
+
+export const posts = getPosts();
