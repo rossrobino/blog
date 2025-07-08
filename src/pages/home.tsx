@@ -1,6 +1,4 @@
-import { getKeywords } from "@/lib/get-keywords";
-import { posts } from "@/lib/get-posts";
-import { title } from "@/lib/info";
+import { keywords, posts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import { Footer } from "@/ui/footer";
 import { Head } from "@/ui/head";
@@ -9,11 +7,7 @@ import { SiteSearch } from "@/ui/site-search";
 import { SkipLink } from "@/ui/skip-link";
 import { Get } from "ovr";
 
-let filters: string[];
-
 export const page = new Get("/", (c) => {
-	if (!filters) filters = getKeywords(posts);
-
 	const currentFilter = c.url.searchParams.get("filter") ?? "all";
 	const all = currentFilter === "all";
 
@@ -28,6 +22,7 @@ export const page = new Get("/", (c) => {
 	return (
 		<>
 			<SkipLink />
+
 			<header class="mb-3 flex flex-wrap items-center justify-between gap-2">
 				<div>
 					<a
@@ -35,15 +30,16 @@ export const page = new Get("/", (c) => {
 						class="font-extrabold uppercase italic no-underline text-shadow-sm"
 						aria-label="Homepage"
 					>
-						{title}
+						{info.title}
 					</a>
-					<div class="p-0.5"></div>
+					<Underline />
 				</div>
+
 				<div
 					class="flex flex-wrap items-center gap-2"
 					aria-label="Filter posts by keywords"
 				>
-					{filters.map((filter) => {
+					{keywords.map((filter) => {
 						return (
 							<div>
 								<a
@@ -59,14 +55,15 @@ export const page = new Get("/", (c) => {
 										style="view-transition-name: current-filter"
 									></div>
 								) : (
-									<div class="p-0.5"></div>
+									<Underline />
 								)}
 							</div>
 						);
 					})}
+
 					<div>
 						<SiteSearch />
-						<div class="p-0.5"></div>
+						<Underline />
 					</div>
 				</div>
 			</header>
@@ -102,3 +99,5 @@ export const page = new Get("/", (c) => {
 		</>
 	);
 });
+
+const Underline = () => <div class="p-0.5"></div>;

@@ -6,7 +6,7 @@ export const Headings = (props: { post: Post }) => {
 	return (
 		<div class="prose mt-6">
 			<ul aria-label="Table of contents">
-				{post.headings.map((heading) => {
+				{post.headings?.map((heading) => {
 					if (heading.level === 2) {
 						return (
 							<li>

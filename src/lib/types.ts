@@ -4,6 +4,6 @@ import type { InferOutput } from "valibot";
 
 export type Post = InferOutput<typeof FrontmatterSchema> & {
 	slug: string;
-	html: string;
-	headings: Heading[];
+	html?: string;
+	headings?: Heading[];
 };
