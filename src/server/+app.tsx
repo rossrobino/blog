@@ -14,7 +14,9 @@ const app = new App();
 app.base = html;
 
 app.prerender = [
-	...posts.map((post) => `/posts/${post.slug}`),
+	...posts
+		.filter((post) => !post.slug.startsWith("http")) // filter out external
+		.map((post) => `/posts/${post.slug}`),
 	robots.page.pathname(),
 ];
 
