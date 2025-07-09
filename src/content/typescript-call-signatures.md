@@ -1,9 +1,11 @@
 ---
 title: TypeScript Call Signatures
-description: How to define extra properties on a function in TypeScript.
+description: How to define extra properties on a function type in TypeScript.
 keywords: typescript
 date: 2025, 07, 09
 ---
+
+![YouTube Tutorial](yt:fYQNlEUrcn0)
 
 ## Function properties
 
