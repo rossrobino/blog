@@ -10,7 +10,7 @@ const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
 );
 
 const getPosts = () => {
-	const posts = external;
+	const posts = [...external]; // need to copy or breaks reload
 
 	for (const path in content) {
 		const { frontmatter, headings, html } = content[path]!;
