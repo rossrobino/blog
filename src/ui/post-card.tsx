@@ -71,7 +71,7 @@ export const PostCard = (props: {
 				</h2>
 			) : (
 				<>
-					<h1 class="leading-16 text-shadow-sm">{post.title}</h1>
+					<h1 class="leading-13 text-shadow-sm sm:leading-16">{post.title}</h1>
 					<ul class="my-6 flex flex-wrap gap-1.5" aria-label="keywords">
 						{post.keywords.sort().map((keyword) => (
 							<li class="badge secondary shadow-xs">{keyword}</li>
