@@ -1,11 +1,9 @@
 import { posts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
-import type { Post } from "@/lib/types";
 import { Get } from "ovr";
 
 // https://www.davidwparker.com/posts/how-to-make-an-rss-feed-in-sveltekit
-const rss = (posts: Post[]) => {
-	return `
+const rss = `
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
@@ -33,8 +31,7 @@ const rss = (posts: Post[]) => {
 	</channel>
 </rss>
 `.trim();
-};
 
 export const page = new Get("/rss", (c) =>
-	c.res(rss(posts), { headers: { "content-type": "application/xml" } }),
+	c.res(rss, { headers: { "content-type": "application/xml" } }),
 );

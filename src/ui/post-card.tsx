@@ -2,7 +2,14 @@ import { Headings } from "./headings";
 import type { Post } from "@/lib/types";
 import { clsx } from "clsx";
 
-export const PostCard = (props: {
+export const PostCard = ({
+	post,
+	headings = false,
+	size = "sm",
+	link = true,
+	uppercase,
+	italic,
+}: {
 	post: Post;
 	headings?: boolean;
 	size?: "sm" | "md" | "lg";
@@ -10,15 +17,6 @@ export const PostCard = (props: {
 	uppercase?: boolean;
 	italic?: boolean;
 }) => {
-	const {
-		post,
-		headings = false,
-		size = "sm",
-		link = true,
-		uppercase,
-		italic,
-	} = props;
-
 	const external = post.slug.startsWith("http");
 
 	return (

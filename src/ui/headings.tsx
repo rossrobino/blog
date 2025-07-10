@@ -1,8 +1,6 @@
 import type { Post } from "@/lib/types";
 
-export const Headings = (props: { post: Post }) => {
-	const { post } = props;
-
+export const Headings = ({ post }: { post: Post }) => {
 	return (
 		<div class="prose mt-6">
 			<ul aria-label="Table of contents">
