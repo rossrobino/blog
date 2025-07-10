@@ -24,8 +24,9 @@ export const PostCard = (props: {
 	return (
 		<div
 			class={clsx(
-				"border-muted-foreground dark:border-base-600 break-inside-avoid rounded-sm not-last:mb-4",
-				link && "border p-6 shadow-md",
+				"cursor-default break-inside-avoid",
+				link &&
+					"border-base-500/35 hover:border-base-500/60 bg-muted/20 hover:bg-background rounded-sm border p-6 transition-all not-last:mb-4 hover:shadow-sm",
 				external && "border-dashed",
 			)}
 			aria-label={external ? "External post" : "Post"}
