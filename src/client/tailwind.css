@@ -128,7 +128,7 @@
 		& .line,
 		& p {
 			padding-inline: calc(var(--spacing) * 6);
-			height: 2.8ch;
+			height: 2.5ch;
 
 			&.highlighted {
 				background-color: var(--color-base-800);

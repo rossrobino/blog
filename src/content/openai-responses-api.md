@@ -329,6 +329,23 @@ while (true) {
 
 Now the assistant will remember the previous messages.
 
+## Reasoning Summary
+
+When using reasoning models like GPT-5, add the `reasoning` option when creating a response to obtain a `summary` of the reasoning and set the `effort`. A higher effort might give a better response, but it will take longer and use more tokens (cost more).
+
+The full reasoning summary is contained in the `response.reasoning_summary_text.done` event.
+
+```ts {7}
+const response = await ai.client.responses.create({
+	input: message,
+	model: "gpt-5-nano",
+	stream: true,
+	previous_response_id: id,
+	store: true,
+	reasoning: { summary: "auto", effort: "low" },
+});
+```
+
 ## Retrieving previous messages
 
 In the case you need to get the previous messages in a conversation, you'll need to make two requests.
