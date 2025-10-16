@@ -102,8 +102,9 @@
 		scroll-padding-block-start: calc(var(--spacing) * 4);
 	}
 
-	p code {
-		@apply border-base-200 dark:border-base-800 border shadow-xs;
+	p code,
+	li code {
+		@apply border-secondary border shadow-xs;
 	}
 
 	pre {
