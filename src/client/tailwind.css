@@ -103,7 +103,8 @@
 	}
 
 	p code,
-	li code {
+	li code,
+	td code {
 		@apply border-secondary border shadow-xs;
 	}
 
@@ -116,6 +117,14 @@
 		@media (min-width: 640px) {
 			margin-inline: 0;
 			border-radius: var(--radius-md);
+		}
+
+		&:hover {
+			cursor: copy;
+		}
+
+		&:active {
+			cursor: default;
 		}
 
 		& > code {
@@ -145,18 +154,44 @@
 		width: 100%;
 	}
 
-	pre:hover {
-		cursor: copy;
-	}
-	pre:active {
-		cursor: default;
-	}
-
 	h2 {
 		text-wrap: pretty;
 	}
 
 	img {
 		border: var(--border);
+	}
+
+	drab-tablesort th {
+		cursor: default;
+	}
+
+	table {
+		@apply text-sm;
+
+		tr {
+			@apply hover:bg-muted;
+		}
+
+		th {
+			@apply bg-muted;
+		}
+
+		td {
+			/* truncate */
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+
+	blockquote {
+		@apply my-6;
+	}
+}
+
+@layer components {
+	e-chart {
+		@apply mt-12 mb-8 block h-124 w-full;
 	}
 }
