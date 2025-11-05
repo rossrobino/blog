@@ -15,7 +15,7 @@ export const page = new Get("/", (c) => {
 		? posts
 		: posts.filter((post) => post.keywords.includes(currentFilter));
 
-	c.head(
+	c.head.push(
 		<Head title={all ? info.title : `${info.title} - ${currentFilter}`} />,
 	);
 

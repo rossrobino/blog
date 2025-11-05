@@ -12,10 +12,10 @@ export const page = new Get("/posts/:slug", (c) => {
 
 	if (!post) return;
 
-	c.head(
+	c.head.push(
 		<>
 			<Head title={post.title} description={post.description} />
-			<EChartScript slug={post.slug} />
+			<EChartScript post={post} />
 		</>,
 	);
 

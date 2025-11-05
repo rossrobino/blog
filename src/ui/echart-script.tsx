@@ -1,11 +1,12 @@
+import type { Post } from "@/lib/types";
 import { tags } from "client:script/echart";
 import { Chunk } from "ovr";
-
-const slugs = new Set(["js-server-frameworks"]);
 
 /**
  * @returns A script tag if the post is within the selected slugs.
  */
-export const EChartScript = (props: { slug: string }) => {
-	if (slugs.has(props.slug)) return Chunk.safe(tags);
+export const EChartScript = (props: { post: Post }) => {
+	if (!props.post.chart) return;
+
+	return Chunk.safe(tags);
 };

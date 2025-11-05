@@ -10,4 +10,6 @@ export const FrontmatterSchema = v.strictObject({
 	),
 	date: v.pipe(v.string(), v.transform(formatDate)),
 	draft: v.optional(v.boolean()),
+	/** Add the charts entry script if the post has a chart to render. */
+	chart: v.optional(v.boolean()),
 });

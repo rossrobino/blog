@@ -3,6 +3,7 @@ title: The State of JavaScript Server Frameworks
 description: An overview of modern backend JS frameworks and their features.
 keywords: javascript, router, web server, http, middleware, regular expression, trie
 date: 2025, 10, 22
+chart: true
 ---
 
 ## Frameworks
