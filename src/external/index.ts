@@ -16,4 +16,20 @@ export const external: Post[] = [
 		date: "Oct 1, 2025",
 		slug: "https://drab.robino.dev/styles/skiplink/",
 	},
+	{
+		title: "Fetch Based Multipart Form Data Streaming",
+		description:
+			"How to stream massive file uploads with minimal memory usage in JavaScript.",
+		keywords: [
+			"request",
+			"fetch",
+			"multipart",
+			"form",
+			"data",
+			"javascript",
+			"typescript",
+		],
+		date: "Dec 11, 2025",
+		slug: "https://ovrjs.com/06-multipart",
+	},
 ];

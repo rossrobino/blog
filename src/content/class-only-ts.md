@@ -1,5 +1,5 @@
 ---
-title: Template
+title: Classy TS
 description: desc.
 keywords: keyword
 date: 2025, 12, 31
