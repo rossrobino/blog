@@ -6,7 +6,7 @@ export const external: Post[] = [
 		description: "Declaratively Stream HTML using ovr.",
 		keywords: ["html", "javascript", "typescript"],
 		date: "Jul 8, 2025",
-		slug: "https://ovr.robino.dev",
+		slug: "https://ovrjs.com",
 	},
 	{
 		title: "Create a Skip Link with TailwindCSS",

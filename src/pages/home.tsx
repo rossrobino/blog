@@ -1,13 +1,14 @@
 import { keywords, posts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
+import { Layout } from "@/pages/layout";
 import { Footer } from "@/ui/footer";
 import { Head } from "@/ui/head";
 import { PostCard } from "@/ui/post-card";
 import { SiteSearch } from "@/ui/site-search";
 import { SkipLink } from "@/ui/skip-link";
-import { Get } from "ovr";
+import { Route } from "ovr";
 
-export const page = new Get("/", (c) => {
+export const page = Route.get("/", (c) => {
 	const currentFilter = c.url.searchParams.get("filter") ?? "all";
 	const all = currentFilter === "all";
 
@@ -15,12 +16,12 @@ export const page = new Get("/", (c) => {
 		? posts
 		: posts.filter((post) => post.keywords.includes(currentFilter));
 
-	c.head.push(
-		<Head title={all ? info.title : `${info.title} - ${currentFilter}`} />,
-	);
-
 	return (
-		<>
+		<Layout
+			head={
+				<Head title={all ? info.title : `${info.title} - ${currentFilter}`} />
+			}
+		>
 			<SkipLink />
 
 			<header class="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -96,7 +97,7 @@ export const page = new Get("/", (c) => {
 
 				<Footer />
 			</div>
-		</>
+		</Layout>
 	);
 });
 

@@ -1,6 +1,6 @@
 import { posts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
-import { Get } from "ovr";
+import { Route } from "ovr";
 
 // https://www.davidwparker.com/posts/how-to-make-an-rss-feed-in-sveltekit
 const rss = `
@@ -32,6 +32,7 @@ const rss = `
 </rss>
 `.trim();
 
-export const page = new Get("/rss", (c) =>
-	c.res(rss, { headers: { "content-type": "application/xml" } }),
-);
+export const page = Route.get("/rss", (c) => {
+	c.res.body = rss;
+	c.res.headers.set("content-type", "application/xml");
+});

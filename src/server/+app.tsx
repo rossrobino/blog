@@ -6,15 +6,19 @@ import * as post from "@/pages/posts";
 import * as robots from "@/pages/robots";
 import * as rss from "@/pages/rss";
 import { Head } from "@/ui/head";
-import { html } from "client:page";
 import { App, type Middleware } from "ovr";
 
 const app = new App();
 
-const notFound: Middleware = (c) => {
-	c.head.push(<Head title={`${info.title} - Not Found`} />);
+const notFound: Middleware = async (c, next) => {
+	await next();
+	
+	if (c.res.body === undefined) {
 
-	c.page(
+	c.res.status = 404
+
+	return (
+		<Layout head={<Head title={`${info.title} - Not Found`} />}>
 		<main class="prose">
 			<h1>Not Found</h1>
 			<p>
@@ -23,22 +27,17 @@ const notFound: Middleware = (c) => {
 			<p>
 				<a href="/">Return home</a>
 			</p>
-		</main>,
-		404,
-	);
+		</main>
+		</Layout>)
+	}
 };
 
-app.use((c, next) => {
-	c.base = html;
-	c.layouts.push(Layout);
-	c.notFound = notFound;
-	return next();
-});
 
-// redirects
-app.get("/posts/domco", (c) => c.redirect("https://domco.robino.dev", 308));
 
-app.add(home, post, rss, robots);
+app.use(notFound);
+
+
+app.use(home, post, rss, robots);
 
 export default {
 	fetch: app.fetch,
