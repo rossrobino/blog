@@ -12,6 +12,7 @@ import langMd from "@shikijs/langs/md";
 import langSql from "@shikijs/langs/sql";
 import langSvelte from "@shikijs/langs/svelte";
 import langTsx from "@shikijs/langs/tsx";
+import langYml from "@shikijs/langs/yml";
 import tailwindcss from "@tailwindcss/vite";
 import { domco } from "domco";
 import { defineConfig } from "vite";
@@ -35,6 +36,7 @@ export default defineConfig({
 					langSql,
 					langMd,
 					langAstro,
+					langYml,
 				],
 				langAlias: { js: "tsx", ts: "tsx", jsx: "tsx", mdx: "md" },
 			},
