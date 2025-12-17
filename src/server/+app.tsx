@@ -53,6 +53,5 @@ export default {
 			.filter((post) => !post.slug.startsWith("http")) // filter out external
 			.map((post) => `/posts/${post.slug}`),
 		seo.robots.pathname(),
-		seo.rss.pathname(),
 	],
 };
