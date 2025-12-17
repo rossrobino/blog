@@ -39,7 +39,8 @@ const preload: Middleware = async (c, next) => {
 	if (c.res.headers.get("content-type")?.startsWith("text/html")) {
 		c.res.headers.set(
 			"link",
-			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high"`,
+			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high", ` +
+				`<${script.src.file}>; rel=preload; as=script; fetchpriority="high"; crossorigin`,
 		);
 	}
 };
