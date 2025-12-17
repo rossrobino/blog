@@ -52,3 +52,7 @@ Sitemap: ${info.origin}${rss.pathname()}
 `.trim(),
 	),
 );
+
+export const favicon = Route.get("/favicon.ico", (c) =>
+	c.redirect("/favicon.svg"),
+);
