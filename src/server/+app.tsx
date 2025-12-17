@@ -37,11 +37,9 @@ const preload: Middleware = async (c, next) => {
 	await next();
 
 	if (c.res.headers.get("content-type")?.startsWith("text/html")) {
-		// these are loaded on every html page
 		c.res.headers.set(
 			"link",
-			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high",` +
-				`<${script.src.file}>; rel=preload; as=script; fetchpriority="high"`,
+			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high"`,
 		);
 	}
 };
