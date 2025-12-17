@@ -5,6 +5,7 @@ import { Layout } from "@/pages/layout";
 import * as post from "@/pages/posts";
 import * as seo from "@/pages/seo";
 import { Head } from "@/ui/head";
+import * as script from "client:script";
 import * as style from "client:style";
 import { App, type Middleware } from "ovr";
 
@@ -36,9 +37,11 @@ const preload: Middleware = async (c, next) => {
 	await next();
 
 	if (c.res.headers.get("content-type")?.startsWith("text/html")) {
+		// these are loaded on every html page
 		c.res.headers.set(
 			"link",
-			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high"`,
+			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high",` +
+				`<${script.src.file}>; rel=preload; as=script; fetchpriority="high"`,
 		);
 	}
 };
