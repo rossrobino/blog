@@ -5,6 +5,7 @@ import { Layout } from "@/pages/layout";
 import * as post from "@/pages/posts";
 import * as seo from "@/pages/seo";
 import { Head } from "@/ui/head";
+import * as style from "client:style";
 import { App, type Middleware } from "ovr";
 
 const app = new App();
@@ -31,9 +32,18 @@ const notFound: Middleware = async (c, next) => {
 	}
 };
 
-app.use(notFound);
+const preload: Middleware = async (c, next) => {
+	await next();
 
-app.use(home, post, seo);
+	if (c.res.headers.get("content-type")?.startsWith("text/html")) {
+		c.res.headers.set(
+			"link",
+			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high"`,
+		);
+	}
+};
+
+app.use(notFound, preload, home, post, seo);
 
 export default {
 	fetch: app.fetch,

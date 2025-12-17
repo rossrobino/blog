@@ -1,4 +1,5 @@
-import { tags } from "client:script";
+import * as script from "client:script";
+import * as style from "client:style";
 import { type JSX, Render } from "ovr";
 
 export const Layout = (props: {
@@ -11,10 +12,7 @@ export const Layout = (props: {
 				<meta charset="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-				{import.meta.env.DEV && (
-					<link rel="stylesheet" href="/client/tailwind.css" />
-				)}
-				{Render.html(tags)}
+				{Render.html(script.tags + style.tags)}
 				{props.head}
 			</head>
 			<body class="font-old-style m-6 tabular-nums">
