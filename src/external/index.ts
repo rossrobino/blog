@@ -32,4 +32,11 @@ export const external: Post[] = [
 		date: "Dec 11, 2025",
 		slug: "https://ovrjs.com/06-multipart",
 	},
+	{
+		title: "Reduce Noise in Decision Making with Plought",
+		description: "A structured decision making framework built with Svelte.",
+		keywords: ["decision making", "svelte"],
+		date: "Mar 9, 2026",
+		slug: "https://plought.app",
+	},
 ];
