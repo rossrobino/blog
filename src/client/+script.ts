@@ -5,17 +5,15 @@ import "drab/share/define";
 import "drab/tablesort/define";
 
 const cmdK = () => {
-	const search = document.querySelector("dialog");
 	document.body.addEventListener("keydown", (e) => {
 		if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
-			search?.showModal();
+			document.querySelector("dialog")?.showModal();
 		}
 	});
 };
 
 const copyCode = () => {
-	const pres = document.querySelectorAll("pre");
-	for (const pre of pres) {
+	for (const pre of document.querySelectorAll("pre")) {
 		pre.tabIndex = 0;
 		pre.role = "button";
 		pre.ariaDescription = "Copy code to clipboard";

@@ -23,11 +23,11 @@
 	},
 	"dependencies": {
 		"@robino/md": "^5.0.0",
-		"@vercel/analytics": "^1.6.1",
+		"@vercel/analytics": "^2.0.1",
 		"clsx": "^2.1.1",
 		"drab": "^7.0.3",
 		"echarts": "^6.0.0",
-		"ovr": "^6.1.0",
+		"ovr": "^6.2.0",
 		"uico": "^0.12.0",
 		"valibot": "^1.2.0"
 	}
