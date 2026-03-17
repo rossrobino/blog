@@ -9,8 +9,11 @@ const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
 	{ eager: true },
 );
 
-const getPosts = () => {
-	const posts = [...external]; // need to copy or breaks reload
+const sortPosts = (posts: Post[]) =>
+	posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+export const getLocalPosts = () => {
+	const posts: Post[] = [];
 
 	for (const path in content) {
 		const { frontmatter, headings, html } = content[path]!;
@@ -19,10 +22,10 @@ const getPosts = () => {
 		posts.push({ ...frontmatter, slug, headings, html });
 	}
 
-	return posts
-		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-		.filter((post) => !post.draft || import.meta.env.DEV);
+	return sortPosts(posts).filter((post) => !post.draft || import.meta.env.DEV);
 };
+
+const getPosts = () => sortPosts([...external, ...getLocalPosts()]);
 
 export const getKeywords = (posts: Post[]) => {
 	const counts: Record<string, number> = {};
@@ -47,5 +50,6 @@ export const getKeywords = (posts: Post[]) => {
 };
 
 export const posts = getPosts();
+export const localPosts = getLocalPosts();
 
 export const keywords = getKeywords(posts);

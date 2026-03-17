@@ -1,4 +1,4 @@
-import { posts } from "@/lib/get-posts";
+import { localPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import * as home from "@/pages/home";
 import { Layout } from "@/pages/layout";
@@ -50,9 +50,7 @@ app.use(notFound, preload, home, post, seo);
 export default {
 	fetch: app.fetch,
 	prerender: [
-		...posts
-			.filter((post) => !post.slug.startsWith("http")) // filter out external
-			.map((post) => `/posts/${post.slug}`),
+		...localPosts.map((post) => `/posts/${post.slug}`),
 		seo.robots.pathname(),
 	],
 };

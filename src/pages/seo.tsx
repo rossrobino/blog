@@ -1,4 +1,4 @@
-import { posts } from "@/lib/get-posts";
+import { localPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import { Route } from "ovr";
 
@@ -20,11 +20,8 @@ export const rss = Route.get("/rss", (c) => {
 					<description>{info.description}</description>
 					<managingEditor>Ross Robino</managingEditor>
 					<language>en-us</language>
-					{posts
-						.filter(
-							// filter out external links and drafts
-							(post) => !post.slug.startsWith("http") && !post.draft,
-						)
+					{localPosts
+						.filter((post) => !post.draft)
 						.map((post) => (
 							<item>
 								<guid>
