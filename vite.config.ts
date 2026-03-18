@@ -19,6 +19,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
 	build: { minify: true },
+	oxc: { jsx: { throwIfNamespace: false } },
 	plugins: [
 		domco({ adapter: adapter({ trailingSlash: false }) }),
 		tailwindcss(),

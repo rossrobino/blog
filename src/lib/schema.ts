@@ -1,15 +1,14 @@
 import { formatDate } from "./format-date";
-import * as v from "valibot";
+import { Schema } from "ovr";
 
-export const FrontmatterSchema = v.strictObject({
-	title: v.string(),
-	description: v.string(),
-	keywords: v.pipe(
-		v.string(),
-		v.transform((val) => val.split(",").map((s) => s.trim().toLowerCase())),
+export const FrontmatterSchema = Schema.object({
+	title: Schema.string(),
+	description: Schema.string(),
+	keywords: Schema.string().transform((val) =>
+		val.split(",").map((s) => s.trim().toLowerCase()),
 	),
-	date: v.pipe(v.string(), v.transform(formatDate)),
-	draft: v.optional(v.boolean()),
+	date: Schema.string().transform(formatDate),
+	draft: Schema.boolean().optional(),
 	/** Add the charts entry script if the post has a chart to render. */
-	chart: v.optional(v.boolean()),
+	chart: Schema.boolean().optional(),
 });

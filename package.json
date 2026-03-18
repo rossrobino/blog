@@ -13,13 +13,13 @@
 		"@domcojs/vercel": "^3.1.3",
 		"@robino/prettier": "^2.0.3",
 		"@robino/tsconfig": "^1.1.1",
-		"@tailwindcss/vite": "^4.2.1",
+		"@tailwindcss/vite": "^4.2.2",
 		"domco": "^5.0.2",
 		"prettier": "^3.8.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
-		"tailwindcss": "^4.2.1",
+		"tailwindcss": "^4.2.2",
 		"typescript": "^5.9.3",
-		"vite": "^7.3.1"
+		"vite": "^8.0.0"
 	},
 	"dependencies": {
 		"@robino/md": "^5.0.0",
@@ -28,7 +28,6 @@
 		"drab": "^7.0.3",
 		"echarts": "^6.0.0",
 		"ovr": "^6.2.0",
-		"uico": "^0.12.0",
-		"valibot": "^1.2.0"
+		"uico": "^0.12.0"
 	}
 }
