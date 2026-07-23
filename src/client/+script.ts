@@ -1,5 +1,4 @@
 import { inject } from "@vercel/analytics";
-import "drab/dialog/define";
 import "drab/prefetch/define";
 import "drab/share/define";
 import "drab/tablesort/define";

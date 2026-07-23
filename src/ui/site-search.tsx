@@ -1,10 +1,11 @@
-import { title, origin } from "@/lib/info";
+import { origin, title } from "@/lib/info";
 
 export const SiteSearch = () => {
 	return (
-		<drab-dialog class="contents" remove-body-scroll click-outside-close>
+		<>
 			<button
-				data-trigger
+				commandfor="site-search"
+				command="show-modal"
 				type="button"
 				class="ghost icon"
 				aria-label="Open search dialog"
@@ -23,7 +24,8 @@ export const SiteSearch = () => {
 				</svg>
 			</button>
 			<dialog
-				data-content
+				id="site-search"
+				closedby="any"
 				class="backdrop:bg-background/60 m-auto opacity-0 transition-[display,opacity] transition-discrete duration-300 backdrop:opacity-0 backdrop:backdrop-blur-lg backdrop:transition-[display,opacity] backdrop:transition-discrete backdrop:duration-300 open:opacity-100 open:backdrop:opacity-100 starting:open:opacity-0 starting:open:backdrop:opacity-0"
 			>
 				<form action="https://google.com/search">
@@ -36,6 +38,6 @@ export const SiteSearch = () => {
 					<input type="hidden" name="q" value={`site:${origin}`} />
 				</form>
 			</dialog>
-		</drab-dialog>
+		</>
 	);
 };

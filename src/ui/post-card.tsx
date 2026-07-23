@@ -17,7 +17,8 @@ export const PostCard = ({
 	uppercase?: boolean;
 	italic?: boolean;
 }) => {
-	const external = post.slug.startsWith("http");
+	const external =
+		post.slug.startsWith("http://") || post.slug.startsWith("https://");
 
 	return (
 		<div

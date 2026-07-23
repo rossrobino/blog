@@ -11,4 +11,4 @@ export const FrontmatterSchema = Schema.object({
 	draft: Schema.boolean().optional(),
 	/** Add the charts entry script if the post has a chart to render. */
 	chart: Schema.boolean().optional(),
-});
+}).strict();
