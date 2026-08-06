@@ -1,7 +1,6 @@
-import type { PluginSimple } from "markdown-it";
-import type MarkdownIt from "markdown-it";
+import type { Options } from "@robino/md";
 
-export const youtubeEmbed: PluginSimple = (md: MarkdownIt) => {
+export const youtubeEmbed: NonNullable<Options["plugins"]>[number] = (md) => {
 	const originalImage = md.renderer.rules.image!;
 
 	md.renderer.rules.image = (tokens, i, opts, env, self) => {

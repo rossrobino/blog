@@ -29,7 +29,7 @@ export const PostCard = ({
 				external && "border-dashed",
 			)}
 			aria-label={external ? "External post" : "Post"}
-			style={external ? undefined : `view-transition-name: ${post.slug}`}
+			{...(external ? {} : { style: `view-transition-name: ${post.slug}` })}
 		>
 			{link ? (
 				<h2
@@ -43,7 +43,7 @@ export const PostCard = ({
 					<a
 						href={external ? post.slug : `/posts/${post.slug}`}
 						class="flex justify-between gap-2 font-bold text-shadow-xs"
-						target={external ? "_blank" : undefined}
+						{...(external ? { target: "_blank" } : {})}
 					>
 						{post.title}
 						{external && (

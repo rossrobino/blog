@@ -1,5 +1,5 @@
-import { FrontmatterSchema } from "./src/lib/schema";
-import { youtubeEmbed } from "./src/lib/youtube-embed";
+import { FrontmatterSchema } from "./src/lib/schema.ts";
+import { youtubeEmbed } from "./src/lib/youtube-embed.ts";
 import { adapter } from "@domcojs/vercel";
 import { md } from "@robino/md";
 import langAstro from "@shikijs/langs/astro";

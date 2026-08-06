@@ -5,7 +5,9 @@ import { Render } from "ovr";
 /**
  * @returns A script tag if the post is within the selected slugs.
  */
-export const EChartScript = (props: { post: Post }) => {
+export const EChartScript = (props: {
+	post: Post;
+}): Render.Chunk | undefined => {
 	if (!props.post.chart) return;
 
 	return Render.html(tags);

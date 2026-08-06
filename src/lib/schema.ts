@@ -1,4 +1,4 @@
-import { formatDate } from "./format-date";
+import { formatDate } from "./format-date.ts";
 import { Schema } from "ovr";
 
 export const FrontmatterSchema = Schema.object({

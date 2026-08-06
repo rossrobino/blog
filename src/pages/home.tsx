@@ -46,7 +46,7 @@ export const page = Route.get("/", (c) => {
 								<a
 									href={`/${filter === "all" ? "" : `?filter=${filter}`}`}
 									class="button ghost uppercase"
-									aria-current={filter === currentFilter ? "page" : undefined}
+									aria-current={filter === currentFilter ? "page" : "false"}
 								>
 									{filter}
 								</a>
