@@ -39,4 +39,11 @@ export const external: Post[] = [
 		date: "Mar 9, 2026",
 		slug: "https://plought.app",
 	},
+	{
+		title: "Rai: Private Company Valuations",
+		description: "Prediction market derive private company valuations.",
+		keywords: ["finance"],
+		date: "Aug 11, 2026",
+		slug: "https://ovrjs.com",
+	},
 ];
