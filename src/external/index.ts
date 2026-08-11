@@ -41,7 +41,7 @@ export const external: Post[] = [
 	},
 	{
 		title: "Rai: Private Company Valuations",
-		description: "Prediction market derive private company valuations.",
+		description: "Prediction market derived private company valuations.",
 		keywords: ["finance"],
 		date: "Aug 11, 2026",
 		slug: "https://rai.robino.dev",
