@@ -44,6 +44,6 @@ export const external: Post[] = [
 		description: "Prediction market derive private company valuations.",
 		keywords: ["finance"],
 		date: "Aug 11, 2026",
-		slug: "https://ovrjs.com",
+		slug: "https://rai.robino.dev",
 	},
 ];
