@@ -1,9 +1,8 @@
 ---
 title: HTTP Forms
-description: TODO
-keywords: keyword
-date: 2026, 03, 20
-draft: true
+description: HTTP forms using the JavaScript Fetch API.
+keywords: JavaScript, TypeScript, HTTP
+date: 2026, 08, 20
 ---
 
 ## HTML
@@ -153,8 +152,12 @@ new URL(req.url).searchParams;
 
 Since users are able to submit any sort of form data or search parameters to your server, you must treat them as untrusted data.
 
-- Invalid values - for example, too long, wrong format
+- Invalid values - for example, if they are too long or the wrong format
 - Extra data - attackers can send extra keys that your server doesn't expect
 - Large requests - overload server with a very large file
 
 Frameworks provide a variety of ways to validate user inputs. Primarily libraries like Zod allow users to validate inputs at runtime to ensure data is the correct type.
+
+## Parsers
+
+There are a variety of packages that help servers efficiently and securely parse and stream form data. Check out my [cross platform, low memory multipart parser here](https://ovrjs.com/06-multipart).
