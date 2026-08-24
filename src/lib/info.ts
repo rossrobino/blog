@@ -1,6 +1,7 @@
-export const title = "blog.robino.dev";
-export const description = "Ross Robino's blog";
-export const host = "blog.robino.dev";
+export const title = "The Public Interface";
+export const description = "Independent journal, written by Ross Robino";
+export const location = "Michigan, USA";
+export const host = "int.pub";
 export const origin = "https://" + host;
 export const author = "Ross Robino";
 export const homepage = "https://robino.dev";

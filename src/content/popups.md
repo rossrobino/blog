@@ -15,7 +15,7 @@ I'm going to refer to modals, popovers, and dialogs as popups. Generally, it's b
 
 ## The case for alert, confirm, and prompt
 
-### Overview
+### Browser dialogs overview
 
 The `window` object has three methods to perform these actions: `alert`, `confirm`, and `prompt`. Using any of these three methods makes it easy to ensure the user is always provided with an accessible popup catered to their device, whether it be mobile, desktop, or AR/VR.
 
@@ -61,7 +61,7 @@ const name = prompt("Enter your name:");
 
 ![A prompt dialog in FireFox](/images/popups/prompt-firefox.png)
 
-### Advantages
+### Browser dialog advantages
 
 These methods have a few advantages over creating your UI elements.
 
@@ -70,7 +70,7 @@ These methods have a few advantages over creating your UI elements.
 - **Ability to disable** - if users do not want to receive alerts from certain websites, these can be disabled for a particular domain
 - **Platform** - the interface is auto-updated by the browser or device
 
-### Disadvantages
+### Browser dialog disadvantages
 
 - **No custom styles** - they can make your website look less polished
 - **Text-only** - for example, you can't add an `<img>` or a `<select>` element into an alert
@@ -86,7 +86,7 @@ So what if you have a design system you need to follow, or need some other conte
 
 ## Dialog Element
 
-### Overview
+### Dialog element overview
 
 The [HTML `<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog), is supported across all major browsers. Dialogs are best used if the user is required to take an action before proceeding. For example, an _"Are you sure you want to delete this record?"_ confirmation would be a use case for a dialog.
 
@@ -96,7 +96,7 @@ Another way to close the dialog is to add `method="dialog"` to a `<form>` or `fo
 
 There is also an `open` HTML attribute that can be utilized to control the visibility of the element. Add it to the `<dialog>` element to make it open by default on page load.
 
-### Code / Preview
+### Dialog code / preview
 
 ```svelte
 <!-- Dialog.svelte -->
@@ -118,7 +118,7 @@ There is also an `open` HTML attribute that can be utilized to control the visib
 </dialog>
 ```
 
-### Defaults
+### Dialog defaults
 
 - Not put in the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) by default
 - Disables the rest of the page
@@ -126,12 +126,12 @@ There is also an `open` HTML attribute that can be utilized to control the visib
 - Can be closed with the `ESC` key
 - Gray overlay/backdrop is applied to the rest of the page
 
-### Advantages
+### Dialog advantages
 
 - **Custom styles** - using the dialog element is a great way to take advantage of the web platform while also maintaining the freedom to customize the look and feel of the popup.
 - **Accessible** - while you still need to ensure you are creating accessible content, utilizing the built-in defaults helps reduce the amount of code written and edge cases that need to be considered
 
-### Disadvantages
+### Dialog disadvantages
 
 - **Requires JavaScript** - as of June 2023, dialog elements can't be opened without JavaScript. While you can default the state to open upon load, there is not currently a way to open the dialog without JavaScript if it is already closed. Read the latest discussion on this here: [Have some way of opening `<dialog>` elements without JavaScript](https://github.com/whatwg/html/issues/3567).
 - **More code** - it does take more effort and code to create a dialog element than using the built-in `window` methods, and the user experience across different devices must be considered
@@ -140,7 +140,7 @@ There is also an `open` HTML attribute that can be utilized to control the visib
 
 ## Popovers
 
-### Overview
+### Popover overview
 
 Finally, there is also a zero-JavaScript solution--the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API). Right now this API and the associated HTML attributes are only supported in Chrome. Popovers are a bit less intrusive than the previous solutions. For example, perhaps a banner stating _"Your progress has been saved."_, would be a good case for a popover.
 
@@ -156,7 +156,7 @@ Using these three attributes you can create a popup without JavaScript.
 
 You can also programmatically display the popover with three new `HTMLElement` methods: `hidePopover`, `showPopover` and `togglePopover`.
 
-### Code / Preview
+### Popover code / preview
 
 ```html
 <button popovertarget="target">Open</button>
@@ -164,20 +164,20 @@ You can also programmatically display the popover with three new `HTMLElement` m
 <div popover id="target">A popover</div>
 ```
 
-### Defaults
+### Popover defaults
 
 - Put in the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) by default
 - Does not disable the rest of the page
 - Clicking outside the target element or pressing the `ESC` key closes the popover
 - No overlay/backdrop is applied to the rest of the page
 
-### Advantages
+### Popover advantages
 
 - **No JavaScript required** - popovers do not require any JavaScript to open and close
 - **Custom styles** - similar to dialogs, popovers can be customized with CSS
 - **Accessible** - also like dialogs, popovers can be made inaccessible, but they do have friendly defaults
 
-### Disadvantages
+### Popover disadvantages
 
 - **Support** - not yet supported in Safari or Firefox as of June 2023. The popover will render like a regular element on the page in these browsers.
 

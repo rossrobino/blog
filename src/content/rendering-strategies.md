@@ -17,7 +17,7 @@ Web applications execute code at different points of the development lifecycle. 
 
 Also known as "pre-rendering" in some frameworks. In SvelteKit, you can set a page to be rendered at build time in a `page.js` or `page.server.js` file.
 
-### When
+### When build-time rendering runs
 
 If your application has a build step, build-time rendering occurs once during this step. Typically for JavaScript projects, a build step would consist of installing the required dependencies to build the project and then running the `build` script found in `./package.json`, which could be anything---for example in SvelteKit this is `vite build`.
 
@@ -25,7 +25,7 @@ This can take place locally on your machine, or services like Vercel can perform
 
 Using the example above, the `load` function in a file with `prerender` set to `true` will only run once at build time, instead of on each request.
 
-### Advantages
+### Build-time rendering advantages
 
 #### Efficient
 
@@ -33,13 +33,13 @@ The build step runs once, this brings advantages in comparison to rendering on t
 
 Consider a scenario where you consistently fetch content from a CMS to display on your page. You can make a singular fetch request at build-time rather than making individual requests for every client or server request.
 
-#### Reduced Client Side JavaScript Load
+#### Reduced client-side JavaScript load at build time
 
 Not only does rendering at build time cut down on the time spent waiting for a response, users also never need to wait for any of the JavaScript to load to make the request in the first place. Instead the user is just sent the result. [Most of the time](#disadvantages-1), getting the result is faster than rendering on the client.
 
-### Disadvantages
+### Build-time rendering disadvantages
 
-#### Dynamic Data
+#### Dynamic data at build time
 
 Rendering frequently updated data or providing user-specific content at build-time can be somewhat impractical or impossible due to the frequency of changes.
 
@@ -47,21 +47,21 @@ Rendering frequently updated data or providing user-specific content at build-ti
 
 ## Server-Side Rendering
 
-### When
+### When server-side rendering runs
 
 After the build stage, server-side rendering (SSR) occurs with each server request and precedes the response. This is the default behavior for SvelteKit.
 
-### Advantages
+### Server-side rendering advantages
 
-#### Reduced Client Side JavaScript Load
+#### Reduced client-side JavaScript load on the server
 
 Similar to build-time, the user does not have to load the additional JavaScript to initially see the content, since they receive the result of the script.
 
-#### Dynamic Content
+#### Dynamic server content
 
 With SSR, each request by the user triggers a server-side render of the content, ensuring updated information displays for each request.
 
-### Disadvantages
+### Server-side rendering disadvantages
 
 #### Rendering Time and HTML Size
 
@@ -79,23 +79,23 @@ It's common in many frameworks to "hydrate" the server rendered content on the c
 
 ## Client-Side Rendering
 
-### When
+### When client-side rendering runs
 
 Client-side rendering happens after receiving an HTML request. [Check out this visual](https://twitter.com/wesbos/status/1694081235729928529) from Wes Bos showing how different script tags can be executed at different times.
 
 SvelteKit components are also rendered on the client by default, `onMount` can be used to encapsulate code that runs exclusively on the client.
 
-### Advantages
+### Client-side rendering advantages
 
 #### Interactivity
 
 Client-side JavaScript usage enables interactivity.
 
-#### Dynamic Content
+#### Dynamic client content
 
 Similar to SSR, client-side JavaScript allows the incorporation of dynamic content rendering.
 
-### Disadvantages
+### Client-side rendering disadvantages
 
 #### Slower
 

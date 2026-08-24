@@ -1,3 +1,4 @@
+import { codeControls } from "./src/lib/code-controls.ts";
 import { FrontmatterSchema } from "./src/lib/schema.ts";
 import { youtubeEmbed } from "./src/lib/youtube-embed.ts";
 import { adapter } from "@domcojs/vercel";
@@ -41,7 +42,7 @@ export default defineConfig({
 				],
 				langAlias: { js: "tsx", ts: "tsx", jsx: "tsx", mdx: "md" },
 			},
-			plugins: [youtubeEmbed],
+			plugins: [youtubeEmbed, codeControls],
 		}),
 	],
 });

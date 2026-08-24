@@ -1,6 +1,8 @@
 import { external } from "@/external";
+import { formatDate, parseDate } from "@/lib/format-date";
 import { getSlug } from "@/lib/get-slug";
 import type { FrontmatterSchema } from "@/lib/schema";
+import { section } from "@/lib/section";
 import type { Post } from "@/lib/types";
 import type { Result } from "@robino/md";
 
@@ -10,7 +12,9 @@ const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
 );
 
 const sortPosts = (posts: Post[]) =>
-	posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+	posts.sort(
+		(a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime(),
+	);
 
 export const getLocalPosts = () => {
 	const posts: Post[] = [];
@@ -25,13 +29,17 @@ export const getLocalPosts = () => {
 	return sortPosts(posts).filter((post) => !post.draft || import.meta.env.DEV);
 };
 
-const getPosts = () => sortPosts([...external, ...getLocalPosts()]);
+const getPosts = () =>
+	sortPosts([
+		...external.map((post) => ({ ...post, date: formatDate(post.date) })),
+		...getLocalPosts(),
+	]);
 
 export const getKeywords = (posts: Post[]) => {
 	const counts: Record<string, number> = {};
 
 	for (const post of posts) {
-		for (const keyword of post.keywords) {
+		for (const keyword of new Set(post.keywords.map(section))) {
 			if (counts[keyword]) {
 				counts[keyword]++;
 			} else {

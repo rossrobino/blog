@@ -11,7 +11,7 @@ date: 2024, 06, 28
 
 In this tutorial, I'll show you how you can use the `transform` hook within a Vite plugin. We'll create a way to import markdown files into JavaScript modules as a parsed HTML string.
 
-If you haven't created a plugin before, check out this tutorial: [Create Your Own Vite Plugin](https://blog.robino.dev/posts/vite-plugin).
+If you haven't created a plugin before, check out this tutorial: [Create Your Own Vite Plugin](/posts/vite-plugin).
 
 ## Install dependencies
 

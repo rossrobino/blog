@@ -1,5 +1,5 @@
 {
-	"name": "blog",
+	"name": "public-interface",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -11,11 +11,13 @@
 	},
 	"devDependencies": {
 		"@domcojs/vercel": "^3.1.4",
+		"@iconify-json/ph": "^1.2.2",
+		"@iconify/tailwind4": "^1.2.3",
 		"@robino/prettier": "^2.0.3",
 		"@robino/tsconfig": "^3.0.0",
 		"@shikijs/langs": "^4.4.2",
 		"@tailwindcss/vite": "^4.3.3",
-		"domco": "^5.0.3",
+		"domco": "^5.0.4",
 		"prettier": "^3.9.6",
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"tailwindcss": "^4.3.3",
@@ -23,6 +25,8 @@
 		"vite": "^8.2.1"
 	},
 	"dependencies": {
+		"@fontsource-variable/inconsolata": "^5.3.0",
+		"@fontsource-variable/literata": "^5.3.0",
 		"@robino/md": "^6.0.1",
 		"@vercel/analytics": "^2.0.1",
 		"clsx": "^2.1.1",

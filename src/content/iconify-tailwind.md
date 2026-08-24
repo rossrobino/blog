@@ -20,10 +20,10 @@ The docs also point out some disadvantages of this technique---not being able to
 
 ## Tailwind plugin
 
-Install the TailwindCSS plugin with your preferred package manager. Also you can install the JSON icon sets you would like to use. I'll use [Lucide](https://lucide.dev/) for this example.
+Install the TailwindCSS plugin with your preferred package manager. Also you can install the JSON icon sets you would like to use. I'll use Phosphor for this example.
 
 ```bash
-npm i -D @iconify/tailwind4 @iconify-json/lucide
+npm i -D @iconify/tailwind4 @iconify-json/ph
 ```
 
 Then add the plugin to your TailwindCSS stylesheet.
@@ -40,20 +40,20 @@ Then add the plugin to your TailwindCSS stylesheet.
 Now you can use the icons as class names.
 
 ```html
-<span class="icon-[lucide--x]"></span>
+<span class="icon-[ph--x]"></span>
 ```
 
 ## How it works
 
-Here's the generated class for the Lucide X icon:
+Here's the generated class for the Phosphor X icon:
 
 ```css {6}
-.icon-\[lucide--x\] {
+.icon-\[ph--x\] {
 	-webkit-mask-image: var(--svg);
 	mask-image: var(--svg);
 	width: 1.3em;
 	height: 1.3em;
-	--svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18 6L6 18M6 6l12 12'/%3E%3C/svg%3E");
+	--svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' width='256' height='256'%3E%3Cpath fill='black' d='M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128L50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z'/%3E%3C/svg%3E");
 	display: inline-block;
 	-webkit-mask-size: 100% 100%;
 	mask-size: 100% 100%;

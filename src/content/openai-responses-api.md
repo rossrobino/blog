@@ -1,7 +1,7 @@
 ---
 title: OpenAI Responses API for TypeScript Developers
 description: A simple overview of how to use the OpenAI Responses API with TypeScript, including setup, streaming responses, and managing conversation state without a database.
-keywords: gpt, openai, responses, api, typescript, javascript
+keywords: gpt, openai, responses, api, typescript, javascript, ai
 date: 2025, 04, 18
 ---
 
@@ -13,7 +13,7 @@ OpenAI released a new [Responses API](https://platform.openai.com/docs/api-refer
 
 Here's how you can utilize the new API in a TypeScript server application.
 
-## Setup
+## Project setup
 
 I'm going to use the [domco](https://domco.robino.dev) Vite plugin for this project, but you can use any popular JS server framework.
 
@@ -125,7 +125,7 @@ Now if we submit our form, given the `/chat` action, we should see a `404` messa
 
 ## Backend
 
-### Setup
+### Backend setup
 
 First, let's get the message from the form from `req.formData`. We can just return the message as text to start with.
 
@@ -220,7 +220,7 @@ const response = await ai.client.responses.create({
 });
 ```
 
-Now the `response` is an [`AsyncIterable`](https://blog.robino.dev/posts/iterables) stream, so we can iterate through each `ResponseStreamEvent` to send the data as it streams in.
+Now the `response` is an [`AsyncIterable`](/posts/iterables) stream, so we can iterate through each `ResponseStreamEvent` to send the data as it streams in.
 
 Create a new `ReadableStream` body to handle the stream.
 

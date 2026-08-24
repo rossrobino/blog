@@ -3,12 +3,19 @@ import type { Post } from "@/lib/types";
 export const Headings = ({ post }: { post: Post }) => {
 	return (
 		<div class="prose mt-6">
-			<ul aria-label="Table of contents">
+			<ul
+				class="article-contents"
+				data-article-navigation
+				aria-label="Table of contents"
+			>
+				<li>
+					<a href="#">(Top)</a>
+				</li>
 				{post.headings?.map((heading) => {
 					if (heading.level === 2) {
 						return (
 							<li>
-								<a href={`/posts/${post.slug}#${heading.id}`}>{heading.name}</a>
+								<a href={`#${heading.id}`}>{heading.name}</a>
 							</li>
 						);
 					}

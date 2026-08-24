@@ -1,4 +1,6 @@
-# blog.robino.dev
+# The Public Interface
+
+_Independent journal, written by Ross Robino_
 
 ## Use as a Template
 

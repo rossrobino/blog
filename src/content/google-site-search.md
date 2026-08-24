@@ -11,7 +11,7 @@ date: 2025, 01, 21
 
 I recently learned by using the site search on [deno.com](https://deno.com) that you can search specific sites on Google by including `site:example.com` in your search. For example, I can search for the term "html" on my blog with this search entry.
 
-`html site:blog.robino.dev`
+`html site:int.pub`
 
 Their implementation is very simple and can be used on any indexed site. Here's how you can implement a simple search feature on your site using an HTML form.
 
@@ -21,20 +21,20 @@ Create an HTML form that performs a `get` request to google.com/search. The `<fo
 
 ```html
 <form action="https://google.com/search">
-	<input type="search" name="q" placeholder="Search blog.robino.dev" />
-	<input type="hidden" name="q" value="site:blog.robino.dev" />
+	<input type="search" name="q" placeholder="Search int.pub" />
+	<input type="hidden" name="q" value="site:int.pub" />
 </form>
 ```
 
 For example, when you search for "html", the form would create a `get` request to:
 
-https://www.google.com/search?q=html&q=site%3Ablog.robino.dev
+https://www.google.com/search?q=html&q=site%3Aint.pub
 
 You can try it out below:
 
 <form action="https://google.com/search" class="flex gap-4">
-	<input type="search" name="q" placeholder="Search blog.robino.dev" />
-	<input type="hidden" name="q" value="site:blog.robino.dev" />
+	<input type="search" name="q" placeholder="Search int.pub" />
+	<input type="hidden" name="q" value="site:int.pub" />
 </form>
 
 ## Indexed pages only

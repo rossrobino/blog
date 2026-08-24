@@ -1,5 +1,7 @@
+import { parseDate } from "@/lib/format-date";
 import { localPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
+import { page as postPage } from "@/pages/posts";
 import { Route } from "ovr";
 
 export const rss = Route.get("/rss", (c) => {
@@ -25,12 +27,20 @@ export const rss = Route.get("/rss", (c) => {
 						.map((post) => (
 							<item>
 								<guid>
-									{info.origin}/posts/{post.slug}
+									{new URL(
+										postPage.pathname({ slug: post.slug }),
+										info.origin,
+									).toString()}
 								</guid>
 								<title>{post.title}</title>
-								<link>{`${info.origin}/posts/${post.slug}`}</link>
+								<link>
+									{new URL(
+										postPage.pathname({ slug: post.slug }),
+										info.origin,
+									).toString()}
+								</link>
 								<description>{post.description}</description>
-								<pubDate>{new Date(post.date).toUTCString()}</pubDate>
+								<pubDate>{parseDate(post.date).toUTCString()}</pubDate>
 							</item>
 						))}
 				</channel>

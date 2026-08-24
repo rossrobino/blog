@@ -18,8 +18,17 @@ const notFound: Middleware = async (c, next) => {
 		c.res.status = 404;
 
 		return (
-			<Layout head={<Head title={`${info.title} - Not Found`} />}>
-				<main class="prose">
+			<Layout
+				compact
+				head={
+					<Head
+						title={`${info.title} - Not Found`}
+						canonical={c.url.pathname}
+						noindex
+					/>
+				}
+			>
+				<main id="content" class="prose">
 					<h1>Not Found</h1>
 					<p>
 						The requested path <code>{c.url.pathname}</code> was not found.
@@ -50,7 +59,7 @@ app.use(notFound, preload, home, post, seo);
 export default {
 	fetch: app.fetch,
 	prerender: [
-		...localPosts.map((post) => `/posts/${post.slug}`),
+		...localPosts.map((item) => post.page.pathname({ slug: item.slug })),
 		seo.robots.pathname(),
 	],
 };

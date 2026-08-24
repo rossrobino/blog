@@ -15,7 +15,7 @@ Here's a minimal example showing how to enable cross-document transitions and ho
 
 ## HTML
 
-Here are two almost identical pages that link to each other that we will transition between using CSS. Combine view transitions with the [Speculation Rules API](https://blog.robino.dev/posts/speculation-rules-api) to speed up navigation and ensure animations run as quickly as possible.
+Here are two almost identical pages that link to each other that we will transition between using CSS. Combine view transitions with the [Speculation Rules API](/posts/speculation-rules-api) to speed up navigation and ensure animations run as quickly as possible.
 
 ### page-1.html
 

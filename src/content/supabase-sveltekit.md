@@ -138,8 +138,8 @@ npm install @supabase/supabase-js
 // src/lib/db/client.ts
 // our generated types
 import {
-	PUBLIC_SUPABASE_URL,
 	PUBLIC_SUPABASE_ANON_KEY,
+	PUBLIC_SUPABASE_URL,
 } from "$env/static/public";
 import type { Database } from "./types";
 import { createClient } from "@supabase/supabase-js";

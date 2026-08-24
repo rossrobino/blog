@@ -135,7 +135,7 @@ layout: "@layouts/post/Post.astro"
 
 ### Import in other pages
 
-You may want to display your headings as a preview outside of the page itself ([example](https://blog.robino.dev)).
+You may want to display your headings as a preview outside of the page itself ([example](/)).
 
 We can import our files from `src/pages/posts` into the page we want to display them using Astro's [glob](https://docs.astro.build/en/reference/api-reference/#astroglob) method. Then we can pass a post into the `Headings` component to display the headings from that post.
 

@@ -103,19 +103,21 @@ content.addEventListener("command", (e) => {
 ```
 
 <div class="grid gap-4 grid-cols-3">
-<button class="secondary" commandfor="content" command="--change-color" type="button" data-color="red">Red</button>
-<button class="secondary" commandfor="content" command="--change-color" type="button" data-color="blue">Blue</button>
-<button class="secondary" commandfor="content" command="--change-color" type="button" data-color="green">Green</button>
+<button class="secondary" commandfor="invoker-content" command="--change-color" type="button" data-color="red">Red</button>
+<button class="secondary" commandfor="invoker-content" command="--change-color" type="button" data-color="blue">Blue</button>
+<button class="secondary" commandfor="invoker-content" command="--change-color" type="button" data-color="green">Green</button>
 </div>
 
-<div class="text-4xl font-bold flex justify-center pt-6"><div id="content" class="p-8 bg-gray-500 rounded-md"></div></div>
+<div class="text-4xl font-bold flex justify-center pt-6"><div id="invoker-content" class="p-8 bg-gray-500 rounded-md"></div></div>
 
 <script type="module">
-content.addEventListener("command", (e) => {
+	const content = document.querySelector("#invoker-content");
+
+	content?.addEventListener("command", (e) => {
 	if (e.command === "--change-color") {
 		content.style.backgroundColor = e.source.dataset.color;
 	}
-})
+	});
 </script>
 
 ---

@@ -97,7 +97,7 @@ Test it in some different environments to see the API in action. On mac, you can
 	import ShareButton from "$lib/ShareButton.svelte";
 </script>
 
-<ShareButton url="https://blog.robino.dev/posts/navigator-share-svelte" />
+<ShareButton url="https://int.pub/posts/navigator-share-svelte" />
 ```
 
 Feel free to copy the code into your project, or you can utilize the web component version I have made with this [package](https://github.com/rossrobino/drab).
