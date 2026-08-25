@@ -395,6 +395,8 @@
 	}
 
 	.newspaper-lead-copy {
+		@apply text-base leading-relaxed;
+
 		position: absolute;
 		column-fill: auto;
 		inset-block: 0;

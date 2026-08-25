@@ -4,6 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+		"lint": "tailwint --fix",
 		"check": "tsc",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -16,11 +17,13 @@
 		"@robino/prettier": "^2.0.3",
 		"@robino/tsconfig": "^3.0.0",
 		"@shikijs/langs": "^4.4.2",
+		"@tailwindcss/language-server": "^0.16.0",
 		"@tailwindcss/vite": "^4.3.3",
 		"domco": "^5.0.4",
 		"prettier": "^3.9.6",
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"tailwindcss": "^4.3.3",
+		"tailwint": "^1.1.15",
 		"typescript": "^7.0.2",
 		"vite": "^8.2.1"
 	},

@@ -1,6 +1,7 @@
 import { parseDate } from "@/lib/format-date";
 import { localPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
+import { logo } from "@/lib/logo";
 import { page as postPage } from "@/pages/posts";
 import { Route } from "ovr";
 
@@ -60,6 +61,4 @@ Sitemap: ${info.origin}${rss.pathname()}
 	),
 );
 
-export const favicon = Route.get("/favicon.ico", (c) =>
-	c.redirect("/favicon.svg"),
-);
+export const favicon = Route.get("/favicon.ico", (c) => c.redirect(logo.black));

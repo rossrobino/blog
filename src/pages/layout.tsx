@@ -1,3 +1,4 @@
+import { FavIcon } from "@/ui/favicon";
 import { FontPreload } from "@/ui/font-preload";
 import { Masthead } from "@/ui/masthead";
 import { SkipLink } from "@/ui/skip-link";
@@ -21,7 +22,7 @@ export const Layout = (props: {
 			<head>
 				<meta charset="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+				<FavIcon />
 				{Render.html(script.tags + style.tags)}
 				<FontPreload />
 				{props.head}
@@ -29,7 +30,7 @@ export const Layout = (props: {
 			<body class="font-old-style m-0 tabular-nums sm:m-3 lg:m-6">
 				<drab-prefetch class="contents" trigger="a[href^='/']" prerender>
 					<SkipLink />
-					<div class="newspaper mx-auto max-w-[96rem]">
+					<div class="newspaper mx-auto max-w-384">
 						<Masthead
 							compact={props.compact ?? false}
 							{...(props.date ? { date: props.date } : {})}

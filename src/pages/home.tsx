@@ -15,7 +15,13 @@ const preview = (
 		length = 3,
 		inline = false,
 		minimum = 0,
-	}: { length?: number; inline?: boolean; minimum?: number } = {},
+		ellipsis = false,
+	}: {
+		length?: number;
+		inline?: boolean;
+		minimum?: number;
+		ellipsis?: boolean;
+	} = {},
 ) => {
 	const paragraphs = post.html
 		?.replace(
@@ -26,8 +32,9 @@ const preview = (
 		?.match(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g)
 		?.filter((paragraph) => paragraph.replace(/<[^>]+>/g, "").trim());
 
-	if (!paragraphs) {
-		return inline ? post.description : `<p>${post.description}</p>`;
+	if (!paragraphs?.length) {
+		const description = ellipsis ? `${post.description}…` : post.description;
+		return inline ? description : `<p>${description}</p>`;
 	}
 
 	const excerpt: string[] = [];
@@ -46,7 +53,8 @@ const preview = (
 				.join(" ")
 		: excerpt
 				.map((paragraph, i) =>
-					i === excerpt.length - 1 && paragraphs.length > excerpt.length
+					i === excerpt.length - 1 &&
+					(ellipsis || paragraphs.length > excerpt.length)
 						? paragraph.replace(/<\/p>$/, "…</p>")
 						: paragraph,
 				)
@@ -82,7 +90,7 @@ export const page: Route.Get<"/"> = Route.get("/", (c) => {
 		<article class={clsx("pb-6", classes)}>
 			<h3
 				class={clsx("text-xl leading-tight font-bold", {
-					"tracking-[0.025em] uppercase": i === 0,
+					"tracking-wide uppercase": i === 0,
 				})}
 			>
 				<a href={href(post.slug)}>
@@ -135,14 +143,14 @@ export const page: Route.Get<"/"> = Route.get("/", (c) => {
 							<div class="newspaper-lead-preview min-h-80 flex-1">
 								<div
 									data-preview-truncate
-									class="newspaper-lead-copy prose mx-auto max-w-none text-justify text-base leading-relaxed first-letter:float-left first-letter:mr-2 first-letter:text-6xl first-letter:leading-[0.8] first-letter:font-black sm:columns-2 sm:gap-5"
+									class="newspaper-lead-copy prose mx-auto max-w-none text-justify first-letter:float-left first-letter:mr-2 first-letter:text-6xl first-letter:leading-[0.8] first-letter:font-black sm:columns-2 sm:gap-5"
 								>
 									{Render.html(
-										`${preview(lead, {
+										preview(lead, {
 											length: 12,
-											inline: true,
 											minimum: 6000,
-										})}…`,
+											ellipsis: true,
+										}),
 									)}
 								</div>
 							</div>
@@ -230,7 +238,7 @@ export const page: Route.Get<"/"> = Route.get("/", (c) => {
 										>
 											<h3
 												class={clsx("text-xl leading-tight font-bold", {
-													"tracking-[0.025em] uppercase": i === 1,
+													"tracking-wide uppercase": i === 1,
 												})}
 											>
 												<a
