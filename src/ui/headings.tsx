@@ -1,5 +1,23 @@
 import type { Post } from "@/lib/types";
 
+function* Items({ post }: { post: Post }) {
+	yield (
+		<li>
+			<a href="#">(Top)</a>
+		</li>
+	);
+
+	for (const heading of post.headings) {
+		if (heading.level === 2) {
+			yield (
+				<li>
+					<a href={`#${heading.id}`}>{heading.name}</a>
+				</li>
+			);
+		}
+	}
+}
+
 export const Headings = ({ post }: { post: Post }) => {
 	return (
 		<div class="prose mt-6">
@@ -8,20 +26,7 @@ export const Headings = ({ post }: { post: Post }) => {
 				data-article-navigation
 				aria-label="Table of contents"
 			>
-				<li>
-					<a href="#">(Top)</a>
-				</li>
-				{post.headings?.map((heading) => {
-					if (heading.level === 2) {
-						return (
-							<li>
-								<a href={`#${heading.id}`}>{heading.name}</a>
-							</li>
-						);
-					}
-
-					return null;
-				})}
+				<Items post={post} />
 			</ul>
 		</div>
 	);

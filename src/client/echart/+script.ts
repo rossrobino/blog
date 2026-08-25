@@ -16,11 +16,11 @@ echarts.use([
 ]);
 
 class EChart extends HTMLElement {
-	get options(): echarts.EChartsCoreOption {
+	get options() {
 		const name = this.getAttribute("chart-name");
 
 		if (name === "server-framework-stars") {
-			const frameworks: { key: string; stars: number; downloads: number }[] = [
+			const frameworks = [
 				{ key: "@remix-run/fetch-router", stars: 31_900, downloads: 983 },
 				{ key: "oak", stars: 5_400, downloads: 4_693 },
 				{ key: "ovr", stars: 12, downloads: 7_983 },

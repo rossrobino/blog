@@ -2,8 +2,32 @@ import { parseDate } from "@/lib/format-date";
 import { localPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import { logo } from "@/lib/logo";
+import type { Post } from "@/lib/types";
 import { page as postPage } from "@/pages/posts";
 import { Route } from "ovr";
+
+const Item = ({ post }: { post: Post }) => {
+	const url = new URL(
+		postPage.pathname({ slug: post.slug }),
+		info.origin,
+	).toString();
+
+	return (
+		<item>
+			<guid>{url}</guid>
+			<title>{post.title}</title>
+			<link>{url}</link>
+			<description>{post.description}</description>
+			<pubDate>{parseDate(post.date).toUTCString()}</pubDate>
+		</item>
+	);
+};
+
+function* Items() {
+	for (const post of localPosts) {
+		if (!post.draft) yield <Item post={post} />;
+	}
+}
 
 export const rss = Route.get("/rss", (c) => {
 	c.res.headers.set("content-type", "application/xml; charset=utf-8");
@@ -23,27 +47,7 @@ export const rss = Route.get("/rss", (c) => {
 					<description>{info.description}</description>
 					<managingEditor>Ross Robino</managingEditor>
 					<language>en-us</language>
-					{localPosts
-						.filter((post) => !post.draft)
-						.map((post) => (
-							<item>
-								<guid>
-									{new URL(
-										postPage.pathname({ slug: post.slug }),
-										info.origin,
-									).toString()}
-								</guid>
-								<title>{post.title}</title>
-								<link>
-									{new URL(
-										postPage.pathname({ slug: post.slug }),
-										info.origin,
-									).toString()}
-								</link>
-								<description>{post.description}</description>
-								<pubDate>{parseDate(post.date).toUTCString()}</pubDate>
-							</item>
-						))}
+					<Items />
 				</channel>
 			</rss>
 		</>

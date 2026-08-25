@@ -1,7 +1,27 @@
 import { author, homepage } from "@/lib/info";
 import { section } from "@/lib/section";
-import type { Post } from "@/lib/types";
+import type { Story } from "@/lib/types";
 import { clsx } from "clsx";
+
+const Categories = ({ post }: { post: Story }) =>
+	[...new Set(post.keywords.map(section))].slice(0, 3).join(" / ");
+
+const Byline = ({ post, linked }: { post: Story; linked: boolean }) => (
+	<p
+		class={clsx(
+			"mt-7 flex flex-wrap items-center gap-2 text-xs font-bold tracking-[0.14em] uppercase",
+			linked ? "justify-start" : "justify-center",
+		)}
+	>
+		<span>
+			By <a href={homepage}>{author}</a>
+		</span>
+		<span aria-hidden="true">·</span>
+		<span>
+			<Categories post={post} />
+		</span>
+	</p>
+);
 
 /** Shared editorial headline block for featured and full stories. */
 export const StoryHeader = ({
@@ -11,7 +31,7 @@ export const StoryHeader = ({
 	showDate = true,
 	wide = false,
 }: {
-	post: Post;
+	post: Story;
 	href?: string;
 	ruled?: boolean;
 	showDate?: boolean;
@@ -51,20 +71,7 @@ export const StoryHeader = ({
 				>
 					{post.description}
 				</p>
-				<p
-					class={clsx(
-						"mt-7 flex flex-wrap items-center gap-2 text-xs font-bold tracking-[0.14em] uppercase",
-						href ? "justify-start" : "justify-center",
-					)}
-				>
-					<span>
-						By <a href={homepage}>{author}</a>
-					</span>
-					<span aria-hidden="true">·</span>
-					<span>
-						{[...new Set(post.keywords.map(section))].slice(0, 3).join(" / ")}
-					</span>
-				</p>
+				<Byline post={post} linked={Boolean(href)} />
 			</div>
 		</header>
 	);

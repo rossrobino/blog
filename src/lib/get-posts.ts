@@ -3,7 +3,7 @@ import { formatDate, parseDate } from "@/lib/format-date";
 import { getSlug } from "@/lib/get-slug";
 import type { FrontmatterSchema } from "@/lib/schema";
 import { section } from "@/lib/section";
-import type { Post } from "@/lib/types";
+import type { Story } from "@/lib/types";
 import type { Result } from "@robino/md";
 
 const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
@@ -11,31 +11,37 @@ const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
 	{ eager: true },
 );
 
-const sortPosts = (posts: Post[]) =>
-	posts.sort(
-		(a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime(),
-	);
+const byDate = (a: Story, b: Story) =>
+	parseDate(b.date).getTime() - parseDate(a.date).getTime();
 
 export const getLocalPosts = () => {
-	const posts: Post[] = [];
+	const posts = [];
 
 	for (const path in content) {
-		const { frontmatter, headings, html } = content[path]!;
+		const { article, frontmatter, headings, html, source } = content[path]!;
 
-		const slug = getSlug(path);
-		posts.push({ ...frontmatter, slug, headings, html });
+		posts.push({
+			...frontmatter,
+			slug: getSlug(path),
+			article,
+			headings,
+			html,
+			source,
+		});
 	}
 
-	return sortPosts(posts).filter((post) => !post.draft || import.meta.env.DEV);
+	return posts
+		.sort(byDate)
+		.filter((post) => !post.draft || import.meta.env.DEV);
 };
 
 const getPosts = () =>
-	sortPosts([
+	[
 		...external.map((post) => ({ ...post, date: formatDate(post.date) })),
 		...getLocalPosts(),
-	]);
+	].sort(byDate);
 
-export const getKeywords = (posts: Post[]) => {
+export const getKeywords = (posts: Story[]) => {
 	const counts: Record<string, number> = {};
 
 	for (const post of posts) {
@@ -59,5 +65,4 @@ export const getKeywords = (posts: Post[]) => {
 
 export const posts = getPosts();
 export const localPosts = getLocalPosts();
-
 export const keywords = getKeywords(posts);

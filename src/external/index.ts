@@ -1,6 +1,6 @@
-import type { Post } from "@/lib/types";
+import type { Story } from "@/lib/types";
 
-export const external: Post[] = [
+export const external: Story[] = [
 	{
 		title: "HTML Streaming with Asynchronous Generator JSX",
 		description: "Declaratively Stream HTML using ovr.",

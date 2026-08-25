@@ -15,7 +15,7 @@ export const Layout = (props: {
 	date?: string;
 	head: JSX.Element;
 	joined?: boolean;
-	route?: Route.Get<"/">;
+	route?: Route.Get;
 }) => {
 	return (
 		<html lang="en">
@@ -27,7 +27,7 @@ export const Layout = (props: {
 				<FontPreload />
 				{props.head}
 			</head>
-			<body class="font-old-style m-0 tabular-nums sm:m-3 lg:m-6">
+			<body class="m-0 tabular-nums sm:m-3 lg:m-6">
 				<drab-prefetch class="contents" trigger="a[href^='/']" prerender>
 					<SkipLink />
 					<div class="newspaper mx-auto max-w-384">

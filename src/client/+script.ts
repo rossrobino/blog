@@ -16,21 +16,17 @@ const analytics = () => {
 };
 
 const contents = () => {
-	for (const list of document.querySelectorAll<HTMLElement>(
-		"[data-article-navigation]",
-	)) {
-		const items: { link: HTMLAnchorElement; target: HTMLElement }[] = [];
+	for (const list of document.querySelectorAll("[data-article-navigation]")) {
+		const items = [...list.querySelectorAll('a[href^="#"]')]
+			.map((link) => {
+				const id = link.getAttribute("href")?.slice(1);
+				const target = id
+					? document.getElementById(id)
+					: document.documentElement;
 
-		for (const link of list.querySelectorAll<HTMLAnchorElement>(
-			'a[href^="#"]',
-		)) {
-			const id = link.getAttribute("href")?.slice(1);
-			const target = id
-				? document.getElementById(id)
-				: document.documentElement;
-
-			if (target) items.push({ link, target });
-		}
+				if (target) return { link, target };
+			})
+			.filter((item) => item !== undefined);
 
 		const update = () => {
 			const point = window.innerHeight * 0.25;
@@ -59,9 +55,7 @@ const contents = () => {
 };
 
 const previews = () => {
-	for (const element of document.querySelectorAll<HTMLElement>(
-		"[data-preview-truncate]",
-	)) {
+	for (const element of document.querySelectorAll("[data-preview-truncate]")) {
 		const source = element.innerHTML;
 		const size = element.textContent?.length ?? 0;
 		const overflow = () =>

@@ -1,4 +1,3 @@
-import { localPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import * as home from "@/pages/home";
 import { Layout } from "@/pages/layout";
@@ -42,24 +41,45 @@ const notFound: Middleware = async (c, next) => {
 	}
 };
 
-const preload: Middleware = async (c, next) => {
+const headers: Middleware = async (c, next) => {
 	await next();
 
-	if (c.res.headers.get("content-type")?.startsWith("text/html")) {
-		c.res.headers.set(
-			"link",
-			`<${style.src.file}>; rel=preload; as=style; fetchpriority="high", ` +
-				`<${script.src.file}>; rel=preload; as=script; fetchpriority="high"; crossorigin`,
+	const type = c.res.headers.get("content-type");
+
+	if (!type?.startsWith("text/html") && !type?.startsWith("text/markdown")) {
+		return;
+	}
+
+	const links = [
+		`<${seo.rss.pathname()}>; rel="alternate"; type="application/rss+xml"`,
+	];
+
+	if (c.route === post.page) {
+		const slug = c.params.slug;
+
+		if (!slug) return;
+
+		if (slug.endsWith(".md")) {
+			links.push(
+				`<${post.page.pathname({ slug: slug.slice(0, -3) })}>; rel="canonical"; type="text/html"`,
+			);
+		} else {
+			links.push(
+				`<${post.page.pathname({ slug: `${slug}.md` })}>; rel="alternate"; type="text/markdown"`,
+			);
+		}
+	}
+
+	if (type.startsWith("text/html")) {
+		links.push(
+			`</${style.src.file}>; rel=preload; as=style; fetchpriority="high"`,
+			`</${script.src.file}>; rel=preload; as=script; fetchpriority="high"; crossorigin`,
 		);
 	}
+
+	c.res.headers.set("link", links.join(", "));
 };
 
-app.use(notFound, preload, home, post, seo);
+app.use(notFound, headers, home, post, seo);
 
-export default {
-	fetch: app.fetch,
-	prerender: [
-		...localPosts.map((item) => post.page.pathname({ slug: item.slug })),
-		seo.robots.pathname(),
-	],
-};
+export default { fetch: app.fetch };

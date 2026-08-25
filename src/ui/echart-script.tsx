@@ -1,4 +1,4 @@
-import type { Post } from "@/lib/types";
+import type { Story } from "@/lib/types";
 import { tags } from "client:script/echart";
 import { Render } from "ovr";
 
@@ -6,7 +6,7 @@ import { Render } from "ovr";
  * @returns A script tag if the post is within the selected slugs.
  */
 export const EChartScript = (props: {
-	post: Post;
+	post: Story;
 }): Render.Chunk | undefined => {
 	if (!props.post.chart) return;
 

@@ -4,6 +4,60 @@ import * as info from "@/lib/info";
 import { SiteSearch } from "@/ui/site-search";
 import type { Route } from "ovr";
 
+const IssueDate = ({ date }: { date: string | undefined }) => {
+	const value = date ? parseDate(date) : new Date();
+
+	return (
+		<span class="col-start-3 text-end">
+			<span class="hidden md:inline">
+				{new Intl.DateTimeFormat("en-US", {
+					dateStyle: "full",
+					timeZone: "America/Detroit",
+				}).format(value)}
+			</span>
+			<span class="md:hidden">
+				{new Intl.DateTimeFormat("en-US", {
+					dateStyle: "long",
+					timeZone: "America/Detroit",
+				}).format(value)}
+			</span>
+		</span>
+	);
+};
+
+function* Sections({
+	current,
+	route,
+}: {
+	current: string | undefined;
+	route: Route.Get | undefined;
+}) {
+	yield (
+		<a
+			href={route?.pathname() ?? "/"}
+			class="button ghost shrink-0 uppercase"
+			aria-current={current === "all" ? "page" : "false"}
+		>
+			All
+		</a>
+	);
+
+	for (const filter of keywords) {
+		yield (
+			<a
+				href={
+					route?.url({ search: { filter } }) ??
+					`/?filter=${encodeURIComponent(filter)}`
+				}
+				class="button ghost shrink-0 uppercase"
+				aria-current={filter === current ? "page" : "false"}
+			>
+				{filter}
+			</a>
+		);
+	}
+}
+
 /** Shared newspaper-style site masthead and topic navigation. */
 export const Masthead = ({
 	compact = false,
@@ -16,10 +70,8 @@ export const Masthead = ({
 	current?: string;
 	date?: string;
 	joined?: boolean;
-	route?: Route.Get<"/">;
+	route?: Route.Get;
 }) => {
-	const value = date ? parseDate(date) : new Date();
-
 	return (
 		<header
 			class={`newspaper-double-rule-top cursor-default ${joined ? "" : "mb-6"}`}
@@ -36,20 +88,7 @@ export const Masthead = ({
 				<span class="col-start-2 hidden text-center italic sm:inline">
 					{info.location}
 				</span>
-				<span class="col-start-3 text-end">
-					<span class="hidden md:inline">
-						{new Intl.DateTimeFormat("en-US", {
-							dateStyle: "full",
-							timeZone: "America/Detroit",
-						}).format(value)}
-					</span>
-					<span class="md:hidden">
-						{new Intl.DateTimeFormat("en-US", {
-							dateStyle: "long",
-							timeZone: "America/Detroit",
-						}).format(value)}
-					</span>
-				</span>
+				<IssueDate date={date} />
 			</div>
 
 			{!compact && (
@@ -74,25 +113,7 @@ export const Masthead = ({
 				<nav class="pt-2 pb-1.5" aria-label="Filter posts by topic">
 					<div class="overflow-x-auto pb-1.5">
 						<div class="mx-auto flex w-max min-w-full items-center justify-center gap-2">
-							<a
-								href={route?.pathname() ?? "/"}
-								class="button ghost shrink-0 uppercase"
-								aria-current={current === "all" ? "page" : "false"}
-							>
-								All
-							</a>
-							{keywords.map((filter) => (
-								<a
-									href={
-										route?.url({ search: { filter } }) ??
-										`/?filter=${encodeURIComponent(filter)}`
-									}
-									class="button ghost shrink-0 uppercase"
-									aria-current={filter === current ? "page" : "false"}
-								>
-									{filter}
-								</a>
-							))}
+							<Sections current={current} route={route} />
 						</div>
 					</div>
 				</nav>
