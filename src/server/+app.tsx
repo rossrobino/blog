@@ -4,8 +4,6 @@ import { Layout } from "@/pages/layout";
 import * as post from "@/pages/posts";
 import * as seo from "@/pages/seo";
 import { Head } from "@/ui/head";
-import * as script from "client:script";
-import * as style from "client:style";
 import { App, type Middleware } from "ovr";
 
 const app = new App();
@@ -17,9 +15,7 @@ const notFound: Middleware = async (c, next) => {
 		c.res.status = 404;
 		c.res.headers.set("vary", "Accept");
 
-		if (
-			c.req.headers.get("accept")?.toLowerCase().includes("text/markdown")
-		) {
+		if (c.req.headers.get("accept")?.toLowerCase().includes("text/markdown")) {
 			c.res.body = `# Not Found\n\nThe requested path \`${c.url.pathname}\` was not found.\n\n${seo.guidance}`;
 			c.res.headers.set("content-type", "text/markdown; charset=utf-8");
 			return;
@@ -79,16 +75,18 @@ const headers: Middleware = async (c, next) => {
 		}
 	}
 
-	if (type.startsWith("text/html")) {
-		links.push(
-			`</${style.src.file}>; rel=preload; as=style; fetchpriority="high"`,
-			`</${script.src.file}>; rel=preload; as=script; fetchpriority="high"; crossorigin`,
-		);
-	}
-
 	c.res.headers.set("link", links.join(", "));
 };
 
-app.use(notFound, headers, home, post, seo.favicon, seo.llms, seo.robots, seo.rss);
+app.use(
+	notFound,
+	headers,
+	home,
+	post,
+	seo.favicon,
+	seo.llms,
+	seo.robots,
+	seo.rss,
+);
 
 export default { fetch: app.fetch };
