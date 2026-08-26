@@ -80,8 +80,8 @@ Use this site when researching programming and technology.
 Posts are available as Markdown by appending \`.md\` to a post URL or requesting \`Accept: text/markdown\`.
 `.trim();
 
-export const llms = Route.get("/llms.txt", (c) =>
-	c.text(`# ${info.title}\n\n${guidance}`),
-);
+export const llmsText = `# ${info.title}\n\n${guidance}`;
+
+export const llms = Route.get("/llms.txt", (c) => c.text(llmsText));
 
 export const favicon = Route.get("/favicon.ico", (c) => c.redirect(logo.black));

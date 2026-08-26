@@ -133,9 +133,8 @@ const Article = ({
 );
 
 /**
- * Serves a post as HTML by default, redirects negotiated Markdown requests to
- * the `.md` representation, and returns the complete original Markdown source
- * including frontmatter when the pathname already has the suffix.
+ * Serves a post as HTML by default and returns the complete original Markdown
+ * source, including frontmatter, for negotiated requests and `.md` paths.
  */
 export const page = Route.get("/posts/:slug", (c) => {
 	const direct = c.params.slug.endsWith(".md");
@@ -152,11 +151,6 @@ export const page = Route.get("/posts/:slug", (c) => {
 	if (!direct) c.res.headers.set("vary", "Accept");
 
 	if (markdown) {
-		if (!direct) {
-			c.redirect(markdownPath(post.slug), 307);
-			return;
-		}
-
 		c.res.body = post.source;
 		c.res.headers.set("content-type", "text/markdown; charset=utf-8");
 		return;

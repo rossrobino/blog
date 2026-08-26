@@ -4,6 +4,7 @@ import { section } from "@/lib/section";
 import type { Story } from "@/lib/types";
 import { Layout } from "@/pages/layout";
 import { page as postPage } from "@/pages/posts";
+import { llmsText } from "@/pages/seo";
 import { Head } from "@/ui/head";
 import { StoryHeader } from "@/ui/story-header";
 import { clsx } from "clsx";
@@ -344,6 +345,14 @@ function* Front({ filter }: { filter: string }) {
 }
 
 export const page = Route.get("/", (c) => {
+	c.res.headers.set("vary", "Accept");
+
+	if (c.req.headers.get("accept")?.toLowerCase().includes("text/markdown")) {
+		c.res.body = llmsText;
+		c.res.headers.set("content-type", "text/markdown; charset=utf-8");
+		return;
+	}
+
 	const filter = section(c.url.searchParams.get("filter") ?? "all");
 	const all = filter === "all";
 
