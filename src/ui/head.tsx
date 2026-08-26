@@ -1,3 +1,4 @@
+import image from "@/assets/og.png?no-inline";
 import { parseDate } from "@/lib/format-date";
 import * as info from "@/lib/info";
 import type { Story } from "@/lib/types";
@@ -71,6 +72,7 @@ export const Head = ({
 	type?: "article" | "website";
 }) => {
 	const url = new URL(canonical, info.origin).toString();
+	const imageUrl = new URL(image, info.origin).toString();
 
 	return (
 		<>
@@ -91,6 +93,15 @@ export const Head = ({
 			<meta property="og:site_name" content={info.title} />
 			<meta property="og:type" content={type} />
 			<meta property="og:url" content={url} />
+			<meta property="og:image" content={imageUrl} />
+			<meta property="og:image:type" content="image/png" />
+			<meta property="og:image:width" content="1200" />
+			<meta property="og:image:height" content="630" />
+			<meta
+				property="og:image:alt"
+				content={`${info.title} — ${info.description}`}
+			/>
+			<meta name="twitter:card" content="summary_large_image" />
 			{noindex && <meta name="robots" content="noindex" />}
 			{!noindex && <StructuredData post={post} url={url} />}
 		</>
