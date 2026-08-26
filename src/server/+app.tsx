@@ -15,6 +15,15 @@ const notFound: Middleware = async (c, next) => {
 
 	if (c.res.body === undefined) {
 		c.res.status = 404;
+		c.res.headers.set("vary", "Accept");
+
+		if (
+			c.req.headers.get("accept")?.toLowerCase().includes("text/markdown")
+		) {
+			c.res.body = `# Not Found\n\nThe requested path \`${c.url.pathname}\` was not found.\n\n${seo.guidance}`;
+			c.res.headers.set("content-type", "text/markdown; charset=utf-8");
+			return;
+		}
 
 		return (
 			<Layout
@@ -80,6 +89,6 @@ const headers: Middleware = async (c, next) => {
 	c.res.headers.set("link", links.join(", "));
 };
 
-app.use(notFound, headers, home, post, seo);
+app.use(notFound, headers, home, post, seo.favicon, seo.llms, seo.robots, seo.rss);
 
 export default { fetch: app.fetch };

@@ -65,21 +65,23 @@ Sitemap: ${info.origin}${rss.pathname()}
 	),
 );
 
-export const llms = Route.get("/llms.txt", (c) =>
-	c.text(
-		`
-# ${info.title}
-
+export const guidance = `
 > ${info.description}.
 
+## When to use
+
 Use this site when researching programming and technology.
+
+## Resources
 
 - [Homepage](${info.origin})
 - [RSS feed](${info.origin}${rss.pathname()})
 
 Posts are available as Markdown by appending \`.md\` to a post URL or requesting \`Accept: text/markdown\`.
-`.trim(),
-	),
+`.trim();
+
+export const llms = Route.get("/llms.txt", (c) =>
+	c.text(`# ${info.title}\n\n${guidance}`),
 );
 
 export const favicon = Route.get("/favicon.ico", (c) => c.redirect(logo.black));
