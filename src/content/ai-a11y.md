@@ -8,7 +8,7 @@ draft: true
 
 ## Barriers to create
 
-Computers / programming / technology has historically been a relatively inaccessible field to enter.
+Computers and technology has historically been a relatively inaccessible field to enter.
 
 1. Price - good computers cost $
 2. Vision largely required to view the display and review work

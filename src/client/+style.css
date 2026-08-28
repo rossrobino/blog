@@ -419,6 +419,25 @@
 		max-inline-size: 100%;
 	}
 
+	.newspaper-story figure {
+		margin-inline: 0;
+		margin-block: clamp(2rem, 5vw, 3.5rem);
+	}
+
+	.newspaper-story figure img {
+		inline-size: 100%;
+	}
+
+	.newspaper-story figcaption {
+		margin-block-start: calc(var(--spacing) * 3);
+		color: color-mix(in oklab, var(--foreground) 65%, transparent);
+		font-style: italic;
+		font-size: var(--text-sm);
+		line-height: var(--line-height-2);
+		text-align: center;
+		text-wrap: balance;
+	}
+
 	.newspaper-story pre {
 		box-sizing: border-box;
 		margin-inline: 0;
