@@ -1,5 +1,5 @@
 import { formatDate } from "@/lib/format-date";
-import { localPosts } from "@/lib/get-posts";
+import { getPost, localPosts } from "@/lib/get-posts";
 import { repository } from "@/lib/info";
 import { section } from "@/lib/section";
 import type { Post } from "@/lib/types";
@@ -136,11 +136,11 @@ const Article = ({
  * Serves a post as HTML by default and returns the complete original Markdown
  * source, including frontmatter, for negotiated requests and `.md` paths.
  */
-export const page = Route.get("/posts/:slug", (c) => {
+export const page = Route.get("/posts/:slug", async (c) => {
 	const direct = c.params.slug.endsWith(".md");
 	const slug = direct ? c.params.slug.slice(0, -3) : c.params.slug;
 	const i = localPosts.findIndex((post) => post.slug === slug);
-	const post = localPosts[i];
+	const post = await getPost(slug);
 
 	if (!post) return;
 

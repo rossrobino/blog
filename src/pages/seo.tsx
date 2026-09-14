@@ -2,11 +2,11 @@ import { parseDate } from "@/lib/format-date";
 import { localPosts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import { logo } from "@/lib/logo";
-import type { Post } from "@/lib/types";
+import type { Story } from "@/lib/types";
 import { page as postPage } from "@/pages/posts";
 import { Route } from "ovr";
 
-const Item = ({ post }: { post: Post }) => {
+const Item = ({ post }: { post: Story }) => {
 	const url = new URL(
 		postPage.pathname({ slug: post.slug }),
 		info.origin,

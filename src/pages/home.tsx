@@ -1,4 +1,4 @@
-import { posts } from "@/lib/get-posts";
+import { getPost, posts } from "@/lib/get-posts";
 import * as info from "@/lib/info";
 import { section } from "@/lib/section";
 import type { Story } from "@/lib/types";
@@ -319,7 +319,7 @@ const Archive = ({ stories }: { stories: Story[] }) => (
 	</section>
 );
 
-function* Front({ filter }: { filter: string }) {
+async function* Front({ filter }: { filter: string }) {
 	const filtered =
 		filter === "all"
 			? posts
@@ -331,8 +331,18 @@ function* Front({ filter }: { filter: string }) {
 		filtered.find((post) => outside(post.slug));
 	const secondary = filtered.filter((post) => post !== lead).slice(0, 4);
 
+	const featured = await Promise.all(
+		(lead ? [lead, ...secondary] : []).map(async (post) =>
+			outside(post.slug) ? post : ((await getPost(post.slug)) ?? post),
+		),
+	);
+
 	yield lead ? (
-		<Features lead={lead} secondary={secondary} filter={filter} />
+		<Features
+			lead={featured[0]!}
+			secondary={featured.slice(1)}
+			filter={filter}
+		/>
 	) : (
 		<p>No posts found for this topic.</p>
 	);

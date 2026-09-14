@@ -1,38 +1,52 @@
 import { external } from "@/external";
 import { formatDate, parseDate } from "@/lib/format-date";
 import { getSlug } from "@/lib/get-slug";
-import type { FrontmatterSchema } from "@/lib/schema";
 import { section } from "@/lib/section";
 import type { Story } from "@/lib/types";
-import type { Result } from "@robino/md";
+import type { Heading } from "@robino/md";
 
-const content = import.meta.glob<Result<typeof FrontmatterSchema>>(
-	"../content/*.md",
-	{ eager: true },
-);
+const content = {
+	headings: import.meta.glob<Heading[]>("../content/*.md", {
+		import: "headings",
+	}),
+	html: import.meta.glob<string>("../content/*.md", { import: "html" }),
+	source: import.meta.glob<string>("../content/*.md", { import: "source" }),
+};
+
+const metadata = import.meta.glob<Omit<Story, "slug">>("../content/*.md", {
+	eager: true,
+	import: "frontmatter",
+	query: "?frontmatter",
+});
 
 const byDate = (a: Story, b: Story) =>
 	parseDate(b.date).getTime() - parseDate(a.date).getTime();
 
 export const getLocalPosts = () => {
-	const posts = [];
+	const posts: Story[] = [];
 
-	for (const path in content) {
-		const { article, frontmatter, headings, html, source } = content[path]!;
-
-		posts.push({
-			...frontmatter,
-			slug: getSlug(path),
-			article,
-			headings,
-			html,
-			source,
-		});
+	for (const path in metadata) {
+		posts.push({ ...metadata[path]!, slug: getSlug(path) });
 	}
 
 	return posts
 		.sort(byDate)
 		.filter((post) => !post.draft || import.meta.env.DEV);
+};
+
+/** Loads one published post on demand, including drafts in development. */
+export const getPost = async (slug: string) => {
+	const post = localPosts.find((post) => post.slug === slug);
+	if (!post) return;
+
+	const path = `../content/${slug}.md`;
+	const [headings, html, source] = await Promise.all([
+		content.headings[path]!(),
+		content.html[path]!(),
+		content.source[path]!(),
+	]);
+
+	return { ...post, headings, html, source };
 };
 
 const getPosts = () =>
